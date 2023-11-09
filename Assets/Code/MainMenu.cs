@@ -35,7 +35,7 @@ public class MainMenu : MonoBehaviour
     public void StartLevel()
     {
         open.Play();
-        SceneManager.LoadScene("Scene_LevelAlpha(M)");
+        SceneManager.LoadScene("Brians_Main_Scene");
     }
 
     public void QuitGame()
