@@ -117,7 +117,7 @@ Material:
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
-    - _Distance: 101.62
+    - _Distance: 19.23
     - _DstBlend: 0
     - _EnvironmentReflections: 1
     - _Float: 40
@@ -148,7 +148,7 @@ Material:
     - _SrcBlend: 1
     - _Surface: 0
     - _WaterBlend: 3.7
-    - _WaveAmp: 0.01
+    - _WaveAmp: 0.04
     - _WaveSpeed: 2
     - _WindQuality: 0
     - _WorkflowMode: 1

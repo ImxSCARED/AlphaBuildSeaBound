@@ -12,8 +12,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97c23e3b12dc18c42a140437e53d3951, type: 3}
   m_Name: Tonemapping
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   mode:
+    m_OverrideState: 1
+    m_Value: 2
+--- !u!114 &-7148091171331650745
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 899c54efeace73346a0a16faa3afe726, type: 3}
+  m_Name: Vignette
+  m_EditorClassIdentifier: 
+  active: 0
+  color:
+    m_OverrideState: 1
+    m_Value: {r: 0, g: 0, b: 0, a: 1}
+  center:
+    m_OverrideState: 1
+    m_Value: {x: 0.5, y: 0.37}
+  intensity:
+    m_OverrideState: 1
+    m_Value: 0.298
+  smoothness:
+    m_OverrideState: 1
+    m_Value: 1
+  rounded:
     m_OverrideState: 0
     m_Value: 0
 --- !u!114 &-5971780474194554357
@@ -51,13 +79,13 @@ MonoBehaviour:
   active: 1
   shadows:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 0.94621754, z: 0.94702953, w: -1}
+    m_Value: {x: 0.8306578, y: 0.8828073, z: 1, w: 0.18270084}
   midtones:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 0.67658013, z: 0.6655717, w: -0.114739634}
+    m_Value: {x: 1, y: 0, z: 0.18083477, w: -0.044130635}
   highlights:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 0, z: 0.030436516, w: 0.32656664}
+    m_Value: {x: 1, y: 0.079971015, z: 0.12509699, w: 1}
   shadowsStart:
     m_OverrideState: 1
     m_Value: 0
@@ -112,7 +140,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   active: 0
   intensity:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0
 --- !u!114 &11400000
 MonoBehaviour:
@@ -136,6 +164,7 @@ MonoBehaviour:
   - {fileID: 7787755533713322666}
   - {fileID: -7227352157639636311}
   - {fileID: -3634942389927683493}
+  - {fileID: -7148091171331650745}
 --- !u!114 &764399629683979246
 MonoBehaviour:
   m_ObjectHideFlags: 3
