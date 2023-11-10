@@ -21,6 +21,11 @@ public class Fishing : MonoBehaviour
     public float wrangleUpgrade = 0;
     public float rangeUpgrade = 1f;
 
+    //Tutorial stuff
+    [SerializeField] private GameObject reelTutorial;
+    private bool reelTutorialShown = false;
+    [SerializeField] private Dock dockTutorialReference;
+
     //Testing and balancing
     [Header("Exposed Variables")]
     public int maxHarpoons = 6;
@@ -37,6 +42,14 @@ public class Fishing : MonoBehaviour
             {
                 if(currentHarpoons > 0)
                 {
+                    //Makes it so they dont show tutorial anymore
+                    fishingSpot.fishTutorialShown = true;
+                    fishingSpot.fishTutorial.SetActive(false);
+                    if (reelTutorialShown == false)
+                    {
+                        reelTutorial.SetActive(true);
+                    }
+
                     GetComponent<InputManager>().ChangeActionMap("Fishing");
                     currentlyFishing = true;
                     minigameMover.SetActive(true);
@@ -58,8 +71,18 @@ public class Fishing : MonoBehaviour
         currentlyFishing = false;
         minigameMover.SetActive(false);
 
+        //For tutorial
+        reelTutorial.SetActive(false);
+
         if (fishCaught)
         {
+            //For tutorial
+            reelTutorialShown = true;
+            if (dockTutorialReference.dockTutorialShown == false)
+            {
+                dockTutorialReference.dockTutorial.SetActive(true);
+            }
+
             GameObject fish = fishingSpot.currentFish;
             GetComponent<PlayerManager>().AddFish(fish.GetComponent<Fish>().data);
 
