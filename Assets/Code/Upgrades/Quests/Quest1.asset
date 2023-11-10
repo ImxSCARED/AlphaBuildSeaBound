@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6a1aec9c5dbed8a4a8312a0d6cfc5969, type: 3}
-  m_Name: New Quest 1
+  m_Name: Quest1
   m_EditorClassIdentifier: 
-  Name: 
-  Value: 0
+  Name: Quest1
+  Value: 500
   Zone: 0
-  connectedUpgrade: {fileID: 0}
+  connectedUpgrade: {fileID: 11400000, guid: 1c49995033d92d74fb0e29cf2ed9e093, type: 2}
   connectedFish:
-    name: 
+    name: Heh
     fishImage: {fileID: 0}
     value: 0
-    isQuestFish: 0
-    tier: 0
+    isQuestFish: 1
+    tier: 1
   completed: 0

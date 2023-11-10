@@ -25,7 +25,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private UpgradeButton[] UpradgeUI;
     
     [SerializeField] private Canvas journal;
-    [SerializeField] private GameObject journalEntryPrefab;
+    [SerializeField] private QuestButton[] QuestUI;
 
     [SerializeField] private Canvas settings;
 
@@ -77,7 +77,17 @@ public class PlayerManager : MonoBehaviour
                 }
             }
         }
-
+        for (int i = 0; i < QuestUI.Length; i++)
+        {
+            for (int j = 0; j < m_QuestManager.m_Quests.Length; j++)
+            {
+                if (m_QuestManager.m_Quests[j].Name == QuestUI[i].Name)
+                {
+                    QuestUI[i].SetInfo(m_QuestManager.m_Quests[j]);
+                    break;
+                }
+            }
+        }
         isDocked = true;
     }
 
@@ -118,17 +128,6 @@ public class PlayerManager : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(journalFirstButton);
 
-        foreach (JournalFish JF in journalEntries)
-        {
-            Instantiate(journalEntryPrefab, journal.transform).GetComponent<JournalFish>();
-            //public void SetInfo(Upgrade upgrade)
-            //{
-            //    m_UpgradeType = upgrade.Type;
-            //    m_NameText.text = upgrade.Name;
-            //    m_DescText.text = upgrade.Description;
-            //    m_PriceText.text = "$" + upgrade.Price.ToString();
-            //}
-            //put this in journal fish
-        }
+        
     }
 }
