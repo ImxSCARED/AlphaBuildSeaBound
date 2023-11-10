@@ -67,6 +67,51 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "JournalToggle",
+                    "type": "Button",
+                    "id": "a686bb80-b179-4967-8685-14b6dcfe65bd",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "MenuRight",
+                    "type": "Button",
+                    "id": "4133bd2c-c7d3-4ecf-8251-41ee40d61266",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "MenuLeft",
+                    "type": "Button",
+                    "id": "b87aafc8-ea7c-4578-aa6e-119a630992e6",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "MenuDown",
+                    "type": "Button",
+                    "id": "f14a1e5a-a48b-4469-ba54-4364a8db18ef",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "MenuUp",
+                    "type": "Button",
+                    "id": "f0b5e81c-d626-45dd-97d8-3d0f011f1dd6",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -300,6 +345,61 @@
                     "action": "Select",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "22a0f812-1f91-4c7d-9570-6180da272bb1",
+                    "path": "<Gamepad>/select",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Playstation DualShock controller;Xbox controller;Nintendo Pro controller",
+                    "action": "JournalToggle",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1271be49-ec62-491b-a5e4-b78b16f420ec",
+                    "path": "<Gamepad>/dpad/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Nintendo Pro controller;Playstation DualShock controller;Xbox controller",
+                    "action": "MenuUp",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "63a86f55-9dbd-4a9c-9c5b-df95d31972c8",
+                    "path": "<Gamepad>/dpad/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Nintendo Pro controller;Xbox controller;Playstation DualShock controller",
+                    "action": "MenuDown",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8f554429-325a-43c1-bc16-35eb94405ba8",
+                    "path": "<Gamepad>/dpad/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Nintendo Pro controller;Xbox controller;Playstation DualShock controller",
+                    "action": "MenuLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "dfa67346-876f-4405-a951-3681f34c6137",
+                    "path": "<Gamepad>/dpad/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Nintendo Pro controller;Xbox controller;Playstation DualShock controller",
+                    "action": "MenuRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -410,51 +510,6 @@
                     "name": "ExitDock",
                     "type": "Button",
                     "id": "644e8505-e992-4af4-9e9e-9547245fa453",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "JournalToggle",
-                    "type": "Button",
-                    "id": "ea5ad26e-845f-4291-a28d-c75b40278b01",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Up",
-                    "type": "Button",
-                    "id": "d08b29ba-f9a6-4987-a1e9-3e7c19fef54d",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Down",
-                    "type": "Button",
-                    "id": "bac043aa-c54a-4aa1-91a7-4e47fdefbce5",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Left",
-                    "type": "Button",
-                    "id": "d3447541-e2c9-46e3-a672-5a153ab1aaef",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Right",
-                    "type": "Button",
-                    "id": "cb549f61-141f-4c37-af6a-aa50f47590a3",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -899,72 +954,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "ExitDock",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "41172254-db75-47c0-b14b-bbe0265fa9b3",
-                    "path": "<Gamepad>/select",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Xbox controller;Playstation DualShock controller;Nintendo Pro controller",
-                    "action": "JournalToggle",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "e23e6fae-9d25-43ec-ba0f-b1af45b270a0",
-                    "path": "<Keyboard>/q",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard (Testing)",
-                    "action": "JournalToggle",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "bb9c631c-4c94-4a56-964e-732972287ae5",
-                    "path": "<Gamepad>/dpad/up",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Nintendo Pro controller;Playstation DualShock controller;Xbox controller",
-                    "action": "Up",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "5232a70d-7cb8-48e1-9960-bfcde0e25f82",
-                    "path": "<Gamepad>/dpad/down",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Nintendo Pro controller;Xbox controller;Playstation DualShock controller",
-                    "action": "Down",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "a305b418-6c8e-4891-b5fd-f07d7c0f4788",
-                    "path": "<Gamepad>/dpad/left",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Nintendo Pro controller;Xbox controller;Playstation DualShock controller",
-                    "action": "Left",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "acba333d-3a45-4191-a298-8570a61906f5",
-                    "path": "<Gamepad>/dpad/right",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Nintendo Pro controller;Xbox controller;Playstation DualShock controller",
-                    "action": "Right",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

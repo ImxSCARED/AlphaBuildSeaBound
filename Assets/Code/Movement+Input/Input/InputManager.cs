@@ -15,6 +15,9 @@ public class InputManager : MonoBehaviour
     Fishing m_playerFishing;
     [SerializeField]
     PlayerManager m_playerManager;
+    [SerializeField]
+    JournalMenu m_journalMenu;
+
     // --CODE VARIABLES--
     InputAction m_forwardAction;
     InputAction m_yawAction;
@@ -23,6 +26,11 @@ public class InputManager : MonoBehaviour
     InputAction m_ExitFishingAction;
     InputAction m_SellFish;
     InputAction m_ExitDock;
+    InputAction JournalToggle;
+    InputAction Up;
+    InputAction Down;
+    InputAction Left;
+    InputAction Right;
 
     // --UNITY METHODS--
     void Awake()
@@ -39,6 +47,12 @@ public class InputManager : MonoBehaviour
         //UI
         m_SellFish = m_playerInput.actions["SellFish"];
         m_ExitDock = m_playerInput.actions["ExitDock"];
+
+        JournalToggle = m_playerInput.actions["JournalToggle"];
+        Up = m_playerInput.actions["MenuUp"];
+        Down = m_playerInput.actions["MenuDown"];
+        Left = m_playerInput.actions["MenuLeft"];
+        Right = m_playerInput.actions["MenuRight"];
     }
 
     void Update()
@@ -58,7 +72,6 @@ public class InputManager : MonoBehaviour
         {
             m_playerFishing.FishMinigame();
         }
-
 
         //Fishing
         if (m_MinigameAction.inProgress)
@@ -80,6 +93,31 @@ public class InputManager : MonoBehaviour
         if (m_ExitDock.WasPerformedThisFrame())
         {
             m_playerManager.ExitHub();
+        }
+
+        if (JournalToggle.WasPerformedThisFrame())
+        {
+            m_journalMenu.ToggleJournal();
+        }
+
+        if (Up.WasPerformedThisFrame())
+        {
+            m_journalMenu.SectionUp();
+        }
+
+        if (Down.WasPerformedThisFrame())
+        {
+            m_journalMenu.SectionDown();
+        }
+
+        if (Right.WasPerformedThisFrame())
+        {
+            m_journalMenu.PageNext();
+        }
+
+        if (Left.WasPerformedThisFrame())
+        {
+            m_journalMenu.PagePrev();
         }
     }
 

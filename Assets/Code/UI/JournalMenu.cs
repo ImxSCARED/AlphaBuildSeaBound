@@ -13,7 +13,6 @@ public class JournalMenu : MonoBehaviour
     [SerializeField] private GameObject DiarySection;
     [SerializeField] private AudioSource openMenuSound;
     [SerializeField] private AudioSource exitMenuSound;
-    [SerializeField] PlayerInput m_playerInput;
 
     public bool journalState = false;
     private int J_Section = 1;
@@ -23,95 +22,16 @@ public class JournalMenu : MonoBehaviour
     public bool MapState;
     public bool FishState;
     public bool DiaryState;
-    InputAction Up;
-    InputAction Down;
-    InputAction Left;
-    InputAction Right;
-    InputAction JournalToggle;
 
     private void Start()
     {
         scene = SceneManager.GetActiveScene();
-        Up = m_playerInput.actions["Up"];
-        Down = m_playerInput.actions["Down"];
-        Left = m_playerInput.actions["Left"];
-        Right = m_playerInput.actions["Right"];
-        JournalToggle = m_playerInput.actions["JournalToggle"];
     }
 
     void Update()
     {
-        m_playerInput.SwitchCurrentActionMap("UI");
         if (journalState)
         {
-            //Closes journal menu
-            if (JournalToggle.WasPerformedThisFrame())
-            {
-                Continue();
-                return;
-            }
-
-            //Changes Section and Pages
-            if (Down.WasPerformedThisFrame())
-            {
-                J_Section = J_Section + 1;
-                if (J_Section > 3)
-                {
-                    J_Section = 3;
-                }
-                return;
-            }
-
-            if (Up.WasPerformedThisFrame())
-            {
-                J_Section = J_Section - 1;
-                if (J_Section < 1)
-                {
-                    J_Section = 1;
-                }
-                return;
-            }
-
-            if (Right.WasPerformedThisFrame() && J_Section == 2)
-            {
-                J_FishPage = J_FishPage + 1;
-                if (J_FishPage > 3)
-                {
-                    J_FishPage = 3;
-                }
-                return;
-            }
-
-            if (Left.WasPerformedThisFrame() && J_Section == 2)
-            {
-                J_FishPage = J_FishPage - 1;
-                if (J_FishPage < 1)
-                {
-                    J_FishPage = 1;
-                }
-                return;
-            }
-
-            if (Right.WasPerformedThisFrame() && J_Section == 3)
-            {
-                J_DiaryPage = J_DiaryPage + 1;
-                if (J_DiaryPage > 3)
-                {
-                    J_DiaryPage = 3;
-                }
-                return;
-            }
-
-            if (Left.WasPerformedThisFrame() && J_Section == 3)
-            {
-                J_DiaryPage = J_DiaryPage - 1;
-                if (J_DiaryPage < 1)
-                {
-                    J_DiaryPage = 1;
-                }
-                return;
-            }
-
             MapState = J_Section == 1;
 
             FishState = J_Section == 2;
@@ -137,15 +57,54 @@ public class JournalMenu : MonoBehaviour
                 DiarySection.SetActive(true);
             }
         }
+    }
+
+    public void SectionUp()
+    {
+        J_Section = J_Section - 1;
+        if (J_Section < 1)
+        {
+            J_Section = 1;
+        }
+    }
+
+    public void SectionDown()
+    {
+        J_Section = J_Section + 1;
+        if (J_Section > 3)
+        {
+            J_Section = 3;
+        }
+    }
+
+    public void PageNext()
+    {
+        J_DiaryPage = J_DiaryPage + 1;
+        if (J_DiaryPage > 3)
+        {
+            J_DiaryPage = 3;
+        }
+    }
+
+    public void PagePrev()
+    {
+        J_DiaryPage = J_DiaryPage - 1;
+        if (J_DiaryPage < 1)
+        {
+            J_DiaryPage = 1;
+        }
+    }
+
+    public void ToggleJournal()
+    {
+        if (journalState)
+        {
+            Continue();
+        }
         else
         {
-            //Opens journal menu
-            if (JournalToggle.WasPerformedThisFrame())
-            {
-                OpenJournalMenu();
-                J_Section = 1;
-                return;
-            }
+            OpenJournalMenu();
+            J_Section = 1;
         }
     }
 
