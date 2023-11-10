@@ -16,6 +16,7 @@ public class Upgrade : ScriptableObject
     public int Level;
     public float PriceIncrease;
     public int MaxLevel;
+    public bool Locked;
 
     public UpgradeData.UpgradeType Type;
 }

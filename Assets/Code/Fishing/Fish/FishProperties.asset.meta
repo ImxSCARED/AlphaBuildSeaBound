@@ -1,8 +1,12 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Code/Fishing/Fish/FishProperties.asset.meta
 guid: f264c759615b32045ac15d3259f15b1b
+========
+guid: 73d692d37d252bf4498b77706d359b74
+>>>>>>>> Jamies_Branch:Assets/Code/Upgrades/Upgrades/AmmoAmount.asset.meta
 NativeFormatImporter:
   externalObjects: {}
-  mainObjectFileID: 11400000
+  mainObjectFileID: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
