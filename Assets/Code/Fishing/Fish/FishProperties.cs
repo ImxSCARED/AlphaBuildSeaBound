@@ -1,3 +1,4 @@
+
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,6 +11,7 @@ public class FishProperties : ScriptableObject
         public string name;
         public Image fishImage;
         public int value;
+        public bool isQuestFish;
         public FishTier tier;
     }
     [System.Serializable]
@@ -40,6 +42,7 @@ public class FishProperties : ScriptableObject
             case FishTier.LARGE:
                 return largeFish.fishies[Random.Range(0, largeFish.fishies.Length - 1)];
         }
+        Debug.Log("GetFishData switch was avoided");
         return smallFish.fishies[0];
     }
 }

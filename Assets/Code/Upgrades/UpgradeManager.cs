@@ -15,7 +15,12 @@ public class UpgradeManager : MonoBehaviour
 
     void Start()
     {
-        instance = this;
+        if (instance == null)
+            instance = this;
+        else
+        {
+            Destroy(this);
+        }
         m_fishing = GetComponent<Fishing>();
         m_movementController = GetComponent<MovementController>();
         m_playerManager = GetComponent<PlayerManager>();
@@ -31,10 +36,6 @@ public class UpgradeManager : MonoBehaviour
                 break;
 
             case UpgradeData.UpgradeType.SPEED:
-
-                break;
-
-            case UpgradeData.UpgradeType.TURN:
 
                 break;
 
@@ -57,18 +58,23 @@ public class UpgradeManager : MonoBehaviour
         {
             if(UP.Type == type)
             {
-                if(UP.Level != UP.MaxLevel)
+                if (UP.Locked)
                 {
-                    if (m_playerManager.Money >= UP.Price)
+                    if (UP.Level != UP.MaxLevel)
                     {
-                        m_playerManager.Money -= UP.Price;
-                        UP.Level++;
-                        ImplementUpgrade(UP);
+                        if (m_playerManager.Money >= UP.Price)
+                        {
+                            m_playerManager.Money -= UP.Price;
+                            UP.Level++;
+                            UP.Locked = true;
+                            ImplementUpgrade(UP);
 
-                        
-                        UP.Price = Mathf.RoundToInt(UP.Price * UP.PriceIncrease);
-                        return UP;
+
+                            UP.Price = Mathf.RoundToInt(UP.Price * UP.PriceIncrease);
+                            return UP;
+                        }
                     }
+                    
                 }
                 return null;
             }

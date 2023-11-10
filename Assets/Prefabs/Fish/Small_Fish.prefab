@@ -20,7 +20,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5043537498229815145
 Transform:
   m_ObjectHideFlags: 0
@@ -110,11 +110,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 5043537498229815127}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65fd9c3ebd4e861428e037736a57f288, type: 3}
+  m_Script: {fileID: 11500000, guid: a97e26d91a5700e4db2eebd8bb833b22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  properties: {fileID: 11400000, guid: ed152e9b0c5d35349bc5a0d8142f3555, type: 2}
+  properties: {fileID: 11400000, guid: f264c759615b32045ac15d3259f15b1b, type: 2}
   tier: 0
+  data:
+    name: 
+    fishImage: {fileID: 0}
+    value: 0
+    isQuestFish: 0
+    tier: 0
 --- !u!54 &5043537498229815124
 Rigidbody:
   m_ObjectHideFlags: 0

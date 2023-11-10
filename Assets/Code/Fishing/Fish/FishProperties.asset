@@ -9,28 +9,39 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7dadfbeb771021b48901f485db6ff63f, type: 3}
+  m_Script: {fileID: 11500000, guid: 37069dba286c34d46a7cff92a96e5f92, type: 3}
   m_Name: FishProperties
   m_EditorClassIdentifier: 
   smallFish:
-    dashSpeed: 5
-    dashWhileWrangledSpeed: 3
-    timeBeforeDash: 3
-    dashDuration: 1
+    dashSpeed: 0
+    dashWhileWrangledSpeed: 0
+    timeBeforeDash: 0
+    dashDuration: 0
     fishies:
-    - name: Bass
+    - name: Huh
       fishImage: {fileID: 0}
-      value: 100
+      value: 0
+      isQuestFish: 0
       tier: 0
   mediumFish:
-    dashSpeed: 5
-    dashWhileWrangledSpeed: 3
-    timeBeforeDash: 1
-    dashDuration: 1
-    fishies: []
+    dashSpeed: 0
+    dashWhileWrangledSpeed: 0
+    timeBeforeDash: 0
+    dashDuration: 0
+    fishies:
+    - name: Heh
+      fishImage: {fileID: 0}
+      value: 0
+      isQuestFish: 0
+      tier: 1
   largeFish:
     dashSpeed: 0
     dashWhileWrangledSpeed: 0
     timeBeforeDash: 0
     dashDuration: 0
-    fishies: []
+    fishies:
+    - name: Hoh
+      fishImage: {fileID: 0}
+      value: 0
+      isQuestFish: 0
+      tier: 2

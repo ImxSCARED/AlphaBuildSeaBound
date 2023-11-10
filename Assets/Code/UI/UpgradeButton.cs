@@ -6,16 +6,23 @@ using Unity.VisualScripting;
 
 public class UpgradeButton : MonoBehaviour
 {
-    private UpgradeData.UpgradeType m_UpgradeType;
+    public UpgradeData.UpgradeType m_UpgradeType;
     [SerializeField] private TextMeshProUGUI m_NameText;
     [SerializeField] private TextMeshProUGUI m_DescText;
     [SerializeField] private TextMeshProUGUI m_PriceText;
     public void SetInfo(Upgrade upgrade)
     {
-        m_UpgradeType = upgrade.Type;
         m_NameText.text = upgrade.Name;
         m_DescText.text = upgrade.Description;
-        m_PriceText.text = "$" + upgrade.Price.ToString();
+        if(upgrade.Level == upgrade.MaxLevel)
+        {
+            m_PriceText.text = "Max";
+        }
+        else
+        {
+            m_PriceText.text = "$" + upgrade.Price.ToString();
+        }
+        
     }
 
     public void UpgradeSelected()
