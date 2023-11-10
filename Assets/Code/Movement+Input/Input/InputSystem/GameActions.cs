@@ -436,6 +436,51 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""JournalToggle"",
+                    ""type"": ""Button"",
+                    ""id"": ""ea5ad26e-845f-4291-a28d-c75b40278b01"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Up"",
+                    ""type"": ""Button"",
+                    ""id"": ""d08b29ba-f9a6-4987-a1e9-3e7c19fef54d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Down"",
+                    ""type"": ""Button"",
+                    ""id"": ""bac043aa-c54a-4aa1-91a7-4e47fdefbce5"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Left"",
+                    ""type"": ""Button"",
+                    ""id"": ""d3447541-e2c9-46e3-a672-5a153ab1aaef"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Right"",
+                    ""type"": ""Button"",
+                    ""id"": ""cb549f61-141f-4c37-af6a-aa50f47590a3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -878,6 +923,72 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
                     ""action"": ""ExitDock"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""41172254-db75-47c0-b14b-bbe0265fa9b3"",
+                    ""path"": ""<Gamepad>/select"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Xbox controller;Playstation DualShock controller;Nintendo Pro controller"",
+                    ""action"": ""JournalToggle"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e23e6fae-9d25-43ec-ba0f-b1af45b270a0"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard (Testing)"",
+                    ""action"": ""JournalToggle"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bb9c631c-4c94-4a56-964e-732972287ae5"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Nintendo Pro controller;Playstation DualShock controller;Xbox controller"",
+                    ""action"": ""Up"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5232a70d-7cb8-48e1-9960-bfcde0e25f82"",
+                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Nintendo Pro controller;Xbox controller;Playstation DualShock controller"",
+                    ""action"": ""Down"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a305b418-6c8e-4891-b5fd-f07d7c0f4788"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Nintendo Pro controller;Xbox controller;Playstation DualShock controller"",
+                    ""action"": ""Left"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""acba333d-3a45-4191-a298-8570a61906f5"",
+                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Nintendo Pro controller;Xbox controller;Playstation DualShock controller"",
+                    ""action"": ""Right"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -1033,6 +1144,11 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
         m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
         m_UI_SellFish = m_UI.FindAction("SellFish", throwIfNotFound: true);
         m_UI_ExitDock = m_UI.FindAction("ExitDock", throwIfNotFound: true);
+        m_UI_JournalToggle = m_UI.FindAction("JournalToggle", throwIfNotFound: true);
+        m_UI_Up = m_UI.FindAction("Up", throwIfNotFound: true);
+        m_UI_Down = m_UI.FindAction("Down", throwIfNotFound: true);
+        m_UI_Left = m_UI.FindAction("Left", throwIfNotFound: true);
+        m_UI_Right = m_UI.FindAction("Right", throwIfNotFound: true);
         // Fishing
         m_Fishing = asset.FindActionMap("Fishing", throwIfNotFound: true);
         m_Fishing_MinigameMover = m_Fishing.FindAction("MinigameMover", throwIfNotFound: true);
@@ -1189,6 +1305,11 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_UI_TrackedDeviceOrientation;
     private readonly InputAction m_UI_SellFish;
     private readonly InputAction m_UI_ExitDock;
+    private readonly InputAction m_UI_JournalToggle;
+    private readonly InputAction m_UI_Up;
+    private readonly InputAction m_UI_Down;
+    private readonly InputAction m_UI_Left;
+    private readonly InputAction m_UI_Right;
     public struct UIActions
     {
         private @GameActions m_Wrapper;
@@ -1205,6 +1326,11 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
         public InputAction @TrackedDeviceOrientation => m_Wrapper.m_UI_TrackedDeviceOrientation;
         public InputAction @SellFish => m_Wrapper.m_UI_SellFish;
         public InputAction @ExitDock => m_Wrapper.m_UI_ExitDock;
+        public InputAction @JournalToggle => m_Wrapper.m_UI_JournalToggle;
+        public InputAction @Up => m_Wrapper.m_UI_Up;
+        public InputAction @Down => m_Wrapper.m_UI_Down;
+        public InputAction @Left => m_Wrapper.m_UI_Left;
+        public InputAction @Right => m_Wrapper.m_UI_Right;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1250,6 +1376,21 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
                 @ExitDock.started -= m_Wrapper.m_UIActionsCallbackInterface.OnExitDock;
                 @ExitDock.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnExitDock;
                 @ExitDock.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnExitDock;
+                @JournalToggle.started -= m_Wrapper.m_UIActionsCallbackInterface.OnJournalToggle;
+                @JournalToggle.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnJournalToggle;
+                @JournalToggle.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnJournalToggle;
+                @Up.started -= m_Wrapper.m_UIActionsCallbackInterface.OnUp;
+                @Up.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnUp;
+                @Up.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnUp;
+                @Down.started -= m_Wrapper.m_UIActionsCallbackInterface.OnDown;
+                @Down.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnDown;
+                @Down.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnDown;
+                @Left.started -= m_Wrapper.m_UIActionsCallbackInterface.OnLeft;
+                @Left.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnLeft;
+                @Left.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnLeft;
+                @Right.started -= m_Wrapper.m_UIActionsCallbackInterface.OnRight;
+                @Right.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnRight;
+                @Right.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnRight;
             }
             m_Wrapper.m_UIActionsCallbackInterface = instance;
             if (instance != null)
@@ -1290,6 +1431,21 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
                 @ExitDock.started += instance.OnExitDock;
                 @ExitDock.performed += instance.OnExitDock;
                 @ExitDock.canceled += instance.OnExitDock;
+                @JournalToggle.started += instance.OnJournalToggle;
+                @JournalToggle.performed += instance.OnJournalToggle;
+                @JournalToggle.canceled += instance.OnJournalToggle;
+                @Up.started += instance.OnUp;
+                @Up.performed += instance.OnUp;
+                @Up.canceled += instance.OnUp;
+                @Down.started += instance.OnDown;
+                @Down.performed += instance.OnDown;
+                @Down.canceled += instance.OnDown;
+                @Left.started += instance.OnLeft;
+                @Left.performed += instance.OnLeft;
+                @Left.canceled += instance.OnLeft;
+                @Right.started += instance.OnRight;
+                @Right.performed += instance.OnRight;
+                @Right.canceled += instance.OnRight;
             }
         }
     }
@@ -1395,6 +1551,11 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
         void OnTrackedDeviceOrientation(InputAction.CallbackContext context);
         void OnSellFish(InputAction.CallbackContext context);
         void OnExitDock(InputAction.CallbackContext context);
+        void OnJournalToggle(InputAction.CallbackContext context);
+        void OnUp(InputAction.CallbackContext context);
+        void OnDown(InputAction.CallbackContext context);
+        void OnLeft(InputAction.CallbackContext context);
+        void OnRight(InputAction.CallbackContext context);
     }
     public interface IFishingActions
     {
