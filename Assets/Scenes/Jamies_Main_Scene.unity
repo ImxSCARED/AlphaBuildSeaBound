@@ -889,10 +889,6 @@ Transform:
   - {fileID: 1288537580}
   - {fileID: 1985480677}
   m_Father: {fileID: 0}
-<<<<<<< HEAD
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-=======
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &128210776
@@ -997,7 +993,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
->>>>>>> Jamies_Branch
 --- !u!1001 &128787862
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1195,8 +1190,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4.8852105, y: 12.609905, z: 8.186613}
   m_Center: {x: 0.00000023841858, y: 0.00000333786, z: 0}
-<<<<<<< HEAD
-=======
 --- !u!1 &160023890
 GameObject:
   m_ObjectHideFlags: 0
@@ -1297,7 +1290,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
->>>>>>> Jamies_Branch
 --- !u!1001 &172822189
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1387,8 +1379,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da30e3ae615d0be4d9c6ec316c701432, type: 3}
-<<<<<<< HEAD
-=======
 --- !u!1 &175414533
 GameObject:
   m_ObjectHideFlags: 0
@@ -1524,7 +1514,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 175414533}
   m_CullTransparentMesh: 1
->>>>>>> Jamies_Branch
 --- !u!1 &175686500 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 2695152ed7f7c3d4cb8411621cde440e,
@@ -1730,6 +1719,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6c74dd840f116d429821af964bb8972, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dockTutorialShown: 0
+  dockTutorial: {fileID: 0}
 --- !u!65 &195807197
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2187,11 +2178,7 @@ Transform:
   - {fileID: 5411500}
   - {fileID: 833471931}
   m_Father: {fileID: 0}
-<<<<<<< HEAD
-  m_RootOrder: 4
-=======
   m_RootOrder: 5
->>>>>>> Jamies_Branch
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &261498694
 PrefabInstance:
@@ -2491,8 +2478,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da30e3ae615d0be4d9c6ec316c701432, type: 3}
-<<<<<<< HEAD
-=======
 --- !u!1 &284342112
 GameObject:
   m_ObjectHideFlags: 0
@@ -2628,7 +2613,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 284342112}
   m_CullTransparentMesh: 1
->>>>>>> Jamies_Branch
 --- !u!1001 &299749079
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3193,8 +3177,6 @@ Transform:
   m_Father: {fileID: 1288537580}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
-<<<<<<< HEAD
-=======
 --- !u!1 &360175411
 GameObject:
   m_ObjectHideFlags: 0
@@ -3330,7 +3312,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 360175411}
   m_CullTransparentMesh: 1
->>>>>>> Jamies_Branch
 --- !u!1 &360690802
 GameObject:
   m_ObjectHideFlags: 0
@@ -5226,8 +5207,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 128787862}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-=======
 --- !u!1 &554764379
 GameObject:
   m_ObjectHideFlags: 0
@@ -5381,7 +5360,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 554764379}
   m_CullTransparentMesh: 1
->>>>>>> Jamies_Branch
 --- !u!1001 &577438229
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5477,8 +5455,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 577438229}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-=======
 --- !u!1 &580957869
 GameObject:
   m_ObjectHideFlags: 0
@@ -5614,7 +5590,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 580957869}
   m_CullTransparentMesh: 1
->>>>>>> Jamies_Branch
 --- !u!1 &582249798 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2220305545671429769, guid: b0a629095c6c90b4683bef80aaf88c33,
@@ -6054,11 +6029,7 @@ Transform:
   - {fileID: 1541790682}
   - {fileID: 1106897920}
   m_Father: {fileID: 0}
-<<<<<<< HEAD
-  m_RootOrder: 2
-=======
   m_RootOrder: 3
->>>>>>> Jamies_Branch
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &624037087 stripped
 GameObject:
@@ -6079,8 +6050,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.4544642, y: 4.5647883, z: 3.9073641}
   m_Center: {x: -0.30086187, y: 2.2823904, z: -0.06570119}
-<<<<<<< HEAD
-=======
 --- !u!1 &624101215
 GameObject:
   m_ObjectHideFlags: 0
@@ -6216,7 +6185,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 624101215}
   m_CullTransparentMesh: 1
->>>>>>> Jamies_Branch
 --- !u!4 &632802780 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5732262576669922472, guid: 339caeffe6a04744790204163b2864a6,
@@ -6676,8 +6644,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2695152ed7f7c3d4cb8411621cde440e, type: 3}
-<<<<<<< HEAD
-=======
 --- !u!1 &760683281
 GameObject:
   m_ObjectHideFlags: 0
@@ -6778,7 +6744,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
->>>>>>> Jamies_Branch
 --- !u!4 &761781536 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 744814495671150548, guid: 9199bccf1f128584da66943c3f220d18,
@@ -7985,8 +7950,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD
-=======
 --- !u!1 &935357163
 GameObject:
   m_ObjectHideFlags: 0
@@ -8067,7 +8030,6 @@ MonoBehaviour:
   m_ChildScaleWidth: 1
   m_ChildScaleHeight: 1
   m_ReverseArrangement: 0
->>>>>>> Jamies_Branch
 --- !u!1 &942126304 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 2695152ed7f7c3d4cb8411621cde440e,
@@ -9888,11 +9850,7 @@ Transform:
   - {fileID: 1881904339}
   - {fileID: 863228850}
   m_Father: {fileID: 0}
-<<<<<<< HEAD
-  m_RootOrder: 6
-=======
   m_RootOrder: 7
->>>>>>> Jamies_Branch
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1225254681
 PrefabInstance:
@@ -10877,11 +10835,7 @@ Transform:
   - {fileID: 1916296477}
   - {fileID: 761781536}
   m_Father: {fileID: 0}
-<<<<<<< HEAD
-  m_RootOrder: 3
-=======
   m_RootOrder: 4
->>>>>>> Jamies_Branch
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1502474432
 PrefabInstance:
@@ -13702,8 +13656,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1978028163863042285}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-=======
 --- !u!1001 &1944404825
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13778,7 +13730,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8a4699c7cffaae4d89902ebfb9f81cb, type: 3}
->>>>>>> Jamies_Branch
 --- !u!1001 &1953668092
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14073,11 +14024,7 @@ Transform:
   m_Children:
   - {fileID: 6448667615138837829}
   m_Father: {fileID: 0}
-<<<<<<< HEAD
-  m_RootOrder: 5
-=======
   m_RootOrder: 6
->>>>>>> Jamies_Branch
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1995087536
 PrefabInstance:
@@ -14938,8 +14885,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90408e5acbe555e44a39328dc6a93750, type: 3}
-<<<<<<< HEAD
-=======
 --- !u!222 &79205762629686205
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -14948,7 +14893,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2904344329563103715}
   m_CullTransparentMesh: 1
->>>>>>> Jamies_Branch
 --- !u!1 &82708435393186863
 GameObject:
   m_ObjectHideFlags: 0
@@ -14968,8 +14912,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
-<<<<<<< HEAD
-=======
 --- !u!114 &85348207702536706
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15111,7 +15053,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
->>>>>>> Jamies_Branch
 --- !u!1 &353770415310589939
 GameObject:
   m_ObjectHideFlags: 0
@@ -15131,8 +15072,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
-<<<<<<< HEAD
-=======
 --- !u!114 &370729040288766333
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15222,7 +15161,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
->>>>>>> Jamies_Branch
 --- !u!1001 &388797794991905246
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15292,8 +15230,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75032cde8cc575e49966dba51d375985, type: 3}
-<<<<<<< HEAD
-=======
 --- !u!224 &479917727032303822
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15406,7 +15342,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
->>>>>>> Jamies_Branch
 --- !u!4 &487459420863177316
 Transform:
   m_ObjectHideFlags: 0
@@ -15422,8 +15357,6 @@ Transform:
   m_Father: {fileID: 6448667615138837829}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD
-=======
 --- !u!222 &694609551568760695
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -15432,7 +15365,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5082874682924503761}
   m_CullTransparentMesh: 1
->>>>>>> Jamies_Branch
 --- !u!1001 &744814494956239604
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15560,8 +15492,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3511698168772495297}
   m_Mesh: {fileID: -8525759754944652, guid: 3336b3ec92fff0441b55cf0803c1f302, type: 3}
-<<<<<<< HEAD
-=======
 --- !u!1 &849251417408477920
 GameObject:
   m_ObjectHideFlags: 0
@@ -15582,7 +15512,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
->>>>>>> Jamies_Branch
 --- !u!1001 &906104489992522261
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15742,8 +15671,6 @@ Transform:
   m_Father: {fileID: 6448667615138837829}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD
-=======
 --- !u!222 &1162035195785173272
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -15841,7 +15768,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
->>>>>>> Jamies_Branch
 --- !u!4 &1188983147075505809
 Transform:
   m_ObjectHideFlags: 0
@@ -15865,8 +15791,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1033389298435855738}
   m_Mesh: {fileID: -7304914398232713694, guid: 3336b3ec92fff0441b55cf0803c1f302, type: 3}
-<<<<<<< HEAD
-=======
 --- !u!224 &1242816552635575375
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15887,7 +15811,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 155, y: 30}
   m_Pivot: {x: 0, y: 1}
->>>>>>> Jamies_Branch
 --- !u!1 &1263846167338902778
 GameObject:
   m_ObjectHideFlags: 0
@@ -16146,8 +16069,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
-<<<<<<< HEAD
-=======
 --- !u!1 &1398299156578791635
 GameObject:
   m_ObjectHideFlags: 0
@@ -16198,7 +16119,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
->>>>>>> Jamies_Branch
 --- !u!4 &1437412176333721492
 Transform:
   m_ObjectHideFlags: 0
@@ -16214,8 +16134,6 @@ Transform:
   m_Father: {fileID: 6448667615138837829}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD
-=======
 --- !u!224 &1543592695672843798
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16236,7 +16154,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 80, y: 20}
   m_Pivot: {x: 0, y: 1}
->>>>>>> Jamies_Branch
 --- !u!1 &1661921561319976628
 GameObject:
   m_ObjectHideFlags: 0
@@ -16501,8 +16418,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 824876bd44a14f94dab33d97c3df98d0, type: 3}
-<<<<<<< HEAD
-=======
 --- !u!1 &2055224209191052959
 GameObject:
   m_ObjectHideFlags: 0
@@ -16633,7 +16548,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
->>>>>>> Jamies_Branch
 --- !u!23 &2298601255328959859
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -16840,8 +16754,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 339caeffe6a04744790204163b2864a6, type: 3}
-<<<<<<< HEAD
-=======
 --- !u!1 &2388812273310683329
 GameObject:
   m_ObjectHideFlags: 0
@@ -16965,7 +16877,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
->>>>>>> Jamies_Branch
 --- !u!33 &2633526741775511700
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -16974,8 +16885,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7847680863258013524}
   m_Mesh: {fileID: 7946251555161029026, guid: 3336b3ec92fff0441b55cf0803c1f302, type: 3}
-<<<<<<< HEAD
-=======
 --- !u!114 &2681612688238955331
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17083,7 +16992,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
->>>>>>> Jamies_Branch
 --- !u!23 &2720833874895310732
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -17216,8 +17124,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2736232244829514718}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-=======
 --- !u!222 &2880869118946727754
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -17282,7 +17188,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 80, y: 20}
   m_Pivot: {x: 0, y: 1}
->>>>>>> Jamies_Branch
 --- !u!23 &3051972729733366068
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -17445,8 +17350,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 3059625727233236680}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-=======
 --- !u!224 &3093838734586178354
 RectTransform:
   m_ObjectHideFlags: 0
@@ -17467,7 +17370,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 80, y: 20}
   m_Pivot: {x: 0, y: 1}
->>>>>>> Jamies_Branch
 --- !u!4 &3238255072941094980
 Transform:
   m_ObjectHideFlags: 0
@@ -17483,8 +17385,6 @@ Transform:
   m_Father: {fileID: 6448667615138837829}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD
-=======
 --- !u!224 &3280218652784463488
 RectTransform:
   m_ObjectHideFlags: 0
@@ -17505,7 +17405,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 75, y: 20}
   m_Pivot: {x: 0, y: 1}
->>>>>>> Jamies_Branch
 --- !u!1001 &3408570682008099095
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17602,8 +17501,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
-<<<<<<< HEAD
-=======
 --- !u!222 &3644817087638058147
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -17702,7 +17599,6 @@ MonoBehaviour:
   m_NameText: {fileID: 4656688661819103887}
   m_DescText: {fileID: 2681612688238955331}
   m_PriceText: {fileID: 6917795236430638431}
->>>>>>> Jamies_Branch
 --- !u!23 &3766608817518770032
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -17745,8 +17641,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
-<<<<<<< HEAD
-=======
 --- !u!114 &3783538967910507052
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17856,7 +17750,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 155, y: 30}
   m_Pivot: {x: 0, y: 1}
->>>>>>> Jamies_Branch
 --- !u!1 &3985702781001138172
 GameObject:
   m_ObjectHideFlags: 0
@@ -18097,11 +17990,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentFish: {fileID: 0}
-<<<<<<< HEAD
-  MinigameMover: {fileID: 0}
-=======
   MinigameMover: {fileID: 6842371337947176048}
->>>>>>> Jamies_Branch
   fishingHitboxCollider: {fileID: 4205174051534385032}
   leftPoints:
   - {fileID: 4205174051444247146}
@@ -18469,8 +18358,6 @@ Transform:
   m_Father: {fileID: 4205174051534385039}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD
-=======
 --- !u!224 &4272654179540465768
 RectTransform:
   m_ObjectHideFlags: 0
@@ -18491,7 +18378,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 75, y: 20}
   m_Pivot: {x: 0, y: 1}
->>>>>>> Jamies_Branch
 --- !u!1 &4324921537277467065
 GameObject:
   m_ObjectHideFlags: 0
@@ -18541,8 +18427,6 @@ Transform:
   m_Father: {fileID: 6448667615138837829}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD
-=======
 --- !u!1 &4609178140203672216
 GameObject:
   m_ObjectHideFlags: 0
@@ -18696,7 +18580,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
->>>>>>> Jamies_Branch
 --- !u!23 &4746830230013876127
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -18808,8 +18691,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 697cfe75f10c99b46a279ec5b431e2c2, type: 3}
-<<<<<<< HEAD
-=======
 --- !u!224 &4781569229201599836
 RectTransform:
   m_ObjectHideFlags: 0
@@ -18838,7 +18719,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5843720412218633674}
   m_CullTransparentMesh: 1
->>>>>>> Jamies_Branch
 --- !u!4 &4869057253521372237
 Transform:
   m_ObjectHideFlags: 0
@@ -18854,8 +18734,6 @@ Transform:
   m_Father: {fileID: 6448667615138837829}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD
-=======
 --- !u!114 &4869118114254465470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19029,7 +18907,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
->>>>>>> Jamies_Branch
 --- !u!33 &5229266291390558488
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -19038,8 +18915,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3985702781001138172}
   m_Mesh: {fileID: -6977545929734518668, guid: 3336b3ec92fff0441b55cf0803c1f302, type: 3}
-<<<<<<< HEAD
-=======
 --- !u!114 &5382936343165456247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19129,7 +19004,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
->>>>>>> Jamies_Branch
 --- !u!4 &5454319138881757323
 Transform:
   m_ObjectHideFlags: 0
@@ -19145,8 +19019,6 @@ Transform:
   m_Father: {fileID: 6448667615138837829}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD
-=======
 --- !u!224 &5516916458556964617
 RectTransform:
   m_ObjectHideFlags: 0
@@ -19247,7 +19119,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1398299156578791635}
   m_CullTransparentMesh: 1
->>>>>>> Jamies_Branch
 --- !u!4 &5706170376001041029
 Transform:
   m_ObjectHideFlags: 0
@@ -19263,8 +19134,6 @@ Transform:
   m_Father: {fileID: 6448667615138837829}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD
-=======
 --- !u!222 &5706894277787242240
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -19273,7 +19142,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2055224209191052959}
   m_CullTransparentMesh: 1
->>>>>>> Jamies_Branch
 --- !u!1001 &5721960791712270376
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19343,8 +19211,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd9b18a70aa8bdf469e678109ce97882, type: 3}
-<<<<<<< HEAD
-=======
 --- !u!114 &5722341213461105834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19454,7 +19320,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 80, y: 20}
   m_Pivot: {x: 0, y: 1}
->>>>>>> Jamies_Branch
 --- !u!4 &5788586193126572557
 Transform:
   m_ObjectHideFlags: 0
@@ -19470,8 +19335,6 @@ Transform:
   m_Father: {fileID: 6448667615138837829}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD
-=======
 --- !u!1 &5843720412218633674
 GameObject:
   m_ObjectHideFlags: 0
@@ -19490,7 +19353,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
->>>>>>> Jamies_Branch
 --- !u!1 &5856192922133974988
 GameObject:
   m_ObjectHideFlags: 0
@@ -19510,8 +19372,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
-<<<<<<< HEAD
-=======
 --- !u!222 &5901089786832754887
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -19520,7 +19380,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6882571696834929983}
   m_CullTransparentMesh: 1
->>>>>>> Jamies_Branch
 --- !u!1 &5923805446822047743
 GameObject:
   m_ObjectHideFlags: 0
@@ -19539,10 +19398,7 @@ GameObject:
   - component: {fileID: 6842371339059658681}
   - component: {fileID: 6842371339059658686}
   - component: {fileID: 6842371339059658687}
-<<<<<<< HEAD
-=======
   - component: {fileID: 6842371339059658688}
->>>>>>> Jamies_Branch
   m_Layer: 0
   m_Name: player_boatv2
   m_TagString: Player
@@ -19592,8 +19448,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
-<<<<<<< HEAD
-=======
 --- !u!224 &5935507549880688749
 RectTransform:
   m_ObjectHideFlags: 0
@@ -19634,7 +19488,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 155, y: 30}
   m_Pivot: {x: 0, y: 1}
->>>>>>> Jamies_Branch
 --- !u!33 &6113463281469538009
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -19643,8 +19496,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6556188432746049540}
   m_Mesh: {fileID: -3963406277896568798, guid: 3336b3ec92fff0441b55cf0803c1f302, type: 3}
-<<<<<<< HEAD
-=======
 --- !u!1 &6148795951061599122
 GameObject:
   m_ObjectHideFlags: 0
@@ -19689,7 +19540,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6199091614050721259}
   m_CullTransparentMesh: 1
->>>>>>> Jamies_Branch
 --- !u!33 &6298540511683790145
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -19714,8 +19564,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 82708435393186863}
   m_Mesh: {fileID: 2622837936150312418, guid: 3336b3ec92fff0441b55cf0803c1f302, type: 3}
-<<<<<<< HEAD
-=======
 --- !u!114 &6409340193794137340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19730,7 +19578,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 2
   m_VerticalFit: 2
->>>>>>> Jamies_Branch
 --- !u!4 &6448667615138837829
 Transform:
   m_ObjectHideFlags: 0
@@ -19739,11 +19586,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5923805446822047743}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-<<<<<<< HEAD
-  m_LocalPosition: {x: 160.2, y: 189.96, z: -64.4}
-=======
   m_LocalPosition: {x: 160.2, y: 189.96, z: 593}
->>>>>>> Jamies_Branch
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -19773,8 +19616,6 @@ Transform:
   m_Father: {fileID: 1985872720}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD
-=======
 --- !u!114 &6487235588579751092
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19805,7 +19646,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
->>>>>>> Jamies_Branch
 --- !u!33 &6537364558228596163
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -19848,8 +19688,6 @@ Transform:
   m_Father: {fileID: 6448667615138837829}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD
-=======
 --- !u!1 &6799078152266609009
 GameObject:
   m_ObjectHideFlags: 0
@@ -19891,7 +19729,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
->>>>>>> Jamies_Branch
 --- !u!64 &6842371337013446655
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -20618,6 +20455,7 @@ MonoBehaviour:
   m_playerController: {fileID: 6842371339059658663}
   m_playerFishing: {fileID: 6842371339059658681}
   m_playerManager: {fileID: 6842371339059658687}
+  m_journalMenu: {fileID: 0}
 --- !u!114 &6842371339059658663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20631,13 +20469,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_rigidbody: {fileID: 6842371339059658680}
+  m_rotationAxis: {fileID: 0}
+  m_collider: {fileID: 6842371339059658684}
+  m_engineForce: 50
+  m_accelerationSpeed: 50
+  m_turnSpeed: 50
   m_maxVelocity: 20
-  m_speed: 20
-  m_brakeSpeed: 5
-  m_maxRotationalVelocity: 1
-  m_turnRate: 5
-  m_friction: 5
-  m_rotationalFriction: 2
+  m_turningVelocityRetained: 100
+  m_sideFriction: 100
+  m_collisionMomentumRetained: 100
 --- !u!54 &6842371339059658680
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -20666,11 +20506,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6470f5f0677dde640b32e280be852e36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
-  fishingSpot: {fileID: 0}
-=======
   fishingSpot: {fileID: 4205174051534385036}
->>>>>>> Jamies_Branch
   minigameBackground: {fileID: 6842371338962142919}
   minigameMover: {fileID: 6842371337947176051}
   bounds:
@@ -20745,13 +20581,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Money: 0
   journalEntries: []
-<<<<<<< HEAD
-  hub: {fileID: 0}
-  upgradeButtonPrefab: {fileID: 0}
-  journal: {fileID: 0}
-  journalEntryPrefab: {fileID: 0}
-  settings: {fileID: 0}
-=======
   hubFirstButton: {fileID: 5082874682924503761}
   journalFirstButton: {fileID: 0}
   pauseFirstButton: {fileID: 0}
@@ -20894,7 +20723,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
->>>>>>> Jamies_Branch
 --- !u!4 &6909239833045553089
 Transform:
   m_ObjectHideFlags: 0
@@ -20910,8 +20738,6 @@ Transform:
   m_Father: {fileID: 6448667615138837829}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD
-=======
 --- !u!114 &6917795236430638431
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21001,7 +20827,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
->>>>>>> Jamies_Branch
 --- !u!4 &6948592487072066063
 Transform:
   m_ObjectHideFlags: 0
@@ -21036,8 +20861,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
-<<<<<<< HEAD
-=======
 --- !u!114 &7090352934580207805
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21120,7 +20943,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3655867764144097097}
   m_CullTransparentMesh: 1
->>>>>>> Jamies_Branch
 --- !u!23 &7430364823242290913
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -21163,8 +20985,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
-<<<<<<< HEAD
-=======
 --- !u!114 &7496840788862726801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21205,7 +21025,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6799078152266609009}
   m_CullTransparentMesh: 1
->>>>>>> Jamies_Branch
 --- !u!23 &7654674424829504667
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -21317,8 +21136,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df7e941d927b34845831e9d3837111bf, type: 3}
-<<<<<<< HEAD
-=======
 --- !u!222 &7844319505632616449
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -21327,7 +21144,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2890080772697912258}
   m_CullTransparentMesh: 1
->>>>>>> Jamies_Branch
 --- !u!1 &7847680863258013524
 GameObject:
   m_ObjectHideFlags: 0
@@ -21347,8 +21163,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
-<<<<<<< HEAD
-=======
 --- !u!114 &7874114374542592056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21381,7 +21195,6 @@ MonoBehaviour:
   m_NameText: {fileID: 85348207702536706}
   m_DescText: {fileID: 482265517085747615}
   m_PriceText: {fileID: 2093539020721999997}
->>>>>>> Jamies_Branch
 --- !u!1 &7921963919781784659
 GameObject:
   m_ObjectHideFlags: 0
@@ -21443,8 +21256,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
-<<<<<<< HEAD
-=======
 --- !u!224 &7969401808801032421
 RectTransform:
   m_ObjectHideFlags: 0
@@ -21554,7 +21365,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
->>>>>>> Jamies_Branch
 --- !u!1001 &8064662829639813831
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21643,8 +21453,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
-<<<<<<< HEAD
-=======
 --- !u!114 &8219498154121945589
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21734,7 +21542,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
->>>>>>> Jamies_Branch
 --- !u!1 &8231780242401793055
 GameObject:
   m_ObjectHideFlags: 0
@@ -21754,8 +21561,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
-<<<<<<< HEAD
-=======
 --- !u!114 &8269225655429154152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21860,7 +21665,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
->>>>>>> Jamies_Branch
 --- !u!23 &8440684222914605054
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -21918,8 +21722,6 @@ Transform:
   m_Father: {fileID: 6448667615138837829}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD
-=======
 --- !u!224 &8710483922631227640
 RectTransform:
   m_ObjectHideFlags: 0
@@ -21940,7 +21742,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 155, y: 30}
   m_Pivot: {x: 0, y: 1}
->>>>>>> Jamies_Branch
 --- !u!23 &8755888972308812833
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -22010,8 +21811,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8138045576750102601}
   m_Mesh: {fileID: 8056379048638560045, guid: 3336b3ec92fff0441b55cf0803c1f302, type: 3}
-<<<<<<< HEAD
-=======
 --- !u!1 &8833704213384911886
 GameObject:
   m_ObjectHideFlags: 0
@@ -22030,7 +21829,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
->>>>>>> Jamies_Branch
 --- !u!4 &8847304508165821914
 Transform:
   m_ObjectHideFlags: 0
@@ -22054,8 +21852,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8231780242401793055}
   m_Mesh: {fileID: -6502659334301327719, guid: 3336b3ec92fff0441b55cf0803c1f302, type: 3}
-<<<<<<< HEAD
-=======
 --- !u!1 &8965340958270950593
 GameObject:
   m_ObjectHideFlags: 0
@@ -22076,7 +21872,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
->>>>>>> Jamies_Branch
 --- !u!23 &9057941290934406509
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -22119,8 +21914,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
-<<<<<<< HEAD
-=======
 --- !u!224 &9106590598993056344
 RectTransform:
   m_ObjectHideFlags: 0
@@ -22164,4 +21957,3 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
->>>>>>> Jamies_Branch

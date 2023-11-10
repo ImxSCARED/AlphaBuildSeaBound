@@ -54,24 +54,10 @@ public class UpgradeManager : MonoBehaviour
     }
     public Upgrade BuyUpgrade(UpgradeData.UpgradeType type)
     {
-        foreach(Upgrade UP in m_Upgrades)
+        foreach (Upgrade UP in m_Upgrades)
         {
-            if(UP.Type == type)
+            if (UP.Type == type)
             {
-<<<<<<< HEAD
-                if(UP.Level != UP.MaxLevel)
-                {
-                    if (m_playerManager.Money >= UP.Price)
-                    {
-                        m_playerManager.Money -= UP.Price;
-                        UP.Level++;
-                        ImplementUpgrade(UP);
-
-                        
-                        UP.Price = Mathf.RoundToInt(UP.Price * UP.PriceIncrease);
-                        return UP;
-                    }
-=======
                 if (UP.Locked)
                 {
                     if (UP.Level != UP.MaxLevel)
@@ -88,8 +74,7 @@ public class UpgradeManager : MonoBehaviour
                             return UP;
                         }
                     }
-                    
->>>>>>> Jamies_Branch
+
                 }
                 return null;
             }
@@ -98,17 +83,17 @@ public class UpgradeManager : MonoBehaviour
     }
     public void GameReloaded(Upgrade[] upgrades)
     {
-        foreach(Upgrade UP in upgrades)
+        foreach (Upgrade UP in upgrades)
         {
-            for(int i = 0; i < m_Upgrades.Length; i++)
+            for (int i = 0; i < m_Upgrades.Length; i++)
             {
-                if(m_Upgrades[i].Type == UP.Type)
+                if (m_Upgrades[i].Type == UP.Type)
                 {
                     m_Upgrades[i] = UP;
                 }
             }
         }
-        foreach(Upgrade UP in m_Upgrades)
+        foreach (Upgrade UP in m_Upgrades)
         {
             ImplementUpgrade(UP);
         }

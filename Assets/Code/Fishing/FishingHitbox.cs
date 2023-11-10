@@ -19,10 +19,6 @@ public class FishingHitbox : MonoBehaviour
     public float mainHeightRatio; // Change to account for rotation
     private float ovalExtant;
 
-    //For tutorial
-    public bool fishTutorialShown = false;
-    public GameObject fishTutorial;
-
     private void Start()
     {
         radius = fishingHitboxCollider.bounds.extents.x;
@@ -55,12 +51,6 @@ public class FishingHitbox : MonoBehaviour
     {
         if (collision.tag == "Fish")
         {
-            //For tutorial
-            if (fishTutorialShown == false)
-            {
-                fishTutorial.SetActive(true);
-            }
-
             currentFish = collision.gameObject;
         }
     }
@@ -68,9 +58,6 @@ public class FishingHitbox : MonoBehaviour
     {
         if (currentFish == collision.gameObject)
         {
-            //For tutorial
-            fishTutorial.SetActive(false);
-
             currentFish = null;
         }
     }

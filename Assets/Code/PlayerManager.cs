@@ -2,10 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-<<<<<<< HEAD
-=======
 using UnityEngine.EventSystems;
->>>>>>> Jamies_Branch
 using static UpgradeData;
 
 public class PlayerManager : MonoBehaviour
@@ -13,41 +10,26 @@ public class PlayerManager : MonoBehaviour
     public int Money = 0;
 
     private UpgradeManager m_UpgradeManager;
-<<<<<<< HEAD
-=======
     private QuestManager m_QuestManager;
->>>>>>> Jamies_Branch
     private bool isDocked = false;
     private List<FishProperties.FishData> storedFish = new List<FishProperties.FishData>();
-    
-    
+
+
     public List<JournalFish> journalEntries = new List<JournalFish>();
 
-<<<<<<< HEAD
-    [Header("UI")]
-    [SerializeField] private GameObject hub;
-    [SerializeField] private GameObject upgradeButtonPrefab;
-
-    [SerializeField] private GameObject journal;
-    [SerializeField] private GameObject journalEntryPrefab;
-
-    [SerializeField] private GameObject settings;
-
-=======
     //UI
     public GameObject hubFirstButton, journalFirstButton, pauseFirstButton;
 
     [Header("UI")]
     [SerializeField] private Canvas hub;
     [SerializeField] private UpgradeButton[] UpradgeUI;
-    
+
     [SerializeField] private Canvas journal;
     [SerializeField] private QuestButton[] QuestUI;
 
     [SerializeField] private Canvas settings;
 
     public bool test;
->>>>>>> Jamies_Branch
     private ZoneLevel currentZone;
     public enum ZoneLevel
     {
@@ -56,12 +38,6 @@ public class PlayerManager : MonoBehaviour
     private void Start()
     {
         m_UpgradeManager = GetComponent<UpgradeManager>();
-<<<<<<< HEAD
-    }
-    private void Update()
-    {
-        
-=======
         m_QuestManager = GetComponent<QuestManager>();
     }
     private void Update()
@@ -70,14 +46,13 @@ public class PlayerManager : MonoBehaviour
         {
             SellFish();
         }
->>>>>>> Jamies_Branch
     }
     public void AddFish(FishProperties.FishData caughtFish)
     {
         storedFish.Add(caughtFish);
-        for(int i = 0; i < journalEntries.Count; i++)
+        for (int i = 0; i < journalEntries.Count; i++)
         {
-            if(caughtFish.name == journalEntries[i].name)
+            if (caughtFish.name == journalEntries[i].name)
             {
                 journalEntries[i].amountCaught++;
                 journalEntries[i].hasBeenCaught = true;
@@ -87,23 +62,13 @@ public class PlayerManager : MonoBehaviour
     public void Dock()
     {
         GetComponent<InputManager>().ChangeActionMap("UI");
-<<<<<<< HEAD
-
-        hub.SetActive(true);
-        foreach(Upgrade UP in m_UpgradeManager.m_Upgrades)
-        {
-            UpgradeButton huh =  Instantiate(upgradeButtonPrefab, hub.transform).GetComponent<UpgradeButton>();
-            huh.SetInfo(UP);
-        }
-
-=======
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(hubFirstButton);
 
         hub.enabled = true;
-        for(int i = 0; i < UpradgeUI.Length; i++)
+        for (int i = 0; i < UpradgeUI.Length; i++)
         {
-            for(int j = 0; j < m_UpgradeManager.m_Upgrades.Length; j++)
+            for (int j = 0; j < m_UpgradeManager.m_Upgrades.Length; j++)
             {
                 if (m_UpgradeManager.m_Upgrades[j].Type == UpradgeUI[i].m_UpgradeType)
                 {
@@ -123,21 +88,17 @@ public class PlayerManager : MonoBehaviour
                 }
             }
         }
->>>>>>> Jamies_Branch
         isDocked = true;
     }
 
     public void SellFish()
     {
-        foreach(FishProperties.FishData fish in storedFish)
+        foreach (FishProperties.FishData fish in storedFish)
         {
-<<<<<<< HEAD
-=======
             if (fish.isQuestFish)
             {
                 QuestManager.instance.ReturnQuestFish(fish);
             }
->>>>>>> Jamies_Branch
             switch (fish.tier)
             {
                 case FishProperties.FishTier.SMALL:
@@ -157,35 +118,7 @@ public class PlayerManager : MonoBehaviour
     public void ExitHub()
     {
         GetComponent<InputManager>().ChangeActionMap("Sailing");
-<<<<<<< HEAD
-        hub.SetActive(false);
-=======
         hub.enabled = false;
->>>>>>> Jamies_Branch
         isDocked = false;
-    }
-
-    public void OpenJournal()
-    {
-<<<<<<< HEAD
-        foreach(JournalFish JF in journalEntries)
-        {
-            Instantiate(journalEntryPrefab, journal.transform).GetComponent<JournalFish>();
-            //public void SetInfo(Upgrade upgrade)
-            //{
-            //    m_UpgradeType = upgrade.Type;
-            //    m_NameText.text = upgrade.Name;
-            //    m_DescText.text = upgrade.Description;
-            //    m_PriceText.text = "$" + upgrade.Price.ToString();
-            //}
-            //put this in journal fish
-        }
-=======
-        GetComponent<InputManager>().ChangeActionMap("UI");
-        EventSystem.current.SetSelectedGameObject(null);
-        EventSystem.current.SetSelectedGameObject(journalFirstButton);
-
-        
->>>>>>> Jamies_Branch
     }
 }

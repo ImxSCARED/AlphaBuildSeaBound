@@ -1,12 +1,8 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/Code/Upgrades/Upgrades/MoveSpeed.asset.meta
-guid: d374d341efa8fbe4386000adc5fac9a2
-========
 guid: c17acaaf3544043458d941e12db1638b
->>>>>>>> Jamies_Branch:Assets/Code/Upgrades/Quests/Quest1.asset.meta
 NativeFormatImporter:
   externalObjects: {}
-  mainObjectFileID: 0
+  mainObjectFileID: 11400000
   userData: 
   assetBundleName: 
   assetBundleVariant: 

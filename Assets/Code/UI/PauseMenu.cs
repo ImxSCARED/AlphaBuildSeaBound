@@ -44,6 +44,29 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
+    public void PauseMenuToggle()
+    {
+        //if audio menu is open, closes audio_menu
+        if (audioMenuState == true)
+        {
+            CloseAudioMenu();
+            return;
+        }
+
+        //opens pause_menu
+        if (audioMenuState == false)
+        {
+            OpenPauseMenu();
+            return;
+        }
+
+        //if audio menu is not open, closes pause_menu 
+        if (pauseState == true)
+        {
+            Return();
+        }
+    }
+
     //Return
     public void Return()
     {

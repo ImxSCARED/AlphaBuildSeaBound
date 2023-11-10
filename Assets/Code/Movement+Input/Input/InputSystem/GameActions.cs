@@ -134,6 +134,15 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PauseToggle"",
+                    ""type"": ""Button"",
+                    ""id"": ""da666474-b748-4ca2-9e9c-5c3e8003570a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -420,6 +429,28 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Nintendo Pro controller;Xbox controller;Playstation DualShock controller"",
                     ""action"": ""MenuRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""611fe953-9f34-47e5-a5e9-5601ccd2acd7"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Playstation DualShock controller;Xbox controller;Nintendo Pro controller"",
+                    ""action"": ""PauseToggle"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""77fa769c-fe75-4e4d-8dad-2299d8b16c7e"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard (Testing)"",
+                    ""action"": ""PauseToggle"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1124,6 +1155,7 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
         m_Sailing_MenuLeft = m_Sailing.FindAction("MenuLeft", throwIfNotFound: true);
         m_Sailing_MenuDown = m_Sailing.FindAction("MenuDown", throwIfNotFound: true);
         m_Sailing_MenuUp = m_Sailing.FindAction("MenuUp", throwIfNotFound: true);
+        m_Sailing_PauseToggle = m_Sailing.FindAction("PauseToggle", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1213,6 +1245,7 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_Sailing_MenuLeft;
     private readonly InputAction m_Sailing_MenuDown;
     private readonly InputAction m_Sailing_MenuUp;
+    private readonly InputAction m_Sailing_PauseToggle;
     public struct SailingActions
     {
         private @GameActions m_Wrapper;
@@ -1229,6 +1262,7 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
         public InputAction @MenuLeft => m_Wrapper.m_Sailing_MenuLeft;
         public InputAction @MenuDown => m_Wrapper.m_Sailing_MenuDown;
         public InputAction @MenuUp => m_Wrapper.m_Sailing_MenuUp;
+        public InputAction @PauseToggle => m_Wrapper.m_Sailing_PauseToggle;
         public InputActionMap Get() { return m_Wrapper.m_Sailing; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1274,6 +1308,9 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
                 @MenuUp.started -= m_Wrapper.m_SailingActionsCallbackInterface.OnMenuUp;
                 @MenuUp.performed -= m_Wrapper.m_SailingActionsCallbackInterface.OnMenuUp;
                 @MenuUp.canceled -= m_Wrapper.m_SailingActionsCallbackInterface.OnMenuUp;
+                @PauseToggle.started -= m_Wrapper.m_SailingActionsCallbackInterface.OnPauseToggle;
+                @PauseToggle.performed -= m_Wrapper.m_SailingActionsCallbackInterface.OnPauseToggle;
+                @PauseToggle.canceled -= m_Wrapper.m_SailingActionsCallbackInterface.OnPauseToggle;
             }
             m_Wrapper.m_SailingActionsCallbackInterface = instance;
             if (instance != null)
@@ -1314,6 +1351,9 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
                 @MenuUp.started += instance.OnMenuUp;
                 @MenuUp.performed += instance.OnMenuUp;
                 @MenuUp.canceled += instance.OnMenuUp;
+                @PauseToggle.started += instance.OnPauseToggle;
+                @PauseToggle.performed += instance.OnPauseToggle;
+                @PauseToggle.canceled += instance.OnPauseToggle;
             }
         }
     }
@@ -1530,6 +1570,7 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
         void OnMenuLeft(InputAction.CallbackContext context);
         void OnMenuDown(InputAction.CallbackContext context);
         void OnMenuUp(InputAction.CallbackContext context);
+        void OnPauseToggle(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

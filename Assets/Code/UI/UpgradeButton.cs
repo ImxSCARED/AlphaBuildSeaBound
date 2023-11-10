@@ -14,7 +14,7 @@ public class UpgradeButton : MonoBehaviour
     {
         m_NameText.text = upgrade.Name;
         m_DescText.text = upgrade.Description;
-        if(upgrade.Level == upgrade.MaxLevel)
+        if (upgrade.Level == upgrade.MaxLevel)
         {
             m_PriceText.text = "Max";
         }
@@ -22,7 +22,7 @@ public class UpgradeButton : MonoBehaviour
         {
             m_PriceText.text = "$" + upgrade.Price.ToString();
         }
-        
+
     }
 
     public void UpgradeSelected()

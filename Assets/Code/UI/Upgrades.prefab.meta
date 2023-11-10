@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/Code/UI/UpgradeButton.prefab.meta
-guid: 34c15272bd2f1274ea4668b04258ca2f
-========
-guid: 4db4550ae6597a84bbd01a2d32b66a16
->>>>>>>> Jamies_Branch:Assets/Code/UI/Upgrades.prefab.meta
+guid: 63fe7ca736e4ce3499d98607eff98ee8
 PrefabImporter:
   externalObjects: {}
   userData: 

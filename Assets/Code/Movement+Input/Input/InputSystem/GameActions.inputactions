@@ -112,6 +112,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "PauseToggle",
+                    "type": "Button",
+                    "id": "da666474-b748-4ca2-9e9c-5c3e8003570a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -398,6 +407,28 @@
                     "processors": "",
                     "groups": "Nintendo Pro controller;Xbox controller;Playstation DualShock controller",
                     "action": "MenuRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "611fe953-9f34-47e5-a5e9-5601ccd2acd7",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Playstation DualShock controller;Xbox controller;Nintendo Pro controller",
+                    "action": "PauseToggle",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "77fa769c-fe75-4e4d-8dad-2299d8b16c7e",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard (Testing)",
+                    "action": "PauseToggle",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
