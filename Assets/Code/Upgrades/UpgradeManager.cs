@@ -15,7 +15,12 @@ public class UpgradeManager : MonoBehaviour
 
     void Start()
     {
-        instance = this;
+        if (instance == null)
+            instance = this;
+        else
+        {
+            Destroy(this);
+        }
         m_fishing = GetComponent<Fishing>();
         m_movementController = GetComponent<MovementController>();
         m_playerManager = GetComponent<PlayerManager>();
@@ -31,10 +36,6 @@ public class UpgradeManager : MonoBehaviour
                 break;
 
             case UpgradeData.UpgradeType.SPEED:
-
-                break;
-
-            case UpgradeData.UpgradeType.TURN:
 
                 break;
 
@@ -57,6 +58,7 @@ public class UpgradeManager : MonoBehaviour
         {
             if(UP.Type == type)
             {
+<<<<<<< HEAD
                 if(UP.Level != UP.MaxLevel)
                 {
                     if (m_playerManager.Money >= UP.Price)
@@ -69,6 +71,25 @@ public class UpgradeManager : MonoBehaviour
                         UP.Price = Mathf.RoundToInt(UP.Price * UP.PriceIncrease);
                         return UP;
                     }
+=======
+                if (UP.Locked)
+                {
+                    if (UP.Level != UP.MaxLevel)
+                    {
+                        if (m_playerManager.Money >= UP.Price)
+                        {
+                            m_playerManager.Money -= UP.Price;
+                            UP.Level++;
+                            UP.Locked = true;
+                            ImplementUpgrade(UP);
+
+
+                            UP.Price = Mathf.RoundToInt(UP.Price * UP.PriceIncrease);
+                            return UP;
+                        }
+                    }
+                    
+>>>>>>> Jamies_Branch
                 }
                 return null;
             }

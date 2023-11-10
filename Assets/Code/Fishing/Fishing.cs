@@ -88,7 +88,10 @@ public class Fishing : MonoBehaviour
 
             fishingSpot.currentFish = null;
             fish.SetActive(false);
+<<<<<<< HEAD
             Debug.Log("huhuh");
+=======
+>>>>>>> Jamies_Branch
 
         }
     }

@@ -18,23 +18,47 @@ MonoBehaviour:
     timeBeforeDash: 0
     dashDuration: 0
     fishies:
+<<<<<<< HEAD
     - name: 
       fishImage: {fileID: 0}
       value: 0
+=======
+    - name: Huh
+      fishImage: {fileID: 0}
+      value: 0
+      isQuestFish: 0
+>>>>>>> Jamies_Branch
       tier: 0
   mediumFish:
     dashSpeed: 0
     dashWhileWrangledSpeed: 0
     timeBeforeDash: 0
     dashDuration: 0
+<<<<<<< HEAD
     fishies: []
+=======
+    fishies:
+    - name: Heh
+      fishImage: {fileID: 0}
+      value: 0
+      isQuestFish: 0
+      tier: 1
+>>>>>>> Jamies_Branch
   largeFish:
     dashSpeed: 0
     dashWhileWrangledSpeed: 0
     timeBeforeDash: 0
     dashDuration: 0
     fishies:
+<<<<<<< HEAD
     - name: 
       fishImage: {fileID: 0}
       value: 0
       tier: 0
+=======
+    - name: Hoh
+      fishImage: {fileID: 0}
+      value: 0
+      isQuestFish: 0
+      tier: 2
+>>>>>>> Jamies_Branch

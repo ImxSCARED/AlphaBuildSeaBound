@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Code/Upgrades/Upgrades/FishingRange.asset.meta
 guid: d80dd749e66ce3f4188431d895569254
+========
+guid: f264c759615b32045ac15d3259f15b1b
+>>>>>>>> Jamies_Branch:Assets/Code/Fishing/Fish/FishProperties.asset.meta
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 0
