@@ -15,7 +15,11 @@ public class InputManager : MonoBehaviour
     Fishing m_playerFishing;
     [SerializeField]
     PlayerManager m_playerManager;
+    [SerializeField]
+    CameraController m_cameraController;
+
     // --CODE VARIABLES--
+    InputAction m_lookAction;
     InputAction m_forwardAction;
     InputAction m_yawAction;
     InputAction m_fishAction;
@@ -27,6 +31,9 @@ public class InputManager : MonoBehaviour
     // --UNITY METHODS--
     void Awake()
     {
+        //Camera
+        m_lookAction = m_playerInput.actions["Look"];
+
         //Sailing
         m_forwardAction = m_playerInput.actions["Forward"];
         m_yawAction = m_playerInput.actions["Yaw"];
@@ -43,6 +50,12 @@ public class InputManager : MonoBehaviour
 
     void Update()
     {
+        //Camera
+        if (m_lookAction.inProgress)
+        {
+            m_cameraController.MoveCamera(m_lookAction.ReadValue<Vector2>());
+        }
+
         //Sailing
         if (m_forwardAction.inProgress)
         {

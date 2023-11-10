@@ -85,6 +85,7 @@ public class MovementController : MonoBehaviour
         // Apply friction
         ApplyFriction();
 
+        // Apply velocity
         MoveWithCollision(m_velocity * Time.deltaTime);
     }
 
@@ -124,18 +125,17 @@ public class MovementController : MonoBehaviour
 
         float deltaTurn = magnitude * m_turnSpeed * Mathf.Lerp(0, 1, m_enginePower/100);
 
-        m_rigidbody.MoveRotation(m_rigidbody.rotation * Quaternion.Euler(0f, deltaTurn * Mathf.Deg2Rad, 0));
-
         float decimalPercentTVR = m_turningVelocityRetained / 100;
         m_velocity = (transform.forward * m_velocity.magnitude * decimalPercentTVR) + (m_velocity * (1 - decimalPercentTVR));
+
+        RotateWithCollision(Quaternion.Euler(0f, deltaTurn * Mathf.Deg2Rad, 0f));
     }
 
     public void MoveWithCollision(Vector3 movement)
     {
         Debug.DrawLine(transform.position, transform.position + movement * 5, Color.cyan);
 
-        RaycastHit hitInfo;
-        if (Physics.BoxCast(m_collider.transform.position, m_collider.bounds.extents, movement.normalized, out hitInfo,
+        if (Physics.BoxCast(m_collider.transform.position, m_collider.bounds.extents, movement.normalized, out RaycastHit hitInfo,
                             m_collider.transform.rotation, movement.magnitude, ~0, QueryTriggerInteraction.Ignore))
         {
             Debug.Log("Object hit: " + hitInfo.transform.name);
@@ -155,6 +155,17 @@ public class MovementController : MonoBehaviour
         else
         {
             m_rigidbody.MovePosition(transform.position + movement);
+        }
+    }
+
+    public void RotateWithCollision(Quaternion rotation)
+    {
+        // If our rotation won't collide with anything...
+        if (!Physics.BoxCast(m_collider.transform.position, m_collider.bounds.extents, Vector3.zero, out RaycastHit hitInfo,
+                             m_rigidbody.rotation * rotation, 0, ~0, QueryTriggerInteraction.Ignore))
+        {
+            //... then we're free to rotate
+            m_rigidbody.MoveRotation(m_rigidbody.rotation * rotation);
         }
     }
 
