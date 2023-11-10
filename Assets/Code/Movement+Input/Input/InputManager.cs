@@ -46,7 +46,7 @@ public class InputManager : MonoBehaviour
         //Sailing
         if (m_forwardAction.inProgress)
         {
-            m_playerController.AddVelocity(m_forwardAction.ReadValue<float>());
+            m_playerController.Accelerate(m_forwardAction.ReadValue<float>());
         }
 
         if (m_yawAction.inProgress)

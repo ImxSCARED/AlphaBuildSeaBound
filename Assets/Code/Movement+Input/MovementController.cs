@@ -1,112 +1,226 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
+using static UnityEngine.UI.Image;
 
 public class MovementController : MonoBehaviour
 {
     // --EDITOR VARIABLES--
+    [Header("Object References")]
     [SerializeField]
     Rigidbody m_rigidbody;
     [SerializeField]
+    Transform m_rotationAxis;
+    [SerializeField]
+    BoxCollider m_collider;
+
+    [Header("Player Control")]
+
+    // Acceleration
+    [SerializeField]
+    [Tooltip("Maximum force that the engine can impart on the player")]
+    [Min(0f)]
+    float m_engineForce;
+    [SerializeField]
+    [Tooltip("Speed at which the engine's power increases per second in percentages (e.g. 200% per second)")]
+    [Min(0f)]
+    float m_accelerationSpeed;
+
+    // Turning
+    [SerializeField]
+    [Tooltip("Rate at which ship turning accelerates per second in degrees. Increase to account for turn friction")]
+    [Min(0f)]
+    float m_turnSpeed;
+
+    [Header("Forces")]
+
+    [SerializeField]
+    [Tooltip("Maximum velocity the ship can reach. Cannot be less than m_engineForce.")]
+    [Min(0f)]
     float m_maxVelocity;
+
+    // Turning
     [SerializeField]
-    float m_speed;
+    [Tooltip("Percentage of velocity maintained in the forward direction when turning")]
+    [Range(0f, 100f)]
+    float m_turningVelocityRetained;
+
+    // Friction
     [SerializeField]
-    float m_brakeSpeed;
+    [Tooltip("Rate at which the boat slows in the horizontal directions")]
+    [Min(0f)]
+    float m_sideFriction;
+
+    // Collision
     [SerializeField]
-    float m_maxRotationalVelocity;
-    [SerializeField]
-    float m_turnRate;
-    [SerializeField]
-    float m_friction;
-    [SerializeField]
-    float m_rotationalFriction;
+    [Tooltip("Percentage of momentum maintained in a collision")]
+    [Range(0f, 100f)]
+    float m_collisionMomentumRetained;
 
     // --CODE VARIABLES--
-    Vector2 m_velocity;
 
-    float m_rotationalVelocity;
-    float m_rotationEuler;
+    // Velocity
+    Vector3 m_velocity;
 
-    // --UNITY METHODS--
-    void Awake()
+    // Engine
+    float m_enginePower; // Percentage value, from 0% - 100%
+
+    void Start()
     {
-
+        if (m_maxVelocity < m_engineForce)
+        {
+            m_maxVelocity = m_engineForce;
+        }
     }
 
     void FixedUpdate()
     {
-        // --VELOCITY CAP--
-        // Cap rotation velocity
-        // m_rotationVelocity can be positive or negative, so this is designed to be agnostic and apply the correct cap regardless
-        if (Mathf.Abs(m_rotationalVelocity) > m_maxRotationalVelocity)
-        {
-            m_rotationalVelocity = Mathf.Sign(m_rotationalVelocity) * m_maxRotationalVelocity;
-        }
+        ApplyEngine();
 
-        // Cap movement velocity
-        m_velocity.y = Mathf.Clamp(m_velocity.y, 0, m_maxVelocity);
+        // Clamp velocity
+        m_velocity = ClampMagnitude3(m_velocity, -m_maxVelocity, m_maxVelocity);
+        m_velocity.y = 0;
 
-        // --FRICTION--
-        // Apply turning friction
-        m_rotationalVelocity = ApplyFriction(m_rotationalVelocity, m_rotationalFriction);
+        // Apply friction
+        ApplyFriction();
 
-        // Apply movement friction
-        m_velocity.x = ApplyFriction(m_velocity.x, m_friction);
-        m_velocity.y = ApplyFriction(m_velocity.y, m_friction);
-
-
-        // --MOVE PLAYER--
-        // Rotate the player
-        m_rotationEuler += m_rotationalVelocity;                              // Apply velocity to euler rotation
-        m_rotationEuler %= 360;                                             // Stop euler from getting too big
-
-        Quaternion rotation = Quaternion.Euler(0, m_rotationEuler, 0);      // Convert into quaternion
-        m_rigidbody.MoveRotation(rotation);                                 // Apply to rigidbody
-
-        // Move player forward
-        m_rigidbody.MovePosition(transform.position + transform.forward * m_velocity.y * Time.deltaTime);
+        MoveWithCollision(m_velocity * Time.deltaTime);
     }
 
-    // --PUBLIC METHODS--
     /// <summary>
-    /// Adds some velocity, controlled by the player's speed, to the object's current velocity.
+    /// Adds a vector3 force to velocity, mostly used internally
     /// </summary>
-    /// <param name="magnitude">The force by which speed is applied to the player's velocity.</param>
-    public void AddVelocity(float magnitude = 1)
+    /// <param name="force">Force to apply</param>
+    public void AddForce(Vector3 force)
     {
-        float velocity = magnitude * (magnitude > 0 ? m_speed : m_brakeSpeed);
-
-        m_velocity.y += velocity * Time.deltaTime;
+        m_velocity += force * Time.deltaTime;
     }
 
     /// <summary>
-    /// Adds some velocity, controlled by the player's speed, to the object's current turning velocity.
+    /// Causes the engine to accelerate by magnitude * m_accelerationSpeed
     /// </summary>
-    /// <param name="magnitude">How sharply the boat should turn (-1 to 1).</param>
+    /// <param name="magnitude">Amount from -1 to 1 that the engine should accelerate</param>
+    public void Accelerate(float magnitude)
+    {
+        magnitude = Mathf.Clamp(magnitude, -1f, 1f);
+
+        float deltaEngine = magnitude * m_accelerationSpeed * Time.deltaTime;
+        m_enginePower += deltaEngine;
+
+        m_enginePower = Mathf.Clamp(m_enginePower, 0f, 100f);
+    }
+
+    /// <summary>
+    /// Rotates the boat by magnitude * m_turnSpeed
+    /// TODO: make this rotate around custom axis
+    /// TODO: ensure the turning works properly with speed
+    /// TODO: Add collision to rotation (RotateWithCollision?)
+    /// </summary>
+    /// <param name="magnitude">Amount from -1 to 1 that the boat should rotate</param>
     public void Turn(float magnitude)
     {
-        float eulerTurn = magnitude * m_turnRate * Time.deltaTime;
+        magnitude = Mathf.Clamp(magnitude, -1f, 1f);
 
-        m_rotationalVelocity += eulerTurn;
+        float deltaTurn = magnitude * m_turnSpeed * Mathf.Lerp(0, 1, m_enginePower/100);
+
+        m_rigidbody.MoveRotation(m_rigidbody.rotation * Quaternion.Euler(0f, deltaTurn * Mathf.Deg2Rad, 0));
+
+        float decimalPercentTVR = m_turningVelocityRetained / 100;
+        m_velocity = (transform.forward * m_velocity.magnitude * decimalPercentTVR) + (m_velocity * (1 - decimalPercentTVR));
     }
 
-    /// <summary>
-    /// Brings a value closer to 0 by some amount determined by friction
-    /// </summary>
-    /// <param name="initialSpeed">The speed before friction is applied</param>
-    /// <param name="friction">The amount to apply to initialSpeed</param>
-    /// <returns>The speed after friction is applied</returns>
-    private float ApplyFriction(float initialSpeed, float friction)
+    public void MoveWithCollision(Vector3 movement)
     {
-        // Sign agnostic - if positive, this will subtract toward 0, if negative, it will add toward 0
-        if (Mathf.Abs(initialSpeed) - (friction * Time.deltaTime) < 0)
+        Debug.DrawLine(transform.position, transform.position + movement * 5, Color.cyan);
+
+        RaycastHit hitInfo;
+        if (Physics.BoxCast(m_collider.transform.position, m_collider.bounds.extents, movement.normalized, out hitInfo,
+                            m_collider.transform.rotation, movement.magnitude, ~0, QueryTriggerInteraction.Ignore))
         {
-            return 0;
+            Debug.Log("Object hit: " + hitInfo.transform.name);
+
+            Vector3 normal = hitInfo.normal;
+
+            Vector3 newMovement = movement - (2 * Vector3.Dot(movement, normal) * normal);
+            newMovement *= (m_collisionMomentumRetained / 100);
+            newMovement.y = 0;
+
+            // Multiplying velocity by delta time gets us movement.
+            // Therefore, dividing movement by delta time gets us velocity.
+            m_velocity = newMovement / Time.deltaTime;
+
+            m_rigidbody.MovePosition(transform.position + newMovement);
         }
         else
         {
-            return initialSpeed - Mathf.Sign(initialSpeed) * friction * Time.deltaTime;
+            m_rigidbody.MovePosition(transform.position + movement);
         }
+    }
+
+    /// <summary>
+    /// Add the engine's force to velocity, until it has reached m_engineForce * decimalEnginePower
+    /// </summary>
+    private void ApplyEngine()
+    {
+        Vector3 localVelocity = transform.InverseTransformVector(m_velocity);
+
+        float decimalEnginePower = m_enginePower / 100;
+        float deltaEngine = decimalEnginePower * m_engineForce * Time.deltaTime;
+
+        // If deltaEngine would increase velocity past the limit of m_engineForce * decimalEnginePower, then just set it to that limit
+        if (localVelocity.z + deltaEngine > m_engineForce * decimalEnginePower)
+        {
+            localVelocity.z = m_engineForce * decimalEnginePower;
+        }
+        else
+        {
+            localVelocity.z += deltaEngine;
+        }
+
+        m_velocity = transform.TransformVector(localVelocity);
+    }
+
+    /// <summary>
+    /// Apply sideways friction to velocity - forward friction is not needed
+    /// </summary>
+    private void ApplyFriction()
+    {
+        Vector3 localVelocity = transform.InverseTransformVector(m_velocity);
+
+        float sideFriction = m_sideFriction * Time.deltaTime;
+
+        if (Mathf.Abs(localVelocity.x) - sideFriction < 0)
+        {
+            localVelocity.x = 0;
+        }
+        else
+        {
+            localVelocity.x -= sideFriction * Mathf.Sign(localVelocity.x);
+        }
+
+        m_velocity = transform.TransformVector(localVelocity);
+    }
+
+    /// <summary>
+    /// Clamp a vector3 based on its magnitude
+    /// </summary>
+    /// <param name="vector">Vector3 to clamp</param>
+    /// <param name="maxMagnitude">Maximum magnitude before the vector is clamped</param>
+    /// <returns></returns>
+    private Vector3 ClampMagnitude3(Vector3 vector, float minMagnitude, float maxMagnitude)
+    {
+        if (vector.magnitude > maxMagnitude)
+        {
+            Vector3 deltaForce = vector - (vector.normalized * maxMagnitude);
+            return vector - deltaForce;
+        }
+        if (vector.magnitude < minMagnitude)
+        {
+            Vector3 deltaForce = vector - (vector.normalized * minMagnitude);
+            return vector - deltaForce;
+        }
+
+        return vector;
     }
 }
