@@ -130,6 +130,10 @@ public class MovementController : MonoBehaviour
         m_velocity = (transform.forward * m_velocity.magnitude * decimalPercentTVR) + (m_velocity * (1 - decimalPercentTVR));
     }
 
+    /// <summary>
+    /// Moves the boat by some movement, with collision behaviour
+    /// </summary>
+    /// <param name="movement">Amount to move player</param>
     public void MoveWithCollision(Vector3 movement)
     {
         Debug.DrawLine(transform.position, transform.position + movement * 5, Color.cyan);
