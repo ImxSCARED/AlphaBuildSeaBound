@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e2577351e53a8754282c4d3e09a0e78b, type: 3}
-  m_Name: WrangleSpeed
+  m_Name: FishingRange 1
   m_EditorClassIdentifier: 
-  Name: Wrangle Strength
-  Description: Increase the speed you pull the fish in when in the catcher
-  Price: 500
+  Name: Fishing Range
+  Description: Increases the range of the fishing events
+  Price: 250
   Level: 0
   PriceIncrease: 2
-  MaxLevel: 2
+  MaxLevel: 1
   Locked: 1
-  Type: 2
+  Type: 4

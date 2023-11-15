@@ -11,6 +11,7 @@ public class PlayerManager : MonoBehaviour
 
     private UpgradeManager m_UpgradeManager;
     private QuestManager m_QuestManager;
+    private MovementController m_MovementController;
     private bool isDocked = false;
     private List<FishProperties.FishData> storedFish = new List<FishProperties.FishData>();
 
@@ -39,6 +40,7 @@ public class PlayerManager : MonoBehaviour
     {
         m_UpgradeManager = GetComponent<UpgradeManager>();
         m_QuestManager = GetComponent<QuestManager>();
+        m_MovementController = GetComponent<MovementController>();
     }
     private void Update()
     {
@@ -62,6 +64,7 @@ public class PlayerManager : MonoBehaviour
     public void Dock()
     {
         GetComponent<InputManager>().ChangeActionMap("UI");
+        m_MovementController.StopMovement();
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(hubFirstButton);
 
@@ -83,12 +86,13 @@ public class PlayerManager : MonoBehaviour
             {
                 if (m_QuestManager.m_Quests[j].Name == QuestUI[i].Name)
                 {
-                    QuestUI[i].SetInfo(m_QuestManager.m_Quests[j]);
+                    QuestUI[i].SetInfo(m_QuestManager.m_Quests[j].quests[m_QuestManager.m_Quests[j].currentQuest]);
                     break;
                 }
             }
         }
         isDocked = true;
+        
     }
 
     public void SellFish()

@@ -19,4 +19,5 @@ public class Upgrade : ScriptableObject
     public bool Locked;
 
     public UpgradeData.UpgradeType Type;
+    public Quest assignedQuest;
 }
