@@ -227,4 +227,10 @@ public class MovementController : MonoBehaviour
 
         return vector;
     }
+
+    public void StopMovement()
+    {
+        m_enginePower = 0;
+        m_velocity = Vector3.zero;
+    }
 }

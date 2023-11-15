@@ -10,24 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6a1aec9c5dbed8a4a8312a0d6cfc5969, type: 3}
-  m_Name: CatcherSizeQuests
+  m_Name: FishingRangeQuests
   m_EditorClassIdentifier: 
   quests:
-  - Name: CatcherSize Quest - 1
-    Value: 200
-    Zone: 0
-    connectedUpgrade: {fileID: 11400000, guid: 1c49995033d92d74fb0e29cf2ed9e093, type: 2}
-    connectedFish:
-      name: Huh
-      fishImage: {fileID: 0}
-      value: 0
-      isQuestFish: 1
-      tier: 0
-    completed: 0
-  - Name: CatcherSize Quest - 2
-    Value: 400
+  - Name: Fishing Range Upgrade
+    Value: 300
     Zone: 1
-    connectedUpgrade: {fileID: 11400000, guid: 1c49995033d92d74fb0e29cf2ed9e093, type: 2}
+    connectedUpgrade: {fileID: 11400000, guid: d80dd749e66ce3f4188431d895569254, type: 2}
     connectedFish:
       name: Huh
       fishImage: {fileID: 0}
@@ -36,4 +25,4 @@ MonoBehaviour:
       tier: 1
     completed: 0
   currentQuest: 0
-  Name: CatcherQuests
+  Name: RangeQuests
