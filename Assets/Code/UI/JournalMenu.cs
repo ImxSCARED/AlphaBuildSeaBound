@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -13,6 +14,7 @@ public class JournalMenu : MonoBehaviour
     [SerializeField] private GameObject DiarySection;
     [SerializeField] private AudioSource openMenuSound;
     [SerializeField] private AudioSource exitMenuSound;
+    [SerializeField] private PauseMenu pauseMenu;
 
     public bool journalState = false;
     private int J_Section = 1;
@@ -77,7 +79,7 @@ public class JournalMenu : MonoBehaviour
         }
     }
 
-    public void PageNext()
+    public void DiaryPageNext()
     {
         J_DiaryPage = J_DiaryPage + 1;
         if (J_DiaryPage > 3)
@@ -86,7 +88,25 @@ public class JournalMenu : MonoBehaviour
         }
     }
 
-    public void PagePrev()
+    public void DiaryPagePrev()
+    {
+        J_DiaryPage = J_DiaryPage - 1;
+        if (J_DiaryPage < 1)
+        {
+            J_DiaryPage = 1;
+        }
+    }
+
+    public void FishPageNext()
+    {
+        J_DiaryPage = J_DiaryPage + 1;
+        if (J_DiaryPage > 3)
+        {
+            J_DiaryPage = 3;
+        }
+    }
+
+    public void FishPagePrev()
     {
         J_DiaryPage = J_DiaryPage - 1;
         if (J_DiaryPage < 1)
@@ -97,14 +117,17 @@ public class JournalMenu : MonoBehaviour
 
     public void ToggleJournal()
     {
-        if (journalState)
+        if (!pauseMenu.pauseState)
         {
-            Continue();
-        }
-        else
-        {
-            OpenJournalMenu();
-            J_Section = 1;
+            if (journalState)
+            {
+                Continue();
+            }
+            else
+            {
+                OpenJournalMenu();
+                J_Section = 1;
+            }
         }
     }
 

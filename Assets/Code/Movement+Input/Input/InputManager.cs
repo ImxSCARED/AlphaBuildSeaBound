@@ -116,12 +116,22 @@ public class InputManager : MonoBehaviour
 
         if (Right.WasPerformedThisFrame())
         {
-            m_journalMenu.PageNext();
+            m_journalMenu.DiaryPageNext();
         }
 
         if (Left.WasPerformedThisFrame())
         {
-            m_journalMenu.PagePrev();
+            m_journalMenu.DiaryPagePrev();
+        }
+
+        if (Right.WasPerformedThisFrame())
+        {
+            m_journalMenu.FishPageNext();
+        }
+
+        if (Left.WasPerformedThisFrame())
+        {
+            m_journalMenu.FishPagePrev();
         }
 
         if (PauseToggle.WasPerformedThisFrame())

@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
+    [SerializeField] private JournalMenu journalMenu;
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject audioMenu;
     [SerializeField] private AudioSource openMenuSound;
@@ -56,6 +57,8 @@ public class PauseMenu : MonoBehaviour
         //opens pause_menu
         if (audioMenuState == false)
         {
+            journalMenu.Continue();
+
             OpenPauseMenu();
             return;
         }
