@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e2577351e53a8754282c4d3e09a0e78b, type: 3}
-  m_Name: TurnSpeed
+  m_Name: MoveSpeed 1
   m_EditorClassIdentifier: 
-  Name: 
-  Description: 
-  Price: 0
+  Name: Boat Move Speed
+  Description: Increases Acceleration, Max speed
+  Price: 200
   Level: 0
-  PriceIncrease: 0
-  MaxLevel: 0
+  PriceIncrease: 1.5
+  MaxLevel: 3
   Locked: 1
-  Type: 0
+  Type: 1

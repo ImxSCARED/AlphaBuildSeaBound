@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Catcher size
   Description: Increases the size of the catcher used to wrangle the fish
-  Price: 200
-  Level: 0
+  Price: 288
+  Level: 2
   PriceIncrease: 1.2
   MaxLevel: 2
   Locked: 1
-  Type: 4
+  Type: 3
+  assignedQuest: {fileID: 11400000, guid: 96bfd791332e3f649b9bd0ca4a8a40f0, type: 2}

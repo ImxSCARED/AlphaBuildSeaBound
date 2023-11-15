@@ -10823,7 +10823,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c37ac93f3c61764c9c0cf9a9d1df9fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: Quest1
+  Name: CatcherQuests
   m_NameText: {fileID: 2039333854}
   m_DescText: {fileID: 1477419082}
   m_PriceText: {fileID: 694491089}
@@ -21665,8 +21665,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 14
+  m_fontSizeBase: 14
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -22261,6 +22261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8a5c483893fb80418a1b38ebd76f641, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_CaptureCircle: {fileID: 4205174052002878455}
   m_Upgrades:
   - {fileID: 11400000, guid: 73d692d37d252bf4498b77706d359b74, type: 2}
   - {fileID: 11400000, guid: 1c49995033d92d74fb0e29cf2ed9e093, type: 2}
@@ -22362,9 +22363,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   test: 0
   m_Quests:
-  - {fileID: 11400000, guid: c17acaaf3544043458d941e12db1638b, type: 2}
+  - {fileID: 11400000, guid: 96bfd791332e3f649b9bd0ca4a8a40f0, type: 2}
   questFish: {fileID: 4018665056978130658, guid: 540ea8337e40ba14ba06c3373391b97d,
     type: 3}
+  Zone1Spawns: []
+  Zone2Spawns: []
+  Zone3Spawns: []
   currentBountyFish: {fileID: 0}
 --- !u!1 &2090715509
 GameObject:
@@ -24300,6 +24304,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fishInCircle: 0
+  sizeUpgrade: 1
 --- !u!4 &4205174052362727108
 Transform:
   m_ObjectHideFlags: 0

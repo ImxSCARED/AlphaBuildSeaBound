@@ -83,7 +83,7 @@ public class PlayerManager : MonoBehaviour
             {
                 if (m_QuestManager.m_Quests[j].Name == QuestUI[i].Name)
                 {
-                    QuestUI[i].SetInfo(m_QuestManager.m_Quests[j]);
+                    QuestUI[i].SetInfo(m_QuestManager.m_Quests[j].quests[m_QuestManager.m_Quests[j].currentQuest]);
                     break;
                 }
             }
