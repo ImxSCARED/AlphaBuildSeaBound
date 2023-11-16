@@ -1,6 +1,9 @@
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using static UpgradeData;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -13,26 +16,17 @@ public class PlayerManager : MonoBehaviour
     private List<FishProperties.FishData> storedFish = new List<FishProperties.FishData>();
 
 
-
+    public List<JournalFish> journalEntries = new List<JournalFish>();
 
     //UI
-    [Header("Menu Button Identifiers")]
-    public GameObject questsFirstButton;
-    public GameObject upgradesFirstButton;
-    public GameObject journalFirstButton;
-    public GameObject pauseFirstButton;
+    public GameObject hubFirstButton, journalFirstButton, pauseFirstButton;
 
     [Header("UI")]
     [SerializeField] private Canvas hub;
-
-    [SerializeField] private QuestButton[] QuestUI;
-    [SerializeField] private GameObject questsHolder;
-
     [SerializeField] private UpgradeButton[] UpradgeUI;
-    [SerializeField] private GameObject upgradesHolder;
 
-    public List<JournalFish> journalEntries = new List<JournalFish>();
     [SerializeField] private Canvas journal;
+    [SerializeField] private QuestButton[] QuestUI;
 
     [SerializeField] private Canvas settings;
 
@@ -71,14 +65,10 @@ public class PlayerManager : MonoBehaviour
     {
         GetComponent<InputManager>().ChangeActionMap("UI");
         m_MovementController.StopMovement();
-
-        
-        questsHolder.SetActive(true);
-        upgradesHolder.SetActive(false);
-        hub.enabled = true;
         EventSystem.current.SetSelectedGameObject(null);
-        EventSystem.current.SetSelectedGameObject(questsFirstButton);
+        EventSystem.current.SetSelectedGameObject(hubFirstButton);
 
+        hub.enabled = true;
         for (int i = 0; i < UpradgeUI.Length; i++)
         {
             for (int j = 0; j < m_UpgradeManager.m_Upgrades.Length; j++)
@@ -134,29 +124,5 @@ public class PlayerManager : MonoBehaviour
         GetComponent<InputManager>().ChangeActionMap("Sailing");
         hub.enabled = false;
         isDocked = false;
-    }
-
-    public void NavigateHub(float value)
-    {
-        if (isDocked)
-        {
-            questsHolder.SetActive(!questsHolder.activeSelf);
-            upgradesHolder.SetActive(!upgradesHolder.activeSelf);
-
-            if (questsHolder.activeSelf)
-            {
-                EventSystem.current.SetSelectedGameObject(null);
-                EventSystem.current.SetSelectedGameObject(questsFirstButton);
-            }
-            else
-            {
-                EventSystem.current.SetSelectedGameObject(null);
-                EventSystem.current.SetSelectedGameObject(upgradesFirstButton);
-            }
-        }
-        else if (journal.isActiveAndEnabled)
-        {
-
-        }
     }
 }

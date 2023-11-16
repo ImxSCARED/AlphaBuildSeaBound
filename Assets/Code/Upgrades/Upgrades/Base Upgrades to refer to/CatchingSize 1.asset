@@ -15,8 +15,9 @@ MonoBehaviour:
   Name: Catcher size
   Description: Increases the size of the catcher used to wrangle the fish
   Price: 200
-  Level: 1
+  Level: 0
   PriceIncrease: 1.2
   MaxLevel: 2
   Locked: 1
   Type: 3
+  assignedQuest: {fileID: 0}
