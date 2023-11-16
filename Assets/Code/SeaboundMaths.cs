@@ -21,4 +21,26 @@ public static class SeaboundMaths
             return originalSpeed - friction * Mathf.Sign(originalSpeed);
         }
     }
+
+    /// <summary>
+    /// Clamp a vector3 based on its magnitude
+    /// </summary>
+    /// <param name="vector">Vector3 to clamp</param>
+    /// <param name="maxMagnitude">Maximum magnitude before the vector is clamped</param>
+    /// <returns>Clamped Vector3</returns>
+    public static Vector3 ClampMagnitude3(Vector3 vector, float minMagnitude, float maxMagnitude)
+    {
+        if (vector.magnitude > maxMagnitude)
+        {
+            Vector3 deltaForce = vector - (vector.normalized * maxMagnitude);
+            return vector - deltaForce;
+        }
+        if (vector.magnitude < minMagnitude)
+        {
+            Vector3 deltaForce = vector - (vector.normalized * minMagnitude);
+            return vector - deltaForce;
+        }
+
+        return vector;
+    }
 }

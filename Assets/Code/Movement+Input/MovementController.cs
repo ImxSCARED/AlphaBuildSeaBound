@@ -4,7 +4,6 @@ using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 using static UnityEngine.UI.Image;
 
-// TODO: complete the treansition from engine to regular velocity
 public class MovementController : MonoBehaviour
 {
     // --EDITOR VARIABLES--
@@ -112,10 +111,10 @@ public class MovementController : MonoBehaviour
         IgnoreChildColliders();
 
         // Player speed
-        ApplySpeedImpulse();
+        ApplySpeedImpulse(m_forwardImpulse);
 
         // Clamp velocity
-        m_velocity = ClampMagnitude3(m_velocity, -m_maxVelocity, m_maxVelocity);
+        m_velocity = SeaboundMaths.ClampMagnitude3(m_velocity, -m_maxVelocity, m_maxVelocity);
         m_velocity.y = 0;
 
         // Apply friction
@@ -125,11 +124,20 @@ public class MovementController : MonoBehaviour
         MoveWithCollision(m_velocity * Time.deltaTime);
         RotateWithCollision(m_amountToRotate);
 
-        Debug.Log("Is colliding: " + Physics.CheckBox(m_collider.transform.position, m_collider.size / 2, m_rigidbody.rotation, m_collisionLayerMask, QueryTriggerInteraction.Ignore));
+        Debug.Log("Is colliding: " + Physics.CheckBox(m_rigidbody.transform.position, m_collider.size / 2, m_rigidbody.rotation, m_collisionLayerMask, QueryTriggerInteraction.Ignore));
 
         // Cleanup
+        m_forwardImpulse = 0f;
         m_amountToRotate = Quaternion.identity;
         UnignoreChildColliders();
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.matrix = transform.localToWorldMatrix;
+
+        Gizmos.color = Color.magenta;
+        Gizmos.DrawWireCube(m_collider.transform.position, m_collider.size);
     }
 
     /// <summary>
@@ -138,23 +146,23 @@ public class MovementController : MonoBehaviour
     /// <param name="force">Force to apply</param>
     public void AddForce(Vector3 force)
     {
-        m_velocity += force * Time.deltaTime;
+        m_velocity += force * Time.fixedDeltaTime;
     }
 
     /// <summary>
-    /// Causes the engine to accelerate by magnitude * m_accelerationSpeed
+    /// Causes the engine to accelerate by magnitude * m_accelerationSpeed (Time.deltaTime is applied later)
     /// </summary>
     /// <param name="magnitude">Amount from -1 to 1 that the engine should accelerate</param>
     public void Accelerate(float magnitude)
     {
         magnitude = Mathf.Clamp(magnitude, -1f, 1f);
 
-        float deltaEngine = magnitude * m_accelerationSpeed * Time.deltaTime;
+        float deltaEngine = magnitude * m_accelerationSpeed;
         m_forwardImpulse = deltaEngine;
     }
 
     /// <summary>
-    /// Rotates the boat by magnitude * m_turnSpeed
+    /// Rotates the boat by magnitude * m_turnSpeed (Time.deltaTime is applied later)
     /// TODO: make this rotate around custom axis
     /// TODO: ensure the turning works properly with speed
     /// </summary>
@@ -163,10 +171,7 @@ public class MovementController : MonoBehaviour
     {
         magnitude = Mathf.Clamp(magnitude, -1f, 1f);
 
-        float deltaTurn = magnitude * m_turnSpeed/* * Mathf.Lerp(0, 1, m_enginePower / 100)*/;
-
-        float decimalPercentTVR = m_turningVelocityRetained / 100;
-        m_velocity = (transform.forward * m_velocity.magnitude * decimalPercentTVR) + (m_velocity * (1 - decimalPercentTVR));
+        float deltaTurn = magnitude * m_turnSpeed;
 
         m_amountToRotate = Quaternion.Euler(0f, deltaTurn * Mathf.Deg2Rad, 0f);
     }
@@ -189,11 +194,16 @@ public class MovementController : MonoBehaviour
             // Therefore, dividing movement by delta time gets us velocity.
             m_velocity = newMovement / Time.deltaTime;
 
-            m_rigidbody.MovePosition(transform.position + newMovement);
+            // Get point hit, offset by the distance from a point to the centre of the ship
+            Vector3 pointHit = new Vector3(hitInfo.point.x, m_rigidbody.transform.position.y, hitInfo.point.z);
+            Vector3 directionToShip = m_rigidbody.transform.position - pointHit;
+
+
+            m_rigidbody.MovePosition(m_rigidbody.transform.position + newMovement);
         }
         else
         {
-            m_rigidbody.MovePosition(transform.position + movement);
+            m_rigidbody.MovePosition(m_rigidbody.transform.position + movement);
         }
     }
 
@@ -202,26 +212,35 @@ public class MovementController : MonoBehaviour
         Quaternion newRotation = m_rigidbody.rotation * rotation;
 
         // If our rotation doesn't collide with anything...
-        if (!Physics.CheckBox(m_collider.transform.position, m_collider.size / 2, newRotation, m_collisionLayerMask, QueryTriggerInteraction.Ignore))
+        if (!Physics.CheckBox(m_rigidbody.transform.position, m_collider.size / 2, newRotation, m_collisionLayerMask, QueryTriggerInteraction.Ignore))
         {
             //... then we should rotate
             m_rigidbody.MoveRotation(newRotation);
+
+            float decimalPercentTVR = m_turningVelocityRetained / 100;
+            m_velocity = (transform.forward * m_velocity.magnitude * decimalPercentTVR) + (m_velocity* (1 - decimalPercentTVR));
         }
     }
 
     /// <summary>
     /// Add the engine's force to velocity, until it has reached m_engineForce * decimalEnginePower
     /// </summary>
-    private void ApplySpeedImpulse()
+    private void ApplySpeedImpulse(float deltaEngine)
     {
         Vector3 localVelocity = transform.InverseTransformVector(m_velocity);
 
-        float deltaEngine = m_forwardImpulse * m_maxSpeed * Time.deltaTime;
+        deltaEngine *= Time.deltaTime;
 
+        // Probably a nicer way to do this
         // If deltaEngine would increase velocity past the limit of m_engineForce * decimalEnginePower, then just set it to that limit
         if (localVelocity.z + deltaEngine > m_maxSpeed)
         {
             localVelocity.z = m_maxSpeed;
+        }
+        //; Same as above, but minimum with 0
+        else if (localVelocity.z + deltaEngine < 0)
+        {
+            localVelocity.z = 0;
         }
         else
         {
@@ -242,32 +261,9 @@ public class MovementController : MonoBehaviour
         float sideFriction = m_sideFriction * Time.deltaTime;
 
         localVelocity.z = SeaboundMaths.ApplyFriction(localVelocity.z, forwardFriction);
-
         localVelocity.x = SeaboundMaths.ApplyFriction(localVelocity.x, sideFriction);
 
         m_velocity = transform.TransformVector(localVelocity);
-    }
-
-    /// <summary>
-    /// Clamp a vector3 based on its magnitude
-    /// </summary>
-    /// <param name="vector">Vector3 to clamp</param>
-    /// <param name="maxMagnitude">Maximum magnitude before the vector is clamped</param>
-    /// <returns></returns>
-    private Vector3 ClampMagnitude3(Vector3 vector, float minMagnitude, float maxMagnitude)
-    {
-        if (vector.magnitude > maxMagnitude)
-        {
-            Vector3 deltaForce = vector - (vector.normalized * maxMagnitude);
-            return vector - deltaForce;
-        }
-        if (vector.magnitude < minMagnitude)
-        {
-            Vector3 deltaForce = vector - (vector.normalized * minMagnitude);
-            return vector - deltaForce;
-        }
-
-        return vector;
     }
 
     private void IgnoreChildColliders()
