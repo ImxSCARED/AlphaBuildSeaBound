@@ -1,23 +1,46 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.Audio;
-using UnityEngine.Rendering;
+using UnityEngine;
+using System;
 
+[System.Serializable]
 public class AudioManager : MonoBehaviour
 {
+    public SoundMaster[] sounds;
+
     public AudioClip defaultAmbience;
     public AudioSource track01, track02;
     private bool isPlayingTrack01;
-    public static AudioManager instance;
 
+    public static AudioManager instance;
 
     void Awake()
     {
         if (instance == null)
             instance = this;
+        else
+        {
+            Destroy(gameObject);
+        }
+        DontDestroyOnLoad(this);
+
+        foreach (SoundMaster s in sounds)
+        {
+            s.source = gameObject.AddComponent<AudioSource>();
+            s.source.clip = s.clip;
+            s.source.volume = s.volume;
+            s.source.pitch = s.pitch;
+        }
     }
 
+    public void Play (string name)
+    {
+       SoundMaster s = Array.Find(sounds,  sound => sound.name == name);
+       s.source.Play();
+    }
+    
+    //Brians Script (to be Changed)
     private void Start()
     {
         track01 = gameObject.AddComponent<AudioSource>();
@@ -40,6 +63,8 @@ public class AudioManager : MonoBehaviour
     {
         SwapTrack(defaultAmbience);
     }
+
+    
     //add in fade in/outs
     private IEnumerator FadeTrack(AudioClip newClip)
     {
@@ -51,7 +76,7 @@ public class AudioManager : MonoBehaviour
             track02.clip = newClip;
             track02.Play();
 
-            while(timeElapsed < timetoFade)
+            while (timeElapsed < timetoFade)
             {
                 track02.volume = Mathf.Lerp(0, 1, timeElapsed / timetoFade);
                 track01.volume = Mathf.Lerp(1, 0, timeElapsed / timetoFade);
@@ -78,3 +103,4 @@ public class AudioManager : MonoBehaviour
         }
     }
 }
+
