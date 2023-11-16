@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.Rendering;
 
 public class AudioManager : MonoBehaviour
@@ -9,6 +10,8 @@ public class AudioManager : MonoBehaviour
     public AudioSource track01, track02;
     private bool isPlayingTrack01;
     public static AudioManager instance;
+
+
     void Awake()
     {
         if (instance == null)
