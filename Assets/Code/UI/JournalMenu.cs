@@ -25,6 +25,9 @@ public class JournalMenu : MonoBehaviour
     public bool FishState;
     public bool DiaryState;
 
+    // Reference to tutorial manager
+    [SerializeField] private TutorialManager journalTutorial;
+
     private void Start()
     {
         scene = SceneManager.GetActiveScene();
@@ -117,6 +120,9 @@ public class JournalMenu : MonoBehaviour
 
     public void ToggleJournal()
     {
+        // Tutorial reference
+        journalTutorial.StopJournalTutorial();
+
         if (!pauseMenu.pauseState)
         {
             if (journalState)

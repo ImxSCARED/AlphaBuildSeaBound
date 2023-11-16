@@ -15583,7 +15583,7 @@ MonoBehaviour:
   DiarySection: {fileID: 2024605489}
   openMenuSound: {fileID: 1204589334}
   exitMenuSound: {fileID: 1204589334}
-  pauseMenu: {fileID: 0}
+  pauseMenu: {fileID: 1435525402}
   journalState: 0
   scene:
     m_Handle: 0
@@ -18354,7 +18354,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 778809655c8fca34db03fc8550ad876b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  journalMenu: {fileID: 0}
+  journalMenu: {fileID: 1204589335}
   pauseMenu: {fileID: 949403832}
   audioMenu: {fileID: 104061589}
   openMenuSound: {fileID: 949403834}
@@ -27213,7 +27213,7 @@ MonoBehaviour:
   MovementTutorialFadeOut: 0
   journalTutorialCompleted: 0
   journalTutorial: {fileID: 0}
-  journaltTutorialFadeIn: 0
+  journalTutorialFadeIn: 0
   journalTutorialFadeOut: 0
 --- !u!1 &2090715509
 GameObject:
