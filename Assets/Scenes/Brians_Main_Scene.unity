@@ -1142,12 +1142,12 @@ PrefabInstance:
     - target: {fileID: 7161258463129409888, guid: c052f8e76621a8a4f9c406fb2d965665,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -14
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7161258463129409888, guid: c052f8e76621a8a4f9c406fb2d965665,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 227
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 7161258463129409888, guid: c052f8e76621a8a4f9c406fb2d965665,
         type: 3}
@@ -1197,12 +1197,12 @@ PrefabInstance:
     - target: {fileID: 7161258463129409889, guid: c052f8e76621a8a4f9c406fb2d965665,
         type: 3}
       propertyPath: ShapeModule.m_Scale.x
-      value: 2433.1
+      value: 3000
       objectReference: {fileID: 0}
     - target: {fileID: 7161258463129409889, guid: c052f8e76621a8a4f9c406fb2d965665,
         type: 3}
       propertyPath: ShapeModule.m_Scale.y
-      value: 892.94
+      value: 900
       objectReference: {fileID: 0}
     - target: {fileID: 7161258463129409889, guid: c052f8e76621a8a4f9c406fb2d965665,
         type: 3}
@@ -2673,17 +2673,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 0e45433f425b074428b7125329304812,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.42
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0e45433f425b074428b7125329304812,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 189.96
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0e45433f425b074428b7125329304812,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 36.72
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0e45433f425b074428b7125329304812,
         type: 3}
@@ -3029,7 +3029,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 255815436}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 780}
+  m_LocalPosition: {x: 0, y: -189, z: 704}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3356,12 +3356,12 @@ PrefabInstance:
     - target: {fileID: 7161258463129409888, guid: c052f8e76621a8a4f9c406fb2d965665,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -14
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7161258463129409888, guid: c052f8e76621a8a4f9c406fb2d965665,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 184
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7161258463129409888, guid: c052f8e76621a8a4f9c406fb2d965665,
         type: 3}
@@ -3411,12 +3411,12 @@ PrefabInstance:
     - target: {fileID: 7161258463129409889, guid: c052f8e76621a8a4f9c406fb2d965665,
         type: 3}
       propertyPath: ShapeModule.m_Scale.x
-      value: 2433.1
+      value: 2300
       objectReference: {fileID: 0}
     - target: {fileID: 7161258463129409889, guid: c052f8e76621a8a4f9c406fb2d965665,
         type: 3}
       propertyPath: ShapeModule.m_Scale.y
-      value: 1104.83
+      value: 1100
       objectReference: {fileID: 0}
     - target: {fileID: 7161258463129409889, guid: c052f8e76621a8a4f9c406fb2d965665,
         type: 3}
@@ -3452,6 +3452,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ShallowsFog
+      objectReference: {fileID: 0}
+    - target: {fileID: 7161258463129409903, guid: c052f8e76621a8a4f9c406fb2d965665,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c052f8e76621a8a4f9c406fb2d965665, type: 3}
@@ -5951,6 +5956,37 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 225d2012faedcf04f8ee56ff1480e0ae, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a8bd1e19599f3174db4a77a13a0127c9, type: 3}
+--- !u!1 &452665639
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 452665640}
+  m_Layer: 0
+  m_Name: East of small island east of dock
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &452665640
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 452665639}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 780, y: 0.5, z: -710}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 579363710}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &455930616
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7076,7 +7112,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 521024876}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 20, z: 1555}
+  m_LocalPosition: {x: 0, y: 20, z: 1092}
   m_LocalScale: {x: 2.5, y: 1, z: 2.75}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7724,7 +7760,7 @@ GameObject:
   m_Component:
   - component: {fileID: 579363710}
   m_Layer: 0
-  m_Name: Zone_3_Spawns
+  m_Name: Zone_1_Spawns
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7741,7 +7777,12 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1740821186}
+  - {fileID: 771830911}
+  - {fileID: 1160942405}
+  - {fileID: 452665640}
+  - {fileID: 1599716182}
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7976,7 +8017,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 595952354}
   m_LocalRotation: {x: 0.56098557, y: -0.4304593, z: 0.4304593, w: 0.56098557}
-  m_LocalPosition: {x: 1683, y: 338, z: 122}
+  m_LocalPosition: {x: 1683, y: 100, z: 122}
   m_LocalScale: {x: 300.00003, y: 1, z: 30}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8433,8 +8474,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 622840700}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -76}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8573,7 +8614,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 628907003}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -550, y: 0, z: -76}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8688,7 +8729,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 632706510}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -675.3218, y: -1160.7485, z: -1582.0442}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 53.15814, y: 18.70187, z: 62.320732}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9578,7 +9619,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 741585684}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1294, y: 1356.5486, z: 607.1441}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -9603,7 +9644,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &753708835
 Transform:
   m_ObjectHideFlags: 0
@@ -9612,7 +9653,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 753708834}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -76}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -9942,6 +9983,37 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 769897210}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &771830910
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 771830911}
+  m_Layer: 0
+  m_Name: Tent Island
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &771830911
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 771830910}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 672, y: 0.5, z: -1093}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 579363710}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &775681819
 GameObject:
   m_ObjectHideFlags: 0
@@ -10168,7 +10240,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 778247515}
   m_LocalRotation: {x: -0.00000012664137, y: -0.7071068, z: 0.7071068, w: -0.0000001192093}
-  m_LocalPosition: {x: 614, y: 338, z: 1553}
+  m_LocalPosition: {x: 614, y: 100, z: 1553}
   m_LocalScale: {x: 300.00012, y: 1, z: 30}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10346,7 +10418,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 797174518}
   m_LocalRotation: {x: 0.56098545, y: 0.43045953, z: -0.43045947, w: 0.56098545}
-  m_LocalPosition: {x: -435, y: 338, z: 130}
+  m_LocalPosition: {x: -435, y: 100, z: 130}
   m_LocalScale: {x: 300.00003, y: 1, z: 30}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10571,12 +10643,12 @@ PrefabInstance:
     - target: {fileID: 7161258463129409888, guid: c052f8e76621a8a4f9c406fb2d965665,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -14
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7161258463129409888, guid: c052f8e76621a8a4f9c406fb2d965665,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 184
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7161258463129409888, guid: c052f8e76621a8a4f9c406fb2d965665,
         type: 3}
@@ -10626,12 +10698,12 @@ PrefabInstance:
     - target: {fileID: 7161258463129409889, guid: c052f8e76621a8a4f9c406fb2d965665,
         type: 3}
       propertyPath: ShapeModule.m_Scale.x
-      value: 2433.1
+      value: 3000
       objectReference: {fileID: 0}
     - target: {fileID: 7161258463129409889, guid: c052f8e76621a8a4f9c406fb2d965665,
         type: 3}
       propertyPath: ShapeModule.m_Scale.y
-      value: 1104.83
+      value: 1100
       objectReference: {fileID: 0}
     - target: {fileID: 7161258463129409889, guid: c052f8e76621a8a4f9c406fb2d965665,
         type: 3}
@@ -10821,7 +10893,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 832575517}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 20, z: -295}
+  m_LocalPosition: {x: 0, y: 20, z: -758}
   m_LocalScale: {x: 1.6, y: 1, z: 2.83}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -13075,7 +13147,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 983611258}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -681.11176, y: -1163.7186, z: -825.8}
+  m_LocalPosition: {x: 0, y: 0, z: -295}
   m_LocalScale: {x: 55.16039, y: 46.961, z: 80.95137}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -13678,12 +13750,12 @@ PrefabInstance:
     - target: {fileID: 7161258463129409888, guid: c052f8e76621a8a4f9c406fb2d965665,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -14
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7161258463129409888, guid: c052f8e76621a8a4f9c406fb2d965665,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 227
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7161258463129409888, guid: c052f8e76621a8a4f9c406fb2d965665,
         type: 3}
@@ -13733,12 +13805,12 @@ PrefabInstance:
     - target: {fileID: 7161258463129409889, guid: c052f8e76621a8a4f9c406fb2d965665,
         type: 3}
       propertyPath: ShapeModule.m_Scale.x
-      value: 2433.1
+      value: 2500
       objectReference: {fileID: 0}
     - target: {fileID: 7161258463129409889, guid: c052f8e76621a8a4f9c406fb2d965665,
         type: 3}
       propertyPath: ShapeModule.m_Scale.y
-      value: 1104.83
+      value: 1100
       objectReference: {fileID: 0}
     - target: {fileID: 7161258463129409889, guid: c052f8e76621a8a4f9c406fb2d965665,
         type: 3}
@@ -14926,6 +14998,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1159878630}
   m_CullTransparentMesh: 1
+--- !u!1 &1160942404
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1160942405}
+  m_Layer: 0
+  m_Name: East Large Island
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1160942405
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1160942404}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -246, y: 0.5, z: -1067}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 579363710}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1174775440
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16239,7 +16342,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1263322303}
   m_LocalRotation: {x: 0.7071068, y: -0.00000032037497, z: 0.00000032313116, w: 0.7071068}
-  m_LocalPosition: {x: 582, y: 338, z: -1244}
+  m_LocalPosition: {x: 582, y: 100, z: -1244}
   m_LocalScale: {x: 300, y: 1, z: 30}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -18976,7 +19079,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1498713654}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 318}
+  m_LocalPosition: {x: 0, y: -188.5, z: 242}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -19955,6 +20058,37 @@ Transform:
   - {fileID: 178960931}
   m_Father: {fileID: 1498713655}
   m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1599716181
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1599716182}
+  m_Layer: 0
+  m_Name: South of dock between islands
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1599716182
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1599716181}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 135, y: 0.5, z: -1135}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 579363710}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1603670608
 GameObject:
@@ -22217,7 +22351,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1724076117}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -675.3218, y: -1160.7485, z: -1457.0442}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 53.15814, y: 18.70187, z: 62.320732}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -22415,6 +22549,37 @@ RectTransform:
   m_AnchoredPosition: {x: -5, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1740821185
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1740821186}
+  m_Layer: 0
+  m_Name: 4 Islands
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1740821186
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1740821185}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -640, y: 0.5, z: -615}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 579363710}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1747392233
 GameObject:
   m_ObjectHideFlags: 0
@@ -24681,7 +24846,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1911217396}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 20, z: 636.75}
+  m_LocalPosition: {x: 0, y: 20, z: 173.75}
   m_LocalScale: {x: 2, y: 1, z: 2.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -25479,7 +25644,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1985872719}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 611, y: 0, z: -1011.5}
+  m_LocalPosition: {x: 0, y: 0, z: -1000}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -27040,8 +27205,16 @@ MonoBehaviour:
   questFish: {fileID: 4018665056978130658, guid: 540ea8337e40ba14ba06c3373391b97d,
     type: 3}
   Zone1Spawns:
-  - desctription: 
-    bountySpawn: {fileID: 0}
+  - desctription: Between 4 identical islands
+    bountySpawn: {fileID: 1740821186}
+  - desctription: East of an island with a tent
+    bountySpawn: {fileID: 771830911}
+  - desctription: East of the largest island in the shallows
+    bountySpawn: {fileID: 1160942405}
+  - desctription: Near the small island east of the dock
+    bountySpawn: {fileID: 452665640}
+  - desctription: South of the dock in the centre of the islands
+    bountySpawn: {fileID: 1599716182}
   Zone2Spawns: []
   Zone3Spawns: []
   currentBountyFish: {fileID: 0}
@@ -30310,15 +30483,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8567896688351328983}
-  m_LocalRotation: {x: 0.7020791, y: -0, z: -0, w: 0.71209896}
-  m_LocalPosition: {x: 617.1, y: 189.9, z: -876}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0.5, z: -930.1}
   m_LocalScale: {x: 2.5327575, y: 2.5327578, z: 2.5327578}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8567896688364452485}
   m_Father: {fileID: 402459941}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 89.188, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!136 &8567896688351329002
 CapsuleCollider:
   m_ObjectHideFlags: 0
