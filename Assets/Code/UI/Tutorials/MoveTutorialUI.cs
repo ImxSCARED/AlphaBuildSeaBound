@@ -5,13 +5,12 @@ using UnityEngine;
 public class MoveTutorialUI : MonoBehaviour
 {
 
-    [SerializeField] GameObject moveTutorial;
-
+    [SerializeField] private TutorialManager moveTutorial;
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
         {
-            moveTutorial.SetActive(true);
+            moveTutorial.StartMoveTutorial();
         }
     }
 
@@ -19,7 +18,7 @@ public class MoveTutorialUI : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            moveTutorial.SetActive(false);
+            moveTutorial.StopMoveTutorial();
             Destroy(gameObject);
         }
     }
