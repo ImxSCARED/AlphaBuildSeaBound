@@ -284,6 +284,7 @@ public class MovementController : MonoBehaviour
 
     public void StopMovement()
     {
+        m_forwardImpulse = 0;
         m_velocity = Vector3.zero;
     }
 }
