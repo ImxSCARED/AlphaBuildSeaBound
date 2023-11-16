@@ -19,4 +19,4 @@ MonoBehaviour:
   PriceIncrease: 2
   MaxLevel: 2
   Locked: 1
-  Type: 3
+  Type: 2

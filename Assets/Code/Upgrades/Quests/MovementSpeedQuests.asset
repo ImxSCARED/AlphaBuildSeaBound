@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a1aec9c5dbed8a4a8312a0d6cfc5969, type: 3}
+  m_Name: MovementSpeedQuests
+  m_EditorClassIdentifier: 
+  quests:
+  - Name: CatcherSize Quest - 1
+    Value: 200
+    Zone: 0
+    connectedUpgrade: {fileID: 11400000, guid: d374d341efa8fbe4386000adc5fac9a2, type: 2}
+    connectedFish:
+      name: Huh
+      fishImage: {fileID: 0}
+      value: 0
+      isQuestFish: 1
+      tier: 0
+    completed: 0
+  - Name: CatcherSize Quest - 2
+    Value: 400
+    Zone: 1
+    connectedUpgrade: {fileID: 11400000, guid: d374d341efa8fbe4386000adc5fac9a2, type: 2}
+    connectedFish:
+      name: Huh
+      fishImage: {fileID: 0}
+      value: 0
+      isQuestFish: 1
+      tier: 1
+    completed: 0
+  - Name: CatcherSize Quest - 3
+    Value: 600
+    Zone: 2
+    connectedUpgrade: {fileID: 11400000, guid: d374d341efa8fbe4386000adc5fac9a2, type: 2}
+    connectedFish:
+      name: Huh
+      fishImage: {fileID: 0}
+      value: 0
+      isQuestFish: 1
+      tier: 1
+    completed: 0
+  currentQuest: 0
+  Name: MovementQuests
