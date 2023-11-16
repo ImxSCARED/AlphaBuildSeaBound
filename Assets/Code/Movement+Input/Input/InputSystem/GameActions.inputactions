@@ -160,21 +160,10 @@
                 {
                     "name": "",
                     "id": "a67d66ec-aa99-4d70-b871-c3b076c20d2f",
-                    "path": "<Gamepad>/rightTrigger",
+                    "path": "<Gamepad>/leftStick/y",
                     "interactions": "",
                     "processors": "",
                     "groups": "Xbox controller;Nintendo Pro controller;Playstation DualShock controller",
-                    "action": "Forward",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "126372d9-0657-433e-ba53-ce804b814302",
-                    "path": "<Gamepad>/leftTrigger",
-                    "interactions": "",
-                    "processors": "Invert",
-                    "groups": "Playstation DualShock controller;Xbox controller;Nintendo Pro controller",
                     "action": "Forward",
                     "isComposite": false,
                     "isPartOfComposite": false
