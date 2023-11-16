@@ -124,7 +124,7 @@ public class MovementController : MonoBehaviour
         MoveWithCollision(m_velocity * Time.deltaTime);
         RotateWithCollision(m_amountToRotate);
 
-        Debug.Log("Is colliding: " + Physics.CheckBox(m_rigidbody.transform.position, m_collider.size / 2, m_rigidbody.rotation, m_collisionLayerMask, QueryTriggerInteraction.Ignore));
+        //Debug.Log("Is colliding: " + Physics.CheckBox(m_rigidbody.transform.position, m_collider.size / 2, m_rigidbody.rotation, m_collisionLayerMask, QueryTriggerInteraction.Ignore));
 
         // Cleanup
         m_forwardImpulse = 0f;

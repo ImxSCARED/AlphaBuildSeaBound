@@ -13,35 +13,70 @@ MonoBehaviour:
   m_Name: FishProperties
   m_EditorClassIdentifier: 
   smallFish:
-    dashSpeed: 0
-    dashWhileWrangledSpeed: 0
-    timeBeforeDash: 0
-    dashDuration: 0
+    dashSpeed: 5
+    dashWhileWrangledSpeed: 3
+    timeBeforeDash: 3
+    dashDuration: 1
     fishies:
-    - name: Huh
+    - name: Noodles
       fishImage: {fileID: 0}
-      value: 0
+      value: 25
+      isQuestFish: 0
+      tier: 0
+    - name: Bass
+      fishImage: {fileID: 0}
+      value: 25
+      isQuestFish: 0
+      tier: 0
+    - name: Duckie
+      fishImage: {fileID: 0}
+      value: 25
       isQuestFish: 0
       tier: 0
   mediumFish:
-    dashSpeed: 0
-    dashWhileWrangledSpeed: 0
-    timeBeforeDash: 0
-    dashDuration: 0
+    dashSpeed: 5
+    dashWhileWrangledSpeed: 3
+    timeBeforeDash: 2
+    dashDuration: 2
     fishies:
-    - name: Heh
+    - name: Swordfish
       fishImage: {fileID: 0}
-      value: 0
+      value: 50
+      isQuestFish: 0
+      tier: 1
+    - name: Siren
+      fishImage: {fileID: 0}
+      value: 50
+      isQuestFish: 0
+      tier: 1
+    - name: Shark
+      fishImage: {fileID: 0}
+      value: 50
+      isQuestFish: 0
+      tier: 1
+    - name: Leviathan
+      fishImage: {fileID: 0}
+      value: 50
       isQuestFish: 0
       tier: 1
   largeFish:
-    dashSpeed: 0
-    dashWhileWrangledSpeed: 0
-    timeBeforeDash: 0
-    dashDuration: 0
+    dashSpeed: 8
+    dashWhileWrangledSpeed: 5
+    timeBeforeDash: 2
+    dashDuration: 2
     fishies:
-    - name: Hoh
+    - name: Hippocampus
       fishImage: {fileID: 0}
-      value: 0
+      value: 100
+      isQuestFish: 0
+      tier: 2
+    - name: Kraken
+      fishImage: {fileID: 0}
+      value: 100
+      isQuestFish: 0
+      tier: 2
+    - name: Cthylla
+      fishImage: {fileID: 0}
+      value: 100
       isQuestFish: 0
       tier: 2

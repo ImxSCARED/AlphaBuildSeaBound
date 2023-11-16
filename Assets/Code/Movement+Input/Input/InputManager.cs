@@ -23,16 +23,21 @@ public class InputManager : MonoBehaviour
     InputAction m_forwardAction;
     InputAction m_yawAction;
     InputAction m_fishAction;
+    InputAction m_dock;
+
     InputAction m_MinigameAction;
     InputAction m_ExitFishingAction;
+
     InputAction m_SellFish;
     InputAction m_ExitDock;
     InputAction JournalToggle;
+    InputAction PauseToggle;
     InputAction Up;
     InputAction Down;
     InputAction Left;
     InputAction Right;
-    InputAction PauseToggle;
+    InputAction BumperNav;
+    
 
     // --UNITY METHODS--
     void Awake()
@@ -41,6 +46,7 @@ public class InputManager : MonoBehaviour
         m_forwardAction = m_playerInput.actions["Forward"];
         m_yawAction = m_playerInput.actions["Yaw"];
         m_fishAction = m_playerInput.actions["Fish"];
+        m_dock = m_playerInput.actions["Dock"];
 
         //Fishing
         m_MinigameAction = m_playerInput.actions["MinigameMover"];
@@ -51,12 +57,14 @@ public class InputManager : MonoBehaviour
         m_ExitDock = m_playerInput.actions["ExitDock"];
 
         JournalToggle = m_playerInput.actions["JournalToggle"];
+        PauseToggle = m_playerInput.actions["PauseToggle"];
+
         Up = m_playerInput.actions["MenuUp"];
         Down = m_playerInput.actions["MenuDown"];
         Left = m_playerInput.actions["MenuLeft"];
         Right = m_playerInput.actions["MenuRight"];
 
-        PauseToggle = m_playerInput.actions["PauseToggle"];
+        BumperNav = m_playerInput.actions["BumperNav"];
     }
 
     void Update()
@@ -77,6 +85,10 @@ public class InputManager : MonoBehaviour
             m_playerFishing.FishMinigame();
         }
 
+        if (m_dock.WasPerformedThisFrame())
+        {
+            m_playerManager.Dock();
+        }
         //Fishing
         if (m_MinigameAction.inProgress)
         {
@@ -102,6 +114,11 @@ public class InputManager : MonoBehaviour
         if (JournalToggle.WasPerformedThisFrame())
         {
             m_journalMenu.ToggleJournal();
+        }
+
+        if (PauseToggle.WasPerformedThisFrame())
+        {
+            m_pauseMenu.PauseMenuToggle();
         }
 
         if (Up.WasPerformedThisFrame())
@@ -134,9 +151,9 @@ public class InputManager : MonoBehaviour
             m_journalMenu.FishPagePrev();
         }
 
-        if (PauseToggle.WasPerformedThisFrame())
+        if (BumperNav.WasPerformedThisFrame())
         {
-            m_pauseMenu.PauseMenuToggle();
+            m_playerManager.NavigateHub(BumperNav.ReadValue<float>());
         }
     }
 
