@@ -143,6 +143,15 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Dock"",
+                    ""type"": ""Button"",
+                    ""id"": ""adff9770-7edc-4230-9e67-f25f5aa86a9b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -453,6 +462,17 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
                     ""action"": ""PauseToggle"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c4e6d767-4a50-467d-9bac-8c20ded0a2c6"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dock"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -567,6 +587,15 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""BumperNav"",
+                    ""type"": ""Value"",
+                    ""id"": ""f8b87ece-d8eb-4b85-9a79-e0ba562f3ac4"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -1009,6 +1038,28 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
                     ""action"": ""ExitDock"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6e58eb44-31a3-425e-be75-3350b9c2ab73"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": ""Invert"",
+                    ""groups"": """",
+                    ""action"": ""BumperNav"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4d59f53a-fa3d-4a6c-a7b5-3d5906ec267b"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""BumperNav"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -1156,6 +1207,7 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
         m_Sailing_MenuDown = m_Sailing.FindAction("MenuDown", throwIfNotFound: true);
         m_Sailing_MenuUp = m_Sailing.FindAction("MenuUp", throwIfNotFound: true);
         m_Sailing_PauseToggle = m_Sailing.FindAction("PauseToggle", throwIfNotFound: true);
+        m_Sailing_Dock = m_Sailing.FindAction("Dock", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1170,6 +1222,7 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
         m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
         m_UI_SellFish = m_UI.FindAction("SellFish", throwIfNotFound: true);
         m_UI_ExitDock = m_UI.FindAction("ExitDock", throwIfNotFound: true);
+        m_UI_BumperNav = m_UI.FindAction("BumperNav", throwIfNotFound: true);
         // Fishing
         m_Fishing = asset.FindActionMap("Fishing", throwIfNotFound: true);
         m_Fishing_MinigameMover = m_Fishing.FindAction("MinigameMover", throwIfNotFound: true);
@@ -1246,6 +1299,7 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_Sailing_MenuDown;
     private readonly InputAction m_Sailing_MenuUp;
     private readonly InputAction m_Sailing_PauseToggle;
+    private readonly InputAction m_Sailing_Dock;
     public struct SailingActions
     {
         private @GameActions m_Wrapper;
@@ -1263,6 +1317,7 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
         public InputAction @MenuDown => m_Wrapper.m_Sailing_MenuDown;
         public InputAction @MenuUp => m_Wrapper.m_Sailing_MenuUp;
         public InputAction @PauseToggle => m_Wrapper.m_Sailing_PauseToggle;
+        public InputAction @Dock => m_Wrapper.m_Sailing_Dock;
         public InputActionMap Get() { return m_Wrapper.m_Sailing; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1311,6 +1366,9 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
                 @PauseToggle.started -= m_Wrapper.m_SailingActionsCallbackInterface.OnPauseToggle;
                 @PauseToggle.performed -= m_Wrapper.m_SailingActionsCallbackInterface.OnPauseToggle;
                 @PauseToggle.canceled -= m_Wrapper.m_SailingActionsCallbackInterface.OnPauseToggle;
+                @Dock.started -= m_Wrapper.m_SailingActionsCallbackInterface.OnDock;
+                @Dock.performed -= m_Wrapper.m_SailingActionsCallbackInterface.OnDock;
+                @Dock.canceled -= m_Wrapper.m_SailingActionsCallbackInterface.OnDock;
             }
             m_Wrapper.m_SailingActionsCallbackInterface = instance;
             if (instance != null)
@@ -1354,6 +1412,9 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
                 @PauseToggle.started += instance.OnPauseToggle;
                 @PauseToggle.performed += instance.OnPauseToggle;
                 @PauseToggle.canceled += instance.OnPauseToggle;
+                @Dock.started += instance.OnDock;
+                @Dock.performed += instance.OnDock;
+                @Dock.canceled += instance.OnDock;
             }
         }
     }
@@ -1374,6 +1435,7 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_UI_TrackedDeviceOrientation;
     private readonly InputAction m_UI_SellFish;
     private readonly InputAction m_UI_ExitDock;
+    private readonly InputAction m_UI_BumperNav;
     public struct UIActions
     {
         private @GameActions m_Wrapper;
@@ -1390,6 +1452,7 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
         public InputAction @TrackedDeviceOrientation => m_Wrapper.m_UI_TrackedDeviceOrientation;
         public InputAction @SellFish => m_Wrapper.m_UI_SellFish;
         public InputAction @ExitDock => m_Wrapper.m_UI_ExitDock;
+        public InputAction @BumperNav => m_Wrapper.m_UI_BumperNav;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1435,6 +1498,9 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
                 @ExitDock.started -= m_Wrapper.m_UIActionsCallbackInterface.OnExitDock;
                 @ExitDock.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnExitDock;
                 @ExitDock.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnExitDock;
+                @BumperNav.started -= m_Wrapper.m_UIActionsCallbackInterface.OnBumperNav;
+                @BumperNav.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnBumperNav;
+                @BumperNav.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnBumperNav;
             }
             m_Wrapper.m_UIActionsCallbackInterface = instance;
             if (instance != null)
@@ -1475,6 +1541,9 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
                 @ExitDock.started += instance.OnExitDock;
                 @ExitDock.performed += instance.OnExitDock;
                 @ExitDock.canceled += instance.OnExitDock;
+                @BumperNav.started += instance.OnBumperNav;
+                @BumperNav.performed += instance.OnBumperNav;
+                @BumperNav.canceled += instance.OnBumperNav;
             }
         }
     }
@@ -1571,6 +1640,7 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
         void OnMenuDown(InputAction.CallbackContext context);
         void OnMenuUp(InputAction.CallbackContext context);
         void OnPauseToggle(InputAction.CallbackContext context);
+        void OnDock(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
@@ -1586,6 +1656,7 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
         void OnTrackedDeviceOrientation(InputAction.CallbackContext context);
         void OnSellFish(InputAction.CallbackContext context);
         void OnExitDock(InputAction.CallbackContext context);
+        void OnBumperNav(InputAction.CallbackContext context);
     }
     public interface IFishingActions
     {
