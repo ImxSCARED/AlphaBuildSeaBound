@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 651806229195023680, guid: b0a629095c6c90b4683bef80aaf88c33,
         type: 3}
       propertyPath: m_Name
-      value: ------PH_Abandoned_Lighthouse------
+      value: ------PH_Abandoned_Lighthouse------ Variant
       objectReference: {fileID: 0}
     - target: {fileID: 716456872473354609, guid: b0a629095c6c90b4683bef80aaf88c33,
         type: 3}
@@ -35,17 +35,17 @@ PrefabInstance:
     - target: {fileID: 716456872473354609, guid: b0a629095c6c90b4683bef80aaf88c33,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -464.8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 716456872473354609, guid: b0a629095c6c90b4683bef80aaf88c33,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -41.081
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 716456872473354609, guid: b0a629095c6c90b4683bef80aaf88c33,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 970.3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 716456872473354609, guid: b0a629095c6c90b4683bef80aaf88c33,
         type: 3}
