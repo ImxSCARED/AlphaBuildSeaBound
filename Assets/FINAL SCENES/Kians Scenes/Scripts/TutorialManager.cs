@@ -29,7 +29,7 @@ public class TutorialManager : MonoBehaviour
     // Journal tutorial variables
     public bool journalTutorialCompleted;
     public CanvasGroup journalTutorial;
-    public bool journaltTutorialFadeIn = false;
+    public bool journalTutorialFadeIn = false;
     public bool journalTutorialFadeOut = false;
 
     // Update is called once per frame
@@ -116,37 +116,32 @@ public class TutorialManager : MonoBehaviour
         }
     }
 
-    public void StartMoveTutorial()
+    public void StartMovementTutorial()
     {
-
+        MovementTutorialFadeIn = true;
     }
 
     public void StopMoveTutorial()
     {
-
+        MovementTutorialFadeIn = false;
+        MovementTutorialFadeOut = true;
     }
 
     public void StartJournalTutorial()
     {
-        
+        journalTutorialFadeIn = true;
     }
 
     public void StopJournalTutorial()
     {
-
+        journalTutorialFadeOut = true;
+        journalTutorialFadeIn = false;
+        StartMovementTutorial();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.name == "Move Tutorial Trigger")
-        {
-            if (movementTutorialCompleted == false)
-            {
-                StartMoveTutorial();
-            }
-        }
-
-        if (other.name == "Journal Tutorial Trigger")
+        if (other.name == "Tutorial Trigger")
         {
             StartJournalTutorial();
         }
@@ -158,6 +153,7 @@ public class TutorialManager : MonoBehaviour
         {
             StopJournalTutorial();
             StopMoveTutorial();
+            Destroy(other.gameObject);
         }
     }
 }
