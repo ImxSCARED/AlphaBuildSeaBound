@@ -2683,7 +2683,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 0e45433f425b074428b7125329304812,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 36.72
+      value: 597
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0e45433f425b074428b7125329304812,
         type: 3}
@@ -6604,7 +6604,7 @@ RectTransform:
   - {fileID: 1603670609}
   - {fileID: 1327338261}
   m_Father: {fileID: 1782925553}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -16212,7 +16212,7 @@ RectTransform:
   - {fileID: 1670809306}
   - {fileID: 418799916}
   m_Father: {fileID: 1782925553}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -22581,8 +22581,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1267715884}
   - {fileID: 498971550}
+  - {fileID: 1267715884}
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -26742,6 +26742,8 @@ MonoBehaviour:
   - {fileID: 1447962065}
   - {fileID: 1670809307}
   - {fileID: 418799917}
+  questsHolder: {fileID: 498971549}
+  upgradesHolder: {fileID: 1267715883}
   journal: {fileID: 0}
   QuestUI:
   - {fileID: 1955974877}

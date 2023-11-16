@@ -27,6 +27,7 @@ public class InputManager : MonoBehaviour
     InputAction m_ExitFishingAction;
     InputAction m_SellFish;
     InputAction m_ExitDock;
+    InputAction m_BumperNav;
     InputAction JournalToggle;
     InputAction Up;
     InputAction Down;
@@ -51,12 +52,13 @@ public class InputManager : MonoBehaviour
         m_ExitDock = m_playerInput.actions["ExitDock"];
 
         JournalToggle = m_playerInput.actions["JournalToggle"];
+        PauseToggle = m_playerInput.actions["PauseToggle"];
         Up = m_playerInput.actions["MenuUp"];
         Down = m_playerInput.actions["MenuDown"];
         Left = m_playerInput.actions["MenuLeft"];
         Right = m_playerInput.actions["MenuRight"];
-
-        PauseToggle = m_playerInput.actions["PauseToggle"];
+        m_BumperNav = m_playerInput.actions["BumperNav"];
+        
     }
 
     void Update()
@@ -104,6 +106,11 @@ public class InputManager : MonoBehaviour
             m_journalMenu.ToggleJournal();
         }
 
+        if (PauseToggle.WasPerformedThisFrame())
+        {
+            m_pauseMenu.PauseMenuToggle();
+        }
+
         if (Up.WasPerformedThisFrame())
         {
             m_journalMenu.SectionUp();
@@ -124,9 +131,9 @@ public class InputManager : MonoBehaviour
             m_journalMenu.PagePrev();
         }
 
-        if (PauseToggle.WasPerformedThisFrame())
+        if (m_BumperNav.WasPerformedThisFrame())
         {
-            m_pauseMenu.PauseMenuToggle();
+            m_playerManager.NavigateHub(m_BumperNav.ReadValue<float>());
         }
     }
 

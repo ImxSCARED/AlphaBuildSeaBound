@@ -121,6 +121,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Dock",
+                    "type": "Button",
+                    "id": "adff9770-7edc-4230-9e67-f25f5aa86a9b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -431,6 +440,17 @@
                     "action": "PauseToggle",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c4e6d767-4a50-467d-9bac-8c20ded0a2c6",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Dock",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -545,6 +565,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "BumperNav",
+                    "type": "Value",
+                    "id": "f8b87ece-d8eb-4b85-9a79-e0ba562f3ac4",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -985,6 +1014,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "ExitDock",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6e58eb44-31a3-425e-be75-3350b9c2ab73",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "Invert",
+                    "groups": "",
+                    "action": "BumperNav",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4d59f53a-fa3d-4a6c-a7b5-3d5906ec267b",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "BumperNav",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
