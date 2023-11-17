@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class FishingHitbox : MonoBehaviour
 {
+    public LineRenderer lineRenderer;
+
     public GameObject currentFish = null;
     public Transform MinigameMover;
 
@@ -28,7 +30,7 @@ public class FishingHitbox : MonoBehaviour
     }
     private void Update()
     {
-        // Calculate oval extants
+        // Calculate oval extants - Emma
         Vector3 circlePos = MinigameMover.position - transform.position;
         
         float widthRatio = mainWidthRatio; // Change to account for rotation
@@ -39,13 +41,16 @@ public class FishingHitbox : MonoBehaviour
         float distanceFromMid = (Mathf.Pow((circlePos.x * Mathf.Cos(rotationRad)) - (circlePos.z * Mathf.Sin(rotationRad)), 2) / Mathf.Pow(widthRatio, 2)) +
                                 (Mathf.Pow((circlePos.x * Mathf.Sin(rotationRad)) + (circlePos.z * Mathf.Cos(rotationRad)), 2) / Mathf.Pow(heightRatio, 2));
 
-        // If minigame mover leaves oval, move it back in
+        // If minigame mover leaves oval, move it back in - Emma
         if (distanceFromMid > Mathf.Pow(radius, 2))
         {
             MinigameMover.position = lastPosition;
         }
 
         lastPosition = MinigameMover.position;
+
+        // Draw oval with line renderer
+        
     }
     private void OnTriggerEnter(Collider collision)
     {
