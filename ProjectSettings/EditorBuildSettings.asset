@@ -5,17 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-<<<<<<< HEAD
   - enabled: 1
     path: Assets/FINAL SCENES/Myles Beta/MylesMainMenu.unity
-=======
-  - enabled: 0
-    path: Assets/FINAL SCENES/MainMenuScene.unity
->>>>>>> 73b392a181aeae2c1bd928b35dea5e6320621b8b
     guid: 393d48505245b6f4aa89584094cd26bb
   - enabled: 1
-    path: Assets/FINAL SCENES/Beta Scene.unity
-    guid: c186e80baeffde945bdff2b625f69a20
-  m_configObjects:
-    com.unity.input.settings: {fileID: 11400000, guid: d028f9bdfacc301408d075487e8889d4,
-      type: 2}
+    path: Assets/Scenes/Brians_Main_Scene.unity
+    guid: 05a90ab2c9f729646963536ce64d8a2f
+  - enabled: 0
+    path: Assets/Scenes/Scene_LevelAlpha(M).unity
+    guid: f8a960ce88d3c2e42b27c07c9ec4c120
+  m_configObjects: {}
