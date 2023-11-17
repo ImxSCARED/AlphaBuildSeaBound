@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a56cc14ea949bf34daf5a9265a047919, type: 3}
+  m_Name: KrakenEntry
+  m_EditorClassIdentifier: 
+  fishSilhouette: {fileID: 0}
+  fishCutiePatootie: {fileID: 0}
+  hasBeenCaught: 0
+  fishName: Noodles
+  amountCaught: 0
+  amountBeforeEntry1: 0
+  journalEntry1: 
+  amountBeforeEntry2: 0
+  journalEntry2: 
+  amountBeforeEntry3: 0
+  journalEntry3: 

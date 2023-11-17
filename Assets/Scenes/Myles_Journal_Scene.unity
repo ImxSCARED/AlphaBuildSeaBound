@@ -30350,20 +30350,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Money: 0
-  journalEntries: []
-  hubFirstButton: {fileID: 1146876817}
+  isAtDock: 0
+  questsFirstButton: {fileID: 0}
+  upgradesFirstButton: {fileID: 0}
   journalFirstButton: {fileID: 0}
   pauseFirstButton: {fileID: 0}
   hub: {fileID: 1782925552}
+  QuestUI:
+  - {fileID: 969932322}
+  questsHolder: {fileID: 0}
   UpradgeUI:
   - {fileID: 1146876819}
   - {fileID: 990797392}
   - {fileID: 1447962065}
   - {fileID: 1670809307}
   - {fileID: 418799917}
+  upgradesHolder: {fileID: 0}
+  journalEntries: []
   journal: {fileID: 0}
-  QuestUI:
-  - {fileID: 969932322}
+  diaryTxtBoxP1: {fileID: 0}
+  diaryTxtBoxP2: {fileID: 0}
   settings: {fileID: 0}
   test: 0
 --- !u!114 &2087602605
@@ -30378,6 +30384,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8a5c483893fb80418a1b38ebd76f641, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_CaptureCircle: {fileID: 0}
   m_Upgrades:
   - {fileID: 11400000, guid: 73d692d37d252bf4498b77706d359b74, type: 2}
   - {fileID: 11400000, guid: 1c49995033d92d74fb0e29cf2ed9e093, type: 2}
@@ -30429,7 +30436,7 @@ MonoBehaviour:
   m_playerFishing: {fileID: 2087602606}
   m_playerManager: {fileID: 2087602604}
   m_journalMenu: {fileID: 0}
-  m_pauseMenu: {fileID: 0}
+  m_pauseMenu: {fileID: 1008126664}
 --- !u!114 &2087602608
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30445,13 +30452,17 @@ MonoBehaviour:
   m_rigidbody: {fileID: 2087602603}
   m_rotationAxis: {fileID: 0}
   m_collider: {fileID: 2087602609}
-  m_engineForce: 35
+  m_maxSpeed: 0
   m_accelerationSpeed: 50
   m_turnSpeed: 40
   m_maxVelocity: 100
   m_turningVelocityRetained: 1.5
+  m_forwardFriction: 0
   m_sideFriction: 10
   m_collisionMomentumRetained: 80
+  m_collisionLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!65 &2087602609
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -30482,6 +30493,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c17acaaf3544043458d941e12db1638b, type: 2}
   questFish: {fileID: 4018665056978130658, guid: 540ea8337e40ba14ba06c3373391b97d,
     type: 3}
+  Zone1Spawns: []
+  Zone2Spawns: []
+  Zone3Spawns: []
   currentBountyFish: {fileID: 0}
 --- !u!1 &2090715509
 GameObject:
@@ -32553,6 +32567,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fishInCircle: 0
+  sizeUpgrade: 1
 --- !u!4 &4205174052362727108
 Transform:
   m_ObjectHideFlags: 0

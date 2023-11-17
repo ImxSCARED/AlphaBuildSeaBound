@@ -52,12 +52,14 @@ public class FishingHitbox : MonoBehaviour
         if (collision.tag == "Fish")
         {
             currentFish = collision.gameObject;
+            currentFish.GetComponent<Fish>().dontDestory = true;
         }
     }
     private void OnTriggerExit(Collider collision)
     {
         if (currentFish == collision.gameObject)
         {
+            currentFish.GetComponent<Fish>().dontDestory = false;
             currentFish = null;
         }
     }

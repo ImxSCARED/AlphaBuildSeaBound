@@ -12,6 +12,7 @@ public class Fish : MonoBehaviour
     private float actionDuration = 0;
     private Transform fishingHitboxNode;
 
+    public bool dontDestory; // If its being fished, game shouldnt remove it when respawning fish
     /// <summary>
     /// Based on tier, moves to a random node after a time limit to make fishing harder
     /// </summary>
