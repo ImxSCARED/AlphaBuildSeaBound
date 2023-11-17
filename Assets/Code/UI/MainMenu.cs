@@ -9,18 +9,20 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private GameObject settingsMenu;
     [SerializeField] private GameObject mainMenu;
 
-    public AudioSource open;
-    public AudioSource close;
-
     private bool settingsMenuState = false;
     private bool levelMenuState = true;
+
+    private void Awake()
+    {
+    
+    }
 
     public void OpenAudioMenu()
     {
         settingsMenu.SetActive(true);
         settingsMenuState = true;
         mainMenu.SetActive(false);
-        open.Play();
+        FindObjectOfType<AudioManager>().PlaySound("MenuToggle");
     }
 
     public void CloseAudioMenu()
@@ -28,14 +30,14 @@ public class MainMenu : MonoBehaviour
         settingsMenu.SetActive(false);
         settingsMenuState = false;
         mainMenu.SetActive(true);
-        close.Play();
+        FindObjectOfType<AudioManager>().PlaySound("MenuToggle");
         return;
     }
 
     public void StartLevel()
     {
-        open.Play();
-        SceneManager.LoadScene("Brians_Main_Scene");
+        FindObjectOfType<AudioManager>().PlaySound("MenuToggle");
+        SceneManager.LoadScene("Myles_Beta_Scene");
     }
 
     public void QuitGame()
