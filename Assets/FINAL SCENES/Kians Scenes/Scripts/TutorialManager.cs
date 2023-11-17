@@ -22,9 +22,9 @@ public class TutorialManager : MonoBehaviour
 
     // Move tutorial variables
     public bool movementTutorialCompleted;
-    public CanvasGroup MovementTutorial;
-    public bool MovementTutorialFadeIn = false;
-    public bool MovementTutorialFadeOut = false;
+    public CanvasGroup movementTutorial;
+    public bool movementTutorialFadeIn = false;
+    public bool movementTutorialFadeOut = false;
 
     // Journal tutorial variables
     public bool journalTutorialCompleted;
@@ -35,51 +35,103 @@ public class TutorialManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (FishTutorialCompleted == false)
-        //{
-            if (startFishTutorialFadeIn)
-            {
-                if (startFishTutorial.alpha < fadeInTime)
-                {
-                    startFishTutorial.alpha += Time.deltaTime;
-                }
-                else
-                {
-                    startFishTutorialFadeIn = false;
-                }
-            }
-
-            if (startFishTutorialFadeOut)
-            {
-                startFishTutorial.alpha -= Time.deltaTime;
-                if (startFishTutorial.alpha <= 0)
-                {
-                    startFishTutorialFadeOut = false;
-                }
-            }
-
-            if (fishingMinigameTutorialFadeIn)
-            {
-                if (fishingMinigameTutorial.alpha < fadeInTime)
-                {
-                    fishingMinigameTutorial.alpha += Time.deltaTime;
-                }
-                else
-                {
-                fishingMinigameTutorialFadeIn = false;
-                }
-            }
             
-            if (fishingMinigameTutorialFadeOut)
+        if (startFishTutorialFadeIn)
+        {
+            if (startFishTutorial.alpha < fadeInTime)
             {
-                fishingMinigameTutorial.alpha -= Time.deltaTime;
-                if (fishingMinigameTutorial.alpha <= 0)
-                {
-                    fishingMinigameTutorialFadeOut = false;
-                }
+                startFishTutorial.alpha += Time.deltaTime;
             }
-        //}
-        
+            else
+            {
+                startFishTutorialFadeIn = false;
+            }
+        }
+
+        if (startFishTutorialFadeOut)
+        {
+            startFishTutorial.alpha -= Time.deltaTime;
+            if (startFishTutorial.alpha <= 0)
+            {
+                startFishTutorialFadeOut = false;
+            }
+        }
+
+        if (fishingMinigameTutorialFadeIn)
+        {
+            if (fishingMinigameTutorial.alpha < fadeInTime)
+            {
+                fishingMinigameTutorial.alpha += Time.deltaTime;
+            }
+            else
+            {
+            fishingMinigameTutorialFadeIn = false;
+            }
+        }
+            
+        if (fishingMinigameTutorialFadeOut)
+        {
+            fishingMinigameTutorial.alpha -= Time.deltaTime;
+            if (fishingMinigameTutorial.alpha <= 0)
+            {
+                fishingMinigameTutorialFadeOut = false;
+            }
+        }
+
+        if (journalTutorialFadeIn)
+        {
+            if (journalTutorial.alpha < fadeInTime)
+            {
+                journalTutorial.alpha += Time.deltaTime;
+            }
+            else
+            {
+                journalTutorialFadeIn = false;
+            }
+        }
+
+        if (journalTutorialFadeOut)
+        {
+            journalTutorial.alpha -= Time.deltaTime;
+            if (journalTutorial.alpha <= 0)
+            {
+                journalTutorialFadeOut = false;
+            }
+        }
+
+        if (movementTutorialFadeIn)
+        {
+            if (movementTutorial.alpha < fadeInTime)
+            {
+                movementTutorial.alpha += Time.deltaTime;
+            }
+            else
+            {
+                movementTutorialFadeIn = false;
+            }
+        }
+
+        if (movementTutorialFadeOut)
+        {
+            movementTutorial.alpha -= Time.deltaTime;
+            if (movementTutorial.alpha <= 0)
+            {
+                movementTutorialFadeOut = false;
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Backslash))
+        {
+            Debug.Log("Backslash works");
+            StopJournalTutorial();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Backspace))
+        {
+            Debug.Log("Backspace works");
+            StartMovementTutorial();
+        }
+
     }
 
     public void StartFishTutorial()
@@ -118,13 +170,14 @@ public class TutorialManager : MonoBehaviour
 
     public void StartMovementTutorial()
     {
-        MovementTutorialFadeIn = true;
+        movementTutorialFadeIn = true;
     }
 
     public void StopMoveTutorial()
     {
-        MovementTutorialFadeIn = false;
-        MovementTutorialFadeOut = true;
+        movementTutorialFadeIn = false;
+        movementTutorialFadeOut = true;
+        movementTutorialCompleted = true;
     }
 
     public void StartJournalTutorial()
@@ -136,7 +189,7 @@ public class TutorialManager : MonoBehaviour
     {
         journalTutorialFadeOut = true;
         journalTutorialFadeIn = false;
-        StartMovementTutorial();
+        journalTutorialCompleted = true;
     }
 
     private void OnTriggerEnter(Collider other)

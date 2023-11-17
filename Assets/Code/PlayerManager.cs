@@ -31,7 +31,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private Canvas settings;
 
     public bool test;
-    private ZoneLevel currentZone;
+    public ZoneLevel currentZone;
     public enum ZoneLevel
     {
         Zone1, Zone2, Zone3
