@@ -20799,7 +20799,7 @@ MonoBehaviour:
   m_turningVelocityRetained: 10
   m_forwardFriction: 30
   m_sideFriction: 10
-  m_collisionBounciness: 80
+  m_collisionMomentumRetained: 80
   m_collisionLayerMask:
     serializedVersion: 2
     m_Bits: 359

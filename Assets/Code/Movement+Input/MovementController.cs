@@ -59,8 +59,8 @@ public class MovementController : MonoBehaviour
     // Collision
     [SerializeField]
     [Tooltip("Percentage of momentum maintained in a collision")]
-    [Min(0f)]
-    float m_collisionBounciness;
+    [Range(0f, 100f)]
+    float m_collisionMomentumRetained;
     [SerializeField]
     [Tooltip("Layers that the boat can collide with")]
     LayerMask m_collisionLayerMask;
@@ -182,7 +182,7 @@ public class MovementController : MonoBehaviour
 
             // Find reflected movement vector and scale it by m_collisionMomentumRetained
             Vector3 newMovement = movement - (2 * Vector3.Dot(movement, normal) * normal);
-            newMovement *= (m_collisionBounciness / 100);
+            newMovement *= (m_collisionMomentumRetained / 100);
             newMovement.y = 0;
 
             // Multiplying velocity by delta time gets us movement.
