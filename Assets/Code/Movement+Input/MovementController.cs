@@ -11,6 +11,8 @@ public class MovementController : MonoBehaviour
     [SerializeField]
     Rigidbody m_rigidbody;
     [SerializeField]
+    CameraController m_cameraController;
+    [SerializeField]
     Transform m_rotationAxis;
     [SerializeField]
     BoxCollider m_collider;
@@ -172,51 +174,59 @@ public class MovementController : MonoBehaviour
 
     public void MoveWithCollision(Vector3 movement)
     {
-        if (Physics.BoxCast(transform.TransformPoint(m_collider.center), m_collider.size / 2, movement.normalized, out RaycastHit hitInfo,
-                            m_rigidbody.rotation, movement.magnitude, m_collisionLayerMask, QueryTriggerInteraction.Ignore))
+        if (movement != Vector3.zero)
         {
-            Debug.Log("Object hit: " + hitInfo.transform.name);
+            if (Physics.BoxCast(transform.TransformPoint(m_collider.center), m_collider.size / 2, movement.normalized, out RaycastHit hitInfo,
+                                m_rigidbody.rotation, movement.magnitude, m_collisionLayerMask, QueryTriggerInteraction.Ignore))
+            {
+                Debug.Log("Object hit: " + hitInfo.transform.name);
 
-            // Get collision normal
-            Vector3 normal = hitInfo.normal;
+                // Get collision normal
+                Vector3 normal = hitInfo.normal;
 
-            // Find reflected movement vector and scale it by m_collisionMomentumRetained
-            Vector3 newMovement = movement - (2 * Vector3.Dot(movement, normal) * normal);
-            newMovement *= (m_collisionMomentumRetained / 100);
-            newMovement.y = 0;
+                // Find reflected movement vector and scale it by m_collisionMomentumRetained
+                Vector3 newMovement = movement - (2 * Vector3.Dot(movement, normal) * normal);
+                newMovement *= (m_collisionMomentumRetained / 100);
+                newMovement.y = 0;
 
-            // Multiplying velocity by delta time gets us movement.
-            // Therefore, dividing movement by delta time gets us velocity.
-            m_velocity = newMovement / Time.deltaTime;
+                // Multiplying velocity by delta time gets us movement.
+                // Therefore, dividing movement by delta time gets us velocity.
+                m_velocity = newMovement / Time.deltaTime;
 
-            m_rigidbody.MovePosition(m_rigidbody.position + newMovement);
-        }
-        else if (Physics.CheckBox(transform.TransformPoint(m_collider.center) + movement, m_collider.size / 2, m_rigidbody.rotation, m_collisionLayerMask, QueryTriggerInteraction.Ignore))
-        {
-            m_velocity = -movement / Time.deltaTime;
-            m_rigidbody.MovePosition(m_rigidbody.position - movement);
-        }
-        else
-        {
-            m_rigidbody.MovePosition(m_rigidbody.position + movement);
+                m_rigidbody.MovePosition(m_rigidbody.position + newMovement);
+            }
+            else if (Physics.CheckBox(transform.TransformPoint(m_collider.center) + movement, m_collider.size / 2, m_rigidbody.rotation, m_collisionLayerMask, QueryTriggerInteraction.Ignore))
+            {
+                m_velocity = -movement / Time.deltaTime;
+                m_rigidbody.MovePosition(m_rigidbody.position - movement);
+            }
+            else
+            {
+                m_rigidbody.MovePosition(m_rigidbody.position + movement);
+            }
         }
     }
 
     public void RotateWithCollision(Quaternion rotation)
     {
-        Quaternion newRotation = m_rigidbody.rotation * rotation;
-
-        // If our rotation doesn't collide with anything...
-        if (!Physics.CheckBox(transform.TransformPoint(m_collider.center), m_collider.size / 2, newRotation, m_collisionLayerMask, QueryTriggerInteraction.Ignore))
+        if (rotation != Quaternion.identity)
         {
-            //... then we should rotate
-            m_rigidbody.MoveRotation(newRotation);
+            Quaternion newRotation = m_rigidbody.rotation * rotation;
 
-            float decimalPercentTVR = m_turningVelocityRetained / 100;
-            m_velocity = (transform.forward * m_velocity.magnitude * decimalPercentTVR) + (m_velocity * (1 - decimalPercentTVR));
+            // If our rotation doesn't collide with anything...
+            if (!Physics.CheckBox(transform.TransformPoint(m_collider.center), m_collider.size / 2, newRotation, m_collisionLayerMask, QueryTriggerInteraction.Ignore))
+            {
+                //... then we should rotate
+                m_rigidbody.MoveRotation(newRotation);
+
+                // Modify our velocity so it follows the rotation
+                float decimalPercentTVR = m_turningVelocityRetained / 100;
+                m_velocity = (transform.forward * m_velocity.magnitude * decimalPercentTVR) + (m_velocity * (1 - decimalPercentTVR));
+
+                // And finally move the camera with the ship
+                m_cameraController.AddRotation(rotation);
+            }
         }
-
-        Debug.Log("Is colliding: " + Physics.CheckBox(transform.TransformPoint(m_collider.center), m_collider.size / 2, m_rigidbody.rotation, m_collisionLayerMask, QueryTriggerInteraction.Ignore));
     }
 
     /// <summary>

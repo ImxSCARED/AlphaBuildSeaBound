@@ -11,6 +11,8 @@ public class InputManager : MonoBehaviour
     [SerializeField]
     MovementController m_playerController;
     [SerializeField]
+    CameraController m_cameraController;
+    [SerializeField]
     Fishing m_playerFishing;
     [SerializeField]
     PlayerManager m_playerManager;
@@ -22,6 +24,7 @@ public class InputManager : MonoBehaviour
     // --CODE VARIABLES--
     InputAction m_forwardAction;
     InputAction m_yawAction;
+    InputAction m_lookAction;
     InputAction m_fishAction;
     InputAction m_MinigameAction;
     InputAction m_ExitFishingAction;
@@ -40,6 +43,7 @@ public class InputManager : MonoBehaviour
         //Sailing
         m_forwardAction = m_playerInput.actions["Forward"];
         m_yawAction = m_playerInput.actions["Yaw"];
+        m_lookAction = m_playerInput.actions["Look"];
         m_fishAction = m_playerInput.actions["Fish"];
 
         //Fishing
@@ -70,6 +74,13 @@ public class InputManager : MonoBehaviour
         if (m_yawAction.inProgress)
         {
             m_playerController.Turn(m_yawAction.ReadValue<float>());
+        }
+
+        if (m_lookAction.inProgress)
+        {
+            Vector2 lookVector = m_lookAction.ReadValue<Vector2>();
+            // Swap y (up) and x (sideways) - up is "around the x axis" and sideways is "around the y axis"
+            m_cameraController.RotateCamera(new Vector2(lookVector.y, lookVector.x));
         }
 
         if (m_fishAction.WasPressedThisFrame())
