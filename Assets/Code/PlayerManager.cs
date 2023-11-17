@@ -1,14 +1,10 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
-using UnityEngine.UIElements;
-using static UpgradeData;
+using UnityEngine.UI;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -46,7 +42,7 @@ public class PlayerManager : MonoBehaviour
     private int entryCounter = 0;
     private int currentPage = 0;
     private int currentTab = 0;
-
+    
     [SerializeField] private Image silhoutte;
     [SerializeField] private Image cutiePatootie;
     [SerializeField] private TextMeshProUGUI fishName;
@@ -164,43 +160,43 @@ public class PlayerManager : MonoBehaviour
         {
             case "Noodles":
                 fishCounters[0]++;
-                fishCountTxt[0].text = fishCounters[0].ToString();
+                fishCountTxt[0].text = "x" + fishCounters[0].ToString();
                 break;
             case "Bass":
                 fishCounters[1]++;
-                fishCountTxt[1].text = fishCounters[1].ToString();
+                fishCountTxt[1].text = "x" + fishCounters[1].ToString();
                 break;
             case "Duckie":
                 fishCounters[2]++;
-                fishCountTxt[2].text = fishCounters[2].ToString();
+                fishCountTxt[2].text = "x" + fishCounters[2].ToString();
                 break;
             case "Swordfish":
                 fishCounters[3]++;
-                fishCountTxt[3].text = fishCounters[3].ToString();
+                fishCountTxt[3].text = "x" + fishCounters[3].ToString();
                 break;
             case "Siren":
                 fishCounters[4]++;
-                fishCountTxt[4].text = fishCounters[4].ToString();
+                fishCountTxt[4].text = "x" + fishCounters[4].ToString();
                 break;
             case "Shark":
                 fishCounters[5]++;
-                fishCountTxt[5].text = fishCounters[5].ToString();
+                fishCountTxt[5].text = "x" + fishCounters[5].ToString();
                 break;
             case "Leviathan":
                 fishCounters[6]++;
-                fishCountTxt[6].text = fishCounters[6].ToString();
+                fishCountTxt[6].text = "x" + fishCounters[6].ToString();
                 break;
             case "Hippocampus":
                 fishCounters[7]++;
-                fishCountTxt[7].text = fishCounters[7].ToString();
+                fishCountTxt[7].text = "x" + fishCounters[7].ToString();
                 break;
             case "Kraken":
                 fishCounters[8]++;
-                fishCountTxt[8].text = fishCounters[8].ToString();
+                fishCountTxt[8].text = "x" + fishCounters[8].ToString();
                 break;
             case "Cthylla":
                 fishCounters[9]++;
-                fishCountTxt[9].text = fishCounters[9].ToString();
+                fishCountTxt[9].text = "x" + fishCounters[9].ToString();
                 break;
 
         }
@@ -230,7 +226,7 @@ public class PlayerManager : MonoBehaviour
         storedFish.Clear();
         for (int i = 0; i < fishCounters.Length; i++)
         {
-            fishCountTxt[i].text = "0";
+            fishCountTxt[i].text = "x0";
             fishCounters[i] = 0;
         }
     }
@@ -405,6 +401,14 @@ public class PlayerManager : MonoBehaviour
             currentTab = Math.Clamp(currentTab + (int)value, 0, journalTabs.Length - 1);
             journalTabs[currentTab].SetActive(true);
             currentPage = 0;
+            if(currentTab == 1)
+            {
+                DisplayFishPage();
+            }
+            if(currentTab == 2)
+            {
+                DisplayDiaryPages();
+            }
         }
         
     }
@@ -442,14 +446,14 @@ public class PlayerManager : MonoBehaviour
         silhoutte.sprite = journalFishEntryies[currentPage].fishSilhouette;
         if (journalFishEntryies[currentPage].hasBeenCaught)
         {
-            cutiePatootie.SetEnabled(true);
+            cutiePatootie.enabled = true;
             cutiePatootie.sprite = journalFishEntryies[currentPage].fishCutiePatootie;
             fishName.text = journalFishEntryies[currentPage].fishName;
             fishSName.text = journalFishEntryies[currentPage].fishSName;
         }
         else
         {
-            cutiePatootie.SetEnabled(false);
+            cutiePatootie.enabled = false;
             fishName.text = "???";
             fishSName.text = "???";
         }
