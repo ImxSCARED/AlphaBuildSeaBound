@@ -28,7 +28,7 @@ public class Fishing : MonoBehaviour
     public float fishWrangleSpeed = 3f;
     [Range(0f, 10f)]
     public float fishMovingAwaySpeed = 1.5f;
-    public Vector2 fishingRange = new Vector2(30, 20);
+    public Vector2 fishingRange = new Vector2(40, 30);
     public void FishMinigame()
     {
         if (!currentlyFishing)
@@ -62,10 +62,10 @@ public class Fishing : MonoBehaviour
         {
             GameObject fish = fishingSpot.currentFish;
             GetComponent<PlayerManager>().AddFish(fish.GetComponent<Fish>().data);
+            GetComponent<PlayerManager>().RemoveFishFromTracked(fish);
 
             fishingSpot.currentFish = null;
             fish.SetActive(false);
-
         }
     }
 

@@ -16,7 +16,15 @@ public class Dock : MonoBehaviour
             dockTutorialShown = true;
             dockTutorial.SetActive(false);
 
-            other.GetComponent<PlayerManager>().Dock();
+            other.GetComponent<PlayerManager>().isAtDock = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            other.GetComponent<PlayerManager>().isAtDock = false;
         }
     }
 }

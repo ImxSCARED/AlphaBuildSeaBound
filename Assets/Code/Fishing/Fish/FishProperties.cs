@@ -1,6 +1,5 @@
 
 using UnityEngine;
-using UnityEngine.UI;
 
 [CreateAssetMenu(menuName = "Fish Properties")]
 public class FishProperties : ScriptableObject
@@ -9,7 +8,7 @@ public class FishProperties : ScriptableObject
     public struct FishData
     {
         public string name;
-        public Image fishImage;
+        public Sprite fishImage;
         public int value;
         public bool isQuestFish;
         public FishTier tier;

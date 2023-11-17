@@ -68,7 +68,7 @@ public class UpgradeManager : MonoBehaviour
     {
         foreach (Upgrade UP in m_Upgrades)
         {
-            //Checks if this is the correct upgrade in the list
+            //Checks if this is the correct upgrade in the list, then checks if it can be bought
             if (UP.Type == type)
             {
                 if (!UP.Locked)

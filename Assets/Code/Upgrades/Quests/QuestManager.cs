@@ -43,12 +43,15 @@ public class QuestManager : MonoBehaviour
     {
         foreach(Quest quest in m_Quests)
         {
-            if(quest.quests[quest.currentQuest].connectedFish.name == questFish.name)
+            if (quest.quests[quest.currentQuest].completed == false)
             {
-                quest.quests[quest.currentQuest].connectedUpgrade.Locked = false;
-                quest.quests[quest.currentQuest].completed = true;
-                m_PlayerManager.Money += quest.quests[quest.currentQuest].Value;
-                currentBountyFish = null;
+                if (quest.quests[quest.currentQuest].connectedFish.name == questFish.name)
+                {
+                    quest.quests[quest.currentQuest].connectedUpgrade.Locked = false;
+                    quest.quests[quest.currentQuest].completed = true;
+                    m_PlayerManager.Money += quest.quests[quest.currentQuest].Value;
+                    currentBountyFish = null;
+                }
             }
         }
     }
@@ -74,7 +77,10 @@ public class QuestManager : MonoBehaviour
                 switch (quest.quests[quest.currentQuest].Zone)
                 {
                     case PlayerManager.ZoneLevel.Zone1:
-                        currentBountyFish = Instantiate(questFish, Zone1Spawns[Random.Range(0, Zone1Spawns.Length - 1)].bountySpawn);
+                        //currentBountyFish = Instantiate(questFish, Zone1Spawns[Random.Range(0, Zone1Spawns.Length - 1)].bountySpawn);
+                        currentBountyFish = Instantiate(questFish, transform);
+                        currentBountyFish.transform.localPosition = new Vector3(0, 0, 0);
+                        currentBountyFish.transform.parent = null;
                         break;
                     case PlayerManager.ZoneLevel.Zone2:
                         //currentBountyFish = Instantiate(questFish, Zone2Spawns[Random.Range(0, Zone2Spawns.Length - 1)].bountySpawn);

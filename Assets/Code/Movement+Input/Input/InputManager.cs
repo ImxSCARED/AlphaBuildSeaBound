@@ -16,26 +16,26 @@ public class InputManager : MonoBehaviour
     Fishing m_playerFishing;
     [SerializeField]
     PlayerManager m_playerManager;
-    [SerializeField]
-    JournalMenu m_journalMenu;
-    [SerializeField]
-    PauseMenu m_pauseMenu;
 
     // --CODE VARIABLES--
     InputAction m_forwardAction;
     InputAction m_yawAction;
     InputAction m_lookAction;
     InputAction m_fishAction;
+    InputAction m_dock;
+    InputAction m_SailingJournalToggle;
+    InputAction m_SailingPauseToggle;
+
     InputAction m_MinigameAction;
     InputAction m_ExitFishingAction;
+
     InputAction m_SellFish;
     InputAction m_ExitDock;
-    InputAction JournalToggle;
-    InputAction Up;
-    InputAction Down;
-    InputAction Left;
-    InputAction Right;
-    InputAction PauseToggle;
+    InputAction m_UIJournalToggle;
+    InputAction m_UIPauseToggle;
+    InputAction BumperNav;
+    InputAction DpadNav;
+    
 
     // --UNITY METHODS--
     void Awake()
@@ -45,6 +45,9 @@ public class InputManager : MonoBehaviour
         m_yawAction = m_playerInput.actions["Yaw"];
         m_lookAction = m_playerInput.actions["Look"];
         m_fishAction = m_playerInput.actions["Fish"];
+        m_dock = m_playerInput.actions["Dock"];
+        m_SailingJournalToggle = m_playerInput.actions["SailingJournalToggle"];
+        m_SailingPauseToggle = m_playerInput.actions["SailingPauseToggle"];
 
         //Fishing
         m_MinigameAction = m_playerInput.actions["MinigameMover"];
@@ -54,13 +57,11 @@ public class InputManager : MonoBehaviour
         m_SellFish = m_playerInput.actions["SellFish"];
         m_ExitDock = m_playerInput.actions["ExitDock"];
 
-        JournalToggle = m_playerInput.actions["JournalToggle"];
-        Up = m_playerInput.actions["MenuUp"];
-        Down = m_playerInput.actions["MenuDown"];
-        Left = m_playerInput.actions["MenuLeft"];
-        Right = m_playerInput.actions["MenuRight"];
 
-        PauseToggle = m_playerInput.actions["PauseToggle"];
+        m_UIJournalToggle = m_playerInput.actions["UIJournalToggle"];
+        m_UIPauseToggle = m_playerInput.actions["UIPauseToggle"];
+        BumperNav = m_playerInput.actions["BumperNav"];
+        DpadNav = m_playerInput.actions["DpadNav"];
     }
 
     void Update()
@@ -88,6 +89,20 @@ public class InputManager : MonoBehaviour
             m_playerFishing.FishMinigame();
         }
 
+        if (m_dock.WasPerformedThisFrame())
+        {
+            m_playerManager.Dock();
+        }
+
+        if (m_SailingJournalToggle.WasPerformedThisFrame())
+        {
+            m_playerManager.JournalToggle();
+        }
+
+        if (m_SailingPauseToggle.WasPerformedThisFrame())
+        {
+            m_playerManager.PauseToggle();
+        }
         //Fishing
         if (m_MinigameAction.inProgress)
         {
@@ -110,44 +125,24 @@ public class InputManager : MonoBehaviour
             m_playerManager.ExitHub();
         }
 
-        if (JournalToggle.WasPerformedThisFrame())
+        if (m_UIJournalToggle.WasPerformedThisFrame())
         {
-            m_journalMenu.ToggleJournal();
+            m_playerManager.JournalToggle();
         }
 
-        if (Up.WasPerformedThisFrame())
+        if (m_UIPauseToggle.WasPerformedThisFrame())
         {
-            m_journalMenu.SectionUp();
+            m_playerManager.PauseToggle();
         }
 
-        if (Down.WasPerformedThisFrame())
+        if (BumperNav.WasPerformedThisFrame())
         {
-            m_journalMenu.SectionDown();
+            m_playerManager.BumperNavigate(BumperNav.ReadValue<float>());
         }
 
-        if (Right.WasPerformedThisFrame())
+        if (DpadNav.WasPerformedThisFrame())
         {
-            m_journalMenu.DiaryPageNext();
-        }
-
-        if (Left.WasPerformedThisFrame())
-        {
-            m_journalMenu.DiaryPagePrev();
-        }
-
-        if (Right.WasPerformedThisFrame())
-        {
-            m_journalMenu.FishPageNext();
-        }
-
-        if (Left.WasPerformedThisFrame())
-        {
-            m_journalMenu.FishPagePrev();
-        }
-
-        if (PauseToggle.WasPerformedThisFrame())
-        {
-            m_pauseMenu.PauseMenuToggle();
+            m_playerManager.DpadNavigate(DpadNav.ReadValue<float>());
         }
     }
 
