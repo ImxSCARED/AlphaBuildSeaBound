@@ -197,6 +197,8 @@ public class MovementController : MonoBehaviour
             }
             else if (Physics.CheckBox(transform.TransformPoint(m_collider.center) + movement, m_collider.size / 2, m_rigidbody.rotation, m_collisionLayerMask, QueryTriggerInteraction.Ignore))
             {
+                Debug.Log("Object hit");
+
                 m_velocity = -movement / Time.deltaTime;
                 m_rigidbody.MovePosition(m_rigidbody.position - movement);
             }
