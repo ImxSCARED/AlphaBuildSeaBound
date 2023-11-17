@@ -380,7 +380,7 @@ public class PlayerManager : MonoBehaviour
         {
             if (currentTab == 1)
             {
-                currentPage = Math.Clamp(currentPage + ((int)value * 2), 0, journalFishEntryies.Length - 1);
+                currentPage = Math.Clamp(currentPage + ((int)value), 0, journalFishEntryies.Length - 1);
                 DisplayFishPage();
             }
             else if (currentTab == 2)

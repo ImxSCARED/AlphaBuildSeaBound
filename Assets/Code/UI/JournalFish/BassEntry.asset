@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a56cc14ea949bf34daf5a9265a047919, type: 3}
   m_Name: BassEntry
   m_EditorClassIdentifier: 
-  fishSilhouette: {fileID: 0}
-  fishCutiePatootie: {fileID: 0}
+  fishSilhouette: {fileID: 21300000, guid: a91e21969b9018d4880f1c39184a1cf8, type: 3}
+  fishCutiePatootie: {fileID: 21300000, guid: fb0033d23f347b24ba0bd38ca4b4610c, type: 3}
   hasBeenCaught: 0
   fishName: Noodles
+  fishSName: 
   amountCaught: 0
   amountBeforeEntry1: 0
   journalEntry1: 

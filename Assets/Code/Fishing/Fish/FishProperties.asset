@@ -19,17 +19,17 @@ MonoBehaviour:
     dashDuration: 1
     fishies:
     - name: Noodles
-      fishImage: {fileID: 0}
+      fishImage: {fileID: 21300000, guid: be6b63b149c14e94e9999e323844edae, type: 3}
       value: 25
       isQuestFish: 0
       tier: 0
     - name: Bass
-      fishImage: {fileID: 0}
+      fishImage: {fileID: 21300000, guid: fb0033d23f347b24ba0bd38ca4b4610c, type: 3}
       value: 25
       isQuestFish: 0
       tier: 0
     - name: Duckie
-      fishImage: {fileID: 0}
+      fishImage: {fileID: 21300000, guid: c41fe8819d5a84c4b999b3a7cee7e714, type: 3}
       value: 25
       isQuestFish: 0
       tier: 0
@@ -40,22 +40,22 @@ MonoBehaviour:
     dashDuration: 2
     fishies:
     - name: Swordfish
-      fishImage: {fileID: 0}
+      fishImage: {fileID: 21300000, guid: 3328017fd3ba895488e959e4630ab89d, type: 3}
       value: 50
       isQuestFish: 0
       tier: 1
     - name: Siren
-      fishImage: {fileID: 0}
+      fishImage: {fileID: 21300000, guid: 3e0ae917ea6cee9489a38a751c682f81, type: 3}
       value: 50
       isQuestFish: 0
       tier: 1
     - name: Shark
-      fishImage: {fileID: 0}
+      fishImage: {fileID: 21300000, guid: 374ef2cd2f11a2e4abbe2a4541b730c4, type: 3}
       value: 50
       isQuestFish: 0
       tier: 1
     - name: Leviathan
-      fishImage: {fileID: 0}
+      fishImage: {fileID: 21300000, guid: 6a00507a361f3d541b39b9b14fca9157, type: 3}
       value: 50
       isQuestFish: 0
       tier: 1
@@ -66,12 +66,12 @@ MonoBehaviour:
     dashDuration: 2
     fishies:
     - name: Hippocampus
-      fishImage: {fileID: 0}
+      fishImage: {fileID: 21300000, guid: b250d5a4a640526408910b52f4495177, type: 3}
       value: 100
       isQuestFish: 0
       tier: 2
     - name: Kraken
-      fishImage: {fileID: 0}
+      fishImage: {fileID: 21300000, guid: 49d1834704203e845b0f6bac9ae0ce58, type: 3}
       value: 100
       isQuestFish: 0
       tier: 2
