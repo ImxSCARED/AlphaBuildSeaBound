@@ -22,7 +22,7 @@ public class SkyboxShaderTransition : MonoBehaviour
     float m_SunPosition = -0.4f;
     bool m_UpdateSunAllowed = false;
 
-     Transform m_SunLight; 
+   public Transform m_SunLight; 
 
     void Start()
     {

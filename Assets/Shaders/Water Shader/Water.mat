@@ -30,7 +30,7 @@ Material:
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 2950
   stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
@@ -117,11 +117,11 @@ Material:
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
-    - _Distance: 19.23
+    - _Distance: 36.87
     - _DstBlend: 0
     - _EnvironmentReflections: 1
     - _Float: 40
-    - _FoamAmount: 0.44
+    - _FoamAmount: 0
     - _FoamC: 2.36
     - _FoamCutoff: 2.77
     - _FoamScale: 23.34
@@ -129,27 +129,27 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _HighFreq: 2.12
+    - _HighFreq: 2.85
     - _Metallic: 0
-    - _NormalStrength: 0.6
+    - _NormalStrength: 1.53
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueControl: 0
-    - _QueueOffset: 0
+    - _QueueOffset: -50
     - _ReceiveShadows: 1
     - _RefractionScale: 1.71
     - _RefractionSpeed: 0.05
-    - _RefractionStrength: -1.55
+    - _RefractionStrength: 13.4
     - _STYLE: 0
     - _Smoothness: 0.8
     - _SmoothnessTextureChannel: 0
-    - _SolidColour: 0
+    - _SolidColour: 1
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Surface: 0
-    - _WaterBlend: 3.7
-    - _WaveAmp: 0.04
-    - _WaveSpeed: 2
+    - _WaterBlend: -0.63
+    - _WaveAmp: 0.44
+    - _WaveSpeed: 0.83
     - _WindQuality: 0
     - _WorkflowMode: 1
     - _YEA: 0
@@ -159,12 +159,12 @@ Material:
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _DeepColour: {r: 0, g: 0, b: 0, a: 0}
+    - _DeepColour: {r: 0, g: 0, b: 0.3018868, a: 0}
     - _DeepColour_1: {r: 0.07075472, g: 0.25312257, b: 0.2830189, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _FoamColour: {r: 0, g: 0, b: 0, a: 0}
     - _HueVariation: {r: 1, g: 0.5, b: 0, a: 0.1}
     - _RefractionScale: {r: 12, g: 10, b: 0, a: 0}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
-    - _SurfaceColour: {r: 0, g: 0, b: 0, a: 1}
+    - _SurfaceColour: {r: 0.10679958, g: 0.29077783, b: 0.3018868, a: 1}
   m_BuildTextureStacks: []
