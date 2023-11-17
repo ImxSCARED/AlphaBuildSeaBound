@@ -117,21 +117,21 @@ Material:
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
-    - _Distance: 36.87
+    - _Distance: 39.08
     - _DstBlend: 0
     - _EnvironmentReflections: 1
     - _Float: 40
     - _FoamAmount: 0
     - _FoamC: 2.36
     - _FoamCutoff: 2.77
-    - _FoamScale: 23.34
-    - _FoamSpeed: 0.1
+    - _FoamScale: 0
+    - _FoamSpeed: 0
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _HighFreq: 2.85
     - _Metallic: 0
-    - _NormalStrength: 1.53
+    - _NormalStrength: 4.9
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueControl: 0
@@ -148,7 +148,7 @@ Material:
     - _SrcBlend: 1
     - _Surface: 0
     - _WaterBlend: -0.63
-    - _WaveAmp: 0.44
+    - _WaveAmp: 0.49
     - _WaveSpeed: 0.83
     - _WindQuality: 0
     - _WorkflowMode: 1
@@ -159,7 +159,7 @@ Material:
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _DeepColour: {r: 0, g: 0, b: 0.3018868, a: 0}
+    - _DeepColour: {r: 0.014017452, g: 0.014017452, b: 0.4245283, a: 0}
     - _DeepColour_1: {r: 0.07075472, g: 0.25312257, b: 0.2830189, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _FoamColour: {r: 0, g: 0, b: 0, a: 0}
