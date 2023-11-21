@@ -1,3 +1,4 @@
+//Author: Jamie Wright
 using System;
 using System.Collections.Generic;
 using TMPro;
@@ -21,7 +22,7 @@ public class PlayerManager : MonoBehaviour
     [Header("FishSpawns")]
     [HideInInspector] public ZoneLevel currentZone = ZoneLevel.Zone1;
 
-    private float timer;
+    private float fishSpawnTimer;
     private List<GameObject> fishOnMap = new List<GameObject>();
     public GameObject smallFish;
     public Transform[] zone1FishSpawn;
@@ -55,16 +56,22 @@ public class PlayerManager : MonoBehaviour
     private int entryCounter = 0;
     private int currentPage = 0;
     private int currentTab = 0;
-    
+
+    //Map Page
+    [SerializeField] private TextMeshProUGUI IslandNameTxt;
+    [SerializeField] private TextMeshProUGUI IslandDescTxt;
+    [SerializeField] private IslandInfo[] islandInfos;
+    [SerializeField] private GameObject[] islandButtons;
+    //Fish Page
     [SerializeField] private Image silhoutte;
     [SerializeField] private Image cutiePatootie;
     [SerializeField] private TextMeshProUGUI fishName;
     [SerializeField] private TextMeshProUGUI fishSName;
     [SerializeField] private TextMeshProUGUI[] journalEntries;
-
+    //Diary Page
     [SerializeField] private TextMeshProUGUI diaryTxtBoxP1;
     [SerializeField] private TextMeshProUGUI diaryTxtBoxP2;
-
+    //Inventory
     [SerializeField] private TextMeshProUGUI[] fishCountTxt;
     private int[] fishCounters = new int[10];
 
@@ -95,8 +102,8 @@ public class PlayerManager : MonoBehaviour
     }
     private void Update()
     {
-        timer += Time.deltaTime;
-        if(timer > 30)
+        fishSpawnTimer += Time.deltaTime;
+        if(fishSpawnTimer > 30)
         {
             SpawnFish();
         }
@@ -107,7 +114,7 @@ public class PlayerManager : MonoBehaviour
     /// </summary>
     public void SpawnFish()
     {
-        timer = 0;
+        fishSpawnTimer = 0;
         foreach (GameObject fish in fishOnMap)
         {
             if (fish != null)
@@ -380,7 +387,12 @@ public class PlayerManager : MonoBehaviour
         }
         if (journalOpen)
         {
-            if (currentTab == 1)
+            if (currentTab == 0)
+            {
+                currentPage = Math.Clamp(currentPage, 0, islandButtons.Length - 1);
+                DisplaySelectedIsland();
+            }
+            else if (currentTab == 1)
             {
                 currentPage = Math.Clamp(currentPage + ((int)value), 0, journalFishEntryies.Length - 1);
                 DisplayFishPage();
@@ -414,6 +426,41 @@ public class PlayerManager : MonoBehaviour
         }
         
     }
+
+    //Map
+    private void DisplaySelectedIsland()
+    {
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(islandButtons[currentPage]);
+        if (islandInfos[currentPage].discovered)
+        {
+            IslandNameTxt.text = islandInfos[currentPage].islandName;
+            IslandDescTxt.text = islandInfos[currentPage].islandDesc;
+        }
+        else
+        {
+            IslandNameTxt.text = "???";
+            IslandDescTxt.text = "???";
+        }
+        
+
+    }
+
+    //Diary
+    public void DisplayDiary()
+    {
+        currentPage = 0;
+        diaryTxtBoxP1.gameObject.SetActive(!diaryTxtBoxP1.gameObject.activeSelf);
+        diaryTxtBoxP2.gameObject.SetActive(!diaryTxtBoxP2.gameObject.activeSelf);
+        DisplayDiaryPages();
+    }
+
+    private void DisplayDiaryPages()
+    {
+        diaryTxtBoxP1.text = diaryPages[currentPage];
+        diaryTxtBoxP2.text = diaryPages[currentPage + 1];
+    }
+
     public void AddDiaryEntry(string entry)
     {
         switch (entryCounter)
@@ -426,23 +473,10 @@ public class PlayerManager : MonoBehaviour
                 break;
         }
         entryCounter++;
-        
+
     }
 
-    private void DisplayDiaryPages()
-    {
-        diaryTxtBoxP1.text = diaryPages[currentPage];
-        diaryTxtBoxP2.text = diaryPages[currentPage + 1];
-    }
-
-    public void DisplayDiary()
-    {
-        currentPage = 0;
-        diaryTxtBoxP1.gameObject.SetActive(!diaryTxtBoxP1.gameObject.activeSelf);
-        diaryTxtBoxP2.gameObject.SetActive(!diaryTxtBoxP2.gameObject.activeSelf);
-        DisplayDiaryPages();
-    }
-
+    //FishInfo
     private void DisplayFishPage()
     {
         silhoutte.sprite = journalFishEntryies[currentPage].fishSilhouette;
@@ -471,5 +505,10 @@ public class PlayerManager : MonoBehaviour
         {
             journalEntries[2].text = journalFishEntryies[currentPage].journalEntry3;
         }
+    }
+
+    public void IslandNamePopup(string islandName)
+    {
+        
     }
 }
