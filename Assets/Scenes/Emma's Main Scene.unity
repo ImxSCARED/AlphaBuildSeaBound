@@ -21288,6 +21288,7 @@ MonoBehaviour:
   pause: {fileID: 0}
   settings: {fileID: 0}
   currentZone: 0
+  fishOnMap: []
   smallFish: {fileID: 0}
   zone1FishSpawn: []
   mediumFish: {fileID: 0}
@@ -24506,7 +24507,7 @@ MonoBehaviour:
   radius: 20
   widthRatio: 1
   heightRatio: 0.75
-  boundsLOD: 200
+  boundsLOD: 500
 --- !u!120 &4205174051534385041
 LineRenderer:
   m_ObjectHideFlags: 0
