@@ -95,8 +95,8 @@ GameObject:
   - component: {fileID: 8567896688563130944}
   - component: {fileID: 8567896688563130947}
   - component: {fileID: 8567896688563130946}
-  - component: {fileID: 8567896688563131005}
   - component: {fileID: 8567896688563131004}
+  - component: {fileID: 412967538479741034}
   m_Layer: 0
   m_Name: Large_Fish
   m_TagString: Fish
@@ -135,7 +135,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8567896688563131007}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -184,20 +184,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8567896688563131005
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8567896688563131007}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65fd9c3ebd4e861428e037736a57f288, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  properties: {fileID: 11400000, guid: ed152e9b0c5d35349bc5a0d8142f3555, type: 2}
-  tier: 2
 --- !u!54 &8567896688563131004
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -214,3 +200,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &412967538479741034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8567896688563131007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a97e26d91a5700e4db2eebd8bb833b22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  properties: {fileID: 11400000, guid: f264c759615b32045ac15d3259f15b1b, type: 2}
+  tier: 2
+  data:
+    name: 
+    fishImage: {fileID: 0}
+    value: 0
+    isQuestFish: 0
+    tier: 0
+  dontDestory: 0

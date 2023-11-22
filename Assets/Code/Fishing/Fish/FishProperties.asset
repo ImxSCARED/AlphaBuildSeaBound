@@ -1,0 +1,82 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37069dba286c34d46a7cff92a96e5f92, type: 3}
+  m_Name: FishProperties
+  m_EditorClassIdentifier: 
+  smallFish:
+    dashSpeed: 5
+    dashWhileWrangledSpeed: 3
+    timeBeforeDash: 3
+    dashDuration: 1
+    fishies:
+    - name: Noodles
+      fishImage: {fileID: 21300000, guid: be6b63b149c14e94e9999e323844edae, type: 3}
+      value: 25
+      isQuestFish: 0
+      tier: 0
+    - name: Bass
+      fishImage: {fileID: 21300000, guid: fb0033d23f347b24ba0bd38ca4b4610c, type: 3}
+      value: 25
+      isQuestFish: 0
+      tier: 0
+    - name: Duckie
+      fishImage: {fileID: 21300000, guid: c41fe8819d5a84c4b999b3a7cee7e714, type: 3}
+      value: 25
+      isQuestFish: 0
+      tier: 0
+  mediumFish:
+    dashSpeed: 5
+    dashWhileWrangledSpeed: 3
+    timeBeforeDash: 2
+    dashDuration: 2
+    fishies:
+    - name: Swordfish
+      fishImage: {fileID: 21300000, guid: 3328017fd3ba895488e959e4630ab89d, type: 3}
+      value: 50
+      isQuestFish: 0
+      tier: 1
+    - name: Siren
+      fishImage: {fileID: 21300000, guid: 3e0ae917ea6cee9489a38a751c682f81, type: 3}
+      value: 50
+      isQuestFish: 0
+      tier: 1
+    - name: Shark
+      fishImage: {fileID: 21300000, guid: 374ef2cd2f11a2e4abbe2a4541b730c4, type: 3}
+      value: 50
+      isQuestFish: 0
+      tier: 1
+    - name: Leviathan
+      fishImage: {fileID: 21300000, guid: 6a00507a361f3d541b39b9b14fca9157, type: 3}
+      value: 50
+      isQuestFish: 0
+      tier: 1
+  largeFish:
+    dashSpeed: 8
+    dashWhileWrangledSpeed: 5
+    timeBeforeDash: 2
+    dashDuration: 2
+    fishies:
+    - name: Hippocampus
+      fishImage: {fileID: 21300000, guid: b250d5a4a640526408910b52f4495177, type: 3}
+      value: 100
+      isQuestFish: 0
+      tier: 2
+    - name: Kraken
+      fishImage: {fileID: 21300000, guid: 49d1834704203e845b0f6bac9ae0ce58, type: 3}
+      value: 100
+      isQuestFish: 0
+      tier: 2
+    - name: Cthylla
+      fishImage: {fileID: 0}
+      value: 100
+      isQuestFish: 0
+      tier: 2
