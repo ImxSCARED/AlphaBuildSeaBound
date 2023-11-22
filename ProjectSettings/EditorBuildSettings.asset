@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/FINAL SCENES/Myles Beta/Myles_Beta_Scene.unity
     guid: bea293c8ac46dca47b6010a27d965f79
+  - enabled: 1
+    path: Assets/FINAL SCENES/Myles Beta/Myles_Loading.unity
+    guid: fb3f249ea8011ea4888c2d3e4ca2ae64
   m_configObjects: {}

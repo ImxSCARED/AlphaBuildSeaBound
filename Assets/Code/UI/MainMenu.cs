@@ -1,43 +1,56 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class MainMenu : MonoBehaviour
 {
-
+    
     [SerializeField] private GameObject settingsMenu;
+    [SerializeField] private GameObject settingsFirstButton;
     [SerializeField] private GameObject mainMenu;
+    [SerializeField] private GameObject MMFirstButton;
 
+    private CanvasGroup currentCG;
+    private bool fadeOutStart;
     private bool settingsMenuState = false;
     private bool levelMenuState = true;
 
-    private void Awake()
-    {
-    
-    }
 
-    public void OpenAudioMenu()
+    private void Update()
+    {
+        if(fadeOutStart)
+            currentCG.alpha = Mathf.MoveTowards(currentCG.alpha, 0, 2*Time.deltaTime);
+    }
+    public void OpenSettingsMenu()
     {
         settingsMenu.SetActive(true);
         settingsMenuState = true;
         mainMenu.SetActive(false);
-        FindObjectOfType<AudioManager>().PlaySound("MenuToggle");
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(settingsFirstButton);
+        FindObjectOfType<AudioManager>().PlaySound("MainSettings");
     }
 
-    public void CloseAudioMenu()
+    public void CloseSettingsMenu()
     {
         settingsMenu.SetActive(false);
         settingsMenuState = false;
         mainMenu.SetActive(true);
-        FindObjectOfType<AudioManager>().PlaySound("MenuToggle");
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(MMFirstButton);
+        FindObjectOfType<AudioManager>().PlaySound("MainBack");
         return;
     }
 
     public void StartLevel()
     {
-        FindObjectOfType<AudioManager>().PlaySound("MenuToggle");
-        SceneManager.LoadScene("Myles_Beta_Scene");
+        FindObjectOfType<AudioManager>().PlaySound("MainStart");
+        Invoke("Delay", 5);
+        
     }
 
     public void QuitGame()
@@ -46,6 +59,16 @@ public class MainMenu : MonoBehaviour
  
     }
 
+    public void FadeOut(CanvasGroup CG)
+    {
+        currentCG = CG;
+        fadeOutStart = true;
+    }
 
+    public void Delay()
+    {
+        Debug.Log("and his music was electric...");
+        SceneManager.LoadScene("Myles_Beta_Scene");
+    }
 }
 
