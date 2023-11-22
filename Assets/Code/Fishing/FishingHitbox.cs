@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 public class FishingHitbox : MonoBehaviour
 {
@@ -9,48 +10,111 @@ public class FishingHitbox : MonoBehaviour
     public GameObject currentFish = null;
     public Transform MinigameMover;
 
-    public Collider fishingHitboxCollider;
-
     private bool isCircleInZone;
     private Vector3 lastPosition;
-    public Transform[] leftPoints;
-    public Transform[] rightPoints;
+    [HideInInspector] public Vector3[] leftPoints;
+    [HideInInspector] public Vector3[] rightPoints;
 
     public float radius;
-    public float mainWidthRatio; // Change to account for rotation
-    public float mainHeightRatio; // Change to account for rotation
+    public float widthRatio; // Change to account for rotation
+    public float heightRatio; // Change to account for rotation
+    public int boundsLOD;
     private float ovalExtant;
+    private float rotationRad;
+
+    private GameObject[] fishInScene;
+    private GameObject closestFish;
 
     private void Start()
     {
-        radius = fishingHitboxCollider.bounds.extents.x;
+        //radius = fishingHitboxCollider.bounds.extents.x;
 
-        mainWidthRatio = 1;
-        mainHeightRatio = fishingHitboxCollider.bounds.extents.z/radius;
+        //widthRatio = 1;
+        //heightRatio = fishingHitboxCollider.bounds.extents.z/radius;
+
+        // Draw oval with line renderer
+        lineRenderer.positionCount = boundsLOD;
+
+        float widthRad = radius * widthRatio;
+        float heightRad = radius * heightRatio;
+
+        float twoPi = Mathf.PI * 2;
+
+        for (int i = 0; i < lineRenderer.positionCount; i++)
+        {
+            float theta = twoPi * ((i + 1) / (float)lineRenderer.positionCount);
+            float newX = widthRad * Mathf.Cos(theta);
+            float newZ = heightRad * Mathf.Sin(theta);
+
+            Vector3 newPos = new(newX, 0, newZ);
+
+            lineRenderer.SetPosition(i, newPos);
+        }
+
+        // Set left and right fish dash points
+        leftPoints = new Vector3[Mathf.CeilToInt(lineRenderer.positionCount / 2f)];
+        rightPoints = new Vector3[Mathf.CeilToInt(lineRenderer.positionCount / 2f)];
+
+        int leftPointsCounter = 0;
+        int rightPointsCounter = 0;
+
+        for (int i = 0; i < lineRenderer.positionCount; i++)
+        {
+            // Points start from the rightmost position, so we have to do some weird checks to make this work
+
+            if (i > (lineRenderer.positionCount * 0.25f) - 1 && i < (lineRenderer.positionCount * 0.75f) - 1)
+            {
+                // If the position is in the second or third quarter
+                leftPoints[leftPointsCounter] = lineRenderer.GetPosition(i) + transform.position;
+                leftPointsCounter++;
+            }
+            else if (i > (lineRenderer.positionCount * 0.75f) - 1 || i < (lineRenderer.positionCount * 0.25f) - 1)
+            {
+                // If the position is in the first or fourth quarter
+                rightPoints[rightPointsCounter] = lineRenderer.GetPosition(i) + transform.position;
+                rightPointsCounter++;
+            }
+            else
+            {
+                // If the position is directly in front of or behind the ship
+                leftPoints[leftPointsCounter] = lineRenderer.GetPosition(i) + transform.position;
+                rightPoints[rightPointsCounter] = lineRenderer.GetPosition(i) + transform.position;
+                leftPointsCounter++;
+                rightPointsCounter++;
+            }
+        }
+
+        fishInScene = GameObject.FindGameObjectsWithTag("Fish");
     }
     private void Update()
     {
+        // Set rotationRad for this frame
+        float rotationRad = Mathf.Deg2Rad * transform.rotation.eulerAngles.y;
+
+        // Check if closest fish is in the oval
+        FindClosestFish();
+
+        if (IsPointInOval(closestFish.transform.position))
+        {
+            currentFish = closestFish;
+            currentFish.GetComponent<Fish>().dontDestory = true;
+        }
+        else if (currentFish)
+        {
+            currentFish.GetComponent<Fish>().dontDestory = false;
+            currentFish = null;
+        }
+
         // Calculate oval extants - Emma
         Vector3 circlePos = MinigameMover.position - transform.position;
-        
-        float widthRatio = mainWidthRatio; // Change to account for rotation
-        float heightRatio = mainHeightRatio; // Change to account for rotation
-
-        float rotationRad = Mathf.Deg2Rad * transform.rotation.eulerAngles.y - 90;
-
-        float distanceFromMid = (Mathf.Pow((circlePos.x * Mathf.Cos(rotationRad)) - (circlePos.z * Mathf.Sin(rotationRad)), 2) / Mathf.Pow(widthRatio, 2)) +
-                                (Mathf.Pow((circlePos.x * Mathf.Sin(rotationRad)) + (circlePos.z * Mathf.Cos(rotationRad)), 2) / Mathf.Pow(heightRatio, 2));
 
         // If minigame mover leaves oval, move it back in - Emma
-        if (distanceFromMid > Mathf.Pow(radius, 2))
+        if (IsPointInOval(circlePos))
         {
             MinigameMover.position = lastPosition;
         }
 
         lastPosition = MinigameMover.position;
-
-        // Draw oval with line renderer
-        
     }
     private void OnTriggerEnter(Collider collision)
     {
@@ -69,9 +133,44 @@ public class FishingHitbox : MonoBehaviour
         }
     }
 
-    public bool PointIsInOval(Vector3 point)
+    private void FindClosestFish()
     {
-        return Vector3.Distance(point, transform.position) <= ovalExtant;
+        float closestFishDist = 0;
+        closestFish = null;
+
+        foreach (GameObject fish in fishInScene)
+        {
+            float distanceFromShip = (fish.transform.position - transform.position).magnitude;
+
+            if (closestFish)
+            {
+                if (distanceFromShip < closestFishDist)
+                {
+                    closestFishDist = distanceFromShip;
+                    closestFish = fish;
+                }
+            }
+            else
+            {
+                closestFishDist = distanceFromShip;
+                closestFish = fish;
+            }
+        }
+    }
+
+    public bool IsPointInOval(Vector3 point)
+    {
+        point -= transform.position;
+
+        float distanceSquared = (Mathf.Pow((point.x * Mathf.Cos(rotationRad)) - (point.z * Mathf.Sin(rotationRad)), 2) / Mathf.Pow(widthRatio, 2)) +
+                                (Mathf.Pow((point.x * Mathf.Sin(rotationRad)) + (point.z * Mathf.Cos(rotationRad)), 2) / Mathf.Pow(heightRatio, 2));
+
+        if (distanceSquared <= Mathf.Pow(radius, 2))
+        {
+            return true;
+        }
+
+        return false;
     }
 
     public bool MagnitudeIsInOval(float magnitude)

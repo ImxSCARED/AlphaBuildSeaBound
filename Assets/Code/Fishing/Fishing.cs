@@ -9,7 +9,6 @@ public class Fishing : MonoBehaviour
     [SerializeField] private FishingHitbox fishingSpot;
     public CaptureCircle minigameBackground;
     public GameObject minigameMover;
-    public Bounds bounds;
 
     //Fishing
     private Fish currentFish;
@@ -71,7 +70,6 @@ public class Fishing : MonoBehaviour
 
     private void Update()
     {
-        bounds = fishingSpot.GetComponent<MeshCollider>().bounds;
         if (currentlyFishing)
         {
             if (fishingSpot.currentFish == null)
