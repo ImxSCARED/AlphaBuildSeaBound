@@ -75,8 +75,7 @@ public class FishingHitbox : MonoBehaviour
         float closestFishDist = 0;
         closestFish = null;
 
-        // When we start spawning fish, use playerManager.fishOnMap instead of fishInScene
-        foreach (GameObject fish in fishInScene)
+        foreach (GameObject fish in playerManager.fishOnMap)
         {
             float distanceFromShip = (fish.transform.position - transform.position).magnitude;
 

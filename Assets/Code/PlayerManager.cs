@@ -22,7 +22,7 @@ public class PlayerManager : MonoBehaviour
     [HideInInspector] public ZoneLevel currentZone = ZoneLevel.Zone1;
 
     private float timer;
-    private List<GameObject> fishOnMap = new List<GameObject>();
+    public List<GameObject> fishOnMap = new List<GameObject>();
     public GameObject smallFish;
     public Transform[] zone1FishSpawn;
     public GameObject mediumFish;
