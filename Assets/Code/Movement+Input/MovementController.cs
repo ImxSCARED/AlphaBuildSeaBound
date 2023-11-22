@@ -65,6 +65,9 @@ public class MovementController : MonoBehaviour
     [Tooltip("Layers that the boat can collide with")]
     LayerMask m_collisionLayerMask;
 
+    // Wheel Spin Object Reference
+    [SerializeField] private GameObject wheels;
+
     // --CODE VARIABLES--
 
     // Velocity
@@ -130,6 +133,9 @@ public class MovementController : MonoBehaviour
         m_forwardImpulse = 0f;
         m_amountToRotate = Quaternion.identity;
         UnignoreChildColliders();
+
+        // Spin Wheel
+        wheels.transform.Rotate(m_velocity.magnitude * Time.deltaTime * 10, 0, 0f, Space.Self);
     }
 
     void OnDrawGizmos()
