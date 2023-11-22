@@ -79,11 +79,14 @@ public class MovementController : MonoBehaviour
     // Collision
     Collider[] m_childColliders;
 
+    //Upgrade
+    public float m_upgradeAmount = 1;
+
     void Start()
     {
-        if (m_maxVelocity < m_maxSpeed)
+        if (m_maxVelocity < m_maxSpeed * m_upgradeAmount)
         {
-            m_maxVelocity = m_maxSpeed;
+            m_maxVelocity = m_maxSpeed * m_upgradeAmount;
         }
 
         // Set m_childColliders
@@ -153,7 +156,7 @@ public class MovementController : MonoBehaviour
     {
         magnitude = Mathf.Clamp(magnitude, -1f, 1f);
 
-        float deltaEngine = magnitude * m_accelerationSpeed;
+        float deltaEngine = magnitude * m_accelerationSpeed * m_upgradeAmount;
         m_forwardImpulse = deltaEngine;
     }
 
@@ -242,9 +245,9 @@ public class MovementController : MonoBehaviour
 
         // Probably a nicer way to do this
         // If deltaEngine would increase velocity past the limit of m_engineForce * decimalEnginePower, then just set it to that limit
-        if (localVelocity.z + deltaEngine > m_maxSpeed)
+        if (localVelocity.z + deltaEngine > m_maxSpeed * m_upgradeAmount)
         {
-            localVelocity.z = m_maxSpeed;
+            localVelocity.z = m_maxSpeed * m_upgradeAmount;
         }
         //; Same as above, but minimum with 0
         else if (localVelocity.z + deltaEngine < 0)

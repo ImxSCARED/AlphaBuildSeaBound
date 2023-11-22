@@ -7,6 +7,8 @@ public class Fishing : MonoBehaviour
 {
     //Outside objects
     [SerializeField] private FishingHitbox fishingSpot;
+    [SerializeField] private AntiFishingHitbox cantFishSpot;
+    [SerializeField] private MovementController m_MovementController;
     public CaptureCircle minigameBackground;
     public GameObject minigameMover;
     public Bounds bounds;
@@ -35,19 +37,25 @@ public class Fishing : MonoBehaviour
         {
             if (fishingSpot.currentFish)
             {
-                if(currentHarpoons > 0)
+                if (!cantFishSpot.fishInZone)
                 {
-                    GetComponent<InputManager>().ChangeActionMap("Fishing");
-                    currentlyFishing = true;
-                    minigameMover.SetActive(true);
-                    minigameMover.transform.position = new Vector3(fishingSpot.currentFish.transform.position.x, minigameMover.transform.position.y, fishingSpot.currentFish.transform.position.z);
-                    currentFish = fishingSpot.currentFish.GetComponent<Fish>();
-                    currentHarpoons--;
+                    if (currentHarpoons > 0)
+                    {
+                        GetComponent<InputManager>().ChangeActionMap("Fishing");
+                        currentlyFishing = true;
+                        minigameMover.SetActive(true);
+                        minigameMover.transform.position = new Vector3(fishingSpot.currentFish.transform.position.x, minigameMover.transform.position.y, fishingSpot.currentFish.transform.position.z);
+                        currentFish = fishingSpot.currentFish.GetComponent<Fish>();
+                        currentHarpoons--;
+                        m_MovementController.StopMovement();
+
+                    }
+                    else
+                    {
+                        //Put in warning to player that they have no ammo
+                    }
                 }
-                else
-                {
-                    //Put in warning to player that they have no ammo
-                }
+                
             }
         }
     }
