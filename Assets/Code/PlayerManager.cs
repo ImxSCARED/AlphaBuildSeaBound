@@ -96,7 +96,7 @@ public class PlayerManager : MonoBehaviour
     private void Update()
     {
         timer += Time.deltaTime;
-        if(timer > 30)
+        if(timer > 120)
         {
             SpawnFish();
         }

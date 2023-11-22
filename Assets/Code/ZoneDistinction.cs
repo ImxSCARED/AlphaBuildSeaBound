@@ -9,6 +9,10 @@ public class ZoneDistinction : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
+        {
             other.GetComponent<PlayerManager>().currentZone = thisZone;
+            other.GetComponent<PlayerManager>().SpawnFish();
+        }
+            
     }
 }
