@@ -28,7 +28,11 @@ public class Fishing : MonoBehaviour
     public float fishWrangleSpeed = 3f;
     [Range(0f, 10f)]
     public float fishMovingAwaySpeed = 1.5f;
-    public Vector2 fishingRange = new Vector2(40, 30);
+    public Vector2 fishingRange = new Vector2(30, 20);
+
+    // Reference to tutorial manager
+    [SerializeField] private TutorialManager fishTutorial;
+
     public void FishMinigame()
     {
         if (!currentlyFishing)
@@ -37,6 +41,13 @@ public class Fishing : MonoBehaviour
             {
                 if(currentHarpoons > 0)
                 {
+                    // Tutorial reference
+                    if (fishTutorial.fishTutorialCompleted == false)
+                    {
+                        fishTutorial.StopFishTutorial();
+                        fishTutorial.StartFishingMinigameTutorial();
+                    }
+
                     GetComponent<InputManager>().ChangeActionMap("Fishing");
                     currentlyFishing = true;
                     minigameMover.SetActive(true);
@@ -58,14 +69,20 @@ public class Fishing : MonoBehaviour
         currentlyFishing = false;
         minigameMover.SetActive(false);
 
+        // Tutorial reference
+        fishTutorial.StopFishingMinigameTutorial();
+
         if (fishCaught)
         {
+            // Tutorial reference
+            fishTutorial.fishTutorialCompleted = true;
+
             GameObject fish = fishingSpot.currentFish;
             GetComponent<PlayerManager>().AddFish(fish.GetComponent<Fish>().data);
-            GetComponent<PlayerManager>().RemoveFishFromTracked(fish);
 
             fishingSpot.currentFish = null;
             fish.SetActive(false);
+
         }
     }
 

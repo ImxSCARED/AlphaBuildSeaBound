@@ -11,8 +11,6 @@ public class MovementController : MonoBehaviour
     [SerializeField]
     Rigidbody m_rigidbody;
     [SerializeField]
-    CameraController m_cameraController;
-    [SerializeField]
     Transform m_rotationAxis;
     [SerializeField]
     BoxCollider m_collider;
@@ -67,6 +65,9 @@ public class MovementController : MonoBehaviour
     [Tooltip("Layers that the boat can collide with")]
     LayerMask m_collisionLayerMask;
 
+    // Wheel Spin Object Reference
+    [SerializeField] private GameObject wheels;
+
     // --CODE VARIABLES--
 
     // Velocity
@@ -107,15 +108,10 @@ public class MovementController : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-        // Drawing this in update for smooth-looking movement, to match unity's interpolated gizmos
-        SeaboundMaths.DrawBox(m_rigidbody.transform.TransformPoint(m_collider.center), m_rigidbody.rotation, m_collider.size, Color.magenta);
-    }
-
     void FixedUpdate()
     {
         // Setup
+        IgnoreChildColliders();
 
         // Player speed
         ApplySpeedImpulse(m_forwardImpulse);
@@ -128,12 +124,26 @@ public class MovementController : MonoBehaviour
         ApplyFriction();
 
         // Apply velocity
-        RotateWithCollision(m_amountToRotate);
         MoveWithCollision(m_velocity * Time.deltaTime);
+        RotateWithCollision(m_amountToRotate);
+
+        //Debug.Log("Is colliding: " + Physics.CheckBox(m_rigidbody.transform.position, m_collider.size / 2, m_rigidbody.rotation, m_collisionLayerMask, QueryTriggerInteraction.Ignore));
 
         // Cleanup
         m_forwardImpulse = 0f;
         m_amountToRotate = Quaternion.identity;
+        UnignoreChildColliders();
+
+        // Spin Wheel
+        wheels.transform.Rotate(m_velocity.magnitude * Time.deltaTime * 10, 0, 0f, Space.Self);
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.matrix = transform.localToWorldMatrix;
+
+        Gizmos.color = Color.magenta;
+        Gizmos.DrawWireCube(m_collider.transform.position, m_collider.size);
     }
 
     /// <summary>
@@ -174,60 +184,47 @@ public class MovementController : MonoBehaviour
 
     public void MoveWithCollision(Vector3 movement)
     {
-        if (movement != Vector3.zero)
+        if (m_rigidbody.SweepTest(movement.normalized, out RaycastHit hitInfo, movement.magnitude, QueryTriggerInteraction.Ignore))
         {
-            if (Physics.BoxCast(transform.TransformPoint(m_collider.center), m_collider.size / 2, movement.normalized, out RaycastHit hitInfo,
-                                m_rigidbody.rotation, movement.magnitude, m_collisionLayerMask, QueryTriggerInteraction.Ignore))
-            {
-                Debug.Log("Object hit: " + hitInfo.transform.name);
+            Debug.Log("Object hit: " + hitInfo.transform.name);
 
-                // Get collision normal
-                Vector3 normal = hitInfo.normal;
+            // Get collision normal
+            Vector3 normal = hitInfo.normal;
 
-                // Find reflected movement vector and scale it by m_collisionMomentumRetained
-                Vector3 newMovement = movement - (2 * Vector3.Dot(movement, normal) * normal);
-                newMovement *= (m_collisionMomentumRetained / 100);
-                newMovement.y = 0;
+            // Find reflected movement vector and scale it by m_collisionMomentumRetained
+            Vector3 newMovement = movement - (2 * Vector3.Dot(movement, normal) * normal);
+            newMovement *= (m_collisionMomentumRetained / 100);
+            newMovement.y = 0;
 
-                // Multiplying velocity by delta time gets us movement.
-                // Therefore, dividing movement by delta time gets us velocity.
-                m_velocity = newMovement / Time.deltaTime;
+            // Multiplying velocity by delta time gets us movement.
+            // Therefore, dividing movement by delta time gets us velocity.
+            m_velocity = newMovement / Time.deltaTime;
 
-                m_rigidbody.MovePosition(m_rigidbody.position + newMovement);
-            }
-            else if (Physics.CheckBox(transform.TransformPoint(m_collider.center) + movement, m_collider.size / 2, m_rigidbody.rotation, m_collisionLayerMask, QueryTriggerInteraction.Ignore))
-            {
-                Debug.Log("Object hit");
+            // Get point hit, offset by the distance from a point to the centre of the ship
+            Vector3 pointHit = new Vector3(hitInfo.point.x, m_rigidbody.transform.position.y, hitInfo.point.z);
+            Vector3 directionToShip = m_rigidbody.transform.position - pointHit;
 
-                m_velocity = -movement / Time.deltaTime;
-                m_rigidbody.MovePosition(m_rigidbody.position - movement);
-            }
-            else
-            {
-                m_rigidbody.MovePosition(m_rigidbody.position + movement);
-            }
+
+            m_rigidbody.MovePosition(m_rigidbody.transform.position + newMovement);
+        }
+        else
+        {
+            m_rigidbody.MovePosition(m_rigidbody.transform.position + movement);
         }
     }
 
     public void RotateWithCollision(Quaternion rotation)
     {
-        if (rotation != Quaternion.identity)
+        Quaternion newRotation = m_rigidbody.rotation * rotation;
+
+        // If our rotation doesn't collide with anything...
+        if (!Physics.CheckBox(m_rigidbody.transform.position, m_collider.size / 2, newRotation, m_collisionLayerMask, QueryTriggerInteraction.Ignore))
         {
-            Quaternion newRotation = m_rigidbody.rotation * rotation;
+            //... then we should rotate
+            m_rigidbody.MoveRotation(newRotation);
 
-            // If our rotation doesn't collide with anything...
-            if (!Physics.CheckBox(transform.TransformPoint(m_collider.center), m_collider.size / 2, newRotation, m_collisionLayerMask, QueryTriggerInteraction.Ignore))
-            {
-                //... then we should rotate
-                m_rigidbody.MoveRotation(newRotation);
-
-                // Modify our velocity so it follows the rotation
-                float decimalPercentTVR = m_turningVelocityRetained / 100;
-                m_velocity = (transform.forward * m_velocity.magnitude * decimalPercentTVR) + (m_velocity * (1 - decimalPercentTVR));
-
-                // And finally move the camera with the ship
-                m_cameraController.AddRotation(rotation);
-            }
+            float decimalPercentTVR = m_turningVelocityRetained / 100;
+            m_velocity = (transform.forward * m_velocity.magnitude * decimalPercentTVR) + (m_velocity* (1 - decimalPercentTVR));
         }
     }
 
@@ -273,6 +270,22 @@ public class MovementController : MonoBehaviour
         localVelocity.x = SeaboundMaths.ApplyFriction(localVelocity.x, sideFriction);
 
         m_velocity = transform.TransformVector(localVelocity);
+    }
+
+    private void IgnoreChildColliders()
+    {
+        foreach (Collider col in m_childColliders)
+        {
+            col.enabled = false;
+        }
+    }
+
+    private void UnignoreChildColliders()
+    {
+        foreach (Collider col in m_childColliders)
+        {
+            col.enabled = true;
+        }
     }
 
     public void StopMovement()
