@@ -24483,6 +24483,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 212ce79090d25994090eeed257ed2c48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerManager: {fileID: 2087602604}
   lineRenderer: {fileID: 4205174051534385041}
   currentFish: {fileID: 0}
   MinigameMover: {fileID: 4205174053135354176}
@@ -24505,7 +24506,7 @@ MonoBehaviour:
   radius: 20
   widthRatio: 1
   heightRatio: 0.75
-  boundsLOD: 50
+  boundsLOD: 200
 --- !u!120 &4205174051534385041
 LineRenderer:
   m_ObjectHideFlags: 0

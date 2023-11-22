@@ -36,6 +36,8 @@ public class Fishing : MonoBehaviour
             {
                 if(currentHarpoons > 0)
                 {
+                    fishingSpot.ResetDashPoints();
+
                     GetComponent<InputManager>().ChangeActionMap("Fishing");
                     currentlyFishing = true;
                     minigameMover.SetActive(true);
