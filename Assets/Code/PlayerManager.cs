@@ -47,6 +47,7 @@ public class PlayerManager : MonoBehaviour
 
     [SerializeField] private UpgradeButton[] UpradgeUI;
     [SerializeField] private GameObject upgradesHolder;
+    private bool hubOpen = false;
 
     [Header("Journal")]
     public JournalFish[] journalFishEntryies;
