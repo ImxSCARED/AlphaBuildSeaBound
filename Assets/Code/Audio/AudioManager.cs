@@ -7,6 +7,19 @@ using System;
 [System.Serializable]
 public class AudioManager : MonoBehaviour
 {
+    //Place Script on Empty Object
+
+    // For Adding Audio Anywhere in any script use the commented scripts below
+
+    // for Sounds:
+    // AudioManager.instance.PlaySound("Name");;
+
+    // for Music:
+    // AudioManager.instance.PlayTrack("Name");;
+
+    // for Ambience:
+    // AudioManager.instance.PlayClip("Name");;
+
     public SoundMaster[] sounds;
     public MusicMaster[] tracks;
     public MusicMaster currentPlaying;
@@ -36,7 +49,7 @@ public class AudioManager : MonoBehaviour
             t.source.clip = t.track;
             t.source.volume = t.volume;
             t.source.loop = t.loop;
-            t.source.outputAudioMixerGroup = mixer.FindMatchingGroups("BGM")[0];
+            t.source.outputAudioMixerGroup = mixer.FindMatchingGroups("Music")[0];
         }
 
         foreach (AmbienceMaster c in clips)
@@ -54,16 +67,8 @@ public class AudioManager : MonoBehaviour
             s.source.clip = s.clip;
             s.source.volume = s.volume;
             s.source.pitch = s.pitch;
-            s.source.outputAudioMixerGroup = mixer.FindMatchingGroups("SFX")[0];
+            s.source.outputAudioMixerGroup = mixer.FindMatchingGroups("SoundFX")[0];
         }
-
-        // For Adding Audio Anywhere in any script use the commented scripts below
-        // for Sounds:
-        // FindObjectOfType<AudioManager>().PlaySound("NameOfAudioFile");
-        // for Music:
-        // FindObjectOfType<AudioManager>().PlayTrack("NameOfAudioFile");
-        // for Ambience:
-        // FindObjectOfType<AudioManager>().PlayClip("NameOfAudioFile");
 
     }
 

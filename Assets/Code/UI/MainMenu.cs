@@ -48,9 +48,8 @@ public class MainMenu : MonoBehaviour
 
     public void StartLevel()
     {
-        FindObjectOfType<AudioManager>().PlaySound("MainStart");
+        AudioManager.instance.PlaySound("MainStart");
         Invoke("Delay", 5);
-        
     }
 
     public void QuitGame()
