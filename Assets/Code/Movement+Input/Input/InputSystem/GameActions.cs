@@ -393,6 +393,17 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
                     ""action"": ""ExpandQuest"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b8541c16-633e-42fe-a900-a56308c2e219"",
+                    ""path"": ""<Keyboard>/l"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ExpandQuest"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },

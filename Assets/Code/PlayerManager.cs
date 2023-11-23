@@ -1,10 +1,12 @@
 //Author: Jamie Wright
 using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.PlayerLoop;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -22,15 +24,21 @@ public class PlayerManager : MonoBehaviour
 
     [Header("FishSpawns")]
     [HideInInspector] public ZoneLevel currentZone = ZoneLevel.Zone1;
+    [HideInInspector] public List<GameObject> fishOnMap = new List<GameObject>();
 
-    private float fishSpawnTimer;
-    private List<GameObject> fishOnMap = new List<GameObject>();
+    public int AmountOfFish;
+
+    [Serializable]
+    public class ZonicusSpawnicus
+    {
+        public Transform[] fishSpawns;
+    }
     public GameObject smallFish;
-    public Transform[] zone1FishSpawn;
+    public ZonicusSpawnicus[] zone1FishSpawns;
     public GameObject mediumFish;
-    public Transform[] zone2FishSpawn;
+    public ZonicusSpawnicus[] zone2FishSpawns;
     public GameObject largeFish;
-    public Transform[] zone3FishSpawn;
+    public ZonicusSpawnicus[] zone3FishSpawns;
 
     //UI
     [Header("Menu Button Identifiers")]
@@ -76,7 +84,10 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private Transform inventoryParent;
     [SerializeField] private GameObject fishIconPrefab;
     private int[] fishCounters = new int[10];
-
+    //HUD
+    [Header("HUD")]
+    [SerializeField] private Animator questTextAnim;
+    private bool questTextUp = false;
     [Header("Pause")]
     [SerializeField] private Canvas pause;
     private bool pauseOpen = false;
@@ -100,15 +111,8 @@ public class PlayerManager : MonoBehaviour
         diaryPages[4] = "5";
         diaryPages[5] = "6";
         SpawnFish();
+        
 
-    }
-    private void Update()
-    {
-        fishSpawnTimer += Time.deltaTime;
-        if(fishSpawnTimer > 30)
-        {
-            SpawnFish();
-        }
     }
     /// <summary>
     /// Every 5 minutes (or upon this being called when entering a new zone), despawns all fish unless its currently being fish, 
@@ -116,7 +120,6 @@ public class PlayerManager : MonoBehaviour
     /// </summary>
     public void SpawnFish()
     {
-        fishSpawnTimer = 0;
         foreach (GameObject fish in fishOnMap)
         {
             if (fish != null)
@@ -130,21 +133,21 @@ public class PlayerManager : MonoBehaviour
         switch (currentZone)
         {
             case ZoneLevel.Zone1:
-                foreach (Transform spot in zone1FishSpawn)
+                foreach (Transform spot in zone1FishSpawns[UnityEngine.Random.Range(0,zone1FishSpawns.Length)].fishSpawns)
                 {
                     fishOnMap.Add(Instantiate(smallFish, spot.position, smallFish.transform.rotation));
                 }
                 break;
 
             case ZoneLevel.Zone2:
-                foreach (Transform spot in zone2FishSpawn)
+                foreach (Transform spot in zone2FishSpawns[UnityEngine.Random.Range(0, zone1FishSpawns.Length)].fishSpawns)
                 {
                     fishOnMap.Add(Instantiate(mediumFish, spot.position, mediumFish.transform.rotation));
                 }
                 break;
 
             case ZoneLevel.Zone3:
-                foreach (Transform spot in zone3FishSpawn)
+                foreach (Transform spot in zone3FishSpawns[UnityEngine.Random.Range(0, zone1FishSpawns.Length)].fishSpawns)
                 {
                     fishOnMap.Add(Instantiate(largeFish, spot.position, largeFish.transform.rotation));
                 }
@@ -476,5 +479,32 @@ public class PlayerManager : MonoBehaviour
     public void IslandNamePopup(string islandName)
     {
         
+    }
+
+    public void PlayAnim()
+    {
+        if (questTextUp)
+        {
+            questTextAnim.SetFloat("Speed", -0.5f);
+            if (questTextAnim.GetCurrentAnimatorStateInfo(0).length < 1)
+                questTextAnim.Play("BaseLayer.QuestText", 0);
+            else
+                questTextAnim.Play("BaseLayer.QuestText", 0, 1);
+            questTextAnim.Play("BaseLayer.QuestText", 0);
+            questTextUp = false;
+        }
+        else
+        {
+            questTextAnim.SetFloat("Speed", 0.5f);
+            if (questTextAnim.GetCurrentAnimatorStateInfo(0).length < 0)
+                questTextAnim.Play("BaseLayer.QuestText", 0, 1);
+            else
+                questTextAnim.Play("BaseLayer.QuestText", 0);
+            questTextUp = true;
+        }
+    }
+    private void Update()
+    {
+        Debug.Log(questTextAnim.GetCurrentAnimatorStateInfo(0).length);
     }
 }
