@@ -14,7 +14,7 @@ public class PlayerManager : MonoBehaviour
 
     
     private UpgradeManager m_UpgradeManager;
-    private QuestManager m_QuestManager;
+    [HideInInspector]public QuestManager m_QuestManager;
     private MovementController m_MovementController;
     private bool isDocked = false;
     [HideInInspector] public bool isAtDock = false;

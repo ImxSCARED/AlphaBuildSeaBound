@@ -93,6 +93,19 @@ public class FishingHitbox : MonoBehaviour
                 closestFish = fish;
             }
         }
+
+        if (playerManager.m_QuestManager.currentBountyFish)
+        {
+            float distanceFromShip = (playerManager.m_QuestManager.currentBountyFish.transform.position - transform.position).magnitude;
+
+            if (closestFish)
+            {
+                if (distanceFromShip < closestFishDist)
+                {
+                    closestFish = playerManager.m_QuestManager.currentBountyFish;
+                }
+            }
+        }
     }
 
     /// <summary>

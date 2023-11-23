@@ -14,7 +14,7 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
-  m_Fog: 1
+  m_Fog: 0
   m_FogColor: {r: 0.4056604, g: 0.33486116, b: 0.33486116, a: 0.6392157}
   m_FogMode: 1
   m_FogDensity: 0.0085
@@ -21978,6 +21978,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 603262470}
+  - {fileID: 2076575501}
   m_Father: {fileID: 0}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -37042,29 +37043,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 212ce79090d25994090eeed257ed2c48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerManager: {fileID: 0}
+  lineRenderer: {fileID: 0}
   currentFish: {fileID: 0}
   MinigameMover: {fileID: 1618977152}
-  fishingHitboxCollider: {fileID: 1705047484}
   leftPoints:
-  - {fileID: 908659071}
-  - {fileID: 1905948213}
-  - {fileID: 1103591573}
-  - {fileID: 249274419}
-  - {fileID: 408679917}
-  - {fileID: 58094452}
-  - {fileID: 1321214568}
+  - {x: -1.9625335e-37, y: 6.84e-43, z: 0.000000013282311}
+  - {x: 0.0000001725028, y: 4.652929e+19, z: 6.82e-43}
+  - {x: 4.6e-44, y: 0.000043007727, z: -1.9625335e-37}
+  - {x: 6.84e-43, y: -1.9625407e-37, z: 6.84e-43}
+  - {x: 4.652943e+19, y: 6.82e-43, z: 6.9e-44}
+  - {x: 0.000002762547, y: -1.9625335e-37, z: 6.84e-43}
+  - {x: -1.9625407e-37, y: 6.84e-43, z: -1.9625479e-37}
   rightPoints:
-  - {fileID: 559347718}
-  - {fileID: 443562178}
-  - {fileID: 1797573632}
-  - {fileID: 2038615936}
-  - {fileID: 1684799189}
-  - {fileID: 532529938}
-  - {fileID: 1342719888}
+  - {x: -1.9625335e-37, y: 6.84e-43, z: 0.000000013282311}
+  - {x: 0.0000001725028, y: 4.652929e+19, z: 6.82e-43}
+  - {x: 4.6e-44, y: 0.000043007727, z: -1.9625335e-37}
+  - {x: 6.84e-43, y: -1.9625407e-37, z: 6.84e-43}
+  - {x: 4.652943e+19, y: 6.82e-43, z: 6.9e-44}
+  - {x: 0.000002762547, y: -1.9625335e-37, z: 6.84e-43}
+  - {x: -1.9625407e-37, y: 6.84e-43, z: -1.9625479e-37}
   radius: 15
-  mainWidthRatio: 0.75
-  mainHeightRatio: 0.4
-  fishTutorial: {fileID: 2022947086}
+  widthRatio: 0
+  heightRatio: 0
+  boundsLOD: 0
 --- !u!64 &1705047484
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -44007,11 +44009,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fishingSpot: {fileID: 1705047483}
+  cantFishSpot: {fileID: 0}
+  m_MovementController: {fileID: 0}
   minigameBackground: {fileID: 1542724387}
   minigameMover: {fileID: 1618977151}
-  bounds:
-    m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 0, y: 0, z: 0}
   currentlyFishing: 0
   currentHarpoons: 6
   ammoUpgrade: 0
@@ -44021,7 +44022,6 @@ MonoBehaviour:
   fishWrangleSpeed: 3
   fishMovingAwaySpeed: 1.5
   fishingRange: {x: 30, y: 20}
-  fishTutorial: {fileID: 2022947086}
 --- !u!114 &2022947077
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44084,6 +44084,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d374d341efa8fbe4386000adc5fac9a2, type: 2}
   - {fileID: 11400000, guid: e43e448f7ab5a7741a468f90d602f57c, type: 2}
   m_UpgradeData: {fileID: 11400000, guid: 20da83117f6b066489b1ac33f1f7348e, type: 2}
+  speedUpgradeVisuals: []
 --- !u!114 &2022947081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44099,6 +44100,7 @@ MonoBehaviour:
   Money: 0
   isAtDock: 0
   currentZone: 0
+  fishOnMap: []
   smallFish: {fileID: 4018665056978130658, guid: 3cf2311cd42074e458a75753bcdf8b72,
     type: 3}
   zone1FishSpawn:
@@ -44147,6 +44149,10 @@ MonoBehaviour:
   - {fileID: 156409785}
   - {fileID: 77285862}
   - {fileID: 1505458681}
+  IslandNameTxt: {fileID: 0}
+  IslandDescTxt: {fileID: 0}
+  islandInfos: []
+  islandButtons: []
   silhoutte: {fileID: 1376768390}
   cutiePatootie: {fileID: 137909007}
   fishName: {fileID: 894542194}
@@ -44157,17 +44163,8 @@ MonoBehaviour:
   - {fileID: 1770976573}
   diaryTxtBoxP1: {fileID: 931132746}
   diaryTxtBoxP2: {fileID: 30816889}
-  fishCountTxt:
-  - {fileID: 694403483}
-  - {fileID: 2129298434}
-  - {fileID: 780314321}
-  - {fileID: 1550774295}
-  - {fileID: 274864397}
-  - {fileID: 1247162129}
-  - {fileID: 457526152}
-  - {fileID: 826394649}
-  - {fileID: 355348909}
-  - {fileID: 508884484}
+  inventoryParent: {fileID: 0}
+  fishIconPrefab: {fileID: 0}
   pause: {fileID: 2004741665}
   settings: {fileID: 584295181}
 --- !u!114 &2022947082
@@ -44257,6 +44254,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 359
   wheels: {fileID: 1401708758}
+  m_upgradeAmount: 1
 --- !u!114 &2022947086
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45636,6 +45634,103 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 79018039754212435, guid: 9e92e91b77688104180895d07c62c917, type: 3}
+--- !u!1 &2076575500
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2076575501}
+  - component: {fileID: 2076575504}
+  - component: {fileID: 2076575503}
+  - component: {fileID: 2076575502}
+  m_Layer: 0
+  m_Name: Tutorial Trigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2076575501
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2076575500}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -1038.1}
+  m_LocalScale: {x: 55.16039, y: 46.961, z: 80.95137}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1008144976}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2076575502
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2076575500}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &2076575503
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2076575500}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &2076575504
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2076575500}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1001 &2078959901
 PrefabInstance:
   m_ObjectHideFlags: 0

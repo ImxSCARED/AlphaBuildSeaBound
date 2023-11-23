@@ -77,16 +77,10 @@ public class QuestManager : MonoBehaviour
                 switch (quest.quests[quest.currentQuest].Zone)
                 {
                     case PlayerManager.ZoneLevel.Zone1:
-                        //currentBountyFish = Instantiate(questFish, Zone1Spawns[Random.Range(0, Zone1Spawns.Length - 1)].bountySpawn);
-                        currentBountyFish = Instantiate(questFish, transform);
-                        currentBountyFish.transform.localPosition = new Vector3(0, 0, 0);
-                        currentBountyFish.transform.parent = null;
+                        currentBountyFish = Instantiate(questFish, Zone1Spawns[Random.Range(0, Zone1Spawns.Length - 1)].bountySpawn);
                         break;
                     case PlayerManager.ZoneLevel.Zone2:
-                        //currentBountyFish = Instantiate(questFish, Zone2Spawns[Random.Range(0, Zone2Spawns.Length - 1)].bountySpawn);
-                        currentBountyFish = Instantiate(questFish, transform);
-                        currentBountyFish.transform.localPosition = new Vector3(0, 0, 0);
-                        currentBountyFish.transform.parent = null;
+                        currentBountyFish = Instantiate(questFish, Zone2Spawns[Random.Range(0, Zone2Spawns.Length - 1)].bountySpawn);
                         break;
                     case PlayerManager.ZoneLevel.Zone3:
                         currentBountyFish = Instantiate(questFish, Zone3Spawns[Random.Range(0, Zone3Spawns.Length - 1)].bountySpawn);
