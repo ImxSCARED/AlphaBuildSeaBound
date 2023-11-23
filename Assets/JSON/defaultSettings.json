@@ -1,0 +1,16 @@
+{
+  "stringSettings": {
+  },
+  "floatSettings": {
+    "musicVolume": 50,
+    "ambientVolume":  50,
+    "soundEffectsVolume": 50,
+    "lookSensitivity":  50
+  },
+  "intSettings": {
+    "windowMode": 0
+  },
+  "boolSettings": {
+    "invertCamera": false
+  }
+}
