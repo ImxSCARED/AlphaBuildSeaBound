@@ -1,5 +1,6 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -12,6 +13,7 @@ using UnityEngine.Events;
 /// <summary>
 /// Collection of settings dictionaries
 /// </summary>
+[Serializable]
 public struct Settings
 {
     public Dictionary<string, string> stringSettings;
@@ -27,8 +29,10 @@ public class EmmaSettingsManager : MonoBehaviour
 {
     // EDITOR VARIABLES
     [SerializeField]
+    [Tooltip("Path at which to load and save settings (starts at a default location appropriate for target OS)")]
     string userSettingsFilePath;
     [SerializeField]
+    [Tooltip("Rate at which the boat slows in the horizontal directions (starts in Assets folder)")]
     string defaultSettingsFilePath;
 
     // CODE VARIABLES
@@ -48,6 +52,7 @@ public class EmmaSettingsManager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(this);
             LoadFile();
+            SaveFile();
         }
     }
     /// <summary>
@@ -158,6 +163,8 @@ public class EmmaSettingsManager : MonoBehaviour
         if (File.Exists(destination)) { file = File.OpenWrite(destination); }
         else
         {
+            // Create any needed folders before creating our file
+            Directory.CreateDirectory(Path.GetDirectoryName(destination));
             file = File.Create(destination);
         }
 
@@ -174,7 +181,7 @@ public class EmmaSettingsManager : MonoBehaviour
         string destination = Application.persistentDataPath + userSettingsFilePath;
         FileStream file;
 
-        if (File.Exists(destination)) { file = File.OpenWrite(destination); }
+        if (File.Exists(destination)) { file = File.OpenRead(destination); }
         else
         {
             Debug.LogWarning("Settings file not found, loading defaults.");
