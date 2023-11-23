@@ -60,15 +60,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Select",
-                    "type": "Button",
-                    "id": "c9ced0e5-40b5-4dda-9d52-f5515902bfce",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "SailingJournalToggle",
                     "type": "Button",
                     "id": "a686bb80-b179-4967-8685-14b6dcfe65bd",
@@ -90,6 +81,15 @@
                     "name": "Dock",
                     "type": "Button",
                     "id": "04ffb552-2109-456a-8154-a312baccb04f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ExpandQuest",
+                    "type": "Button",
+                    "id": "9f15b9c2-5311-4e60-b230-c13994b5f5d7",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -308,17 +308,6 @@
                 },
                 {
                     "name": "",
-                    "id": "ed89d896-67f2-4a47-b747-7dd791d9090c",
-                    "path": "<Gamepad>/buttonSouth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Select",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "22a0f812-1f91-4c7d-9570-6180da272bb1",
                     "path": "<Gamepad>/select",
                     "interactions": "",
@@ -358,6 +347,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Dock",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4fccedd7-8149-406e-be8d-3acf9eb77618",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Dock",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2a3e5c2e-e9ae-494d-900f-92432f07a272",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ExpandQuest",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -946,6 +957,17 @@
                     "name": "",
                     "id": "a8625b82-9212-48b2-b216-4aa979a14ebf",
                     "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ExitDock",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6535719e-a265-4324-b040-9e4985dd4100",
+                    "path": "<Keyboard>/tab",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

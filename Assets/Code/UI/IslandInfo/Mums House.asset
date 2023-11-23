@@ -9,11 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96d60f99a94f46641bf5a21e147b66e2, type: 3}
-  m_Name: UpgradeAmounts
+  m_Script: {fileID: 11500000, guid: f1f5e74f68c39ef49b4e93fe6bf3fd49, type: 3}
+  m_Name: Mums House
   m_EditorClassIdentifier: 
-  AmmoIncreaseAmount: 3
-  SpeedIncreaseAmount: 0.2
-  WrangleIncreaseAmount: 0.2
-  CatchingSizeIncreaseAmount: 0.2
-  RangeIncreaseAmount: 0.2
+  islandName: MumsHouse
+  islandDesc: "When your mom \nis here I get down to \nbuisness"
+  discovered: 0

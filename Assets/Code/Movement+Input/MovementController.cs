@@ -80,11 +80,14 @@ public class MovementController : MonoBehaviour
     // Collision
     Collider[] m_childColliders;
 
+    //Upgrade
+    public float m_upgradeAmount = 1;
+
     void Start()
     {
-        if (m_maxVelocity < m_maxSpeed)
+        if (m_maxVelocity < m_maxSpeed * m_upgradeAmount)
         {
-            m_maxVelocity = m_maxSpeed;
+            m_maxVelocity = m_maxSpeed * m_upgradeAmount;
         }
 
         // Set m_childColliders
@@ -111,7 +114,6 @@ public class MovementController : MonoBehaviour
     void FixedUpdate()
     {
         // Setup
-        IgnoreChildColliders();
 
         // Player speed
         ApplySpeedImpulse(m_forwardImpulse);
@@ -127,23 +129,20 @@ public class MovementController : MonoBehaviour
         MoveWithCollision(m_velocity * Time.deltaTime);
         RotateWithCollision(m_amountToRotate);
 
-        //Debug.Log("Is colliding: " + Physics.CheckBox(m_rigidbody.transform.position, m_collider.size / 2, m_rigidbody.rotation, m_collisionLayerMask, QueryTriggerInteraction.Ignore));
+        MoveWithCollision(m_velocity * Time.deltaTime);
 
         // Cleanup
         m_forwardImpulse = 0f;
         m_amountToRotate = Quaternion.identity;
-        UnignoreChildColliders();
+    }
+
+    private void Update()
+    {
+        // Drawing this in update for smooth-looking movement, to match unity's interpolated gizmos
+        SeaboundMaths.DrawBox(m_rigidbody.transform.TransformPoint(m_collider.center), m_rigidbody.rotation, m_collider.size, Color.magenta);
 
         // Spin Wheel
         wheels.transform.Rotate(m_velocity.magnitude * Time.deltaTime * 10, 0, 0f, Space.Self);
-    }
-
-    void OnDrawGizmos()
-    {
-        Gizmos.matrix = transform.localToWorldMatrix;
-
-        Gizmos.color = Color.magenta;
-        Gizmos.DrawWireCube(m_collider.transform.position, m_collider.size);
     }
 
     /// <summary>
@@ -163,7 +162,7 @@ public class MovementController : MonoBehaviour
     {
         magnitude = Mathf.Clamp(magnitude, -1f, 1f);
 
-        float deltaEngine = magnitude * m_accelerationSpeed;
+        float deltaEngine = magnitude * (m_accelerationSpeed * m_upgradeAmount);
         m_forwardImpulse = deltaEngine;
     }
 
@@ -177,14 +176,15 @@ public class MovementController : MonoBehaviour
     {
         magnitude = Mathf.Clamp(magnitude, -1f, 1f);
 
-        float deltaTurn = magnitude * m_turnSpeed;
+        float deltaTurn = magnitude * (m_turnSpeed * m_upgradeAmount);
 
         m_amountToRotate = Quaternion.Euler(0f, deltaTurn * Mathf.Deg2Rad, 0f);
     }
 
     public void MoveWithCollision(Vector3 movement)
     {
-        if (m_rigidbody.SweepTest(movement.normalized, out RaycastHit hitInfo, movement.magnitude, QueryTriggerInteraction.Ignore))
+        if (Physics.BoxCast(transform.TransformPoint(m_collider.center), m_collider.size / 2, movement.normalized, out RaycastHit hitInfo,
+            m_rigidbody.rotation, movement.magnitude, m_collisionLayerMask, QueryTriggerInteraction.Ignore))
         {
             Debug.Log("Object hit: " + hitInfo.transform.name);
 
@@ -205,11 +205,16 @@ public class MovementController : MonoBehaviour
             Vector3 directionToShip = m_rigidbody.transform.position - pointHit;
 
 
-            m_rigidbody.MovePosition(m_rigidbody.transform.position + newMovement);
+            m_rigidbody.MovePosition(m_rigidbody.position + newMovement);
+        }
+        else if (Physics.CheckBox(transform.TransformPoint(m_collider.center) + movement, m_collider.size / 2, m_rigidbody.rotation, m_collisionLayerMask, QueryTriggerInteraction.Ignore))
+        {
+            m_velocity = -movement / Time.deltaTime;
+            m_rigidbody.MovePosition(m_rigidbody.position - movement);
         }
         else
         {
-            m_rigidbody.MovePosition(m_rigidbody.transform.position + movement);
+            m_rigidbody.MovePosition(m_rigidbody.position + movement);
         }
     }
 
@@ -218,13 +223,13 @@ public class MovementController : MonoBehaviour
         Quaternion newRotation = m_rigidbody.rotation * rotation;
 
         // If our rotation doesn't collide with anything...
-        if (!Physics.CheckBox(m_rigidbody.transform.position, m_collider.size / 2, newRotation, m_collisionLayerMask, QueryTriggerInteraction.Ignore))
+        if (!Physics.CheckBox(transform.TransformPoint(m_collider.center), m_collider.size / 2, newRotation, m_collisionLayerMask, QueryTriggerInteraction.Ignore))
         {
             //... then we should rotate
             m_rigidbody.MoveRotation(newRotation);
 
             float decimalPercentTVR = m_turningVelocityRetained / 100;
-            m_velocity = (transform.forward * m_velocity.magnitude * decimalPercentTVR) + (m_velocity* (1 - decimalPercentTVR));
+            m_velocity = (transform.forward * m_velocity.magnitude * decimalPercentTVR) + (m_velocity * (1 - decimalPercentTVR));
         }
     }
 
@@ -239,9 +244,9 @@ public class MovementController : MonoBehaviour
 
         // Probably a nicer way to do this
         // If deltaEngine would increase velocity past the limit of m_engineForce * decimalEnginePower, then just set it to that limit
-        if (localVelocity.z + deltaEngine > m_maxSpeed)
+        if (localVelocity.z + deltaEngine > m_maxSpeed * m_upgradeAmount)
         {
-            localVelocity.z = m_maxSpeed;
+            localVelocity.z = m_maxSpeed * m_upgradeAmount;
         }
         //; Same as above, but minimum with 0
         else if (localVelocity.z + deltaEngine < 0)
@@ -270,22 +275,6 @@ public class MovementController : MonoBehaviour
         localVelocity.x = SeaboundMaths.ApplyFriction(localVelocity.x, sideFriction);
 
         m_velocity = transform.TransformVector(localVelocity);
-    }
-
-    private void IgnoreChildColliders()
-    {
-        foreach (Collider col in m_childColliders)
-        {
-            col.enabled = false;
-        }
-    }
-
-    private void UnignoreChildColliders()
-    {
-        foreach (Collider col in m_childColliders)
-        {
-            col.enabled = true;
-        }
     }
 
     public void StopMovement()

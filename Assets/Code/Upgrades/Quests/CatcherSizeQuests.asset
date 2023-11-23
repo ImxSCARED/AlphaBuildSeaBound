@@ -18,7 +18,7 @@ MonoBehaviour:
     Zone: 0
     connectedUpgrade: {fileID: 11400000, guid: 1c49995033d92d74fb0e29cf2ed9e093, type: 2}
     connectedFish:
-      name: Huh
+      name: 
       fishImage: {fileID: 0}
       value: 0
       isQuestFish: 1

@@ -18,6 +18,6 @@ MonoBehaviour:
   Level: 0
   PriceIncrease: 2
   MaxLevel: 1
-  Locked: 0
+  Locked: 1
   Type: 4
   assignedQuest: {fileID: 11400000, guid: e2c69f48baf55b545a16b38b3bc17cad, type: 2}
