@@ -23,7 +23,7 @@ public class MovementController : MonoBehaviour
     [Min(0f)]
     float m_maxSpeed;
     [SerializeField]
-    [Tooltip("Speed at which the engine's power increases per second in percentages (e.g. 200% per second)")]
+    [Tooltip("Speed at which the ship accelerates to max speed per second in percentages (e.g. 200% per second)")]
     [Min(0f)]
     float m_accelerationSpeed;
 
@@ -32,6 +32,15 @@ public class MovementController : MonoBehaviour
     [Tooltip("Rate at which ship turning accelerates per second in degrees. Increase to account for turn friction")]
     [Min(0f)]
     float m_turnSpeed;
+    [SerializeField]
+    [Tooltip("Speed at which the boat tilts while turning")]
+    [Min(0f)]
+    float m_tiltSpeed;
+    [SerializeField]
+    [Tooltip("Maximum angle in degrees that the boat can tilt while turning")]
+    [Min(0f)]
+    float m_maxTilt;
+
 
     [Header("Forces")]
 
@@ -76,6 +85,7 @@ public class MovementController : MonoBehaviour
 
     // Rotation
     Quaternion m_amountToRotate = Quaternion.identity;
+    float m_targetTilt;
 
     // Collision
     Collider[] m_childColliders;
@@ -143,6 +153,24 @@ public class MovementController : MonoBehaviour
 
         // Spin Wheel
         wheels.transform.Rotate(m_velocity.magnitude * Time.deltaTime * 10, 0, 0f, Space.Self);
+
+        // Tilt ship
+        if ((m_amountToRotate.eulerAngles.y % 360) - 180 > 0)
+        {
+            m_targetTilt = m_maxTilt * (m_velocity.magnitude / m_maxSpeed);
+        }
+        else if ((m_amountToRotate.eulerAngles.y % 360) - 180 < 0)
+        {
+            m_targetTilt = -m_maxTilt * (m_velocity.magnitude / m_maxSpeed);
+        }
+        else
+        {
+            m_targetTilt = 0;
+        }
+
+        Vector3 originalRot = transform.localRotation.eulerAngles;
+
+        transform.localRotation = Quaternion.Euler(0f, originalRot.y, Mathf.Lerp(originalRot.z, m_targetTilt, Time.deltaTime);
     }
 
     /// <summary>
@@ -183,53 +211,59 @@ public class MovementController : MonoBehaviour
 
     public void MoveWithCollision(Vector3 movement)
     {
-        if (Physics.BoxCast(transform.TransformPoint(m_collider.center), m_collider.size / 2, movement.normalized, out RaycastHit hitInfo,
-            m_rigidbody.rotation, movement.magnitude, m_collisionLayerMask, QueryTriggerInteraction.Ignore))
+        if (movement != Vector3.zero)
         {
-            Debug.Log("Object hit: " + hitInfo.transform.name);
+            if (Physics.BoxCast(transform.TransformPoint(m_collider.center), m_collider.size / 2, movement.normalized, out RaycastHit hitInfo,
+                m_rigidbody.rotation, movement.magnitude, m_collisionLayerMask, QueryTriggerInteraction.Ignore))
+            {
+                Debug.Log("Object hit: " + hitInfo.transform.name);
 
-            // Get collision normal
-            Vector3 normal = hitInfo.normal;
+                // Get collision normal
+                Vector3 normal = hitInfo.normal;
 
-            // Find reflected movement vector and scale it by m_collisionMomentumRetained
-            Vector3 newMovement = movement - (2 * Vector3.Dot(movement, normal) * normal);
-            newMovement *= (m_collisionMomentumRetained / 100);
-            newMovement.y = 0;
+                // Find reflected movement vector and scale it by m_collisionMomentumRetained
+                Vector3 newMovement = movement - (2 * Vector3.Dot(movement, normal) * normal);
+                newMovement *= (m_collisionMomentumRetained / 100);
+                newMovement.y = 0;
 
-            // Multiplying velocity by delta time gets us movement.
-            // Therefore, dividing movement by delta time gets us velocity.
-            m_velocity = newMovement / Time.deltaTime;
+                // Multiplying velocity by delta time gets us movement.
+                // Therefore, dividing movement by delta time gets us velocity.
+                m_velocity = newMovement / Time.deltaTime;
 
-            // Get point hit, offset by the distance from a point to the centre of the ship
-            Vector3 pointHit = new Vector3(hitInfo.point.x, m_rigidbody.transform.position.y, hitInfo.point.z);
-            Vector3 directionToShip = m_rigidbody.transform.position - pointHit;
+                // Get point hit, offset by the distance from a point to the centre of the ship
+                Vector3 pointHit = new Vector3(hitInfo.point.x, m_rigidbody.transform.position.y, hitInfo.point.z);
+                Vector3 directionToShip = m_rigidbody.transform.position - pointHit;
 
 
-            m_rigidbody.MovePosition(m_rigidbody.position + newMovement);
-        }
-        else if (Physics.CheckBox(transform.TransformPoint(m_collider.center) + movement, m_collider.size / 2, m_rigidbody.rotation, m_collisionLayerMask, QueryTriggerInteraction.Ignore))
-        {
-            m_velocity = -movement / Time.deltaTime;
-            m_rigidbody.MovePosition(m_rigidbody.position - movement);
-        }
-        else
-        {
-            m_rigidbody.MovePosition(m_rigidbody.position + movement);
+                m_rigidbody.MovePosition(m_rigidbody.position + newMovement);
+            }
+            else if (Physics.CheckBox(transform.TransformPoint(m_collider.center) + movement, m_collider.size / 2, m_rigidbody.rotation, m_collisionLayerMask, QueryTriggerInteraction.Ignore))
+            {
+                m_velocity = -movement / Time.deltaTime;
+                m_rigidbody.MovePosition(m_rigidbody.position - movement);
+            }
+            else
+            {
+                m_rigidbody.MovePosition(m_rigidbody.position + movement);
+            }
         }
     }
 
     public void RotateWithCollision(Quaternion rotation)
     {
-        Quaternion newRotation = m_rigidbody.rotation * rotation;
-
-        // If our rotation doesn't collide with anything...
-        if (!Physics.CheckBox(transform.TransformPoint(m_collider.center), m_collider.size / 2, newRotation, m_collisionLayerMask, QueryTriggerInteraction.Ignore))
+        if (rotation != Quaternion.identity)
         {
-            //... then we should rotate
-            m_rigidbody.MoveRotation(newRotation);
+            Quaternion newRotation = m_rigidbody.rotation * rotation;
 
-            float decimalPercentTVR = m_turningVelocityRetained / 100;
-            m_velocity = (transform.forward * m_velocity.magnitude * decimalPercentTVR) + (m_velocity * (1 - decimalPercentTVR));
+            // If our rotation doesn't collide with anything...
+            if (!Physics.CheckBox(transform.TransformPoint(m_collider.center), m_collider.size / 2, newRotation, m_collisionLayerMask, QueryTriggerInteraction.Ignore))
+            {
+                //... then we should rotate
+                m_rigidbody.MoveRotation(newRotation);
+
+                float decimalPercentTVR = m_turningVelocityRetained / 100;
+                m_velocity = (transform.forward * m_velocity.magnitude * decimalPercentTVR) + (m_velocity * (1 - decimalPercentTVR));
+            }
         }
     }
 
