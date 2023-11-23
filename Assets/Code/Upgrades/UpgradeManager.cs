@@ -13,7 +13,7 @@ public class UpgradeManager : MonoBehaviour
     [SerializeField] private CaptureCircle m_CaptureCircle;
     public Upgrade[] m_Upgrades;
     [SerializeField] private UpgradeData m_UpgradeData;
-
+    [SerializeField] private GameObject[] speedUpgradeVisuals;
     void Start()
     {
         if (instance == null)
@@ -41,19 +41,19 @@ public class UpgradeManager : MonoBehaviour
                 break;
 
             case UpgradeData.UpgradeType.SPEED:
-
+                m_MovementController.m_upgradeAmount = (m_UpgradeData.SpeedIncreaseAmount + 1) * UpgradeToAdd.Level;
                 break;
 
             case UpgradeData.UpgradeType.WRANGLE:
-                m_Fishing.wrangleUpgrade = m_UpgradeData.WrangleIncreaseAmount * UpgradeToAdd.Level;
+                m_Fishing.wrangleUpgrade = (m_UpgradeData.WrangleIncreaseAmount + 1) * UpgradeToAdd.Level;
                 break;
 
             case UpgradeData.UpgradeType.SIZE:
-                m_CaptureCircle.sizeUpgrade = m_UpgradeData.CatchingSizeIncreaseAmount * UpgradeToAdd.Level;
+                m_CaptureCircle.sizeUpgrade = (m_UpgradeData.CatchingSizeIncreaseAmount + 1) * UpgradeToAdd.Level;
                 m_CaptureCircle.ChangeCatcherSize();
                 break;
             case UpgradeData.UpgradeType.RANGE:
-                m_Fishing.rangeUpgrade = m_UpgradeData.RangeIncreaseAmount * UpgradeToAdd.Level;
+                m_Fishing.rangeUpgrade = (m_UpgradeData.RangeIncreaseAmount + 1) * UpgradeToAdd.Level;
                 m_Fishing.ChangeFishingRangeSize();
                 break;
         }
@@ -77,6 +77,7 @@ public class UpgradeManager : MonoBehaviour
                     {
                         if (m_PlayerManager.Money >= UP.Price)
                         {
+                            UpdateModel(UP);
                             m_PlayerManager.Money -= UP.Price;
                             UP.Level++;
                             UP.Locked = true;
@@ -94,6 +95,14 @@ public class UpgradeManager : MonoBehaviour
             }
         }
         return null;
+    }
+
+    private void UpdateModel(Upgrade curUpgrade)
+    {
+       if(curUpgrade.Type == UpgradeData.UpgradeType.SPEED)
+       {
+            speedUpgradeVisuals[curUpgrade.Level].SetActive(true);
+       }
     }
 
     /// <summary>

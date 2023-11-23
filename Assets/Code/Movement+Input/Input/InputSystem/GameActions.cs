@@ -82,15 +82,6 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Select"",
-                    ""type"": ""Button"",
-                    ""id"": ""c9ced0e5-40b5-4dda-9d52-f5515902bfce"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""SailingJournalToggle"",
                     ""type"": ""Button"",
                     ""id"": ""a686bb80-b179-4967-8685-14b6dcfe65bd"",
@@ -112,6 +103,15 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
                     ""name"": ""Dock"",
                     ""type"": ""Button"",
                     ""id"": ""04ffb552-2109-456a-8154-a312baccb04f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ExpandQuest"",
+                    ""type"": ""Button"",
+                    ""id"": ""9f15b9c2-5311-4e60-b230-c13994b5f5d7"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -330,17 +330,6 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""ed89d896-67f2-4a47-b747-7dd791d9090c"",
-                    ""path"": ""<Gamepad>/buttonSouth"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Select"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""22a0f812-1f91-4c7d-9570-6180da272bb1"",
                     ""path"": ""<Gamepad>/select"",
                     ""interactions"": """",
@@ -380,6 +369,28 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Dock"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4fccedd7-8149-406e-be8d-3acf9eb77618"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dock"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2a3e5c2e-e9ae-494d-900f-92432f07a272"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ExpandQuest"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -977,6 +988,17 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""6535719e-a265-4324-b040-9e4985dd4100"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ExitDock"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""161e97ed-1aaf-4e25-a63e-405cb4f07b65"",
                     ""path"": ""<Gamepad>/leftShoulder"",
                     ""interactions"": """",
@@ -1213,10 +1235,10 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
         m_Sailing_Accelerate = m_Sailing.FindAction("Accelerate", throwIfNotFound: true);
         m_Sailing_Zoom = m_Sailing.FindAction("Zoom", throwIfNotFound: true);
         m_Sailing_Fish = m_Sailing.FindAction("Fish", throwIfNotFound: true);
-        m_Sailing_Select = m_Sailing.FindAction("Select", throwIfNotFound: true);
         m_Sailing_SailingJournalToggle = m_Sailing.FindAction("SailingJournalToggle", throwIfNotFound: true);
         m_Sailing_SailingPauseToggle = m_Sailing.FindAction("SailingPauseToggle", throwIfNotFound: true);
         m_Sailing_Dock = m_Sailing.FindAction("Dock", throwIfNotFound: true);
+        m_Sailing_ExpandQuest = m_Sailing.FindAction("ExpandQuest", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1304,10 +1326,10 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_Sailing_Accelerate;
     private readonly InputAction m_Sailing_Zoom;
     private readonly InputAction m_Sailing_Fish;
-    private readonly InputAction m_Sailing_Select;
     private readonly InputAction m_Sailing_SailingJournalToggle;
     private readonly InputAction m_Sailing_SailingPauseToggle;
     private readonly InputAction m_Sailing_Dock;
+    private readonly InputAction m_Sailing_ExpandQuest;
     public struct SailingActions
     {
         private @GameActions m_Wrapper;
@@ -1318,10 +1340,10 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
         public InputAction @Accelerate => m_Wrapper.m_Sailing_Accelerate;
         public InputAction @Zoom => m_Wrapper.m_Sailing_Zoom;
         public InputAction @Fish => m_Wrapper.m_Sailing_Fish;
-        public InputAction @Select => m_Wrapper.m_Sailing_Select;
         public InputAction @SailingJournalToggle => m_Wrapper.m_Sailing_SailingJournalToggle;
         public InputAction @SailingPauseToggle => m_Wrapper.m_Sailing_SailingPauseToggle;
         public InputAction @Dock => m_Wrapper.m_Sailing_Dock;
+        public InputAction @ExpandQuest => m_Wrapper.m_Sailing_ExpandQuest;
         public InputActionMap Get() { return m_Wrapper.m_Sailing; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1349,9 +1371,6 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
                 @Fish.started -= m_Wrapper.m_SailingActionsCallbackInterface.OnFish;
                 @Fish.performed -= m_Wrapper.m_SailingActionsCallbackInterface.OnFish;
                 @Fish.canceled -= m_Wrapper.m_SailingActionsCallbackInterface.OnFish;
-                @Select.started -= m_Wrapper.m_SailingActionsCallbackInterface.OnSelect;
-                @Select.performed -= m_Wrapper.m_SailingActionsCallbackInterface.OnSelect;
-                @Select.canceled -= m_Wrapper.m_SailingActionsCallbackInterface.OnSelect;
                 @SailingJournalToggle.started -= m_Wrapper.m_SailingActionsCallbackInterface.OnSailingJournalToggle;
                 @SailingJournalToggle.performed -= m_Wrapper.m_SailingActionsCallbackInterface.OnSailingJournalToggle;
                 @SailingJournalToggle.canceled -= m_Wrapper.m_SailingActionsCallbackInterface.OnSailingJournalToggle;
@@ -1361,6 +1380,9 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
                 @Dock.started -= m_Wrapper.m_SailingActionsCallbackInterface.OnDock;
                 @Dock.performed -= m_Wrapper.m_SailingActionsCallbackInterface.OnDock;
                 @Dock.canceled -= m_Wrapper.m_SailingActionsCallbackInterface.OnDock;
+                @ExpandQuest.started -= m_Wrapper.m_SailingActionsCallbackInterface.OnExpandQuest;
+                @ExpandQuest.performed -= m_Wrapper.m_SailingActionsCallbackInterface.OnExpandQuest;
+                @ExpandQuest.canceled -= m_Wrapper.m_SailingActionsCallbackInterface.OnExpandQuest;
             }
             m_Wrapper.m_SailingActionsCallbackInterface = instance;
             if (instance != null)
@@ -1383,9 +1405,6 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
                 @Fish.started += instance.OnFish;
                 @Fish.performed += instance.OnFish;
                 @Fish.canceled += instance.OnFish;
-                @Select.started += instance.OnSelect;
-                @Select.performed += instance.OnSelect;
-                @Select.canceled += instance.OnSelect;
                 @SailingJournalToggle.started += instance.OnSailingJournalToggle;
                 @SailingJournalToggle.performed += instance.OnSailingJournalToggle;
                 @SailingJournalToggle.canceled += instance.OnSailingJournalToggle;
@@ -1395,6 +1414,9 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
                 @Dock.started += instance.OnDock;
                 @Dock.performed += instance.OnDock;
                 @Dock.canceled += instance.OnDock;
+                @ExpandQuest.started += instance.OnExpandQuest;
+                @ExpandQuest.performed += instance.OnExpandQuest;
+                @ExpandQuest.canceled += instance.OnExpandQuest;
             }
         }
     }
@@ -1637,10 +1659,10 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
         void OnAccelerate(InputAction.CallbackContext context);
         void OnZoom(InputAction.CallbackContext context);
         void OnFish(InputAction.CallbackContext context);
-        void OnSelect(InputAction.CallbackContext context);
         void OnSailingJournalToggle(InputAction.CallbackContext context);
         void OnSailingPauseToggle(InputAction.CallbackContext context);
         void OnDock(InputAction.CallbackContext context);
+        void OnExpandQuest(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

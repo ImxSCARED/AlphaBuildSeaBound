@@ -7,9 +7,10 @@ public class Fishing : MonoBehaviour
 {
     //Outside objects
     [SerializeField] private FishingHitbox fishingSpot;
+    [SerializeField] private AntiFishingHitbox cantFishSpot;
+    [SerializeField] private MovementController m_MovementController;
     public CaptureCircle minigameBackground;
     public GameObject minigameMover;
-    public Bounds bounds;
 
     //Fishing
     private Fish currentFish;
@@ -28,37 +29,32 @@ public class Fishing : MonoBehaviour
     public float fishWrangleSpeed = 3f;
     [Range(0f, 10f)]
     public float fishMovingAwaySpeed = 1.5f;
-    public Vector2 fishingRange = new Vector2(30, 20);
-
-    // Reference to tutorial manager
-    [SerializeField] private TutorialManager fishTutorial;
-
+    public Vector2 fishingRange = new Vector2(40, 30);
     public void FishMinigame()
     {
         if (!currentlyFishing)
         {
             if (fishingSpot.currentFish)
             {
-                if(currentHarpoons > 0)
+                if (!cantFishSpot.fishInZone)
                 {
-                    // Tutorial reference
-                    if (fishTutorial.fishTutorialCompleted == false)
+                    if (currentHarpoons > 0)
                     {
-                        fishTutorial.StopFishTutorial();
-                        fishTutorial.StartFishingMinigameTutorial();
-                    }
+                        GetComponent<InputManager>().ChangeActionMap("Fishing");
+                        currentlyFishing = true;
+                        minigameMover.SetActive(true);
+                        minigameMover.transform.position = new Vector3(fishingSpot.currentFish.transform.position.x, minigameMover.transform.position.y, fishingSpot.currentFish.transform.position.z);
+                        currentFish = fishingSpot.currentFish.GetComponent<Fish>();
+                        currentHarpoons--;
+                        m_MovementController.StopMovement();
 
-                    GetComponent<InputManager>().ChangeActionMap("Fishing");
-                    currentlyFishing = true;
-                    minigameMover.SetActive(true);
-                    minigameMover.transform.position = new Vector3(fishingSpot.currentFish.transform.position.x, minigameMover.transform.position.y, fishingSpot.currentFish.transform.position.z);
-                    currentFish = fishingSpot.currentFish.GetComponent<Fish>();
-                    currentHarpoons--;
+                    }
+                    else
+                    {
+                        //Put in warning to player that they have no ammo
+                    }
                 }
-                else
-                {
-                    //Put in warning to player that they have no ammo
-                }
+                
             }
         }
     }
@@ -69,26 +65,20 @@ public class Fishing : MonoBehaviour
         currentlyFishing = false;
         minigameMover.SetActive(false);
 
-        // Tutorial reference
-        fishTutorial.StopFishingMinigameTutorial();
-
         if (fishCaught)
         {
-            // Tutorial reference
-            fishTutorial.fishTutorialCompleted = true;
-
             GameObject fish = fishingSpot.currentFish;
             GetComponent<PlayerManager>().AddFish(fish.GetComponent<Fish>().data);
+            GetComponent<PlayerManager>().RemoveFishFromTracked(fish);
 
             fishingSpot.currentFish = null;
             fish.SetActive(false);
-
         }
     }
 
     private void Update()
     {
-        bounds = fishingSpot.GetComponent<MeshCollider>().bounds;
+        
         if (currentlyFishing)
         {
             if (fishingSpot.currentFish == null)

@@ -1,6 +1,8 @@
+//Author: Jamie Wright
 using System;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
@@ -21,8 +23,8 @@ public class PlayerManager : MonoBehaviour
     [Header("FishSpawns")]
     [HideInInspector] public ZoneLevel currentZone = ZoneLevel.Zone1;
 
-    private float timer;
-    private List<GameObject> fishOnMap = new List<GameObject>();
+    private float fishSpawnTimer;
+    public List<GameObject> fishOnMap = new List<GameObject>();
     public GameObject smallFish;
     public Transform[] zone1FishSpawn;
     public GameObject mediumFish;
@@ -55,17 +57,24 @@ public class PlayerManager : MonoBehaviour
     private int entryCounter = 0;
     private int currentPage = 0;
     private int currentTab = 0;
-    
+
+    //Map Page
+    [SerializeField] private TextMeshProUGUI IslandNameTxt;
+    [SerializeField] private TextMeshProUGUI IslandDescTxt;
+    [SerializeField] private IslandInfo[] islandInfos;
+    [SerializeField] private GameObject[] islandButtons;
+    //Fish Page
     [SerializeField] private Image silhoutte;
     [SerializeField] private Image cutiePatootie;
     [SerializeField] private TextMeshProUGUI fishName;
     [SerializeField] private TextMeshProUGUI fishSName;
     [SerializeField] private TextMeshProUGUI[] journalEntries;
-
+    //Diary Page
     [SerializeField] private TextMeshProUGUI diaryTxtBoxP1;
     [SerializeField] private TextMeshProUGUI diaryTxtBoxP2;
-
-    [SerializeField] private TextMeshProUGUI[] fishCountTxt;
+    //Inventory
+    [SerializeField] private Transform inventoryParent;
+    [SerializeField] private GameObject fishIconPrefab;
     private int[] fishCounters = new int[10];
 
     [Header("Pause")]
@@ -95,8 +104,8 @@ public class PlayerManager : MonoBehaviour
     }
     private void Update()
     {
-        timer += Time.deltaTime;
-        if(timer > 120)
+        fishSpawnTimer += Time.deltaTime;
+        if(fishSpawnTimer > 30)
         {
             SpawnFish();
         }
@@ -107,7 +116,7 @@ public class PlayerManager : MonoBehaviour
     /// </summary>
     public void SpawnFish()
     {
-        timer = 0;
+        fishSpawnTimer = 0;
         foreach (GameObject fish in fishOnMap)
         {
             if (fish != null)
@@ -155,53 +164,13 @@ public class PlayerManager : MonoBehaviour
             if (caughtFish.name == journalFishEntryies[i].fishName)
             {
                 journalFishEntryies[i].amountCaught++;
-                journalFishEntryies[i].hasBeenCaught = true;
+                if(!journalFishEntryies[i].hasBeenCaught)
+                    journalFishEntryies[i].hasBeenCaught = true;
             }
         }
-        switch (caughtFish.name)
-        {
-            case "Noodles":
-                fishCounters[0]++;
-                fishCountTxt[0].text = "x" + fishCounters[0].ToString();
-                break;
-            case "Bass":
-                fishCounters[1]++;
-                fishCountTxt[1].text = "x" + fishCounters[1].ToString();
-                break;
-            case "Duckie":
-                fishCounters[2]++;
-                fishCountTxt[2].text = "x" + fishCounters[2].ToString();
-                break;
-            case "Swordfish":
-                fishCounters[3]++;
-                fishCountTxt[3].text = "x" + fishCounters[3].ToString();
-                break;
-            case "Siren":
-                fishCounters[4]++;
-                fishCountTxt[4].text = "x" + fishCounters[4].ToString();
-                break;
-            case "Shark":
-                fishCounters[5]++;
-                fishCountTxt[5].text = "x" + fishCounters[5].ToString();
-                break;
-            case "Leviathan":
-                fishCounters[6]++;
-                fishCountTxt[6].text = "x" + fishCounters[6].ToString();
-                break;
-            case "Hippocampus":
-                fishCounters[7]++;
-                fishCountTxt[7].text = "x" + fishCounters[7].ToString();
-                break;
-            case "Kraken":
-                fishCounters[8]++;
-                fishCountTxt[8].text = "x" + fishCounters[8].ToString();
-                break;
-            case "Cthylla":
-                fishCounters[9]++;
-                fishCountTxt[9].text = "x" + fishCounters[9].ToString();
-                break;
-
-        }
+        //Spawns image in inventory and sets its sprite to the caught fishs icon
+        Instantiate(fishIconPrefab, inventoryParent).GetComponent<Image>().sprite = caughtFish.fishImage;
+        
     }
 
     public void SellFish()
@@ -226,10 +195,10 @@ public class PlayerManager : MonoBehaviour
             }
         }
         storedFish.Clear();
-        for (int i = 0; i < fishCounters.Length; i++)
+        //Clears all of inventories children
+        foreach (Transform child in inventoryParent)
         {
-            fishCountTxt[i].text = "x0";
-            fishCounters[i] = 0;
+            Destroy(child.gameObject);
         }
     }
     
@@ -380,7 +349,12 @@ public class PlayerManager : MonoBehaviour
         }
         if (journalOpen)
         {
-            if (currentTab == 1)
+            if (currentTab == 0)
+            {
+                currentPage = Math.Clamp(currentPage, 0, islandButtons.Length - 1);
+                DisplaySelectedIsland();
+            }
+            else if (currentTab == 1)
             {
                 currentPage = Math.Clamp(currentPage + ((int)value), 0, journalFishEntryies.Length - 1);
                 DisplayFishPage();
@@ -403,6 +377,10 @@ public class PlayerManager : MonoBehaviour
             currentTab = Math.Clamp(currentTab + (int)value, 0, journalTabs.Length - 1);
             journalTabs[currentTab].SetActive(true);
             currentPage = 0;
+            if(currentTab == 0)
+            {
+                DisplaySelectedIsland();
+            }
             if(currentTab == 1)
             {
                 DisplayFishPage();
@@ -414,6 +392,41 @@ public class PlayerManager : MonoBehaviour
         }
         
     }
+
+    //Map
+    private void DisplaySelectedIsland()
+    {
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(islandButtons[currentPage]);
+        if (islandInfos[currentPage].discovered)
+        {
+            IslandNameTxt.text = islandInfos[currentPage].islandName;
+            IslandDescTxt.text = islandInfos[currentPage].islandDesc;
+        }
+        else
+        {
+            IslandNameTxt.text = "???";
+            IslandDescTxt.text = "???";
+        }
+        
+
+    }
+
+    //Diary
+    public void DisplayDiary()
+    {
+        currentPage = 0;
+        diaryTxtBoxP1.gameObject.SetActive(!diaryTxtBoxP1.gameObject.activeSelf);
+        diaryTxtBoxP2.gameObject.SetActive(!diaryTxtBoxP2.gameObject.activeSelf);
+        DisplayDiaryPages();
+    }
+
+    private void DisplayDiaryPages()
+    {
+        diaryTxtBoxP1.text = diaryPages[currentPage];
+        diaryTxtBoxP2.text = diaryPages[currentPage + 1];
+    }
+
     public void AddDiaryEntry(string entry)
     {
         switch (entryCounter)
@@ -426,23 +439,10 @@ public class PlayerManager : MonoBehaviour
                 break;
         }
         entryCounter++;
-        
+
     }
 
-    private void DisplayDiaryPages()
-    {
-        diaryTxtBoxP1.text = diaryPages[currentPage];
-        diaryTxtBoxP2.text = diaryPages[currentPage + 1];
-    }
-
-    public void DisplayDiary()
-    {
-        currentPage = 0;
-        diaryTxtBoxP1.gameObject.SetActive(!diaryTxtBoxP1.gameObject.activeSelf);
-        diaryTxtBoxP2.gameObject.SetActive(!diaryTxtBoxP2.gameObject.activeSelf);
-        DisplayDiaryPages();
-    }
-
+    //FishInfo
     private void DisplayFishPage()
     {
         silhoutte.sprite = journalFishEntryies[currentPage].fishSilhouette;
@@ -471,5 +471,10 @@ public class PlayerManager : MonoBehaviour
         {
             journalEntries[2].text = journalFishEntryies[currentPage].journalEntry3;
         }
+    }
+
+    public void IslandNamePopup(string islandName)
+    {
+        
     }
 }
