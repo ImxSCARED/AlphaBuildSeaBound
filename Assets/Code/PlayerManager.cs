@@ -83,8 +83,10 @@ public class PlayerManager : MonoBehaviour
     private int[] fishCounters = new int[10];
 
     [Header("HUD")]
-    [SerializeField] private Animator newEntryAnim;
-    [SerializeField] private Animator questTextAnim;
+    [SerializeField] private Animation newEntryAnim;
+    [SerializeField] private Animation islandNearAnim;
+    [SerializeField] private TextMeshProUGUI islandNearTxt;
+    [SerializeField] private Animator questTextAnimator;
     public TextMeshProUGUI harpoonCount;
     private bool questTextUp = false;
     
@@ -442,7 +444,7 @@ public class PlayerManager : MonoBehaviour
                 break;
         }
         entryCounter++;
-        newEntryAnim.Play("BaseLayer.NotePickup", 0);
+        newEntryAnim.Play();
     }
 
     //FishInfo
@@ -476,23 +478,35 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    public void IslandNamePopup(string islandName)
+    public void IslandNamePopup(string islandName, string IslandDesc)
     {
-        
+        for(int i = 0; i < islandInfos.Length; i++)
+        {
+            if (!islandInfos[i].discovered)
+            {
+                if (islandInfos[i].name == islandName)
+                {
+                    islandInfos[i].discovered = true;
+                }
+            }
+            
+        }
+        islandNearTxt.text = islandName;
+        islandNearAnim.Play();
     }
 
     public void ExpandQuest()
     {
         if (questTextUp)
         {
-            questTextAnim.SetFloat("Speed", -1f);
-            questTextAnim.Play("BaseLayer.QuestText", 0, 1);
+            questTextAnimator.SetFloat("Speed", -1f);
+            questTextAnimator.Play("BaseLayer.QuestText", 0, 1);
             questTextUp = false;
         }
         else
         {
-            questTextAnim.SetFloat("Speed", 1f);
-            questTextAnim.Play("BaseLayer.QuestText", 0, 0);
+            questTextAnimator.SetFloat("Speed", 1f);
+            questTextAnimator.Play("BaseLayer.QuestText", 0, 0);
             questTextUp = true;
         }
     }

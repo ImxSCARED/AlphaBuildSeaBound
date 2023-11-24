@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8030124878680046657}
   - component: {fileID: 8030124878680046660}
   - component: {fileID: 8030124878680046659}
-  - component: {fileID: 8030124878680046658}
+  - component: {fileID: 1111564419888813128}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -77,23 +77,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!95 &8030124878680046658
-Animator:
-  serializedVersion: 4
+--- !u!111 &1111564419888813128
+Animation:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8030124878680046656}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 74a3f2f7a89e8ab4fb05e0c76fff99fc, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 8006fd5735f562d4485009c36d36ddbd, type: 2}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0

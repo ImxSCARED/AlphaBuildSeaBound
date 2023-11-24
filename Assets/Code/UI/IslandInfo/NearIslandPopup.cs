@@ -10,7 +10,7 @@ public class NearIslandPopup : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            other.GetComponent<PlayerManager>().IslandNamePopup(m_IslandInfo.islandName);
+            other.GetComponent<PlayerManager>().IslandNamePopup(m_IslandInfo.islandName, m_IslandInfo.islandDesc);
         }
     }
 }
