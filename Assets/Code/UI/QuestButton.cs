@@ -6,6 +6,7 @@ using UnityEngine;
 public class QuestButton : MonoBehaviour
 {
     public string Name;
+    [SerializeField] private QuestManager m_QuestManager;
     [SerializeField] private TextMeshProUGUI m_NameText;
     [SerializeField] private TextMeshProUGUI m_DescText;
     [SerializeField] private TextMeshProUGUI m_PriceText;
@@ -19,9 +20,9 @@ public class QuestButton : MonoBehaviour
 
     public void QuestSelected()
     {
-        if(QuestManager.instance.currentBountyFish == null)
+        if(m_QuestManager.currentBountyFish == null)
         {
-            QuestManager.instance.ChoosenQuest(Name);
+            m_QuestManager.ChoosenQuest(Name);
         }
     }
 }

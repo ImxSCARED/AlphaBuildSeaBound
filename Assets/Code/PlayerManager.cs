@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
@@ -22,15 +21,21 @@ public class PlayerManager : MonoBehaviour
 
     [Header("FishSpawns")]
     [HideInInspector] public ZoneLevel currentZone = ZoneLevel.Zone1;
+    [HideInInspector] public List<GameObject> fishOnMap = new List<GameObject>();
 
-    private float fishSpawnTimer;
-    public List<GameObject> fishOnMap = new List<GameObject>();
+    public int AmountOfFish;
+
+    [Serializable]
+    public class ZonicusSpawnicus
+    {
+        public Transform[] fishSpawns;
+    }
     public GameObject smallFish;
-    public Transform[] zone1FishSpawn;
+    public ZonicusSpawnicus[] zone1FishSpawns;
     public GameObject mediumFish;
-    public Transform[] zone2FishSpawn;
+    public ZonicusSpawnicus[] zone2FishSpawns;
     public GameObject largeFish;
-    public Transform[] zone3FishSpawn;
+    public ZonicusSpawnicus[] zone3FishSpawns;
 
     //UI
     [Header("Menu Button Identifiers")]
@@ -47,7 +52,6 @@ public class PlayerManager : MonoBehaviour
 
     [SerializeField] private UpgradeButton[] UpradgeUI;
     [SerializeField] private GameObject upgradesHolder;
-    private bool hubOpen = false;
 
     [Header("Journal")]
     public JournalFish[] journalFishEntryies;
@@ -78,6 +82,14 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private GameObject fishIconPrefab;
     private int[] fishCounters = new int[10];
 
+    [Header("HUD")]
+    [SerializeField] private Animation newEntryAnim;
+    [SerializeField] private Animation islandNearAnim;
+    [SerializeField] private TextMeshProUGUI islandNearTxt;
+    [SerializeField] private Animator questTextAnimator;
+    public TextMeshProUGUI harpoonCount;
+    private bool questTextUp = false;
+    
     [Header("Pause")]
     [SerializeField] private Canvas pause;
     private bool pauseOpen = false;
@@ -101,15 +113,8 @@ public class PlayerManager : MonoBehaviour
         diaryPages[4] = "5";
         diaryPages[5] = "6";
         SpawnFish();
+        
 
-    }
-    private void Update()
-    {
-        fishSpawnTimer += Time.deltaTime;
-        if(fishSpawnTimer > 30)
-        {
-            SpawnFish();
-        }
     }
     /// <summary>
     /// Every 5 minutes (or upon this being called when entering a new zone), despawns all fish unless its currently being fish, 
@@ -117,7 +122,6 @@ public class PlayerManager : MonoBehaviour
     /// </summary>
     public void SpawnFish()
     {
-        fishSpawnTimer = 0;
         foreach (GameObject fish in fishOnMap)
         {
             if (fish != null)
@@ -131,21 +135,21 @@ public class PlayerManager : MonoBehaviour
         switch (currentZone)
         {
             case ZoneLevel.Zone1:
-                foreach (Transform spot in zone1FishSpawn)
+                foreach (Transform spot in zone1FishSpawns[UnityEngine.Random.Range(0,zone1FishSpawns.Length)].fishSpawns)
                 {
                     fishOnMap.Add(Instantiate(smallFish, spot.position, smallFish.transform.rotation));
                 }
                 break;
 
             case ZoneLevel.Zone2:
-                foreach (Transform spot in zone2FishSpawn)
+                foreach (Transform spot in zone2FishSpawns[UnityEngine.Random.Range(0, zone1FishSpawns.Length)].fishSpawns)
                 {
                     fishOnMap.Add(Instantiate(mediumFish, spot.position, mediumFish.transform.rotation));
                 }
                 break;
 
             case ZoneLevel.Zone3:
-                foreach (Transform spot in zone3FishSpawn)
+                foreach (Transform spot in zone3FishSpawns[UnityEngine.Random.Range(0, zone1FishSpawns.Length)].fishSpawns)
                 {
                     fishOnMap.Add(Instantiate(largeFish, spot.position, largeFish.transform.rotation));
                 }
@@ -180,7 +184,7 @@ public class PlayerManager : MonoBehaviour
         {
             if (fish.isQuestFish)
             {
-                QuestManager.instance.ReturnQuestFish(fish);
+                m_QuestManager.ReturnQuestFish(fish);
             }
             switch (fish.tier)
             {
@@ -440,7 +444,7 @@ public class PlayerManager : MonoBehaviour
                 break;
         }
         entryCounter++;
-
+        newEntryAnim.Play();
     }
 
     //FishInfo
@@ -474,8 +478,36 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    public void IslandNamePopup(string islandName)
+    public void IslandNamePopup(string islandName, string IslandDesc)
     {
-        
+        for(int i = 0; i < islandInfos.Length; i++)
+        {
+            if (!islandInfos[i].discovered)
+            {
+                if (islandInfos[i].name == islandName)
+                {
+                    islandInfos[i].discovered = true;
+                }
+            }
+            
+        }
+        islandNearTxt.text = islandName;
+        islandNearAnim.Play();
+    }
+
+    public void ExpandQuest()
+    {
+        if (questTextUp)
+        {
+            questTextAnimator.SetFloat("Speed", -1f);
+            questTextAnimator.Play("BaseLayer.QuestText", 0, 1);
+            questTextUp = false;
+        }
+        else
+        {
+            questTextAnimator.SetFloat("Speed", 1f);
+            questTextAnimator.Play("BaseLayer.QuestText", 0, 0);
+            questTextUp = true;
+        }
     }
 }

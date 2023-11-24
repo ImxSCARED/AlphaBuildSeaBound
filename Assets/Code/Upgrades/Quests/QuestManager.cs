@@ -1,15 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Data;
+using TMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class QuestManager : MonoBehaviour
 {
-    static public QuestManager instance;
+    
     private PlayerManager m_PlayerManager;
 
-    public bool test;
+    [SerializeField] private TextMeshProUGUI currentQuestTitle;
+    [SerializeField] private TextMeshProUGUI currentQuestDesc;
 
     public Quest[] m_Quests;
     public GameObject questFish;
@@ -28,17 +26,6 @@ public class QuestManager : MonoBehaviour
     //refrence to current bounty fish
     public GameObject currentBountyFish;
 
-    
-    void Start()
-    {
-        if(instance == null)
-            instance = this;
-        else
-        {
-            Destroy(this);
-        }
-        m_PlayerManager = GetComponent<PlayerManager>();
-    }
     public void ReturnQuestFish(FishProperties.FishData questFish)
     {
         foreach(Quest quest in m_Quests)
@@ -51,6 +38,8 @@ public class QuestManager : MonoBehaviour
                     quest.quests[quest.currentQuest].completed = true;
                     m_PlayerManager.Money += quest.quests[quest.currentQuest].Value;
                     currentBountyFish = null;
+                    currentQuestTitle.text = "No current quest";
+                    currentQuestDesc.text = "Select a quest at the dock.";
                 }
             }
         }
@@ -71,27 +60,27 @@ public class QuestManager : MonoBehaviour
         //Spawns a fish if the quest isnt already completed
         if (!quest.quests[quest.currentQuest].completed)
         {
-            Debug.Log("isnt completed");
             if(quest.currentQuest != quest.quests.Length)
             {
                 switch (quest.quests[quest.currentQuest].Zone)
                 {
                     case PlayerManager.ZoneLevel.Zone1:
-                        //currentBountyFish = Instantiate(questFish, Zone1Spawns[Random.Range(0, Zone1Spawns.Length - 1)].bountySpawn);
-                        currentBountyFish = Instantiate(questFish, transform);
-                        currentBountyFish.transform.localPosition = new Vector3(0, 0, 0);
-                        currentBountyFish.transform.parent = null;
+                        int i = Random.Range(0, Zone1Spawns.Length - 1);
+                        currentBountyFish = Instantiate(questFish, Zone1Spawns[i].bountySpawn);
+                        currentQuestDesc.text = Zone1Spawns[i].desctription;
                         break;
                     case PlayerManager.ZoneLevel.Zone2:
-                        //currentBountyFish = Instantiate(questFish, Zone2Spawns[Random.Range(0, Zone2Spawns.Length - 1)].bountySpawn);
-                        currentBountyFish = Instantiate(questFish, transform);
-                        currentBountyFish.transform.localPosition = new Vector3(0, 0, 0);
-                        currentBountyFish.transform.parent = null;
+                        int j = Random.Range(0, Zone2Spawns.Length - 1);
+                        currentBountyFish = Instantiate(questFish, Zone2Spawns[j].bountySpawn);
+                        currentQuestDesc.text = Zone2Spawns[j].desctription;
                         break;
                     case PlayerManager.ZoneLevel.Zone3:
-                        currentBountyFish = Instantiate(questFish, Zone3Spawns[Random.Range(0, Zone3Spawns.Length - 1)].bountySpawn);
+                        int k = Random.Range(0, Zone3Spawns.Length - 1);
+                        currentBountyFish = Instantiate(questFish, Zone3Spawns[k].bountySpawn);
+                        currentQuestDesc.text = Zone3Spawns[k].desctription;
                         break;
                 }
+                currentQuestTitle.text = quest.Name;
                 //Sets the fishs tier and awaken it (Fish has OnAwake, assigns its fish data
                 currentBountyFish.GetComponent<Fish>().tier = (FishProperties.FishTier)quest.quests[quest.currentQuest].Zone;
                 currentBountyFish.SetActive(true);

@@ -9,6 +9,7 @@ public class Fishing : MonoBehaviour
     [SerializeField] private FishingHitbox fishingSpot;
     [SerializeField] private AntiFishingHitbox cantFishSpot;
     [SerializeField] private MovementController m_MovementController;
+    [SerializeField] private PlayerManager m_PlayerManager;
     public CaptureCircle minigameBackground;
     public GameObject minigameMover;
 
@@ -46,6 +47,7 @@ public class Fishing : MonoBehaviour
                         minigameMover.transform.position = new Vector3(fishingSpot.currentFish.transform.position.x, minigameMover.transform.position.y, fishingSpot.currentFish.transform.position.z);
                         currentFish = fishingSpot.currentFish.GetComponent<Fish>();
                         currentHarpoons--;
+                        m_PlayerManager.harpoonCount.text = "X " + currentHarpoons;
                         m_MovementController.StopMovement();
 
                     }
@@ -116,6 +118,7 @@ public class Fishing : MonoBehaviour
     public void ReplenishHarpoons()
     {
         currentHarpoons = maxHarpoons + ammoUpgrade;
+        m_PlayerManager.harpoonCount.text = "X " + currentHarpoons;
     }
 
     public void ChangeFishingRangeSize()

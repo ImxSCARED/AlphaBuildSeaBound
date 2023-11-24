@@ -25,6 +25,7 @@ public class InputManager : MonoBehaviour
     InputAction m_dock;
     InputAction m_SailingJournalToggle;
     InputAction m_SailingPauseToggle;
+    InputAction m_ExpandQuest;
 
     InputAction m_MinigameAction;
     InputAction m_ExitFishingAction;
@@ -48,6 +49,7 @@ public class InputManager : MonoBehaviour
         m_dock = m_playerInput.actions["Dock"];
         m_SailingJournalToggle = m_playerInput.actions["SailingJournalToggle"];
         m_SailingPauseToggle = m_playerInput.actions["SailingPauseToggle"];
+        m_ExpandQuest = m_playerInput.actions["ExpandQuest"];
 
         //Fishing
         m_MinigameAction = m_playerInput.actions["MinigameMover"];
@@ -103,6 +105,12 @@ public class InputManager : MonoBehaviour
         {
             m_playerManager.PauseToggle();
         }
+
+        if (m_ExpandQuest.WasPerformedThisFrame())
+        {
+            m_playerManager.ExpandQuest();
+        }
+
         //Fishing
         if (m_MinigameAction.inProgress)
         {
