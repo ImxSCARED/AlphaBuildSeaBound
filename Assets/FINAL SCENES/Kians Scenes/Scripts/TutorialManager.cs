@@ -40,7 +40,7 @@ public class TutorialManager : MonoBehaviour
         {
             if (startFishTutorial.alpha < fadeInTime)
             {
-                startFishTutorial.alpha += Time.deltaTime;
+                startFishTutorial.alpha += Time.deltaTime * 2f;
             }
             else
             {
@@ -50,7 +50,7 @@ public class TutorialManager : MonoBehaviour
 
         if (startFishTutorialFadeOut)
         {
-            startFishTutorial.alpha -= Time.deltaTime;
+            startFishTutorial.alpha -= Time.deltaTime * 2f;
             if (startFishTutorial.alpha <= 0)
             {
                 startFishTutorialFadeOut = false;
@@ -63,7 +63,7 @@ public class TutorialManager : MonoBehaviour
             {
                 if (fishingMinigameTutorial.alpha < fadeInTime)
                 {
-                    fishingMinigameTutorial.alpha += Time.deltaTime;
+                    fishingMinigameTutorial.alpha += Time.deltaTime * 2f;
                 }
                 else
                 {
@@ -74,7 +74,7 @@ public class TutorialManager : MonoBehaviour
             
         if (fishingMinigameTutorialFadeOut)
         {
-            fishingMinigameTutorial.alpha -= Time.deltaTime;
+            fishingMinigameTutorial.alpha -= Time.deltaTime * 2f;
             if (fishingMinigameTutorial.alpha <= 0)
             {
                 fishingMinigameTutorialFadeOut = false;
@@ -85,7 +85,7 @@ public class TutorialManager : MonoBehaviour
         {
             if (journalTutorial.alpha < fadeInTime)
             {
-                journalTutorial.alpha += Time.deltaTime;
+                journalTutorial.alpha += Time.deltaTime * 2f;
             }
             else
             {
@@ -95,7 +95,7 @@ public class TutorialManager : MonoBehaviour
 
         if (journalTutorialFadeOut)
         {
-            journalTutorial.alpha -= Time.deltaTime;
+            journalTutorial.alpha -= Time.deltaTime * 2f;
             if (journalTutorial.alpha <= 0)
             {
                 journalTutorialFadeOut = false;
@@ -108,7 +108,7 @@ public class TutorialManager : MonoBehaviour
             {
                 if (movementTutorial.alpha < fadeInTime)
                 {
-                    movementTutorial.alpha += Time.deltaTime;
+                    movementTutorial.alpha += Time.deltaTime * 2f;
                 }
                 else
                 {
@@ -120,25 +120,12 @@ public class TutorialManager : MonoBehaviour
 
         if (movementTutorialFadeOut)
         {
-            movementTutorial.alpha -= Time.deltaTime;
+            movementTutorial.alpha -= Time.deltaTime * 2f;
             if (movementTutorial.alpha <= 0)
             {
                 movementTutorialFadeOut = false;
             }
         }
-
-        if (Input.GetKeyDown(KeyCode.Backslash))
-        {
-            Debug.Log("Backslash works");
-            StopJournalTutorial();
-        }
-
-        if (Input.GetKeyDown(KeyCode.Backspace))
-        {
-            Debug.Log("Backspace works");
-            StartMovementTutorial();
-        }
-
     }
 
     public void StartFishTutorial()
