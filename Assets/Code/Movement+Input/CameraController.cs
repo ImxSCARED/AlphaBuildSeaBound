@@ -51,7 +51,7 @@ public class CameraController : MonoBehaviour
     public void RotateCamera(float x, float y)
     {
         float deltaX = (m_invertXControl ? -x : x) * m_movementSpeed * Time.deltaTime;
-        float deltaY = (m_invertYControl ? -y : y) * m_movementSpeed * Time.deltaTime;
+        float deltaY = (m_invertYControl ? y : -y) * m_movementSpeed * Time.deltaTime;
 
         m_XYRotation.x += deltaX;
         m_XYRotation.y += deltaY;
@@ -138,5 +138,15 @@ public class CameraController : MonoBehaviour
         Vector3 rotationEulers = rotation.eulerAngles;
 
         SetCameraRotation(rotationEulers.x, rotationEulers.y);
+    }
+
+    public void ToggleInvertCameraX()
+    {
+        m_invertXControl = !m_invertXControl;
+    }
+
+    public void ToggleInvertCameraY()
+    {
+        m_invertYControl = !m_invertYControl;
     }
 }
