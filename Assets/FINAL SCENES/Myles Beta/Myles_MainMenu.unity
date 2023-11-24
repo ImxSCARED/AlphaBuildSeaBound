@@ -1188,6 +1188,51 @@ MonoBehaviour:
             m_StringArgument: SettingToggle
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!1 &226182842
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 226182844}
+  - component: {fileID: 226182843}
+  m_Layer: 0
+  m_Name: SettingsManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &226182843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 226182842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07a0d55a26eb22b4f99defd0fec0dab9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  userSettingsFilePath: settings.json
+--- !u!4 &226182844
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 226182842}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 50.72781, y: -15.323877, z: -1280.4988}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &226189155
 GameObject:
   m_ObjectHideFlags: 0
@@ -6548,8 +6593,8 @@ MonoBehaviour:
   settingsFirstButton: {fileID: 522035293}
   mainMenu: {fileID: 32050253}
   MMFirstButton: {fileID: 1910587306}
-  creditsMenu: {fileID: 911126751}
-  creditsFirstButton: {fileID: 949637165}
+  creditsMenu: {fileID: 0}
+  creditsFirstButton: {fileID: 0}
 --- !u!4 &920790761
 Transform:
   m_ObjectHideFlags: 0
@@ -6580,6 +6625,12 @@ MonoBehaviour:
   audioMixer: {fileID: 24100000, guid: c1dcdbf8a9b43314781d78e9f1cc6309, type: 2}
   Holder: {fileID: 1242897663}
   resolutionDropdown: {fileID: 1214355337}
+  defaultMasterVolume: 0.5
+  defaultMusicVolume: 0.5
+  defaultSFXVolume: 0.5
+  defaultAmbienceVolume: 0.5
+  defaultFullscreen: 0
+  defaultResolution: 1920x1080
 --- !u!1 &926466862 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8584024400734238534, guid: b0a629095c6c90b4683bef80aaf88c33,

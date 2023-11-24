@@ -23,51 +23,31 @@ public struct Settings
 /// <summary>
 /// Manages storing, saving, and loading settings from binary file or from a default json file
 /// </summary>
-public class SerialisedSettingsManager : MonoBehaviour
+public class SerialisedSettingsManager
 {
-    // EDITOR VARIABLES
-    [SerializeField]
-    [Tooltip("Path at which to load and save settings (starts at a default location appropriate for target OS)")]
-    string userSettingsFilePath;
-
-    // CODE VARIABLES
-    public static SerialisedSettingsManager instance;
+    // Instance
+    private static SerialisedSettingsManager instance = null;
+    public static SerialisedSettingsManager Instance
+    {
+        get
+        {
+            if (instance == null)
+                instance = new SerialisedSettingsManager();
+            return instance;
+        }
+    }
 
     Settings settings;
 
-    void Start()
+    string userSettingsFilePath;
+
+    public SerialisedSettingsManager()
     {
-        if (instance)
-        {
-            Debug.Log("Settings manager already exists");
-            Destroy(this);
-        }
-        else
-        {
-            instance = this;
-            DontDestroyOnLoad(this);
+        settings.settingsString = new string[0];
+        userSettingsFilePath = "settings.json";
 
-            settings.settingsString = new string[0];
-
-            // Test
-            LoadFile();
-
-            SetSetting<bool>("testBool", true);
-            SetSetting<int>("testInt", 463);
-            SetSetting<float>("testFloat", 3.14159f);
-            SetSetting<string>("testString", "I'm a string?");
-
-            bool testBool;
-            if (!GetSetting<bool>("testBool", out testBool)) { testBool = false; }
-            int testInt;
-            if (!GetSetting<int>("testInt", out testInt)) { testInt = 10; }
-            float testFloat;
-            if (!GetSetting<float>("testFloat", out testFloat)) { testFloat = 0.01f; }
-            string testString;
-            if (!GetSetting<string>("testString", out testString)) { testString = "OH NO!!!!!"; }
-
-            SaveFile();
-        }
+        // Test
+        LoadFile();
     }
 
     /// <summary>
