@@ -153,24 +153,6 @@ public class MovementController : MonoBehaviour
 
         // Spin Wheel
         wheels.transform.Rotate(m_velocity.magnitude * Time.deltaTime * 10, 0, 0f, Space.Self);
-
-        // Tilt ship
-        if ((m_amountToRotate.eulerAngles.y % 360) - 180 > 0)
-        {
-            m_targetTilt = m_maxTilt * (m_velocity.magnitude / m_maxSpeed);
-        }
-        else if ((m_amountToRotate.eulerAngles.y % 360) - 180 < 0)
-        {
-            m_targetTilt = -m_maxTilt * (m_velocity.magnitude / m_maxSpeed);
-        }
-        else
-        {
-            m_targetTilt = 0;
-        }
-
-        Vector3 originalRot = transform.localRotation.eulerAngles;
-
-        transform.localRotation = Quaternion.Euler(0f, originalRot.y, Mathf.Lerp(originalRot.z, m_targetTilt, Time.deltaTime);
     }
 
     /// <summary>
