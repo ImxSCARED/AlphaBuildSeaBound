@@ -27,23 +27,27 @@ public class Myles_SettingsManager : MonoBehaviour
         Holder.soundFXSlider.onValueChanged.AddListener(SetSoundFXVolume);
         Holder.ambienceSlider.onValueChanged.AddListener(SetAmbienceVolume);
 
+        SetMasterVolume(Holder.masterSlider.value);
+        SetMusicVolume(Holder.musicSlider.value);
+        SetSoundFXVolume(Holder.soundFXSlider.value);
+        SetAmbienceVolume(Holder.ambienceSlider.value);
     }
 
     public void SetMasterVolume (float value)
     {
-        audioMixer.SetFloat("mixer_Master", Mathf.Log10(value) * 20);
+        audioMixer.SetFloat(mixer_Master, Mathf.Log10(value) *20);
     }
     public void SetMusicVolume(float value)
     {
-        audioMixer.SetFloat("mixer_Music", Mathf.Log10(value) * 20); 
+        audioMixer.SetFloat(mixer_Music, Mathf.Log10(value) * 20); 
     }
     public void SetSoundFXVolume(float value)
     {
-        audioMixer.SetFloat("mixer_SoundFX", Mathf.Log10(value) * 20);
+        audioMixer.SetFloat(mixer_SoundFX, Mathf.Log10(value) * 20);
     }
     public void SetAmbienceVolume(float value)
     {
-        audioMixer.SetFloat("mixer_Ambience", Mathf.Log10(value) * 20);
+        audioMixer.SetFloat(mixer_Ambience, Mathf.Log10(value) * 20);
     }
 
     // Fullscreen and Resolution
