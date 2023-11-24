@@ -25,7 +25,7 @@ AudioMixerGroupController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BGM
+  m_Name: Music
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: 8f5f092ed7a8fcb44b892d5d52abec2d
   m_Children: []
@@ -71,11 +71,11 @@ AudioMixerController:
   - guid: 32a333f21c9aef140a157994e0aee751
     name: Ambience
   - guid: 23b94b0255d517a459ef94331d2a3e15
-    name: BGM
+    name: Music
   - guid: 7fa5d8423a94f344aa7cbd5529c7905e
     name: Master
   - guid: ae95c999a443c444398df5e47c16f7c8
-    name: SFX
+    name: SoundFX
   m_AudioMixerGroupViews:
   - guids:
     - b6328d467ddf6c74fb5a7ba3b0c11389
@@ -132,7 +132,10 @@ AudioMixerSnapshotController:
   m_SnapshotID: 66d27e2d8a96f8d42b5d04e5d8dd6c32
   m_FloatValues:
     23b94b0255d517a459ef94331d2a3e15: 0
+    7fa5d8423a94f344aa7cbd5529c7905e: 0
+    32a333f21c9aef140a157994e0aee751: 0
     ee634ff7f1ccbb54caef9916869fce27: 1
+    ae95c999a443c444398df5e47c16f7c8: 0
     56fcfabcf4772ae4691e66157222fbfb: 0
   m_TransitionOverrides: {}
 --- !u!244 &1081091600940065019
@@ -169,7 +172,7 @@ AudioMixerGroupController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SFX
+  m_Name: SoundFX
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: cbd6aedf893435c4c91215b5d2cad688
   m_Children: []
