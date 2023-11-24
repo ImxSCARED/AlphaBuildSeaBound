@@ -91,7 +91,12 @@ public class MainMenu : MonoBehaviour
     public void Delay()
     {
         Debug.Log("and his music was electric...");
-        SceneManager.LoadScene("Myles_Beta_Scene");
+        SceneManager.LoadScene("Beta scene");
+    }
+
+    public void Awake()
+    {
+        AudioManager.instance.PlayTrack("Track_MainMenu");
     }
 }
 

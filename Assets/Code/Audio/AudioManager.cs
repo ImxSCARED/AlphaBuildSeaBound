@@ -16,6 +16,7 @@ public class AudioManager : MonoBehaviour
 
     // for Music:
     // AudioManager.instance.PlayTrack("Name");;
+    // AudioManager.instance.PlayNext("Name");;
 
     // for Ambience:
     // AudioManager.instance.PlayClip("Name");;
@@ -114,6 +115,7 @@ public class AudioManager : MonoBehaviour
         MusicMaster t = Array.Find(tracks, sound => sound.name == name);
         nextPlaying = t;
 
+        fadeTimeElapsed = 0;
         isFading = true;
 
         nextPlaying.source.Play();
@@ -138,14 +140,9 @@ public class AudioManager : MonoBehaviour
             currentPlaying = nextPlaying;
             nextPlaying = null;
 
-            fadeTime = 0;
             isFading = false;
         }
     }
 
-    private void Start()
-    {
-        PlayTrack("Track_MainMenu");
-    }
 }
 
