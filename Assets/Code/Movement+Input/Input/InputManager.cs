@@ -108,7 +108,7 @@ public class InputManager : MonoBehaviour
 
         if (m_ExpandQuest.WasPerformedThisFrame())
         {
-            m_playerManager.PlayAnim();
+            m_playerManager.ExpandQuest();
         }
 
         //Fishing

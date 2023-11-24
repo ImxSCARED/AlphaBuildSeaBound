@@ -1,12 +1,9 @@
 //Author: Jamie Wright
 using System;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.PlayerLoop;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -84,10 +81,13 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private Transform inventoryParent;
     [SerializeField] private GameObject fishIconPrefab;
     private int[] fishCounters = new int[10];
-    //HUD
+
     [Header("HUD")]
+    [SerializeField] private Animator newEntryAnim;
     [SerializeField] private Animator questTextAnim;
+    public TextMeshProUGUI harpoonCount;
     private bool questTextUp = false;
+    
     [Header("Pause")]
     [SerializeField] private Canvas pause;
     private bool pauseOpen = false;
@@ -182,7 +182,7 @@ public class PlayerManager : MonoBehaviour
         {
             if (fish.isQuestFish)
             {
-                QuestManager.instance.ReturnQuestFish(fish);
+                m_QuestManager.ReturnQuestFish(fish);
             }
             switch (fish.tier)
             {
@@ -442,7 +442,7 @@ public class PlayerManager : MonoBehaviour
                 break;
         }
         entryCounter++;
-
+        newEntryAnim.Play("BaseLayer.NotePickup", 0);
     }
 
     //FishInfo
@@ -481,30 +481,19 @@ public class PlayerManager : MonoBehaviour
         
     }
 
-    public void PlayAnim()
+    public void ExpandQuest()
     {
         if (questTextUp)
         {
-            questTextAnim.SetFloat("Speed", -0.5f);
-            if (questTextAnim.GetCurrentAnimatorStateInfo(0).length < 1)
-                questTextAnim.Play("BaseLayer.QuestText", 0);
-            else
-                questTextAnim.Play("BaseLayer.QuestText", 0, 1);
-            questTextAnim.Play("BaseLayer.QuestText", 0);
+            questTextAnim.SetFloat("Speed", -1f);
+            questTextAnim.Play("BaseLayer.QuestText", 0, 1);
             questTextUp = false;
         }
         else
         {
-            questTextAnim.SetFloat("Speed", 0.5f);
-            if (questTextAnim.GetCurrentAnimatorStateInfo(0).length < 0)
-                questTextAnim.Play("BaseLayer.QuestText", 0, 1);
-            else
-                questTextAnim.Play("BaseLayer.QuestText", 0);
+            questTextAnim.SetFloat("Speed", 1f);
+            questTextAnim.Play("BaseLayer.QuestText", 0, 0);
             questTextUp = true;
         }
-    }
-    private void Update()
-    {
-        Debug.Log(questTextAnim.GetCurrentAnimatorStateInfo(0).length);
     }
 }

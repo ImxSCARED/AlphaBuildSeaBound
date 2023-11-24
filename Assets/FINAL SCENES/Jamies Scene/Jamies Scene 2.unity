@@ -4992,6 +4992,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: CatcherQuests
+  m_QuestManager: {fileID: 2022947077}
   m_NameText: {fileID: 1376926412}
   m_DescText: {fileID: 691586127}
   m_PriceText: {fileID: 128972196}
@@ -5240,6 +5241,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: MovementQuests
+  m_QuestManager: {fileID: 2022947077}
   m_NameText: {fileID: 1878055800}
   m_DescText: {fileID: 968373418}
   m_PriceText: {fileID: 1692622198}
@@ -6840,7 +6842,7 @@ PrefabInstance:
     - target: {fileID: 8030124878680046657, guid: dac42fe44f1b5e247a6b65710883c773,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -433.80383
+      value: -649
       objectReference: {fileID: 0}
     - target: {fileID: 8030124878680046657, guid: dac42fe44f1b5e247a6b65710883c773,
         type: 3}
@@ -12557,6 +12559,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: WrangleQuests
+  m_QuestManager: {fileID: 2022947077}
   m_NameText: {fileID: 1284043278}
   m_DescText: {fileID: 712251388}
   m_PriceText: {fileID: 1854300181}
@@ -18638,6 +18641,41 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1562088318}
     m_Modifications:
+    - target: {fileID: 197041880888391588, guid: 308ed486bb269604bbcba076d8669bc2,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -90.999954
+      objectReference: {fileID: 0}
+    - target: {fileID: 197041880888391588, guid: 308ed486bb269604bbcba076d8669bc2,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 161
+      objectReference: {fileID: 0}
+    - target: {fileID: 993310951167833471, guid: 308ed486bb269604bbcba076d8669bc2,
+        type: 3}
+      propertyPath: m_text
+      value: X 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1187126571899659328, guid: 308ed486bb269604bbcba076d8669bc2,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 359.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1187126571899659328, guid: 308ed486bb269604bbcba076d8669bc2,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.2477
+      objectReference: {fileID: 0}
+    - target: {fileID: 1200061370481190257, guid: 308ed486bb269604bbcba076d8669bc2,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -131
+      objectReference: {fileID: 0}
+    - target: {fileID: 1200061370481190257, guid: 308ed486bb269604bbcba076d8669bc2,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 161
+      objectReference: {fileID: 0}
     - target: {fileID: 2284469231625042093, guid: 308ed486bb269604bbcba076d8669bc2,
         type: 3}
       propertyPath: m_Pivot.x
@@ -18676,7 +18714,7 @@ PrefabInstance:
     - target: {fileID: 2284469231625042093, guid: 308ed486bb269604bbcba076d8669bc2,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 200
+      value: 359.009
       objectReference: {fileID: 0}
     - target: {fileID: 2284469231625042093, guid: 308ed486bb269604bbcba076d8669bc2,
         type: 3}
@@ -18721,12 +18759,12 @@ PrefabInstance:
     - target: {fileID: 2284469231625042093, guid: 308ed486bb269604bbcba076d8669bc2,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 849
+      value: 769.4958
       objectReference: {fileID: 0}
     - target: {fileID: 2284469231625042093, guid: 308ed486bb269604bbcba076d8669bc2,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -569
+      value: -517
       objectReference: {fileID: 0}
     - target: {fileID: 2284469231625042093, guid: 308ed486bb269604bbcba076d8669bc2,
         type: 3}
@@ -18748,10 +18786,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: QuestTitle
       objectReference: {fileID: 0}
+    - target: {fileID: 6372813428232894609, guid: 308ed486bb269604bbcba076d8669bc2,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -50.999947
+      objectReference: {fileID: 0}
+    - target: {fileID: 6372813428232894609, guid: 308ed486bb269604bbcba076d8669bc2,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 161
+      objectReference: {fileID: 0}
     - target: {fileID: 6643380783173212196, guid: 308ed486bb269604bbcba076d8669bc2,
         type: 3}
       propertyPath: m_margin.x
-      value: -104.99426
+      value: 0.27955633
       objectReference: {fileID: 0}
     - target: {fileID: 7195923539519673501, guid: 308ed486bb269604bbcba076d8669bc2,
         type: 3}
@@ -21212,6 +21260,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: RangeQuests
+  m_QuestManager: {fileID: 2022947077}
   m_NameText: {fileID: 2052454332}
   m_DescText: {fileID: 1843482082}
   m_PriceText: {fileID: 328709591}
@@ -31955,6 +32004,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: AmmoQuests
+  m_QuestManager: {fileID: 2022947077}
   m_NameText: {fileID: 1081879805}
   m_DescText: {fileID: 2063690261}
   m_PriceText: {fileID: 58425910}
@@ -33295,6 +33345,7 @@ MonoBehaviour:
   fishingSpot: {fileID: 1705047483}
   cantFishSpot: {fileID: 1453785333}
   m_MovementController: {fileID: 2022947085}
+  m_PlayerManager: {fileID: 2022947081}
   minigameBackground: {fileID: 1542724387}
   minigameMover: {fileID: 1618977151}
   bounds:
@@ -33321,7 +33372,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5171ebc007e383f4ca21eed0370f9d41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  test: 0
+  currentQuestTitle: {fileID: 0}
+  currentQuestDesc: {fileID: 0}
   m_Quests:
   - {fileID: 11400000, guid: 13d7b832f96d4dc49bda3d99c71a130c, type: 2}
   - {fileID: 11400000, guid: 96bfd791332e3f649b9bd0ca4a8a40f0, type: 2}
@@ -33394,11 +33446,20 @@ MonoBehaviour:
   AmountOfFish: 0
   smallFish: {fileID: 4018665056978130658, guid: 3cf2311cd42074e458a75753bcdf8b72,
     type: 3}
-  zone1FishSpawns: []
+  zone1FishSpawns:
+  - fishSpawns: []
+  - fishSpawns: []
+  - fishSpawns: []
   mediumFish: {fileID: 0}
-  zone2FishSpawns: []
+  zone2FishSpawns:
+  - fishSpawns: []
+  - fishSpawns: []
+  - fishSpawns: []
   largeFish: {fileID: 0}
-  zone3FishSpawns: []
+  zone3FishSpawns:
+  - fishSpawns: []
+  - fishSpawns: []
+  - fishSpawns: []
   questsFirstButton: {fileID: 1917423030}
   upgradesFirstButton: {fileID: 1844869383}
   pauseFirstButton: {fileID: 911379691}
@@ -33453,7 +33514,9 @@ MonoBehaviour:
   inventoryParent: {fileID: 801610374}
   fishIconPrefab: {fileID: 1771359395913660209, guid: f576830f518af3a4e89e04956b12f5c0,
     type: 3}
+  newEntryAnim: {fileID: 0}
   questTextAnim: {fileID: 1401445185}
+  harpoonCount: {fileID: 0}
   pause: {fileID: 2004741665}
   settings: {fileID: 584295181}
 --- !u!114 &2022947082
