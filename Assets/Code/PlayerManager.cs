@@ -83,6 +83,8 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private Canvas settings;
     private bool settingsOpen = false;
 
+    //Tutorial
+    [SerializeField] private TutorialManager journalTutorial;
 
     public enum ZoneLevel
     {
@@ -259,6 +261,10 @@ public class PlayerManager : MonoBehaviour
     {
         if (pauseOpen == false)
         {
+            //Tutorial
+            journalTutorial.StopJournalTutorial();
+            journalTutorial.StartMovementTutorial();
+
             if (journalOpen)
             {
                 GetComponent<InputManager>().ChangeActionMap("Sailing");

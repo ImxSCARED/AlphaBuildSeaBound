@@ -30,6 +30,10 @@ public class Fishing : MonoBehaviour
     [Range(0f, 10f)]
     public float fishMovingAwaySpeed = 1.5f;
     public Vector2 fishingRange = new Vector2(40, 30);
+
+    //Tutorial
+    [SerializeField] private TutorialManager fishingTutorial;
+
     public void FishMinigame()
     {
         if (!currentlyFishing)
@@ -40,6 +44,10 @@ public class Fishing : MonoBehaviour
                 {
                     if (currentHarpoons > 0)
                     {
+                        //Tutorial
+                        fishingTutorial.StopFishTutorial();
+                        fishingTutorial.StartFishingMinigameTutorial();
+                                              
                         GetComponent<InputManager>().ChangeActionMap("Fishing");
                         currentlyFishing = true;
                         minigameMover.SetActive(true);
@@ -61,12 +69,19 @@ public class Fishing : MonoBehaviour
 
     public void EndMinigame(bool fishCaught)
     {
+        //Tutorial
+        fishingTutorial.StopFishingMinigameTutorial();
+
+
         GetComponent<InputManager>().ChangeActionMap("Sailing");
         currentlyFishing = false;
         minigameMover.SetActive(false);
 
         if (fishCaught)
         {
+            //Tutorial
+            fishingTutorial.fishTutorialCompleted = true;
+
             GameObject fish = fishingSpot.currentFish;
             GetComponent<PlayerManager>().AddFish(fish.GetComponent<Fish>().data);
             GetComponent<PlayerManager>().RemoveFishFromTracked(fish);

@@ -26,6 +26,10 @@ public class FishingHitbox : MonoBehaviour
     private GameObject[] fishInScene;
     private GameObject closestFish;
 
+    //Tutorial
+    [SerializeField] private TutorialManager fishingTutorial;
+    [SerializeField] private Fishing fishingState;
+
     private void Start()
     {
         //radius = fishingHitboxCollider.bounds.extents.x;
@@ -51,12 +55,18 @@ public class FishingHitbox : MonoBehaviour
         if (IsPointInOval(closestFish.transform.position - transform.position))
         {
             currentFish = closestFish;
+            if (!fishingState.currentlyFishing)
+            {
+                fishingTutorial.StartFishTutorial();
+            } 
+            
             currentFish.GetComponent<Fish>().dontDestory = true;
         }
         else if (currentFish)
         {
             currentFish.GetComponent<Fish>().dontDestory = false;
             currentFish = null;
+            fishingTutorial.StopFishTutorial();
         }
 
         // If minigame mover leaves oval, move it back in - Emma

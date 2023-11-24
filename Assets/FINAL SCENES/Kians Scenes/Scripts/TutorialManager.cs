@@ -59,13 +59,16 @@ public class TutorialManager : MonoBehaviour
 
         if (fishingMinigameTutorialFadeIn)
         {
-            if (fishingMinigameTutorial.alpha < fadeInTime)
+            if (startFishTutorialFadeOut == false)
             {
-                fishingMinigameTutorial.alpha += Time.deltaTime;
-            }
-            else
-            {
-            fishingMinigameTutorialFadeIn = false;
+                if (fishingMinigameTutorial.alpha < fadeInTime)
+                {
+                    fishingMinigameTutorial.alpha += Time.deltaTime;
+                }
+                else
+                {
+                    fishingMinigameTutorialFadeIn = false;
+                }
             }
         }
             
@@ -101,14 +104,18 @@ public class TutorialManager : MonoBehaviour
 
         if (movementTutorialFadeIn)
         {
-            if (movementTutorial.alpha < fadeInTime)
+            if (journalTutorialFadeOut == false)
             {
-                movementTutorial.alpha += Time.deltaTime;
+                if (movementTutorial.alpha < fadeInTime)
+                {
+                    movementTutorial.alpha += Time.deltaTime;
+                }
+                else
+                {
+                    movementTutorialFadeIn = false;
+                }
             }
-            else
-            {
-                movementTutorialFadeIn = false;
-            }
+            
         }
 
         if (movementTutorialFadeOut)
