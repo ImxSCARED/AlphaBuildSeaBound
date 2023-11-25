@@ -91,9 +91,9 @@ public class PlayerManager : MonoBehaviour
     private bool questTextUp = false;
     
     [Header("Pause")]
-    [SerializeField] private Canvas pause;
+    [SerializeField] private GameObject pause;
     private bool pauseOpen = false;
-    [SerializeField] private Canvas settings;
+    [SerializeField] private GameObject settings;
     private bool settingsOpen = false;
 
     //Tutorial
@@ -301,7 +301,7 @@ public class PlayerManager : MonoBehaviour
         {
             GetComponent<InputManager>().ChangeActionMap("Sailing");
             Time.timeScale = 1;
-            pause.enabled = false;
+            pause.SetActive(false);
             pauseOpen = false;
         }
         else
@@ -312,7 +312,7 @@ public class PlayerManager : MonoBehaviour
             }
             GetComponent<InputManager>().ChangeActionMap("UI");
             Time.timeScale = 0;
-            pause.enabled = true;
+            pause.SetActive(true);
             pauseOpen = true;
             EventSystem.current.SetSelectedGameObject(null);
             EventSystem.current.SetSelectedGameObject(pauseFirstButton);
@@ -320,13 +320,22 @@ public class PlayerManager : MonoBehaviour
     }
     public void toggleSettings()
     {
-        pause.enabled = !pause.enabled;
-        settings.enabled = !settings.enabled;
-        settingsOpen = settings.enabled;
+        settingsOpen = !settingsOpen;
+        settings.SetActive(true);
+        
         if (settingsOpen)
         {
+            pause.SetActive(false);
+            settings.SetActive(true);
             EventSystem.current.SetSelectedGameObject(null);
             EventSystem.current.SetSelectedGameObject(settingsFirstButton);
+        }
+        else if (!settingsOpen)
+        {
+            pause.SetActive(true);
+            settings.SetActive(false);
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(pauseFirstButton);
         }
     }
 
