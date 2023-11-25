@@ -77,9 +77,9 @@ public class Myles_SettingsManager : MonoBehaviour
         resolutionDropdown.RefreshShownValue();
     }
 
-    public void ToggleFullscreen(bool isWindowed)
+    public void ToggleFullscreen()
     {
-        Screen.fullScreen = !isWindowed;
+        Screen.fullScreen = !Screen.fullScreen;
     }
 
     public void SetResolution(int resolutionIndex)

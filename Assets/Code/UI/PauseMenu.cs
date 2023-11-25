@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
     [SerializeField] private JournalMenu journalMenu;
     [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private GameObject firstPMBtn;
     [SerializeField] private GameObject audioMenu;
     [SerializeField] private AudioSource openMenuSound;
     [SerializeField] private AudioSource exitMenuSound;
@@ -85,6 +87,8 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 0;
         pauseMenu.SetActive(true);
         pauseState = true;
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(firstPMBtn);
     }
 
     //options button to open options
@@ -108,8 +112,7 @@ public class PauseMenu : MonoBehaviour
     public void MainMenu()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene("MainMenuScene");
-        Debug.Log("FUCK");
+        SceneManager.LoadScene("Myles_MainMenu");
     }
 
     public void QuitGame()
