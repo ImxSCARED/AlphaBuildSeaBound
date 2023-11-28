@@ -166,5 +166,5 @@ Material:
     - _HueVariation: {r: 1, g: 0.5, b: 0, a: 0.1}
     - _RefractionScale: {r: 12, g: 10, b: 0, a: 0}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
-    - _SurfaceColour: {r: 0.26312745, g: 0.6618426, b: 0.6886792, a: 1}
+    - _SurfaceColour: {r: 0.252314, g: 0.63417137, b: 0.6603774, a: 1}
   m_BuildTextureStacks: []
