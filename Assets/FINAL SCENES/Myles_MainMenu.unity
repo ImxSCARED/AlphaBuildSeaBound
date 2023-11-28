@@ -1434,26 +1434,31 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 9c757c46727b1194399d675ad74efd7f, type: 3}
     volume: 0.5
     pitch: 1
+    killOnSceneChange: 0
     source: {fileID: 0}
   - name: MainStart
     clip: {fileID: 8300000, guid: 3284f301788ac5b48a11a3a9095f9d3f, type: 3}
     volume: 0.8
     pitch: 1
+    killOnSceneChange: 0
     source: {fileID: 0}
   - name: MainSettings
     clip: {fileID: 8300000, guid: 6d85040edbf0657488158d9c65bac428, type: 3}
     volume: 0.8
     pitch: 1
+    killOnSceneChange: 0
     source: {fileID: 0}
   - name: MainBack
     clip: {fileID: 8300000, guid: e833e50f36ad3c24b85a433610a20f13, type: 3}
     volume: 0.8
     pitch: 1
+    killOnSceneChange: 0
     source: {fileID: 0}
   - name: SettingToggle
     clip: {fileID: 8300000, guid: eb5bbf851b67d6944873e1a61d5070f7, type: 3}
     volume: 1
     pitch: 1
+    killOnSceneChange: 0
     source: {fileID: 0}
   tracks:
   - name: Track_MainMenu
@@ -1481,21 +1486,36 @@ MonoBehaviour:
     volume: 0
     loop: 1
     source: {fileID: 0}
-  currentPlaying:
+  currentTrackPlaying:
     name: 
     track: {fileID: 0}
     volume: 0
     loop: 0
     source: {fileID: 0}
-  nextPlaying:
+  nextTrackPlaying:
     name: 
     track: {fileID: 0}
     volume: 0
     loop: 0
+    source: {fileID: 0}
+  currentClipPlaying:
+    name: 
+    track: {fileID: 0}
+    volume: 0
+    source: {fileID: 0}
+  nextClipPlaying:
+    name: 
+    track: {fileID: 0}
+    volume: 0
     source: {fileID: 0}
   mixer: {fileID: 24100000, guid: c1dcdbf8a9b43314781d78e9f1cc6309, type: 2}
-  clips: []
-  fadeTime: 5
+  clips:
+  - name: MMAmbience
+    track: {fileID: 8300000, guid: d2fd9a9c60c0fb242a7d3d03c10c4458, type: 3}
+    volume: 1
+    source: {fileID: 0}
+  trackFadeTime: 0
+  clipFadeTime: 0
 --- !u!4 &200471783
 Transform:
   m_ObjectHideFlags: 0
@@ -4721,7 +4741,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 1910587306}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!1001 &628578085
@@ -5527,8 +5547,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 706538516}
-  m_LocalRotation: {x: -0.13046953, y: -0.60916156, z: -0.10248517, w: 0.77549773}
-  m_LocalPosition: {x: 157, y: 207.4, z: -333.9}
+  m_LocalRotation: {x: -0.12108015, y: -0.75648475, z: -0.14636075, w: 0.62581867}
+  m_LocalPosition: {x: 18.4, y: 10.3, z: -305.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6835,8 +6855,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7161258463129409889, guid: c052f8e76621a8a4f9c406fb2d965665,
         type: 3}
+      propertyPath: InitialModule.maxNumParticles
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 7161258463129409889, guid: c052f8e76621a8a4f9c406fb2d965665,
+        type: 3}
       propertyPath: InitialModule.startSize.scalar
-      value: 50
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 7161258463129409889, guid: c052f8e76621a8a4f9c406fb2d965665,
         type: 3}

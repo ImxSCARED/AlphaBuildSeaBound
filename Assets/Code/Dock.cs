@@ -5,26 +5,28 @@ using UnityEngine;
 public class Dock : MonoBehaviour
 {
     //For dock tutorial
-    public bool dockTutorialShown = false;
-    public GameObject dockTutorial;
+    /* public bool docktutorialshown = false;
+    public gameobject docktutorial;
 
-    private void OnTriggerEnter(Collider other)
+    private void ontriggerenter(collider other)
     {
-        if(other.tag == "Player")
+        if(other.tag == "player")
         {
-            //For dock tutorial
-            dockTutorialShown = true;
-            dockTutorial.SetActive(false);
+            //for dock tutorial
+            docktutorialshown = true;
+            docktutorial.setactive(false);
 
-            other.GetComponent<PlayerManager>().isAtDock = true;
+            other.getcomponent<playermanager>().isatdock = true;
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void ontriggerexit(collider other)
     {
-        if (other.tag == "Player")
+        if (other.tag == "player")
         {
-            other.GetComponent<PlayerManager>().isAtDock = false;
+            other.getcomponent<playermanager>().isatdock = false;
         }
     }
+    */
 }
+    

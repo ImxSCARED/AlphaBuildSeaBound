@@ -115,6 +115,9 @@ public class PlayerManager : MonoBehaviour
         diaryPages[4] = "5";
         diaryPages[5] = "6";
         SpawnFish();
+
+        // possible reconfig
+        // new stirng diaryPages ["1","2","3","4","5","6"] 
         
 
     }
@@ -321,16 +324,15 @@ public class PlayerManager : MonoBehaviour
     public void toggleSettings()
     {
         settingsOpen = !settingsOpen;
-        settings.SetActive(true);
         
-        if (settingsOpen)
+        if (settingsOpen == true)
         {
             pause.SetActive(false);
             settings.SetActive(true);
             EventSystem.current.SetSelectedGameObject(null);
             EventSystem.current.SetSelectedGameObject(settingsFirstButton);
         }
-        else if (!settingsOpen)
+        else if (settingsOpen == false)
         {
             pause.SetActive(true);
             settings.SetActive(false);
