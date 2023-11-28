@@ -297,7 +297,7 @@ public class PlayerManager : MonoBehaviour
     {
         if (settingsOpen == true)
         {
-            toggleSettings();
+            SettingsToggle();
             return;
         }
         if (pauseOpen)
@@ -321,25 +321,29 @@ public class PlayerManager : MonoBehaviour
             EventSystem.current.SetSelectedGameObject(pauseFirstButton);
         }
     }
-    public void toggleSettings()
+    public void SettingsToggle()
     {
-        settingsOpen = !settingsOpen;
         
         if (settingsOpen == true)
-        {
-            pause.SetActive(false);
-            settings.SetActive(true);
-            EventSystem.current.SetSelectedGameObject(null);
-            EventSystem.current.SetSelectedGameObject(settingsFirstButton);
-        }
-        else if (settingsOpen == false)
         {
             pause.SetActive(true);
             settings.SetActive(false);
             EventSystem.current.SetSelectedGameObject(null);
             EventSystem.current.SetSelectedGameObject(pauseFirstButton);
+            settingsOpen = false;
+        }
+        else if (settingsOpen == false)
+        {
+            pause.SetActive(false);
+            settings.SetActive(true);
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(settingsFirstButton);
+            settingsOpen = true;
         }
     }
+
+        
+    
 
     public void MainMenu()
     {

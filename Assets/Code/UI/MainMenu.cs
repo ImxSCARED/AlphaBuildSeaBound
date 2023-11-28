@@ -85,7 +85,7 @@ public class MainMenu : MonoBehaviour
     public void Delay()
     {
         Debug.Log("and his music was electric...");
-        SceneManager.LoadScene("Myles PostBeta");
+        SceneManager.LoadScene("Gold_MainScene");
     }
 
     public void Awake()
