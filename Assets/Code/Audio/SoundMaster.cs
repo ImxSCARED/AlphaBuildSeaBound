@@ -15,7 +15,7 @@ public class SoundMaster
     [Range(0f, 1f)]
     public float pitch;
 
-    public bool killOnSceneChange;
+    public bool stopRepeat;
 
     [HideInInspector]
     public AudioSource source;

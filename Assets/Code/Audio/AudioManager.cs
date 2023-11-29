@@ -33,7 +33,7 @@ public class AudioManager : MonoBehaviour
 
 
     public static AudioManager instance;
-    private bool kill;
+    private bool stopRepeat;
 
 
     public float trackFadeTime;
@@ -78,6 +78,7 @@ public class AudioManager : MonoBehaviour
             s.source.clip = s.clip;
             s.source.volume = s.volume;
             s.source.pitch = s.pitch;
+            s.stopRepeat = stopRepeat;
             s.source.outputAudioMixerGroup = mixer.FindMatchingGroups("SoundFX")[0];
         }
 

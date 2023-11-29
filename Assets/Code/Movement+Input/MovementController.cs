@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 using static UnityEngine.UI.Image;
@@ -174,8 +175,11 @@ public class MovementController : MonoBehaviour
 
         float deltaEngine = magnitude * (m_accelerationSpeed * m_upgradeAmount);
         m_forwardImpulse = deltaEngine;
+        AudioManager.instance.PlaySound("Name");
+        
     }
 
+  
     /// <summary>
     /// Rotates the boat by magnitude * m_turnSpeed (Time.deltaTime is applied later)
     /// TODO: make this rotate around custom axis

@@ -73,7 +73,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private Image cutiePatootie;
     [SerializeField] private TextMeshProUGUI fishName;
     [SerializeField] private TextMeshProUGUI fishSName;
-    [SerializeField] private TextMeshProUGUI[] journalEntries;
+    [SerializeField] private TextMeshProUGUI[] fishJournalTxts;
     //Diary Page
     [SerializeField] private TextMeshProUGUI diaryTxtBoxP1;
     [SerializeField] private TextMeshProUGUI diaryTxtBoxP2;
@@ -115,9 +115,6 @@ public class PlayerManager : MonoBehaviour
         diaryPages[4] = "5";
         diaryPages[5] = "6";
         SpawnFish();
-
-        // possible reconfig
-        // new stirng diaryPages ["1","2","3","4","5","6"] 
         
 
     }
@@ -256,6 +253,8 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
+
+    
     
 
     public void ExitHub()
@@ -458,7 +457,7 @@ public class PlayerManager : MonoBehaviour
         switch (entryCounter)
         {
             case > 0 and <= 4:
-                diaryPages[0] += "\n" + entry;
+                diaryPages[0] += entry;
                 break;
             case > 4 and <= 7:
                 diaryPages[1] += "\n" + entry;
@@ -467,6 +466,10 @@ public class PlayerManager : MonoBehaviour
         entryCounter++;
         newEntryAnim.Play();
     }
+    //public void Milestone1()
+    //{
+    //    m_PlayerManager.addDiaryEntry(Milestone1Text);
+    //}
 
     //FishInfo
     private void DisplayFishPage()
@@ -487,16 +490,22 @@ public class PlayerManager : MonoBehaviour
         }
         if(journalFishEntryies[currentPage].amountCaught >= journalFishEntryies[currentPage].amountBeforeEntry1)
         {
-            journalEntries[0].text = journalFishEntryies[currentPage].journalEntry1;
+            fishJournalTxts[0].text = journalFishEntryies[currentPage].journalEntry1;
         }
+        else
+            fishJournalTxts[0].text = "???";
         if (journalFishEntryies[currentPage].amountCaught >= journalFishEntryies[currentPage].amountBeforeEntry2)
         {
-            journalEntries[1].text = journalFishEntryies[currentPage].journalEntry2;
+            fishJournalTxts[1].text = journalFishEntryies[currentPage].journalEntry2;
         }
+        else
+            fishJournalTxts[1].text = "???";
         if (journalFishEntryies[currentPage].amountCaught >= journalFishEntryies[currentPage].amountBeforeEntry3)
         {
-            journalEntries[2].text = journalFishEntryies[currentPage].journalEntry3;
+            fishJournalTxts[2].text = journalFishEntryies[currentPage].journalEntry3;
         }
+        else
+            fishJournalTxts[2].text = "???";
     }
 
     public void IslandNamePopup(string islandName, string IslandDesc)

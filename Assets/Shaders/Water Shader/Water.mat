@@ -30,7 +30,7 @@ Material:
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 1950
+  m_CustomRenderQueue: 2950
   stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
@@ -117,39 +117,39 @@ Material:
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
-    - _Distance: 70.67
+    - _Distance: 7.5
     - _DstBlend: 0
     - _EnvironmentReflections: 1
-    - _Float: 40
-    - _FoamAmount: 0.5
+    - _Float: 0
+    - _FoamAmount: 4
     - _FoamC: 2.36
     - _FoamCutoff: 2.77
-    - _FoamScale: 0
-    - _FoamSpeed: 0
+    - _FoamScale: 0.5
+    - _FoamSpeed: 0.05
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _HighFreq: 2.85
+    - _HighFreq: 0.1
     - _Metallic: 0
-    - _NormalStrength: -16.3
+    - _NormalStrength: 15
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueControl: 0
     - _QueueOffset: -50
     - _ReceiveShadows: 1
     - _RefractionScale: 1.71
-    - _RefractionSpeed: 0.05
-    - _RefractionStrength: 19.8
+    - _RefractionSpeed: 0.01
+    - _RefractionStrength: 0.13
     - _STYLE: 0
-    - _Smoothness: -7.5
+    - _Smoothness: 1
     - _SmoothnessTextureChannel: 0
     - _SolidColour: 1
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Surface: 0
-    - _WaterBlend: 0.45
-    - _WaveAmp: 0.49
-    - _WaveSpeed: 0.83
+    - _WaterBlend: 1.4
+    - _WaveAmp: 1
+    - _WaveSpeed: 2
     - _WindQuality: 0
     - _WorkflowMode: 1
     - _YEA: 0
@@ -159,12 +159,12 @@ Material:
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _DeepColour: {r: 0.039215565, g: 0, b: 1, a: 0}
+    - _DeepColour: {r: 0.18431373, g: 0.52156866, b: 0.5647059, a: 1}
     - _DeepColour_1: {r: 0.07075472, g: 0.25312257, b: 0.2830189, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _FoamColour: {r: 1, g: 1, b: 1, a: 0}
     - _HueVariation: {r: 1, g: 0.5, b: 0, a: 0.1}
-    - _RefractionScale: {r: 12, g: 10, b: 0, a: 0}
+    - _RefractionScale: {r: 20, g: 20, b: 0, a: 0}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
-    - _SurfaceColour: {r: 0.252314, g: 0.63417137, b: 0.6603774, a: 1}
+    - _SurfaceColour: {r: 0.2509804, g: 0.75294125, b: 0.69803923, a: 1}
   m_BuildTextureStacks: []

@@ -2030,7 +2030,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &77285863
 Transform:
   m_ObjectHideFlags: 0
@@ -38357,10 +38357,7 @@ MonoBehaviour:
   cutiePatootie: {fileID: 137909007}
   fishName: {fileID: 894542194}
   fishSName: {fileID: 728280589}
-  journalEntries:
-  - {fileID: 698252914}
-  - {fileID: 554932473}
-  - {fileID: 1770976573}
+  fishJournalTxts: []
   diaryTxtBoxP1: {fileID: 931132746}
   diaryTxtBoxP2: {fileID: 30816889}
   inventoryParent: {fileID: 801610374}
@@ -39853,7 +39850,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2095553777}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
