@@ -5,6 +5,7 @@ public class UpgradeManager : MonoBehaviour
 {
     static public UpgradeManager instance;
     private Fishing m_Fishing;
+    private FishingHitbox m_FishingHitbox;
     private MovementController m_MovementController;
     private PlayerManager m_PlayerManager;
     [SerializeField] private CaptureCircle m_CaptureCircle;
@@ -50,8 +51,7 @@ public class UpgradeManager : MonoBehaviour
                 m_CaptureCircle.ChangeCatcherSize();
                 break;
             case UpgradeData.UpgradeType.RANGE:
-                m_Fishing.rangeUpgrade = (m_UpgradeData.RangeIncreaseAmount + 1) * UpgradeToAdd.Level;
-                m_Fishing.ChangeFishingRangeSize();
+                m_FishingHitbox.RedrawOval(m_FishingHitbox.fishingLineRenderer, m_FishingHitbox.fishingRadius * (m_UpgradeData.RangeIncreaseAmount + 1), m_FishingHitbox.fishingWidthRatio, m_FishingHitbox.fishingHeightRatio);
                 break;
         }
     }
