@@ -7,7 +7,6 @@ public class Fishing : MonoBehaviour
 {
     //Outside objects
     [SerializeField] private FishingHitbox fishingSpot;
-    [SerializeField] private AntiFishingHitbox cantFishSpot;
     [SerializeField] private MovementController m_MovementController;
     [SerializeField] private PlayerManager m_PlayerManager;
     public CaptureCircle minigameBackground;
@@ -41,8 +40,9 @@ public class Fishing : MonoBehaviour
         {
             if (fishingSpot.currentFish)
             {
-                if (!cantFishSpot.fishInZone)
+                if (!fishingSpot.inAntiFishingOval)
                 {
+                    fishingSpot.antiFishingLineRenderer.enabled = false;
                     if (currentHarpoons > 0)
                     {
                         //Tutorial
@@ -64,7 +64,6 @@ public class Fishing : MonoBehaviour
                         //Put in warning to player that they have no ammo
                     }
                 }
-                
             }
         }
     }
@@ -89,6 +88,8 @@ public class Fishing : MonoBehaviour
 
             fishingSpot.currentFish = null;
             fish.SetActive(false);
+
+            fishingSpot.antiFishingLineRenderer.enabled = true;
         }
     }
 
