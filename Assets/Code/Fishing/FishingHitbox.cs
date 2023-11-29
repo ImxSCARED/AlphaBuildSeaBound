@@ -1,29 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 public class FishingHitbox : MonoBehaviour
 {
     public PlayerManager playerManager;
-    public LineRenderer lineRenderer;
+    public LineRenderer fishingLineRenderer;
+    public LineRenderer antiFishingLineRenderer;
 
     public GameObject currentFish = null;
     public Transform MinigameMover;
 
-    private bool isCircleInZone;
     private Vector3 lastPosition;
     [HideInInspector] public Vector3[] leftPoints;
     [HideInInspector] public Vector3[] rightPoints;
 
-    public float radius;
-    public float widthRatio; // Change to account for rotation
-    public float heightRatio; // Change to account for rotation
-    public int boundsLOD;
-    private float ovalExtant;
+    [Header("Fishing Oval")]
+    public float fishingRadius;
+    public float fishingWidthRatio;
+    public float fishingHeightRatio;
+    public int fishingBoundsLOD;
+
+    [Header("Anti-Fishing oval")]
+    public float antiFishingRadius;
+    public float antiFishingWidthRatio;
+    public float antiFishingHeightRatio;
+    public int antiFishingBoundsLOD;
+
+    public bool inAntiFishingOval;
+
     private float rotationRad;
 
-    private GameObject[] fishInScene;
     private GameObject closestFish;
 
     //Tutorial
@@ -32,27 +41,24 @@ public class FishingHitbox : MonoBehaviour
 
     private void Start()
     {
-        //radius = fishingHitboxCollider.bounds.extents.x;
+        fishingLineRenderer.positionCount = fishingBoundsLOD;
+        antiFishingLineRenderer.positionCount = antiFishingBoundsLOD;
 
-        //widthRatio = 1;
-        //heightRatio = fishingHitboxCollider.bounds.extents.z/radius;
-
-        lineRenderer.positionCount = boundsLOD;
-        RedrawOval();
+        RedrawOval(fishingLineRenderer, fishingRadius, fishingWidthRatio, fishingHeightRatio);
+        RedrawOval(antiFishingLineRenderer, antiFishingRadius, antiFishingWidthRatio, antiFishingHeightRatio);
 
         ResetDashPoints();
-
-        fishInScene = GameObject.FindGameObjectsWithTag("Fish");
     }
     private void Update()
     {
         // Set rotationRad for this frame
         rotationRad = Mathf.Deg2Rad * transform.rotation.eulerAngles.y;
 
-        // Check if closest fish is in the oval
+        // Find the closest fish...
         FindClosestFish();
 
-        if (IsPointInOval(closestFish.transform.position - transform.position))
+        //...and check that it's in the fishing oval, and not in the anti-fishing oval
+        if (IsPointInOval(closestFish.transform.position - transform.position, fishingRadius, fishingWidthRatio, fishingHeightRatio))
         {
             currentFish = closestFish;
             
@@ -69,11 +75,14 @@ public class FishingHitbox : MonoBehaviour
             currentFish = null;
             fishingTutorial.StopFishTutorial();
         }
+        // Check that the fish is in the anti-fishing oval
+        inAntiFishingOval = IsPointInOval(closestFish.transform.position - transform.position, antiFishingRadius, antiFishingWidthRatio, antiFishingHeightRatio);
 
         // If minigame mover leaves oval, move it back in - Emma
         Vector3 circlePos = MinigameMover.position - transform.position;
-        
-        if (!IsPointInOval(circlePos))
+
+        // Check that minigame mover is not in the fishing oval, or is in the anti-fishing oval
+        if (!IsPointInOval(circlePos, fishingRadius, fishingWidthRatio, fishingHeightRatio))
         {
             MinigameMover.position = lastPosition;
         }
@@ -111,7 +120,7 @@ public class FishingHitbox : MonoBehaviour
     /// </summary>
     /// <param name="point">World pos of point to check</param>
     /// <returns>Whether or not the point is in the oval</returns>
-    public bool IsPointInOval(Vector3 point)
+    public bool IsPointInOval(Vector3 point, float radius, float widthRatio, float heightRatio)
     {
         float distanceSquared = (Mathf.Pow((point.x * Mathf.Cos(rotationRad)) - (point.z * Mathf.Sin(rotationRad)), 2) / Mathf.Pow(widthRatio, 2)) +
                                 (Mathf.Pow((point.x * Mathf.Sin(rotationRad)) + (point.z * Mathf.Cos(rotationRad)), 2) / Mathf.Pow(heightRatio, 2));
@@ -124,12 +133,7 @@ public class FishingHitbox : MonoBehaviour
         return false;
     }
 
-    public bool MagnitudeIsInOval(float magnitude)
-    {
-        return magnitude <= ovalExtant;
-    }
-
-    public void RedrawOval()
+    public void RedrawOval(LineRenderer lineRenderer, float radius, float widthRatio, float heightRatio)
     {
         float widthRad = radius * widthRatio;
         float heightRad = radius * heightRatio;
@@ -151,26 +155,26 @@ public class FishingHitbox : MonoBehaviour
     public void ResetDashPoints()
     {
         // Set left and right fish dash points
-        leftPoints = new Vector3[Mathf.CeilToInt(lineRenderer.positionCount / 2f)];
-        rightPoints = new Vector3[Mathf.CeilToInt(lineRenderer.positionCount / 2f)];
+        leftPoints = new Vector3[Mathf.CeilToInt(fishingLineRenderer.positionCount / 2f)];
+        rightPoints = new Vector3[Mathf.CeilToInt(fishingLineRenderer.positionCount / 2f)];
 
         int leftPointsCounter = 0;
         int rightPointsCounter = 0;
 
-        for (int i = 0; i < lineRenderer.positionCount; i++)
+        for (int i = 0; i < fishingLineRenderer.positionCount; i++)
         {
             // Points start from the rightmost position, so we have to do some weird checks to make this work
 
-            if (i > (lineRenderer.positionCount * 0.25f) - 1 && i < (lineRenderer.positionCount * 0.75f) - 1)
+            if (i > (fishingLineRenderer.positionCount * 0.25f) - 1 && i < (fishingLineRenderer.positionCount * 0.75f) - 1)
             {
                 // If the position is in the second or third quarter
-                leftPoints[leftPointsCounter] = lineRenderer.GetPosition(i) + transform.position;
+                leftPoints[leftPointsCounter] = fishingLineRenderer.GetPosition(i) + transform.position;
                 leftPointsCounter++;
             }
-            else if (i > (lineRenderer.positionCount * 0.75f) - 1 || i < (lineRenderer.positionCount * 0.25f) - 1)
+            else if (i > (fishingLineRenderer.positionCount * 0.75f) - 1 || i < (fishingLineRenderer.positionCount * 0.25f) - 1)
             {
                 // If the position is in the first or fourth quarter
-                rightPoints[rightPointsCounter] = lineRenderer.GetPosition(i) + transform.position;
+                rightPoints[rightPointsCounter] = fishingLineRenderer.GetPosition(i) + transform.position;
                 rightPointsCounter++;
             }
         }
