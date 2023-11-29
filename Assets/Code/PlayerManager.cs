@@ -16,7 +16,7 @@ public class PlayerManager : MonoBehaviour
     private QuestManager m_QuestManager;
     private MovementController m_MovementController;
     private bool isDocked = false;
-    [HideInInspector] public bool isAtDock = false;
+    public bool isAtDock = false;
     private List<FishProperties.FishData> storedFish = new List<FishProperties.FishData>();
 
     [Header("FishSpawns")]
@@ -91,9 +91,9 @@ public class PlayerManager : MonoBehaviour
     private bool questTextUp = false;
     
     [Header("Pause")]
-    [SerializeField] private Canvas pause;
+    [SerializeField] private GameObject pause;
     private bool pauseOpen = false;
-    [SerializeField] private Canvas settings;
+    [SerializeField] private GameObject settings;
     private bool settingsOpen = false;
 
     //Tutorial
@@ -115,6 +115,9 @@ public class PlayerManager : MonoBehaviour
         diaryPages[4] = "5";
         diaryPages[5] = "6";
         SpawnFish();
+
+        // possible reconfig
+        // new stirng diaryPages ["1","2","3","4","5","6"] 
         
 
     }
@@ -294,14 +297,14 @@ public class PlayerManager : MonoBehaviour
     {
         if (settingsOpen == true)
         {
-            toggleSettings();
+            SettingsToggle();
             return;
         }
         if (pauseOpen)
         {
             GetComponent<InputManager>().ChangeActionMap("Sailing");
             Time.timeScale = 1;
-            pause.enabled = false;
+            pause.SetActive(false);
             pauseOpen = false;
         }
         else
@@ -312,23 +315,35 @@ public class PlayerManager : MonoBehaviour
             }
             GetComponent<InputManager>().ChangeActionMap("UI");
             Time.timeScale = 0;
-            pause.enabled = true;
+            pause.SetActive(true);
             pauseOpen = true;
             EventSystem.current.SetSelectedGameObject(null);
             EventSystem.current.SetSelectedGameObject(pauseFirstButton);
         }
     }
-    public void toggleSettings()
+    public void SettingsToggle()
     {
-        pause.enabled = !pause.enabled;
-        settings.enabled = !settings.enabled;
-        settingsOpen = settings.enabled;
-        if (settingsOpen)
+        
+        if (settingsOpen == true)
         {
+            pause.SetActive(true);
+            settings.SetActive(false);
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(pauseFirstButton);
+            settingsOpen = false;
+        }
+        else if (settingsOpen == false)
+        {
+            pause.SetActive(false);
+            settings.SetActive(true);
             EventSystem.current.SetSelectedGameObject(null);
             EventSystem.current.SetSelectedGameObject(settingsFirstButton);
+            settingsOpen = true;
         }
     }
+
+        
+    
 
     public void MainMenu()
     {

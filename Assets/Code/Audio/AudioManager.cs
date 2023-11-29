@@ -20,19 +20,29 @@ public class AudioManager : MonoBehaviour
 
     // for Ambience:
     // AudioManager.instance.PlayClip("Name");;
+    // AudioManager.instance.PlayNextClip("Name");;
 
     public SoundMaster[] sounds;
     public MusicMaster[] tracks;
-    public MusicMaster currentPlaying;
-    public MusicMaster nextPlaying;
+    public MusicMaster currentTrackPlaying;
+    public MusicMaster nextTrackPlaying;
+    public AmbienceMaster currentClipPlaying;
+    public AmbienceMaster nextClipPlaying;
     public AudioMixer mixer;
     public AmbienceMaster[] clips;
 
-    public static AudioManager instance;
 
-    public float fadeTime;
-    private float fadeTimeElapsed = 0;
-    private bool isFading = false;
+    public static AudioManager instance;
+    private bool kill;
+
+
+    public float trackFadeTime;
+    private float trackFadeTimeElapsed = 0;
+    private bool isTrackFading = false;
+
+    public float clipFadeTime;
+    private float clipFadeTimeElapsed = 0;
+    private bool isClipFading = false;
 
     void Awake()
     {
@@ -75,19 +85,36 @@ public class AudioManager : MonoBehaviour
 
     void Update()
     {
-        if (isFading)
+        if (isTrackFading)
         {
             FadeTrack();
         }
 
-        if (currentPlaying.source)
+        if (isClipFading)
         {
-            currentPlaying.source.volume = currentPlaying.volume;
+            FadeTrack();
         }
-        if (nextPlaying.source)
+
+        //Music
+        if (currentTrackPlaying.source)
         {
-            nextPlaying.source.volume = nextPlaying.volume;
+            currentTrackPlaying.source.volume = currentTrackPlaying.volume;
         }
+        if (nextTrackPlaying.source)
+        {
+            nextTrackPlaying.source.volume = nextTrackPlaying.volume;
+        }
+
+        //Ambience
+        if (currentClipPlaying.source)
+        {
+            currentClipPlaying.source.volume = currentClipPlaying.volume;
+        }
+        if (nextClipPlaying.source)
+        {
+            nextClipPlaying.source.volume = nextClipPlaying.volume;
+        }
+
     }
 
     public void PlaySound (string name)
@@ -98,49 +125,97 @@ public class AudioManager : MonoBehaviour
 
     public void PlayTrack(string name)
     {
-        if (currentPlaying != null)
+        if (currentTrackPlaying != null)
         {
-            currentPlaying.volume = 0;
+            currentTrackPlaying.volume = 0;
         }
 
         MusicMaster t = Array.Find(tracks, sound => sound.name == name);
-        currentPlaying = t;
+        currentTrackPlaying = t;
 
-        currentPlaying.volume = 1;
+        currentTrackPlaying.volume = 1;
         t.source.Play();
+    }
+
+    public void PlayClip(string name)
+    {
+        if (currentClipPlaying != null)
+        {
+            currentClipPlaying.volume = 0;
+        }
+
+        AmbienceMaster c = Array.Find(clips, sound => sound.name == name);
+        currentClipPlaying = c;
+
+        currentClipPlaying.volume = 1;
+        c.source.Play();
+    }
+
+    public void PlayNextClip(string name)
+    {
+        AmbienceMaster c = Array.Find(clips, sound => sound.name == name);
+        nextClipPlaying = c;
+
+        clipFadeTimeElapsed = 0;
+        isClipFading = true;
+
+        nextClipPlaying.source.Play();
     }
 
     public void PlayNext(string name)
     {
         MusicMaster t = Array.Find(tracks, sound => sound.name == name);
-        nextPlaying = t;
+        nextTrackPlaying = t;
 
-        fadeTimeElapsed = 0;
-        isFading = true;
+        trackFadeTimeElapsed = 0;
+        isTrackFading = true;
 
-        nextPlaying.source.Play();
+        nextTrackPlaying.source.Play();
     }
 
     private void FadeTrack()
     {
-        if (fadeTimeElapsed < fadeTime)
+        if (trackFadeTimeElapsed < trackFadeTime)
         {
-            currentPlaying.volume = Mathf.Lerp(1, 0, fadeTimeElapsed / fadeTime);
-            nextPlaying.volume = Mathf.Lerp(0, 1, fadeTimeElapsed / fadeTime);
+            currentTrackPlaying.volume = Mathf.Lerp(1, 0, trackFadeTimeElapsed / trackFadeTime);
+            nextTrackPlaying.volume = Mathf.Lerp(0, 1, trackFadeTimeElapsed / trackFadeTime);
 
-            fadeTimeElapsed += Time.deltaTime;
+            trackFadeTimeElapsed += Time.deltaTime;
         }
         else
         {
-            currentPlaying.volume = 0;
-            nextPlaying.volume = 1;
+            currentTrackPlaying.volume = 0;
+            nextTrackPlaying.volume = 1;
 
-            currentPlaying.source.Stop();
+            currentTrackPlaying.source.Stop();
 
-            currentPlaying = nextPlaying;
-            nextPlaying = null;
+            currentTrackPlaying = nextTrackPlaying;
+            nextTrackPlaying = null;
 
-            isFading = false;
+            isTrackFading = false;
+        }
+    }
+
+    private void FadeClip()
+    {
+        if (clipFadeTimeElapsed < clipFadeTime)
+        {
+            currentClipPlaying.volume = Mathf.Lerp(1, 0, clipFadeTimeElapsed / clipFadeTime);
+            nextClipPlaying.volume = Mathf.Lerp(0, 1, clipFadeTimeElapsed / clipFadeTime);
+
+            clipFadeTimeElapsed += Time.deltaTime;
+        }
+        else
+        {
+            currentClipPlaying.volume = 0;
+            nextClipPlaying.volume = 1;
+
+            currentClipPlaying.source.Stop();
+
+            currentClipPlaying = nextClipPlaying;
+            nextClipPlaying = null;
+
+            isClipFading = false;
         }
     }
 

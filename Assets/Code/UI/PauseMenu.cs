@@ -7,17 +7,16 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
-    [SerializeField] private JournalMenu journalMenu;
+    [SerializeField] private PlayerManager playerManager;
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject firstPMBtn;
-    [SerializeField] private GameObject audioMenu;
-    [SerializeField] private AudioSource openMenuSound;
-    [SerializeField] private AudioSource exitMenuSound;
+    [SerializeField] private GameObject settingsMenu;
+
 
     public Scene scene;
 
     public bool pauseState = false;
-    public bool audioMenuState = false;
+    public bool settingsMenuState = false;
 
     private void Start()
     {
@@ -27,14 +26,14 @@ public class PauseMenu : MonoBehaviour
     void Update()
     {
         //if audio menu is open, closes audio_menu
-        if (Input.GetKeyDown(KeyCode.Escape) && audioMenuState == true)
+        if (Input.GetKeyDown(KeyCode.Escape) && settingsMenuState == true)
         {
             CloseAudioMenu();
             return;
         }
 
         //opens pause_menu
-        if (Input.GetKeyDown(KeyCode.Escape) && (pauseState == false) && (audioMenuState == false))
+        if (Input.GetKeyDown(KeyCode.Escape) && (pauseState == false) && (settingsMenuState == false))
         {
             OpenPauseMenu();
             return;
@@ -50,16 +49,16 @@ public class PauseMenu : MonoBehaviour
     public void PauseMenuToggle()
     {
         //if audio menu is open, closes audio_menu
-        if (audioMenuState == true)
+        if (settingsMenuState == true)
         {
             CloseAudioMenu();
             return;
         }
 
         //opens pause_menu
-        if (audioMenuState == false)
+        if (settingsMenuState == false)
         {
-            journalMenu.Continue();
+            playerManager.JournalToggle();
 
             OpenPauseMenu();
             return;
@@ -95,8 +94,8 @@ public class PauseMenu : MonoBehaviour
     public void AudioOptions()
     {
         pauseMenu.SetActive(false);
-        audioMenu.SetActive(true);
-        audioMenuState = true;
+        settingsMenu.SetActive(true);
+        settingsMenuState = true;
         pauseState = false;
     }
 
@@ -104,8 +103,8 @@ public class PauseMenu : MonoBehaviour
     public void CloseAudioMenu()
     {
         OpenPauseMenu();
-        audioMenu.SetActive(false);
-        audioMenuState = false;
+        settingsMenu.SetActive(false);
+        settingsMenuState = false;
         return;
     }
 
