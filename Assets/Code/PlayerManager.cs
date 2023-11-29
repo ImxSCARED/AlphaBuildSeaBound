@@ -16,7 +16,7 @@ public class PlayerManager : MonoBehaviour
     private QuestManager m_QuestManager;
     private MovementController m_MovementController;
     private bool isDocked = false;
-    [HideInInspector] public bool isAtDock = false;
+    public bool isAtDock = false;
     private List<FishProperties.FishData> storedFish = new List<FishProperties.FishData>();
 
     [Header("FishSpawns")]

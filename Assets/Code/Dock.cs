@@ -1,32 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Dock : MonoBehaviour
 {
-    //For dock tutorial
-    /* public bool docktutorialshown = false;
-    public gameobject docktutorial;
-
-    private void ontriggerenter(collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "player")
+        if (other.gameObject.CompareTag("Player"))
         {
-            //for dock tutorial
-            docktutorialshown = true;
-            docktutorial.setactive(false);
-
-            other.getcomponent<playermanager>().isatdock = true;
+            other.GetComponent<PlayerManager>().isAtDock = true;
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            other.GetComponent<PlayerManager>().isAtDock = false;
         }
     }
 
-    private void ontriggerexit(collider other)
-    {
-        if (other.tag == "player")
-        {
-            other.getcomponent<playermanager>().isatdock = false;
-        }
-    }
-    */
 }
     
