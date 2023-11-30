@@ -20324,12 +20324,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_lookPoint: {fileID: 1405250374}
   m_startRotation: {x: 30, y: 0}
-  m_fishingXRotation: 90
+  m_fishingRotation: {x: 90, y: 0}
   m_minXRotation: 10
   m_maxXRotation: 45
   m_distanceFromPlayer: 30
   m_movementSpeed: 60
-  m_autoMovementSpeed: 4
+  m_transitionTime: 2
   m_invertXControl: 0
   m_invertYControl: 0
 --- !u!65 &1136200536
