@@ -173,6 +173,9 @@ public class CameraController : MonoBehaviour
         SetCameraRotation(rotationEulers.x, rotationEulers.y);
     }
 
+    /// <summary>
+    /// Moves camera up to the preset fishing position
+    /// </summary>
     public void StartFishingMode()
     {
         m_previousXRotation = m_XYRotation.x;
@@ -183,6 +186,9 @@ public class CameraController : MonoBehaviour
         m_lerpCamera = true;
     }
 
+    /// <summary>
+    /// Moves camera up to the previous position, before fishing started
+    /// </summary>
     public void EndFishingMode()
     {
         m_targetXRotation = m_previousXRotation;
