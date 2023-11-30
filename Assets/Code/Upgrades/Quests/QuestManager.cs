@@ -4,7 +4,7 @@ using UnityEngine;
 public class QuestManager : MonoBehaviour
 {
     
-    private PlayerManager m_PlayerManager;
+    [SerializeField] private PlayerManager m_PlayerManager;
 
     [SerializeField] private TextMeshProUGUI currentQuestTitle;
     [SerializeField] private TextMeshProUGUI currentQuestDesc;
@@ -40,6 +40,7 @@ public class QuestManager : MonoBehaviour
                     currentBountyFish = null;
                     currentQuestTitle.text = "No current quest";
                     currentQuestDesc.text = "Select a quest at the dock.";
+                    AudioManager.instance.PlaySound("QuestDone");
                 }
             }
         }

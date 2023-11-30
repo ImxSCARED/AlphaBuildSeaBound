@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class CaptureCircle : MonoBehaviour
 {
-    public bool fishInCircle;
-    public float sizeUpgrade = 1f;
-    private Vector2 baseSize = new Vector2(3, 3);
+    [HideInInspector] public bool fishInCircle;
+
+    [HideInInspector] public float sizeUpgrade = 1f;
+
+    private float baseSize = 3;
+    public Transform targetTransform;
+    private float baseTargetSize = 0.5f;
     public void ChangeCatcherSize()
     {
-        transform.localScale = new Vector3(baseSize.x * sizeUpgrade, 0.01f, baseSize.y * sizeUpgrade);
+        transform.localScale = new Vector3(baseSize * sizeUpgrade, baseSize * sizeUpgrade, baseSize * sizeUpgrade);
+        targetTransform.localScale = new Vector3(baseTargetSize * sizeUpgrade, baseTargetSize * sizeUpgrade, baseTargetSize * sizeUpgrade);
     }
     private void OnTriggerEnter(Collider collision)
     {

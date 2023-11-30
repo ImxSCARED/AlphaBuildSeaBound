@@ -14,9 +14,15 @@ public class MovementController : MonoBehaviour
     [SerializeField]
     Transform m_rotationAxis;
     [SerializeField]
+<<<<<<< HEAD
     CapsuleCollider m_collider;
     [SerializeField]
     GameObject m_wheels;
+=======
+    BoxCollider m_collider;
+    [SerializeField]
+    AudioManager m_audioManager;
+>>>>>>> MovementChangeTest
 
     [Header("Player Control")]
 
@@ -118,7 +124,8 @@ public class MovementController : MonoBehaviour
         MoveWithCollision(m_velocity * Time.deltaTime);
         RotateWithCollision(m_amountToRotate);
 
-        MoveWithCollision(m_velocity * Time.deltaTime);
+        // Sound
+        MovementSound(m_velocity.magnitude / m_maxVelocity);
 
         // Cleanup
         m_forwardImpulse = 0f;
@@ -159,7 +166,11 @@ public class MovementController : MonoBehaviour
         magnitude = Mathf.Clamp(magnitude, -1f, 1f);
 
         float deltaEngine = magnitude * (m_accelerationSpeed * m_upgradeAmount);
+<<<<<<< HEAD
         m_forwardImpulse = deltaEngine;        
+=======
+        m_forwardImpulse = deltaEngine;
+>>>>>>> MovementChangeTest
     }
 
   
@@ -278,10 +289,10 @@ public class MovementController : MonoBehaviour
     {
         Vector3 localVelocity = transform.InverseTransformVector(m_velocity);
 
-        float forwardFriction = m_forwardFriction * Time.deltaTime;
+        //float forwardFriction = m_forwardFriction * Time.deltaTime;
         float sideFriction = m_sideFriction * Time.deltaTime;
 
-        localVelocity.z = SeaboundMaths.ApplyFriction(localVelocity.z, forwardFriction);
+        //localVelocity.z = SeaboundMaths.ApplyFriction(localVelocity.z, forwardFriction);
         localVelocity.x = SeaboundMaths.ApplyFriction(localVelocity.x, sideFriction);
 
         m_velocity = transform.TransformVector(localVelocity);
@@ -291,5 +302,29 @@ public class MovementController : MonoBehaviour
     {
         m_forwardImpulse = 0;
         m_velocity = Vector3.zero;
+    }
+
+    private void MovementSound(float percentMaxVelocity)
+    {
+        if (percentMaxVelocity <= 0.2)
+        {
+            // AudioManager.instance.PlayNextThingo(zeroToTwentyPercentMovementSound)
+        }
+        else if (percentMaxVelocity <= 0.4)
+        {
+            // AudioManager.instance.PlayNextThingo(twentyToFortyPercentMovementSound)
+        }
+        else if (percentMaxVelocity <= 0.6)
+        {
+            // AudioManager.instance.PlayNextThingo(fortyToSixtyPercentMovementSound)
+        }
+        else if (percentMaxVelocity <= 0.8)
+        {
+            // AudioManager.instance.PlayNextThingo(sixtyToEightyPercentMovementSound)
+        }
+        else if (percentMaxVelocity <= 1)
+        {
+            // AudioManager.instance.PlayNextThingo(eightyToHundredPercentMovementSound)
+        }
     }
 }

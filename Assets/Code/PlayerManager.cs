@@ -11,7 +11,7 @@ public class PlayerManager : MonoBehaviour
 {
     public int Money = 0;
 
-    
+    public Fishing m_Fishing;
     private UpgradeManager m_UpgradeManager;
     private QuestManager m_QuestManager;
     private MovementController m_MovementController;
@@ -24,6 +24,7 @@ public class PlayerManager : MonoBehaviour
     [HideInInspector] public List<GameObject> fishOnMap = new List<GameObject>();
 
     public int AmountOfFish;
+    public TextMeshProUGUI moneyTxt;
 
     [Serializable]
     public class ZonicusSpawnicus
@@ -207,6 +208,7 @@ public class PlayerManager : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
+        moneyTxt.text = Money.ToString();
     }
     
 
@@ -226,6 +228,7 @@ public class PlayerManager : MonoBehaviour
             hub.enabled = true;
             EventSystem.current.SetSelectedGameObject(null);
             EventSystem.current.SetSelectedGameObject(questsFirstButton);
+            m_Fishing.ReplenishHarpoons();
 
             for (int i = 0; i < UpradgeUI.Length; i++)
             {
@@ -250,6 +253,7 @@ public class PlayerManager : MonoBehaviour
                 }
             }
             isDocked = true;
+            moneyTxt.text = Money.ToString();
         }
     }
 
@@ -347,7 +351,7 @@ public class PlayerManager : MonoBehaviour
     public void MainMenu()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene("MainMenuScene");
+        SceneManager.LoadScene("Myles_MainMenu");
     }
 
     public void QuitGame()
