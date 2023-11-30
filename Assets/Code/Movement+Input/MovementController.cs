@@ -14,15 +14,11 @@ public class MovementController : MonoBehaviour
     [SerializeField]
     Transform m_rotationAxis;
     [SerializeField]
-<<<<<<< HEAD
     CapsuleCollider m_collider;
     [SerializeField]
     GameObject m_wheels;
-=======
-    BoxCollider m_collider;
     [SerializeField]
     AudioManager m_audioManager;
->>>>>>> MovementChangeTest
 
     [Header("Player Control")]
 
@@ -166,11 +162,7 @@ public class MovementController : MonoBehaviour
         magnitude = Mathf.Clamp(magnitude, -1f, 1f);
 
         float deltaEngine = magnitude * (m_accelerationSpeed * m_upgradeAmount);
-<<<<<<< HEAD
-        m_forwardImpulse = deltaEngine;        
-=======
         m_forwardImpulse = deltaEngine;
->>>>>>> MovementChangeTest
     }
 
   
