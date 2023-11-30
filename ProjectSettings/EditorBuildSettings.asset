@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/FINAL SCENES/Myles_MainMenu.unity
+    path: Assets/FINAL SCENES/GoldMainMenu.unity
     guid: 2fcd4fc3ffd63364c9e6c808e72ba534
   - enabled: 1
     path: Assets/FINAL SCENES/GoldMainScene.unity
