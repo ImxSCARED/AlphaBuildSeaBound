@@ -13,7 +13,7 @@ public class CameraController : MonoBehaviour
     [SerializeField]
     Vector2 m_startRotation;
     [SerializeField]
-    float m_fishingXRotation;
+    Vector2 m_fishingRotation;
     [SerializeField]
     float m_minXRotation;
     [SerializeField]
@@ -23,7 +23,7 @@ public class CameraController : MonoBehaviour
     [SerializeField]
     float m_movementSpeed;
     [SerializeField]
-    float m_autoMovementSpeed;
+    float m_transitionTime;
     [SerializeField]
     bool m_invertXControl;
     [SerializeField]
@@ -33,27 +33,37 @@ public class CameraController : MonoBehaviour
 
     Vector2 m_xRotationClamp;
 
-    float m_previousXRotation;
-    float m_targetXRotation;
+    Vector2 m_previousRotation;
+    Vector2 m_targetRotation;
 
-    bool m_lerpCamera = false;
+    float m_lerpTimer;
+
+    bool m_isFishing = false;
+    bool m_isLerp = false;
 
     private void Awake()
     {
-        m_XYRotation = m_startRotation;
+        m_XYRotation = m_startRotation + new Vector2(m_lookPoint.rotation.eulerAngles.x, m_lookPoint.rotation.eulerAngles.y);
 
         m_xRotationClamp = new Vector2(m_minXRotation, m_maxXRotation);
     }
 
     void LateUpdate()
     {
-        if (m_lerpCamera)
+        if (m_isLerp)
         {
-            m_XYRotation.x = Mathf.Lerp(m_XYRotation.x, m_targetXRotation, Time.deltaTime * m_autoMovementSpeed);
+            m_XYRotation.x = Mathf.Lerp(m_XYRotation.x, m_targetRotation.x, m_lerpTimer / m_transitionTime);
+            m_XYRotation.y = Mathf.Lerp(m_XYRotation.y, m_targetRotation.y, m_lerpTimer / m_transitionTime);
 
-            if (m_XYRotation.x == m_targetXRotation)
+            m_lerpTimer += Time.deltaTime;
+
+            if (m_lerpTimer >= m_transitionTime)
             {
-                m_lerpCamera = false;
+                m_XYRotation.x = m_targetRotation.x;
+                m_XYRotation.y = m_targetRotation.y;
+
+                m_isLerp = false;
+                m_lerpTimer = 0;
             }
         }
         else
@@ -74,7 +84,7 @@ public class CameraController : MonoBehaviour
     /// <param name="y">The direction to move the camera on the y axis, from -1 to 1</param>
     public void RotateCamera(float x, float y)
     {
-        if (!m_lerpCamera)
+        if (!m_isFishing && !m_isLerp)
         {
             float deltaX = (m_invertXControl ? -x : x) * m_movementSpeed * Time.deltaTime;
             float deltaY = (m_invertYControl ? -y : y) * m_movementSpeed * Time.deltaTime;
@@ -111,7 +121,7 @@ public class CameraController : MonoBehaviour
     /// <param name="y">Amount of y-axis rotation to add</param>
     public void AddRotation(float x, float y)
     {
-        if (!m_lerpCamera)
+        if (!m_isFishing && !m_isLerp)
         {
             m_XYRotation.x += x;
             m_XYRotation.y += y;
@@ -146,7 +156,7 @@ public class CameraController : MonoBehaviour
     /// <param name="y">Rotation around the y axis</param>
     public void SetCameraRotation(float x, float y)
     {
-        if (!m_lerpCamera)
+        if (!m_isFishing && !m_isLerp)
         {
             m_XYRotation.x = x;
             m_XYRotation.y = y;
@@ -173,22 +183,30 @@ public class CameraController : MonoBehaviour
         SetCameraRotation(rotationEulers.x, rotationEulers.y);
     }
 
+    /// <summary>
+    /// Moves camera up to the preset fishing position
+    /// </summary>
     public void StartFishingMode()
     {
-        m_previousXRotation = m_XYRotation.x;
-        m_targetXRotation = m_fishingXRotation;
+        m_previousRotation = m_XYRotation;
+        m_targetRotation = m_fishingRotation + new Vector2(m_lookPoint.rotation.eulerAngles.x, m_lookPoint.rotation.eulerAngles.y);
 
-        m_xRotationClamp = new Vector2(m_fishingXRotation, m_fishingXRotation);
+        m_xRotationClamp = new Vector2(m_fishingRotation.x, m_fishingRotation.x);
 
-        m_lerpCamera = true;
+        m_isFishing = true;
+        m_isLerp = true;
     }
 
+    /// <summary>
+    /// Moves camera up to the previous position, before fishing started
+    /// </summary>
     public void EndFishingMode()
     {
-        m_targetXRotation = m_previousXRotation;
+        m_targetRotation = m_previousRotation;
 
         m_xRotationClamp = new Vector2(m_minXRotation, m_maxXRotation);
 
-        m_lerpCamera = true;
+        m_isFishing = false;
+        m_isLerp = true;
     }
 }

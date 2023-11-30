@@ -9,6 +9,7 @@ public class Fishing : MonoBehaviour
     [SerializeField] private FishingHitbox fishingSpot;
     [SerializeField] private MovementController m_MovementController;
     [SerializeField] private PlayerManager m_PlayerManager;
+    [SerializeField] private CameraController m_cameraController;
     public CaptureCircle minigameBackground;
     public GameObject minigameMover;
 
@@ -49,6 +50,9 @@ public class Fishing : MonoBehaviour
                         fishingTutorial.StopFishTutorial();
                         fishingTutorial.StartFishingMinigameTutorial();
 
+                        // Camera
+                        m_cameraController.StartFishingMode();
+
                         GetComponent<InputManager>().ChangeActionMap("Fishing");
                         currentlyFishing = true;
                         minigameMover.SetActive(true);
@@ -81,6 +85,9 @@ public class Fishing : MonoBehaviour
         {
             //Tutorial
             fishingTutorial.fishTutorialCompleted = true;
+
+            // Camera
+            m_cameraController.EndFishingMode();
 
             GameObject fish = fishingSpot.currentFish;
             GetComponent<PlayerManager>().AddFish(fish.GetComponent<Fish>().data);
