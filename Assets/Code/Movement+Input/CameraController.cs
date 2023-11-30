@@ -13,6 +13,8 @@ public class CameraController : MonoBehaviour
     [SerializeField]
     Vector2 m_startRotation;
     [SerializeField]
+    float m_fishingXRotation;
+    [SerializeField]
     float m_minXRotation;
     [SerializeField]
     float m_maxXRotation;
@@ -21,21 +23,43 @@ public class CameraController : MonoBehaviour
     [SerializeField]
     float m_movementSpeed;
     [SerializeField]
+    float m_autoMovementSpeed;
+    [SerializeField]
     bool m_invertXControl;
     [SerializeField]
     bool m_invertYControl;
 
     Vector2 m_XYRotation;
 
+    Vector2 m_xRotationClamp;
+
+    float m_previousXRotation;
+    float m_targetXRotation;
+
+    bool m_lerpCamera = false;
+
     private void Awake()
     {
         m_XYRotation = m_startRotation;
+
+        m_xRotationClamp = new Vector2(m_minXRotation, m_maxXRotation);
     }
 
     void LateUpdate()
     {
-        // Clamp rotation
-        m_XYRotation.x = Mathf.Clamp(m_XYRotation.x, m_minXRotation, m_maxXRotation);
+        if (m_lerpCamera)
+        {
+            m_XYRotation.x = Mathf.Lerp(m_XYRotation.x, m_targetXRotation, Time.deltaTime * m_autoMovementSpeed);
+
+            if (m_XYRotation.x == m_targetXRotation)
+            {
+                m_lerpCamera = false;
+            }
+        }
+        else
+        {
+            m_XYRotation.x = Mathf.Clamp(m_XYRotation.x, m_xRotationClamp.x, m_xRotationClamp.y);
+        }
 
         Quaternion cameraRotation = Quaternion.Euler(m_XYRotation.x, m_XYRotation.y, 0);
 
@@ -50,11 +74,14 @@ public class CameraController : MonoBehaviour
     /// <param name="y">The direction to move the camera on the y axis, from -1 to 1</param>
     public void RotateCamera(float x, float y)
     {
-        float deltaX = (m_invertXControl ? -x : x) * m_movementSpeed * Time.deltaTime;
-        float deltaY = (m_invertYControl ? -y : y) * m_movementSpeed * Time.deltaTime;
+        if (!m_lerpCamera)
+        {
+            float deltaX = (m_invertXControl ? -x : x) * m_movementSpeed * Time.deltaTime;
+            float deltaY = (m_invertYControl ? -y : y) * m_movementSpeed * Time.deltaTime;
 
-        m_XYRotation.x += deltaX;
-        m_XYRotation.y += deltaY;
+            m_XYRotation.x += deltaX;
+            m_XYRotation.y += deltaY;
+        }
     }
 
     /// <summary>
@@ -84,8 +111,11 @@ public class CameraController : MonoBehaviour
     /// <param name="y">Amount of y-axis rotation to add</param>
     public void AddRotation(float x, float y)
     {
-        m_XYRotation.x += x;
-        m_XYRotation.y += y;
+        if (!m_lerpCamera)
+        {
+            m_XYRotation.x += x;
+            m_XYRotation.y += y;
+        }
     }
 
     /// <summary>
@@ -116,8 +146,11 @@ public class CameraController : MonoBehaviour
     /// <param name="y">Rotation around the y axis</param>
     public void SetCameraRotation(float x, float y)
     {
-        m_XYRotation.x = x;
-        m_XYRotation.y = y;
+        if (!m_lerpCamera)
+        {
+            m_XYRotation.x = x;
+            m_XYRotation.y = y;
+        }
     }
 
     /// <summary>
@@ -138,5 +171,24 @@ public class CameraController : MonoBehaviour
         Vector3 rotationEulers = rotation.eulerAngles;
 
         SetCameraRotation(rotationEulers.x, rotationEulers.y);
+    }
+
+    public void StartFishingMode()
+    {
+        m_previousXRotation = m_XYRotation.x;
+        m_targetXRotation = m_fishingXRotation;
+
+        m_xRotationClamp = new Vector2(m_fishingXRotation, m_fishingXRotation);
+
+        m_lerpCamera = true;
+    }
+
+    public void EndFishingMode()
+    {
+        m_targetXRotation = m_previousXRotation;
+
+        m_xRotationClamp = new Vector2(m_minXRotation, m_maxXRotation);
+
+        m_lerpCamera = true;
     }
 }
