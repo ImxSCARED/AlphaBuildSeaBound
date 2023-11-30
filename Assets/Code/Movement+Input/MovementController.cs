@@ -289,10 +289,10 @@ public class MovementController : MonoBehaviour
     {
         Vector3 localVelocity = transform.InverseTransformVector(m_velocity);
 
-        float forwardFriction = m_forwardFriction * Time.deltaTime;
+        //float forwardFriction = m_forwardFriction * Time.deltaTime;
         float sideFriction = m_sideFriction * Time.deltaTime;
 
-        localVelocity.z = SeaboundMaths.ApplyFriction(localVelocity.z, forwardFriction);
+        //localVelocity.z = SeaboundMaths.ApplyFriction(localVelocity.z, forwardFriction);
         localVelocity.x = SeaboundMaths.ApplyFriction(localVelocity.x, sideFriction);
 
         m_velocity = transform.TransformVector(localVelocity);

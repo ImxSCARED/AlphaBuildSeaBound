@@ -154,17 +154,6 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""a67d66ec-aa99-4d70-b871-c3b076c20d2f"",
-                    ""path"": ""<Gamepad>/leftStick/y"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Xbox controller;Nintendo Pro controller;Playstation DualShock controller"",
-                    ""action"": ""Forward"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""36a73862-2df7-4acb-98a7-7dbc4e70728d"",
                     ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
@@ -181,6 +170,28 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": ""Invert"",
                     ""groups"": ""Keyboard (Testing)"",
+                    ""action"": ""Forward"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""494f4787-6182-4a59-bf4a-a4256611db6a"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Playstation DualShock controller;Xbox controller;Nintendo Pro controller"",
+                    ""action"": ""Forward"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2f2f09d7-2277-4afc-a3e1-e8216ba6c89c"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": ""Invert"",
+                    ""groups"": ""Playstation DualShock controller;Xbox controller;Nintendo Pro controller"",
                     ""action"": ""Forward"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
