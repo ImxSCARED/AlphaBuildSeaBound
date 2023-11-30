@@ -14,7 +14,9 @@ public class MovementController : MonoBehaviour
     [SerializeField]
     Transform m_rotationAxis;
     [SerializeField]
-    BoxCollider m_collider;
+    CapsuleCollider m_collider;
+    [SerializeField]
+    GameObject m_wheels;
 
     [Header("Player Control")]
 
@@ -76,7 +78,6 @@ public class MovementController : MonoBehaviour
     LayerMask m_collisionLayerMask;
 
     // Wheel Spin Object Reference
-    [SerializeField] private GameObject wheels;
 
     // --CODE VARIABLES--
 
@@ -88,9 +89,6 @@ public class MovementController : MonoBehaviour
     Quaternion m_amountToRotate = Quaternion.identity;
     float m_targetTilt;
 
-    // Collision
-    Collider[] m_childColliders;
-
     //Upgrade
     public float m_upgradeAmount = 1;
 
@@ -99,26 +97,6 @@ public class MovementController : MonoBehaviour
         if (m_maxVelocity < m_maxSpeed * m_upgradeAmount)
         {
             m_maxVelocity = m_maxSpeed * m_upgradeAmount;
-        }
-
-        // Set m_childColliders
-        Collider[] allColliders = GetComponentsInChildren<Collider>();
-        m_childColliders = new Collider[allColliders.Length - 1];
-
-        int subtractFromIndex = 0;
-        for (int i = 0; i < allColliders.Length; i++)
-        {
-            // If this is not our collider...
-            if (allColliders[i] != GetComponent<Collider>())
-            {
-                //...then add it to the child list
-                m_childColliders[i - subtractFromIndex] = allColliders[i];
-            }
-            else
-            {
-                // If it is, then we need to offset our index so we don't overflow the new array
-                subtractFromIndex = 1;
-            }
         }
     }
 
@@ -149,11 +127,18 @@ public class MovementController : MonoBehaviour
 
     private void Update()
     {
-        // Drawing this in update for smooth-looking movement, to match unity's interpolated gizmos
-        SeaboundMaths.DrawBox(m_rigidbody.transform.TransformPoint(m_collider.center), m_rigidbody.rotation, m_collider.size, Color.magenta);
-
         // Spin Wheel
-        wheels.transform.Rotate(m_velocity.magnitude * Time.deltaTime * 10, 0, 0f, Space.Self);
+        m_wheels.transform.Rotate(m_velocity.magnitude * Time.deltaTime * 10, 0, 0f, Space.Self);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Vector3 startPoint = transform.position + m_collider.center - (m_collider.transform.forward * (m_collider.height / 2));
+        Vector3 endPoint = startPoint + (m_collider.transform.forward * m_collider.height);
+
+        Gizmos.DrawWireCube(transform.position + m_collider.center, new Vector3(m_collider.radius * 2, m_collider.radius * 2, m_collider.height - m_collider.radius * 2));
+        Gizmos.DrawWireSphere(startPoint + m_collider.transform.forward * m_collider.radius, m_collider.radius);
+        Gizmos.DrawWireSphere(endPoint - m_collider.transform.forward * m_collider.radius, m_collider.radius);
     }
 
     /// <summary>
@@ -174,9 +159,7 @@ public class MovementController : MonoBehaviour
         magnitude = Mathf.Clamp(magnitude, -1f, 1f);
 
         float deltaEngine = magnitude * (m_accelerationSpeed * m_upgradeAmount);
-        m_forwardImpulse = deltaEngine;
-        AudioManager.instance.PlaySound("Name");
-        
+        m_forwardImpulse = deltaEngine;        
     }
 
   
@@ -199,8 +182,11 @@ public class MovementController : MonoBehaviour
     {
         if (movement != Vector3.zero)
         {
-            if (Physics.BoxCast(transform.TransformPoint(m_collider.center), m_collider.size / 2, movement.normalized, out RaycastHit hitInfo,
-                m_rigidbody.rotation, movement.magnitude, m_collisionLayerMask, QueryTriggerInteraction.Ignore))
+            Vector3 startPoint = transform.position + m_collider.center - (m_collider.transform.forward * (m_collider.height / 2));
+            Vector3 endPoint = startPoint + (m_collider.transform.forward * m_collider.height);
+
+            if (Physics.CapsuleCast(startPoint, endPoint, m_collider.radius, movement.normalized, out RaycastHit hitInfo,
+                                    movement.magnitude, m_collisionLayerMask, QueryTriggerInteraction.Ignore))
             {
                 Debug.Log("Object hit: " + hitInfo.transform.name);
 
@@ -223,7 +209,7 @@ public class MovementController : MonoBehaviour
 
                 m_rigidbody.MovePosition(m_rigidbody.position + newMovement);
             }
-            else if (Physics.CheckBox(transform.TransformPoint(m_collider.center) + movement, m_collider.size / 2, m_rigidbody.rotation, m_collisionLayerMask, QueryTriggerInteraction.Ignore))
+            else if (Physics.CheckCapsule(startPoint, endPoint, m_collider.radius, m_collisionLayerMask, QueryTriggerInteraction.Ignore))
             {
                 m_velocity = -movement / Time.deltaTime;
                 m_rigidbody.MovePosition(m_rigidbody.position - movement);
@@ -241,8 +227,12 @@ public class MovementController : MonoBehaviour
         {
             Quaternion newRotation = m_rigidbody.rotation * rotation;
 
+            Vector3 newForward = rotation * m_collider.transform.forward;
+            Vector3 startPoint = transform.position + m_collider.center - (newForward * (m_collider.height / 2));
+            Vector3 endPoint = startPoint + (newForward * m_collider.height);
+
             // If our rotation doesn't collide with anything...
-            if (!Physics.CheckBox(transform.TransformPoint(m_collider.center), m_collider.size / 2, newRotation, m_collisionLayerMask, QueryTriggerInteraction.Ignore))
+            if (!Physics.CheckCapsule(startPoint, endPoint, m_collider.radius, m_collisionLayerMask, QueryTriggerInteraction.Ignore))
             {
                 //... then we should rotate
                 m_rigidbody.MoveRotation(newRotation);
