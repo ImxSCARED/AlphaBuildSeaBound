@@ -1434,31 +1434,85 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 9c757c46727b1194399d675ad74efd7f, type: 3}
     volume: 0.5
     pitch: 1
-    killOnSceneChange: 0
+    stopRepeat: 0
     source: {fileID: 0}
   - name: MainStart
     clip: {fileID: 8300000, guid: 3284f301788ac5b48a11a3a9095f9d3f, type: 3}
     volume: 0.8
     pitch: 1
-    killOnSceneChange: 0
+    stopRepeat: 0
     source: {fileID: 0}
   - name: MainSettings
     clip: {fileID: 8300000, guid: 6d85040edbf0657488158d9c65bac428, type: 3}
     volume: 0.8
     pitch: 1
-    killOnSceneChange: 0
+    stopRepeat: 0
     source: {fileID: 0}
   - name: MainBack
     clip: {fileID: 8300000, guid: e833e50f36ad3c24b85a433610a20f13, type: 3}
     volume: 0.8
     pitch: 1
-    killOnSceneChange: 0
+    stopRepeat: 0
     source: {fileID: 0}
   - name: SettingToggle
     clip: {fileID: 8300000, guid: eb5bbf851b67d6944873e1a61d5070f7, type: 3}
     volume: 1
     pitch: 1
-    killOnSceneChange: 0
+    stopRepeat: 0
+    source: {fileID: 0}
+  - name: SellFish
+    clip: {fileID: 8300000, guid: 78e121d88a33a3d4f97ba0246d689a02, type: 3}
+    volume: 1
+    pitch: 1
+    stopRepeat: 0
+    source: {fileID: 0}
+  - name: AmmoUp
+    clip: {fileID: 8300000, guid: 3b5aea80aa52fbe49b9c4cca7f19d117, type: 3}
+    volume: 1
+    pitch: 1
+    stopRepeat: 0
+    source: {fileID: 0}
+  - name: QuestDone
+    clip: {fileID: 8300000, guid: 86c921d6191f2e84bb030051b4314210, type: 3}
+    volume: 1
+    pitch: 1
+    stopRepeat: 0
+    source: {fileID: 0}
+  - name: ErrorSound
+    clip: {fileID: 8300000, guid: 17411dd9e9a5a3c4aab3bdef9272c397, type: 3}
+    volume: 1
+    pitch: 1
+    stopRepeat: 0
+    source: {fileID: 0}
+  - name: UpgradedShip
+    clip: {fileID: 8300000, guid: 903acd3bf61a5e44a93b5c3b4e9cb5cc, type: 3}
+    volume: 1
+    pitch: 1
+    stopRepeat: 0
+    source: {fileID: 0}
+  - name: StartFishing
+    clip: {fileID: 8300000, guid: c7587e3998c03134eb45f394d194ab1b, type: 3}
+    volume: 1
+    pitch: 1
+    stopRepeat: 0
+    source: {fileID: 0}
+  - name: EndFishing
+    clip: {fileID: 8300000, guid: b3116293739b8a6458dbdb5ffe5e9206, type: 3}
+    volume: 1
+    pitch: 1
+    stopRepeat: 0
+    source: {fileID: 0}
+  - name: NearbyFish
+    clip: {fileID: 8300000, guid: 9e2c4885e888ba74a84817837b3935d9, type: 3}
+    volume: 1
+    pitch: 1
+    stopRepeat: 0
+    source: {fileID: 0}
+  - name: StruggleFish
+    clip: {fileID: 8300000, guid: 6609d19aed6ae3e4894c259fb9eebb32, type: 3}
+    volume: 1
+    pitch: 1
+    stopRepeat: 0
     source: {fileID: 0}
   tracks:
   - name: Track_MainMenu

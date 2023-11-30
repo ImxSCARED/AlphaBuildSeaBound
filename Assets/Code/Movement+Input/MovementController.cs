@@ -15,6 +15,8 @@ public class MovementController : MonoBehaviour
     Transform m_rotationAxis;
     [SerializeField]
     BoxCollider m_collider;
+    [SerializeField]
+    AudioManager m_audioManager;
 
     [Header("Player Control")]
 
@@ -140,7 +142,8 @@ public class MovementController : MonoBehaviour
         MoveWithCollision(m_velocity * Time.deltaTime);
         RotateWithCollision(m_amountToRotate);
 
-        MoveWithCollision(m_velocity * Time.deltaTime);
+        // Sound
+        MovementSound(m_velocity.magnitude / m_maxVelocity);
 
         // Cleanup
         m_forwardImpulse = 0f;
@@ -175,8 +178,6 @@ public class MovementController : MonoBehaviour
 
         float deltaEngine = magnitude * (m_accelerationSpeed * m_upgradeAmount);
         m_forwardImpulse = deltaEngine;
-        AudioManager.instance.PlaySound("Name");
-        
     }
 
   
@@ -301,5 +302,29 @@ public class MovementController : MonoBehaviour
     {
         m_forwardImpulse = 0;
         m_velocity = Vector3.zero;
+    }
+
+    private void MovementSound(float percentMaxVelocity)
+    {
+        if (percentMaxVelocity <= 0.2)
+        {
+            // AudioManager.instance.PlayNextThingo(zeroToTwentyPercentMovementSound)
+        }
+        else if (percentMaxVelocity <= 0.4)
+        {
+            // AudioManager.instance.PlayNextThingo(twentyToFortyPercentMovementSound)
+        }
+        else if (percentMaxVelocity <= 0.6)
+        {
+            // AudioManager.instance.PlayNextThingo(fortyToSixtyPercentMovementSound)
+        }
+        else if (percentMaxVelocity <= 0.8)
+        {
+            // AudioManager.instance.PlayNextThingo(sixtyToEightyPercentMovementSound)
+        }
+        else if (percentMaxVelocity <= 1)
+        {
+            // AudioManager.instance.PlayNextThingo(eightyToHundredPercentMovementSound)
+        }
     }
 }

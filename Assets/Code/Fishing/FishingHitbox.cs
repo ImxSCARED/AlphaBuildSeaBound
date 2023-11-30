@@ -7,6 +7,7 @@ using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 public class FishingHitbox : MonoBehaviour
 {
     public PlayerManager playerManager;
+    public QuestManager questManager;
     public LineRenderer fishingLineRenderer;
     public LineRenderer antiFishingLineRenderer;
 
@@ -111,6 +112,18 @@ public class FishingHitbox : MonoBehaviour
             {
                 closestFishDist = distanceFromShip;
                 closestFish = fish;
+            }
+        }
+        if (questManager.currentBountyFish != null)
+        {
+            float distanceFromShip = (questManager.currentBountyFish.transform.position - transform.position).magnitude;
+            if (closestFish)
+            {
+                if(distanceFromShip < closestFishDist)
+                {
+                    closestFishDist = distanceFromShip;
+                    closestFish = questManager.currentBountyFish;
+                }
             }
         }
     }

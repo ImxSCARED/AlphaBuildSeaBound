@@ -10,6 +10,7 @@ public class Dock : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             other.GetComponent<PlayerManager>().isAtDock = true;
+            AudioManager.instance.PlaySound("AmmoUp");
         }
     }
     private void OnTriggerExit(Collider other)

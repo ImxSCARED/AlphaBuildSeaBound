@@ -8,7 +8,7 @@ using UnityEngine.UIElements;
 
 public class MainMenu : MonoBehaviour
 {
-    
+
     [SerializeField] private GameObject settingsMenu;
     [SerializeField] private GameObject settingsFirstButton;
     [SerializeField] private GameObject mainMenu;
@@ -22,10 +22,10 @@ public class MainMenu : MonoBehaviour
 
     private void Update()
     {
-        if(fadeOutStart)
-            currentCG.alpha = Mathf.MoveTowards(currentCG.alpha, 0, 2*Time.deltaTime);
+        if (fadeOutStart)
+            currentCG.alpha = Mathf.MoveTowards(currentCG.alpha, 0, 2 * Time.deltaTime);
 
-        
+
     }
     public void OpenSettingsMenu()
     {
@@ -73,7 +73,7 @@ public class MainMenu : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
- 
+
     }
 
     public void FadeOut(CanvasGroup CG)
@@ -85,14 +85,14 @@ public class MainMenu : MonoBehaviour
     public void Delay()
     {
         Debug.Log("and his music was electric...");
-        SceneManager.LoadScene("Gold_MainScene");
+        SceneManager.LoadScene("MylesGoldScene");
     }
 
     public void Awake()
     {
         AudioManager.instance.PlayTrack("Track_MainMenu");
-        //AudioManager.instance.PlayClip("Sound_MMAmbience");
-        
+        AudioManager.instance.PlayClip("MMAmbience");
     }
 }
+
 

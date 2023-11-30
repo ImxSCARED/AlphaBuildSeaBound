@@ -5,7 +5,7 @@ public class UpgradeManager : MonoBehaviour
 {
     static public UpgradeManager instance;
     private Fishing m_Fishing;
-    private FishingHitbox m_FishingHitbox;
+    [SerializeField] private FishingHitbox m_FishingHitbox;
     private MovementController m_MovementController;
     private PlayerManager m_PlayerManager;
     [SerializeField] private CaptureCircle m_CaptureCircle;
@@ -31,7 +31,7 @@ public class UpgradeManager : MonoBehaviour
     /// <param name="UpgradeToAdd"></param>
     private void ImplementUpgrade(Upgrade UpgradeToAdd)
     {
-
+        
         switch (UpgradeToAdd.Type)
         {
             case UpgradeData.UpgradeType.AMMO:
@@ -54,6 +54,7 @@ public class UpgradeManager : MonoBehaviour
                 m_FishingHitbox.RedrawOval(m_FishingHitbox.fishingLineRenderer, m_FishingHitbox.fishingRadius * (m_UpgradeData.RangeIncreaseAmount + 1), m_FishingHitbox.fishingWidthRatio, m_FishingHitbox.fishingHeightRatio);
                 break;
         }
+        AudioManager.instance.PlaySound("UpgradedShip");
     }
 
     /// <summary>

@@ -57,7 +57,7 @@ public class Fishing : MonoBehaviour
                         currentHarpoons--;
                         m_PlayerManager.harpoonCount.text = "X " + currentHarpoons;
                         m_MovementController.StopMovement();
-
+                        AudioManager.instance.PlaySound("StartFishing");
                     }
                     else
                     {
@@ -90,6 +90,11 @@ public class Fishing : MonoBehaviour
             fish.SetActive(false);
 
             fishingSpot.antiFishingLineRenderer.enabled = true;
+            AudioManager.instance.PlaySound("EndFishing");
+        }
+        else
+        {
+            AudioManager.instance.PlaySound("ErrorSound");
         }
     }
 
