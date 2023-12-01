@@ -90,10 +90,15 @@ public class Fishing : MonoBehaviour
             m_cameraController.EndFishingMode();
 
             GameObject fish = fishingSpot.currentFish;
-            GetComponent<PlayerManager>().AddFish(fish.GetComponent<Fish>().data);
-            GetComponent<PlayerManager>().RemoveFishFromTracked(fish);
+            m_PlayerManager.AddFish(fish.GetComponent<Fish>().data);
+            m_PlayerManager.RemoveFishFromTracked(fish);
 
             fishingSpot.currentFish = null;
+            if(fish.GetComponent<Fish>().data.isQuestFish)
+            {
+                GetComponent<QuestManager>().currentQuestTitle.text = "Bounty caught";
+                GetComponent<QuestManager>().currentQuestDesc.text = "Return to dock and sell bounty for reward";
+            }
             fish.SetActive(false);
 
             fishingSpot.antiFishingLineRenderer.enabled = true;

@@ -83,7 +83,8 @@ public class UpgradeManager : MonoBehaviour
 
 
                             UP.Price = Mathf.RoundToInt(UP.Price * UP.PriceIncrease);
-                            UP.assignedQuest.currentQuest++;
+                            if(UP.Level != UP.MaxLevel)
+                                UP.assignedQuest.currentQuest++;
                             return UP;
                         }
                     }

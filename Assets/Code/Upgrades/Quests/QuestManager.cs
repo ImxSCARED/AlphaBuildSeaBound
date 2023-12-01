@@ -6,8 +6,8 @@ public class QuestManager : MonoBehaviour
     
     [SerializeField] private PlayerManager m_PlayerManager;
 
-    [SerializeField] private TextMeshProUGUI currentQuestTitle;
-    [SerializeField] private TextMeshProUGUI currentQuestDesc;
+    [SerializeField] public TextMeshProUGUI currentQuestTitle;
+    [SerializeField] public TextMeshProUGUI currentQuestDesc;
 
     public Quest[] m_Quests;
     public GameObject questFish;

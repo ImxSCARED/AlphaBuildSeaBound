@@ -254,6 +254,7 @@ public class PlayerManager : MonoBehaviour
             }
             isDocked = true;
             moneyTxt.text = Money.ToString();
+            Debug.Log("Entered Hub");
         }
     }
 
@@ -263,6 +264,7 @@ public class PlayerManager : MonoBehaviour
 
     public void ExitHub()
     {
+        Debug.Log("ExitHub");
         GetComponent<InputManager>().ChangeActionMap("Sailing");
         hub.enabled = false;
         isDocked = false;

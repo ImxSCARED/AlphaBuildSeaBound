@@ -18,10 +18,10 @@ MonoBehaviour:
     Zone: 0
     connectedUpgrade: {fileID: 11400000, guid: 73d692d37d252bf4498b77706d359b74, type: 2}
     connectedFish:
-      name: Noodles
+      name: 
       fishImage: {fileID: 21300000, guid: be6b63b149c14e94e9999e323844edae, type: 3}
       value: 25
-      isQuestFish: 1
+      isQuestFish: 0
       tier: 0
     completed: 0
   - Name: Ammo Quest - 2
@@ -29,7 +29,7 @@ MonoBehaviour:
     Zone: 1
     connectedUpgrade: {fileID: 11400000, guid: 73d692d37d252bf4498b77706d359b74, type: 2}
     connectedFish:
-      name: Huh
+      name: 
       fishImage: {fileID: 0}
       value: 50
       isQuestFish: 1
@@ -40,7 +40,7 @@ MonoBehaviour:
     Zone: 2
     connectedUpgrade: {fileID: 11400000, guid: 73d692d37d252bf4498b77706d359b74, type: 2}
     connectedFish:
-      name: Huh
+      name: 
       fishImage: {fileID: 0}
       value: 0
       isQuestFish: 1
