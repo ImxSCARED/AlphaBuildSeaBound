@@ -20408,12 +20408,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_lookPoint: {fileID: 1405250374}
   m_startRotation: {x: 30, y: 0}
-  m_fishingXRotation: 0
+  m_fishingRotation: {x: 0, y: 0}
   m_minXRotation: 10
   m_maxXRotation: 45
   m_distanceFromPlayer: 30
   m_movementSpeed: 60
-  m_autoMovementSpeed: 0
+  m_transitionTime: 0
   m_invertXControl: 0
   m_invertYControl: 0
 --- !u!65 &1136200536
@@ -22777,6 +22777,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1421247870}
+        m_TargetAssemblyTypeName: SettingsManager, Assembly-CSharp
+        m_MethodName: ConfirmSettings
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 2022947081}
         m_TargetAssemblyTypeName: PlayerManager, Assembly-CSharp
         m_MethodName: SettingsToggle
@@ -26321,7 +26333,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0.000023515211}
   m_SizeDelta: {x: 0, y: 28}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!1 &1477586089
@@ -29533,7 +29545,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1648959085}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.99998045
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -30048,7 +30060,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 0.99998045}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -32113,8 +32125,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Option A
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -36481,6 +36493,7 @@ MonoBehaviour:
   fishingSpot: {fileID: 2093622116}
   m_MovementController: {fileID: 2022947085}
   m_PlayerManager: {fileID: 2022947081}
+  m_cameraController: {fileID: 0}
   minigameBackground: {fileID: 1542724387}
   minigameMover: {fileID: 1618977151}
   currentlyFishing: 0
@@ -38983,6 +38996,8 @@ MonoBehaviour:
   musicSlider: {fileID: 98850197}
   soundFXSlider: {fileID: 1477610452}
   ambienceSlider: {fileID: 1193570419}
+  fullscreenToggle: {fileID: 675173236}
+  resolutionDropdown: {fileID: 1823233746}
 --- !u!4 &2106313639
 Transform:
   m_ObjectHideFlags: 0
