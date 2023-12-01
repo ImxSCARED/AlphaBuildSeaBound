@@ -99,21 +99,21 @@ public class AudioManager : MonoBehaviour
         }
 
         //Music
-        if (currentTrackPlaying == null)
+        if (currentTrackPlaying != null)
         {
             currentTrackPlaying.source.volume = currentTrackPlaying.volume;
         }
-        if (nextTrackPlaying == null)
+        if (nextTrackPlaying != null)
         {
             nextTrackPlaying.source.volume = nextTrackPlaying.volume;
         }
 
         //Ambience
-        if (currentClipPlaying == null)
+        if (currentClipPlaying != null)
         {
             currentClipPlaying.source.volume = currentClipPlaying.volume;
         }
-        if (nextClipPlaying == null)
+        if (nextClipPlaying != null)
         {
             nextClipPlaying.source.volume = nextClipPlaying.volume;
         }
