@@ -22,27 +22,29 @@ public class AudioManager : MonoBehaviour
     // AudioManager.instance.PlayClip("Name");;
     // AudioManager.instance.PlayNextClip("Name");;
 
+
+    public AudioMixer mixer;
+    public static AudioManager instance;
+    
+    //SFX
     public SoundMaster[] sounds;
+
+    //Music
     public MusicMaster[] tracks;
     public MusicMaster currentTrackPlaying;
     public MusicMaster nextTrackPlaying;
-    public AmbienceMaster currentClipPlaying;
-    public AmbienceMaster nextClipPlaying;
-    public AudioMixer mixer;
-    public AmbienceMaster[] clips;
-
-
-    public static AudioManager instance;
-    private bool stopRepeat;
-
-
     public float trackFadeTime;
     private float trackFadeTimeElapsed = 0;
     private bool isTrackFading = false;
-
+    
+    //Ambience
+    public AmbienceMaster currentClipPlaying;
+    public AmbienceMaster nextClipPlaying;
+    public AmbienceMaster[] clips;
     public float clipFadeTime;
     private float clipFadeTimeElapsed = 0;
     private bool isClipFading = false;
+
 
     void Awake()
     {
@@ -78,10 +80,10 @@ public class AudioManager : MonoBehaviour
             s.source.clip = s.clip;
             s.source.volume = s.volume;
             s.source.pitch = s.pitch;
-            s.stopRepeat = stopRepeat;
             s.source.outputAudioMixerGroup = mixer.FindMatchingGroups("SoundFX")[0];
         }
 
+        
     }
 
     void Update()
@@ -97,24 +99,26 @@ public class AudioManager : MonoBehaviour
         }
 
         //Music
-        if (currentTrackPlaying.source)
+        if (currentTrackPlaying == null)
         {
             currentTrackPlaying.source.volume = currentTrackPlaying.volume;
         }
-        if (nextTrackPlaying.source)
+        if (nextTrackPlaying == null)
         {
             nextTrackPlaying.source.volume = nextTrackPlaying.volume;
         }
 
         //Ambience
-        if (currentClipPlaying.source)
+        if (currentClipPlaying == null)
         {
             currentClipPlaying.source.volume = currentClipPlaying.volume;
         }
-        if (nextClipPlaying.source)
+        if (nextClipPlaying == null)
         {
             nextClipPlaying.source.volume = nextClipPlaying.volume;
         }
+
+        
 
     }
 
@@ -151,6 +155,8 @@ public class AudioManager : MonoBehaviour
         currentClipPlaying.volume = 1;
         c.source.Play();
     }
+
+    
 
     public void PlayNextClip(string name)
     {
@@ -219,6 +225,8 @@ public class AudioManager : MonoBehaviour
             isClipFading = false;
         }
     }
+
+   
 
 }
 
