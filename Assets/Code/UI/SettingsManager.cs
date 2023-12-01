@@ -8,11 +8,10 @@ using static UnityEngine.Rendering.DebugUI;
 
 public class SettingsManager : MonoBehaviour
 {
-    SettingsSerialiser settings;
+    SettingsSerialiser m_settings;
 
     public AudioMixer audioMixer;
     public SettingsHolder Holder;
-    public TMP_Dropdown resolutionDropdown;
     Resolution[] resolutions;
 
     const string mixer_Master = "Master";
@@ -26,27 +25,25 @@ public class SettingsManager : MonoBehaviour
     float m_musicVolume;
     float m_SFXVolume;
     float m_ambienceVolume;
+    float m_brightness;
 
     bool m_fullscreen;
-
-    // Sound Sliders
-
-    private void Awake()
-    {
-        Holder.masterSlider.onValueChanged.AddListener(SetMasterVolume);
-        Holder.musicSlider.onValueChanged.AddListener(SetMusicVolume);
-        Holder.soundFXSlider.onValueChanged.AddListener(SetSoundFXVolume);
-        Holder.ambienceSlider.onValueChanged.AddListener(SetAmbienceVolume);
-
-        settings = SettingsSerialiser.Instance;
-    }
+    bool m_invertCamera;
+    bool m_showTutorial;
 
     private void Start()
     {
+        // Set up listeners on sliders
+        if (Holder.masterSlider) { Holder.masterSlider.onValueChanged.AddListener(SetMasterVolume); }
+        if (Holder.musicSlider) { Holder.musicSlider.onValueChanged.AddListener(SetMusicVolume); }
+        if (Holder.soundFXSlider) { Holder.soundFXSlider.onValueChanged.AddListener(SetSoundFXVolume); }
+        if (Holder.ambienceSlider) { Holder.ambienceSlider.onValueChanged.AddListener(SetAmbienceVolume); }
+        if (Holder.brightnessSlider) { Holder.brightnessSlider.onValueChanged.AddListener(SetBrightness); }
+
         // Fill resolution dropdown with resolutions
         resolutions = Screen.resolutions;
 
-        resolutionDropdown.ClearOptions();
+        Holder.resolutionDropdown.ClearOptions();
 
         List<string> options = new List<string>();
 
@@ -62,9 +59,9 @@ public class SettingsManager : MonoBehaviour
             }
         }
 
-        resolutionDropdown.AddOptions(options);
-        resolutionDropdown.value = currentResolutionIndex;
-        resolutionDropdown.RefreshShownValue();
+        Holder.resolutionDropdown.AddOptions(options);
+        Holder.resolutionDropdown.value = currentResolutionIndex;
+        Holder.resolutionDropdown.RefreshShownValue();
 
         // Initialise settings
         InitSettings();
@@ -72,10 +69,10 @@ public class SettingsManager : MonoBehaviour
 
     private void OnApplicationQuit()
     {
-        settings.SaveFile();
+        m_settings.SaveFile();
     }
 
-    public void SetMasterVolume (float value)
+    public void SetMasterVolume(float value)
     {
         m_masterVolume = value;
         audioMixer.SetFloat(mixer_Master, Mathf.Log10(value) * 20);
@@ -83,7 +80,7 @@ public class SettingsManager : MonoBehaviour
     public void SetMusicVolume(float value)
     {
         m_musicVolume = value;
-        audioMixer.SetFloat(mixer_Music, Mathf.Log10(value) * 20); 
+        audioMixer.SetFloat(mixer_Music, Mathf.Log10(value) * 20);
     }
     public void SetSoundFXVolume(float value)
     {
@@ -95,6 +92,11 @@ public class SettingsManager : MonoBehaviour
         m_ambienceVolume = value;
         audioMixer.SetFloat(mixer_Ambience, Mathf.Log10(value) * 20);
     }
+    public void SetBrightness(float value)
+    {
+        m_brightness = value;
+        Screen.brightness = value;
+    }
 
     public void ToggleFullscreen()
     {
@@ -103,6 +105,24 @@ public class SettingsManager : MonoBehaviour
 
         // Then update the screen
         Screen.fullScreen = m_fullscreen;
+    }
+
+    public void ToggleInvertCamera()
+    {
+        // Set settings
+        m_invertCamera = !m_invertCamera;
+
+        // Then update the camera
+        Holder.camera.SetInvertCamera(m_invertCamera);
+    }
+
+    public void ToggleTutorial()
+    {
+        // Set settings
+        m_showTutorial = !m_showTutorial;
+
+        // Then update the tutorial script
+        // TODO: connect to tutorial scripts (when the new one is finished)
     }
 
     public void SetResolution(int resolutionIndex)
@@ -120,14 +140,19 @@ public class SettingsManager : MonoBehaviour
     /// </summary>
     public void ConfirmSettings()
     {
-        settings.SetSetting<float>("masterVolume", m_masterVolume);
-        settings.SetSetting<float>("musicVolume", m_musicVolume);
-        settings.SetSetting<float>("SFXVolume", m_SFXVolume);
-        settings.SetSetting<float>("ambienceVolume", m_ambienceVolume);
+        // If the UI element exists, then the setting will have been loaded
+        if (Holder.masterSlider) { m_settings.SetSetting<float>("masterVolume", m_masterVolume); }
+        if (Holder.musicSlider) { m_settings.SetSetting<float>("musicVolume", m_musicVolume); }
+        if (Holder.soundFXSlider) { m_settings.SetSetting<float>("SFXVolume", m_SFXVolume); }
+        if (Holder.ambienceSlider) { m_settings.SetSetting<float>("ambienceVolume", m_ambienceVolume); }
 
-        settings.SetSetting<bool>("fullscreen", m_fullscreen);
+        if (Holder.brightnessSlider) { m_settings.SetSetting<float>("brightness", m_brightness); }
 
-        settings.SetSetting<string>("resolution", m_resolution);
+        if (Holder.fullscreenToggle) { m_settings.SetSetting<bool>("fullscreen", m_fullscreen); }
+        if (Holder.invertCameraToggle) { m_settings.SetSetting<bool>("invertCamera", m_invertCamera); }
+        if (Holder.tutorialToggle) { m_settings.SetSetting<bool>("showTutorial", m_showTutorial); }
+
+        if (Holder.resolutionDropdown) { m_settings.SetSetting<string>("resolution", m_resolution); }
     }
 
     /// <summary>
@@ -137,48 +162,85 @@ public class SettingsManager : MonoBehaviour
     /// </summary>
     private void InitSettings()
     {
-        // ---Initialise settings values and UI elements---
-        
-        // Is this unreadable? I can never tell where single line ifs and elses are appropriate, but it's so long if I do otherwise
-        // Master volume
-        if (!settings.GetSetting<float>("masterVolume", out m_masterVolume)) { m_masterVolume = Holder.masterSlider.value; }
-        else { Holder.masterSlider.value = m_masterVolume; }
-        // Music volume
-        if (!settings.GetSetting<float>("musicVolume", out m_musicVolume)) { m_musicVolume = Holder.musicSlider.value; }
-        else { Holder.musicSlider.value = m_musicVolume; }
-        // SFX volume
-        if (!settings.GetSetting<float>("SFXVolume", out m_SFXVolume)) { m_SFXVolume = Holder.soundFXSlider.value; }
-        else { Holder.soundFXSlider.value = m_SFXVolume; }
-        // Ambience volume
-        if (!settings.GetSetting<float>("ambienceVolume", out m_ambienceVolume)) { m_ambienceVolume = Holder.ambienceSlider.value; }
-        else { Holder.ambienceSlider.value = m_ambienceVolume; }
-
-        // Window mode
-        if (!settings.GetSetting<bool>("fullscreen", out m_fullscreen)) { m_fullscreen = Holder.fullscreenToggle.isOn; }
-        else { Holder.fullscreenToggle.isOn = m_fullscreen; }
-
-        // Resolution
-        if (!settings.GetSetting<string>("resolution", out m_resolution)) { m_resolution = ResolutionIndexToString(Holder.resolutionDropdown.value); }
-        else { Holder.resolutionDropdown.value = GetResolutionIndex(m_resolution); }
-
-
-        // ---Set game variables to loaded settings---
+        m_settings = SettingsSerialiser.Instance;
 
         // Master volume
-        audioMixer.SetFloat(mixer_Master, Mathf.Log10(Holder.masterSlider.value) * 20);
+        if (Holder.masterSlider)
+        {
+            // Is this unreadable? I can never tell where single line ifs and elses are appropriate, but it's so long if I do otherwise
+            if (!m_settings.GetSetting<float>("masterVolume", out m_masterVolume)) { m_masterVolume = Holder.masterSlider.value; }
+            else { Holder.masterSlider.value = m_masterVolume; }
+
+            audioMixer.SetFloat(mixer_Master, Mathf.Log10(Holder.masterSlider.value) * 20);
+        }
         // Music volume
-        audioMixer.SetFloat(mixer_Music, Mathf.Log10(Holder.musicSlider.value) * 20);
+        if (Holder.musicSlider)
+        {
+            if (!m_settings.GetSetting<float>("musicVolume", out m_musicVolume)) { m_musicVolume = Holder.musicSlider.value; }
+            else { Holder.musicSlider.value = m_musicVolume; }
+
+            audioMixer.SetFloat(mixer_Music, Mathf.Log10(Holder.musicSlider.value) * 20);
+        }
         // SFX volume
-        audioMixer.SetFloat(mixer_SoundFX, Mathf.Log10(Holder.soundFXSlider.value) * 20);
+        if (Holder.soundFXSlider)
+        {
+            if (!m_settings.GetSetting<float>("SFXVolume", out m_SFXVolume)) { m_SFXVolume = Holder.soundFXSlider.value; }
+            else { Holder.soundFXSlider.value = m_SFXVolume; }
+
+            audioMixer.SetFloat(mixer_SoundFX, Mathf.Log10(Holder.soundFXSlider.value) * 20);
+        }
         // Ambience volume
-        audioMixer.SetFloat(mixer_Ambience, Mathf.Log10(Holder.ambienceSlider.value) * 20);
+        if (Holder.ambienceSlider)
+        {
+            if (!m_settings.GetSetting<float>("ambienceVolume", out m_ambienceVolume)) { m_ambienceVolume = Holder.ambienceSlider.value; }
+            else { Holder.ambienceSlider.value = m_ambienceVolume; }
+
+            audioMixer.SetFloat(mixer_Ambience, Mathf.Log10(Holder.ambienceSlider.value) * 20);
+        }
+
+        // Brightness
+        if (Holder.brightnessSlider)
+        {
+            if (!m_settings.GetSetting<float>("brightness", out m_brightness)) { m_brightness = Holder.brightnessSlider.value; }
+            else { Holder.brightnessSlider.value = m_brightness; }
+
+            Screen.brightness = m_brightness;
+        }
 
         // Window mode
-        Screen.fullScreen = m_fullscreen;
+        if (Holder.fullscreenToggle)
+        {
+            if (!m_settings.GetSetting<bool>("fullscreen", out m_fullscreen)) { m_fullscreen = Holder.fullscreenToggle.isOn; }
+            else { Holder.fullscreenToggle.isOn = m_fullscreen; }
+
+            Screen.fullScreen = m_fullscreen;
+        }
+        // Invert camera
+        if (Holder.invertCameraToggle)
+        {
+            if (!m_settings.GetSetting<bool>("invertCamera", out m_invertCamera)) { m_invertCamera = Holder.invertCameraToggle.isOn; }
+            else { Holder.invertCameraToggle.isOn = m_invertCamera; }
+
+            Holder.camera.SetInvertCamera(m_invertCamera);
+        }
+        // Show tutorial
+        if (Holder.tutorialToggle)
+        {
+            if (!m_settings.GetSetting<bool>("showTutorial", out m_showTutorial)) { m_showTutorial = Holder.tutorialToggle.isOn; }
+            else { Holder.tutorialToggle.isOn = m_showTutorial; }
+
+            // TODO: connect to tutorial scripts (when the new one is finished)
+        }
 
         // Resolution
-        Resolution resolution = resolutions[GetResolutionIndex(m_resolution)];
-        Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
+        if (Holder.resolutionDropdown)
+        {
+            if (!m_settings.GetSetting<string>("resolution", out m_resolution)) { m_resolution = ResolutionIndexToString(Holder.resolutionDropdown.value); }
+            else { Holder.resolutionDropdown.value = GetResolutionIndex(m_resolution); }
+
+            Resolution resolution = resolutions[GetResolutionIndex(m_resolution)];
+            Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
+        }
     }
 
     /// <summary>

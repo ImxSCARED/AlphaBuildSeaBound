@@ -25,9 +25,7 @@ public class CameraController : MonoBehaviour
     [SerializeField]
     float m_transitionTime;
     [SerializeField]
-    bool m_invertXControl;
-    [SerializeField]
-    bool m_invertYControl;
+    bool m_invertControl;
 
     Vector2 m_XYRotation;
 
@@ -86,8 +84,8 @@ public class CameraController : MonoBehaviour
     {
         if (!m_isFishing && !m_isLerp)
         {
-            float deltaX = (m_invertXControl ? -x : x) * m_movementSpeed * Time.deltaTime;
-            float deltaY = (m_invertYControl ? -y : y) * m_movementSpeed * Time.deltaTime;
+            float deltaX = (m_invertControl ? x : -x) * m_movementSpeed * Time.deltaTime;
+            float deltaY = (m_invertControl ? -y : y) * m_movementSpeed * Time.deltaTime;
 
             m_XYRotation.x += deltaX;
             m_XYRotation.y += deltaY;
@@ -181,6 +179,11 @@ public class CameraController : MonoBehaviour
         Vector3 rotationEulers = rotation.eulerAngles;
 
         SetCameraRotation(rotationEulers.x, rotationEulers.y);
+    }
+
+    public void SetInvertCamera(bool invert)
+    {
+        m_invertControl = invert;
     }
 
     /// <summary>

@@ -127,16 +127,19 @@ public class SettingsSerialiser
     /// </summary>
     public void SaveFile()
     {
-        string destination = Application.persistentDataPath + "/" + userSettingsFilePath;
-
-        string jsonWrite = JsonUtility.ToJson(settings);
-
-        if (!File.Exists(destination))
+        if (settings.settingsString.Length > 0)
         {
-            Directory.CreateDirectory(Path.GetDirectoryName(destination));
-        }
+            string destination = Application.persistentDataPath + "/" + userSettingsFilePath;
 
-        File.WriteAllText(destination, jsonWrite);
+            string jsonWrite = JsonUtility.ToJson(settings);
+
+            if (!File.Exists(destination))
+            {
+                Directory.CreateDirectory(Path.GetDirectoryName(destination));
+            }
+
+            File.WriteAllText(destination, jsonWrite);
+        }
     }
 
     /// <summary>

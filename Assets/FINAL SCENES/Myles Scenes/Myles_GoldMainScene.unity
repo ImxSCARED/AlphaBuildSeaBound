@@ -389,8 +389,8 @@ RectTransform:
   m_Father: {fileID: 14806217}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.49995, y: 0}
+  m_AnchorMax: {x: 0.49995, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: -1}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -6362,7 +6362,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0.49995, y: 1}
   m_AnchoredPosition: {x: 3.0239258, y: 0.14239883}
   m_SizeDelta: {x: 16.0476, y: 10.1277}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -12483,7 +12483,7 @@ MonoBehaviour:
   m_Navigation:
     m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 1193570419}
+    m_SelectOnUp: {fileID: 2075667644}
     m_SelectOnDown: {fileID: 872459404}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
@@ -16416,7 +16416,7 @@ MonoBehaviour:
     m_Mode: 4
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 675173236}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnDown: {fileID: 1188498989}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
@@ -16447,10 +16447,10 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1421247867}
-        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-        m_MethodName: 
-        m_Mode: 5
+      - m_Target: {fileID: 1421247870}
+        m_TargetAssemblyTypeName: SettingsManager, Assembly-CSharp
+        m_MethodName: ToggleInvertCamera
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -16646,8 +16646,8 @@ RectTransform:
   m_Father: {fileID: 350627369}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.49995, y: 0}
+  m_AnchorMax: {x: 0.49995, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: -1}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -18596,8 +18596,8 @@ RectTransform:
   m_Father: {fileID: 697432501}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.49995, y: 0}
+  m_AnchorMax: {x: 0.49995, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: -6}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -18937,9 +18937,9 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: -17, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &995621257
 MonoBehaviour:
@@ -20862,14 +20862,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_lookPoint: {fileID: 1405250374}
   m_startRotation: {x: 30, y: 0}
-  m_fishingXRotation: 0
+  m_fishingRotation: {x: 0, y: 0}
   m_minXRotation: 10
   m_maxXRotation: 45
   m_distanceFromPlayer: 30
   m_movementSpeed: 60
-  m_autoMovementSpeed: 0
-  m_invertXControl: 0
-  m_invertYControl: 0
+  m_transitionTime: 0
+  m_invertControl: 0
 --- !u!65 &1136200536
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -21917,7 +21916,7 @@ MonoBehaviour:
   m_Navigation:
     m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
+    m_SelectOnUp: {fileID: 872459404}
     m_SelectOnDown: {fileID: 1823233746}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
@@ -21949,10 +21948,10 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1421247867}
-        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-        m_MethodName: 
-        m_Mode: 5
+      - m_Target: {fileID: 1421247870}
+        m_TargetAssemblyTypeName: SettingsManager, Assembly-CSharp
+        m_MethodName: ToggleTutorial
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -22186,7 +22185,7 @@ MonoBehaviour:
     m_Mode: 4
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 98850197}
-    m_SelectOnDown: {fileID: 675173236}
+    m_SelectOnDown: {fileID: 2075667644}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
@@ -23473,6 +23472,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1421247870}
+        m_TargetAssemblyTypeName: SettingsManager, Assembly-CSharp
+        m_MethodName: ConfirmSettings
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 2022947081}
         m_TargetAssemblyTypeName: PlayerManager, Assembly-CSharp
         m_MethodName: SettingsToggle
@@ -24241,7 +24252,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0.49995, y: 1}
   m_AnchoredPosition: {x: 3.0239258, y: 0.14239883}
   m_SizeDelta: {x: 16.0476, y: 10.1277}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -26062,7 +26073,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0.49995, y: 1}
   m_AnchoredPosition: {x: 3.0239258, y: 0.14239979}
   m_SizeDelta: {x: 16.0476, y: 10.1277}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -26325,7 +26336,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: c1dcdbf8a9b43314781d78e9f1cc6309, type: 2}
   Holder: {fileID: 2106313638}
-  resolutionDropdown: {fileID: 1823233746}
 --- !u!65 &1426887380
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -26881,7 +26891,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0.0004201784}
   m_SizeDelta: {x: 0, y: 28}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!1 &1477586089
@@ -28745,8 +28755,8 @@ RectTransform:
   m_Father: {fileID: 892116435}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.49995, y: 0}
+  m_AnchorMax: {x: 0.49995, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: -1}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -29437,7 +29447,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0.49995, y: 1}
   m_AnchoredPosition: {x: 3.0239258, y: 0.14239979}
   m_SizeDelta: {x: 16.0476, y: 10.1277}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -30077,7 +30087,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1594315304
 Transform:
   m_ObjectHideFlags: 0
@@ -30538,7 +30548,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1648959085}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.9999881
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -31202,7 +31212,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0.9999881}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -34277,7 +34287,7 @@ MonoBehaviour:
   m_Navigation:
     m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 872459404}
+    m_SelectOnUp: {fileID: 1188498989}
     m_SelectOnDown: {fileID: 1266186495}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
@@ -34399,8 +34409,8 @@ RectTransform:
   m_Father: {fileID: 575973589}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.49995, y: 0}
+  m_AnchorMax: {x: 0.49995, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: -0.9999999}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -37368,7 +37378,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0.49995, y: 1}
   m_AnchoredPosition: {x: 3.0239258, y: 0.14239979}
   m_SizeDelta: {x: 16.0476, y: 10.1277}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -37811,6 +37821,7 @@ MonoBehaviour:
   fishingSpot: {fileID: 2093622116}
   m_MovementController: {fileID: 2022947085}
   m_PlayerManager: {fileID: 2022947081}
+  m_cameraController: {fileID: 0}
   minigameBackground: {fileID: 1542724387}
   minigameMover: {fileID: 1618977151}
   currentlyFishing: 0
@@ -39191,8 +39202,8 @@ MonoBehaviour:
   m_Navigation:
     m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 1266186495}
-    m_SelectOnDown: {fileID: 1477610452}
+    m_SelectOnUp: {fileID: 1193570419}
+    m_SelectOnDown: {fileID: 675173236}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
@@ -40338,10 +40349,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15ad0a3f4ae043e4f8c00a0897c5be2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camera: {fileID: 1129074794}
   masterSlider: {fileID: 203728795}
   musicSlider: {fileID: 98850197}
   soundFXSlider: {fileID: 1477610452}
   ambienceSlider: {fileID: 1193570419}
+  brightnessSlider: {fileID: 2075667644}
+  fullscreenToggle: {fileID: 675173236}
+  invertCameraToggle: {fileID: 872459404}
+  tutorialToggle: {fileID: 1188498989}
+  resolutionDropdown: {fileID: 1823233746}
 --- !u!4 &2106313639
 Transform:
   m_ObjectHideFlags: 0
