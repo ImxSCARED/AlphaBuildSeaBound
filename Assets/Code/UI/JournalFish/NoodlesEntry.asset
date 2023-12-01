@@ -17,7 +17,7 @@ MonoBehaviour:
   hasBeenCaught: 1
   fishName: Noodles
   fishSName: Gummycus Wormicus
-  amountCaught: 1
+  amountCaught: 4
   amountBeforeEntry1: 1
   journalEntry1: Tastes like the candy worms i have back at home.
   amountBeforeEntry2: 0
