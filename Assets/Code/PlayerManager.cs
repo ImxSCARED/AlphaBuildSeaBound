@@ -351,7 +351,7 @@ public class PlayerManager : MonoBehaviour
     public void MainMenu()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene("Myles_MainMenu");
+        SceneManager.LoadScene("GoldMainMenu");
     }
 
     public void QuitGame()
