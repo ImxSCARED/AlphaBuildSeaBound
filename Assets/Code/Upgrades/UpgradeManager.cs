@@ -55,6 +55,7 @@ public class UpgradeManager : MonoBehaviour
                 break;
         }
         AudioManager.instance.PlaySound("UpgradedShip");
+        ParticleManager.instance.PlayUpgradeParticle(transform.position - new Vector3(0,0,0));
     }
 
     /// <summary>
