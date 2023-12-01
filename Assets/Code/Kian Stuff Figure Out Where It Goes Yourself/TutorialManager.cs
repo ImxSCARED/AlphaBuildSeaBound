@@ -1,206 +1,179 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class TutorialManager : MonoBehaviour
 {
+    public TutorialManager instance;
+    private PlayerManager m_PlayerManager;
 
     [SerializeField] private int fadeInTime = 1;
 
-    // Fish tutorial variables
-    public bool fishTutorialCompleted = false;
-    public CanvasGroup startFishTutorial;
-    public bool startFishTutorialFadeIn = false;
-    public bool startFishTutorialFadeOut = false;
 
-    // Fishing minigame tutorials variables
-    //public bool fishingMinigameTutorialCompleted = false;
-    public CanvasGroup fishingMinigameTutorial;
-    public bool fishingMinigameTutorialFadeIn = false;
-    public bool fishingMinigameTutorialFadeOut = false;
+    [Header("Movement Tutorial")]
+    private bool movementTutorialCompleted = false;
+    [SerializeField] private CanvasGroup movementTutorial;
+    private Vector3 playerStartingPosition;
 
-    // Move tutorial variables
-    public bool movementTutorialCompleted;
-    public CanvasGroup movementTutorial;
-    public bool movementTutorialFadeIn = false;
-    public bool movementTutorialFadeOut = false;
+    [Header("Fish Tutorial")]
+    private bool fishTutorialCompleted = false;
+    [SerializeField] private CanvasGroup fishTutorial;
+    [SerializeField] private GameObject informativeArrowPrefab;
+    private List<GameObject> currentArrows = new List<GameObject>();
 
-    // Journal tutorial variables
-    public bool journalTutorialCompleted;
-    public CanvasGroup journalTutorial;
-    public bool journalTutorialFadeIn = false;
-    public bool journalTutorialFadeOut = false;
 
-    // Update is called once per frame
-    void Update()
+    [Header("Fishing Tutorial")]
+    private bool fishingMinigameTutorialCompleted = false;
+    [SerializeField] private CanvasGroup fishingMinigameTutorial;
+
+    [Header("Dock Tutorial")]
+    private bool dockTutorialCompleted = false;
+    [SerializeField] private CanvasGroup dockTutorial;
+
+    [Header("Journal Tutorial")]
+    private bool journalTutorialCompleted = false;
+    [SerializeField] private CanvasGroup journalTutorial;
+
+
+    private void Awake()
     {
+        if (instance == null)
+            instance = this;
+        else
+            Destroy(this);
+        m_PlayerManager = GetComponent<PlayerManager>();
+        playerStartingPosition = transform.position;
+        RunMovementTutorial(true);
+    }
+
+    private void FixedUpdate()
+    {
+        if (!movementTutorialCompleted)
+        {
+            if(Vector3.Distance(playerStartingPosition, transform.position) > 50)
+            {
+                RunMovementTutorial(false);
+                StartCoroutine(RunFishTutorial(true));
+                movementTutorialCompleted = true;
+            }
+        }
+        else if(!fishTutorialCompleted)
+        {
+            foreach(var fish in m_PlayerManager.fishOnMap)
+            {
+                if (Vector3.Distance(fish.transform.position, transform.position) < 30)
+                {
+                    RunFishTutorial(false);
+                    RunFishingTutorial(true);
+                    fishTutorialCompleted = true;
+                    break;
+                }
+            }
+        }
+        else if (!fishingMinigameTutorial)
+        {
+            if(m_PlayerManager.AmountOfFish > 0)
+            {
+                RunFishingTutorial(false);
+                StartCoroutine(RunJournalTutorial(true));
+                fishingMinigameTutorialCompleted = true;
+            }
+            else if(GetComponent<Fishing>().currentHarpoons == 0)
+            {
+                RunFishingTutorial(false);
+                StartCoroutine(RunDockTutorial(true));
+                fishingMinigameTutorialCompleted = true;
+            }
+        }
+    }
+
+    private void RunMovementTutorial(bool fadeIn)
+    {
+        if (fadeIn)
+            StartCoroutine(FadeIn(movementTutorial));
+        else
+            StartCoroutine(FadeOut(movementTutorial));
+    }
+
+    private IEnumerator RunFishTutorial(bool fadeIn)
+    {
+        
+        if (fadeIn)
+        {
+            yield return new WaitForSeconds(0.5f);
+            StartCoroutine(FadeIn(fishTutorial));
+            foreach(var fish in m_PlayerManager.fishOnMap)
+            {
+                currentArrows.Add(Instantiate(informativeArrowPrefab, fish.transform));
+            }
+        }
+        else
+        {
+            StartCoroutine(FadeOut(fishTutorial));
+            foreach(var arrow in currentArrows)
+            {
+                Destroy(arrow);
+                currentArrows.Remove(arrow);
+            }
+        }
             
-        if (startFishTutorialFadeIn)
-        {
-            if (startFishTutorial.alpha < fadeInTime)
-            {
-                startFishTutorial.alpha += Time.deltaTime * 2f;
-            }
-            else
-            {
-                startFishTutorialFadeIn = false;
-            }
-        }
-
-        if (startFishTutorialFadeOut)
-        {
-            startFishTutorial.alpha -= Time.deltaTime * 2f;
-            if (startFishTutorial.alpha <= 0)
-            {
-                startFishTutorialFadeOut = false;
-            }
-        }
-
-        if (fishingMinigameTutorialFadeIn)
-        {
-            if (startFishTutorialFadeOut == false)
-            {
-                if (fishingMinigameTutorial.alpha < fadeInTime)
-                {
-                    fishingMinigameTutorial.alpha += Time.deltaTime * 2f;
-                }
-                else
-                {
-                    fishingMinigameTutorialFadeIn = false;
-                }
-            }
-        }
-            
-        if (fishingMinigameTutorialFadeOut)
-        {
-            fishingMinigameTutorial.alpha -= Time.deltaTime * 2f;
-            if (fishingMinigameTutorial.alpha <= 0)
-            {
-                fishingMinigameTutorialFadeOut = false;
-            }
-        }
-
-        if (journalTutorialFadeIn)
-        {
-            if (journalTutorial.alpha < fadeInTime)
-            {
-                journalTutorial.alpha += Time.deltaTime * 2f;
-            }
-            else
-            {
-                journalTutorialFadeIn = false;
-            }
-        }
-
-        if (journalTutorialFadeOut)
-        {
-            journalTutorial.alpha -= Time.deltaTime * 2f;
-            if (journalTutorial.alpha <= 0)
-            {
-                journalTutorialFadeOut = false;
-            }
-        }
-
-        if (movementTutorialFadeIn)
-        {
-            if (journalTutorialFadeOut == false)
-            {
-                if (movementTutorial.alpha < fadeInTime)
-                {
-                    movementTutorial.alpha += Time.deltaTime * 2f;
-                }
-                else
-                {
-                    movementTutorialFadeIn = false;
-                }
-            }
-            
-        }
-
-        if (movementTutorialFadeOut)
-        {
-            movementTutorial.alpha -= Time.deltaTime * 2f;
-            if (movementTutorial.alpha <= 0)
-            {
-                movementTutorialFadeOut = false;
-            }
-        }
+        yield break;
     }
 
-    public void StartFishTutorial()
+    private IEnumerator RunFishingTutorial(bool fadeIn)
     {
-        if (fishTutorialCompleted == false)
+        if (fadeIn)
         {
-            startFishTutorialFadeIn = true;
+            yield return new WaitForSeconds(0.5f);
+            StartCoroutine(FadeIn(fishingMinigameTutorial));
         }
+        else
+            StartCoroutine(FadeOut(fishingMinigameTutorial));
+
+        yield break;
     }
 
-    public void StopFishTutorial()
+    private IEnumerator RunJournalTutorial(bool fadeIn)
     {
-        if (fishTutorialCompleted == false)
+        if (fadeIn)
         {
-            startFishTutorialFadeIn = false;
-            startFishTutorialFadeOut = true;
+            yield return new WaitForSeconds(0.5f);
+            StartCoroutine(FadeIn(journalTutorial));
         }
+        else
+            StartCoroutine(FadeOut(journalTutorial));
+
+        yield break;
     }
 
-    public void StartFishingMinigameTutorial()
+    private IEnumerator RunDockTutorial(bool fadeIn)
     {
-        if (fishTutorialCompleted == false)
+        if (fadeIn)
         {
-            fishingMinigameTutorialFadeIn = true;
+            yield return new WaitForSeconds(0.5f);
+            StartCoroutine(FadeIn(dockTutorial));
         }
+        else
+            StartCoroutine(FadeOut(journalTutorial));
     }
-
-    public void StopFishingMinigameTutorial()
+    private IEnumerator FadeIn(CanvasGroup objectToFade)
     {
-        if (fishTutorialCompleted == false)
+        while(objectToFade.alpha < 1)
         {
-            fishingMinigameTutorialFadeIn = false;
-            fishingMinigameTutorialFadeOut = true;
+            objectToFade.alpha += Time.deltaTime * 2f;
+            yield return null;
         }
+        yield break;
     }
-
-    public void StartMovementTutorial()
+    private IEnumerator FadeOut(CanvasGroup objectToFade)
     {
-        movementTutorialFadeIn = true;
-    }
-
-    public void StopMoveTutorial()
-    {
-        movementTutorialFadeIn = false;
-        movementTutorialFadeOut = true;
-        movementTutorialCompleted = true;
-    }
-
-    public void StartJournalTutorial()
-    {
-        journalTutorialFadeIn = true;
-    }
-
-    public void StopJournalTutorial()
-    {
-        journalTutorialFadeOut = true;
-        journalTutorialFadeIn = false;
-        journalTutorialCompleted = true;
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.name == "Tutorial Trigger")
+        while (objectToFade.alpha > 0)
         {
-            StartJournalTutorial();
+            objectToFade.alpha -= Time.deltaTime * 2f;
+            yield return null;
         }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.name == "Tutorial Trigger")
-        {
-            StopJournalTutorial();
-            StopMoveTutorial();
-            Destroy(other.gameObject);
-        }
+        yield break;
     }
 }

@@ -167,6 +167,7 @@ public class PlayerManager : MonoBehaviour
     public void AddFish(FishProperties.FishData caughtFish)
     {
         storedFish.Add(caughtFish);
+        AmountOfFish++;
         for (int i = 0; i < journalFishEntryies.Length; i++)
         {
             if (caughtFish.name == journalFishEntryies[i].fishName)
@@ -203,6 +204,7 @@ public class PlayerManager : MonoBehaviour
             }
         }
         storedFish.Clear();
+        AmountOfFish = 0;
         //Clears all of inventories children
         foreach (Transform child in inventoryParent)
         {
@@ -272,10 +274,6 @@ public class PlayerManager : MonoBehaviour
     {
         if (pauseOpen == false)
         {
-            //Tutorial
-            journalTutorial.StopJournalTutorial();
-            journalTutorial.StartMovementTutorial();
-
             if (journalOpen)
             {
                 GetComponent<InputManager>().ChangeActionMap("Sailing");
