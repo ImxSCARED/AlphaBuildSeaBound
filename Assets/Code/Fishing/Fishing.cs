@@ -43,7 +43,6 @@ public class Fishing : MonoBehaviour
             {
                 if (!fishingSpot.inAntiFishingOval)
                 {
-                    fishingSpot.antiFishingLineRenderer.enabled = false;
                     if (currentHarpoons > 0)
                     {
                         //Tutorial
@@ -52,6 +51,9 @@ public class Fishing : MonoBehaviour
 
                         // Camera
                         m_cameraController.StartFishingMode();
+
+                        // Anti fishing zone
+                        fishingSpot.antiFishingLineRenderer.enabled = false;
 
                         GetComponent<InputManager>().ChangeActionMap("Fishing");
                         currentlyFishing = true;
@@ -77,6 +79,12 @@ public class Fishing : MonoBehaviour
         //Tutorial
         fishingTutorial.StopFishingMinigameTutorial();
 
+        // Camera
+        m_cameraController.EndFishingMode();
+
+        // Anti fishing zone
+        fishingSpot.antiFishingLineRenderer.enabled = true;
+
         GetComponent<InputManager>().ChangeActionMap("Sailing");
         currentlyFishing = false;
         minigameMover.SetActive(false);
@@ -85,9 +93,6 @@ public class Fishing : MonoBehaviour
         {
             //Tutorial
             fishingTutorial.fishTutorialCompleted = true;
-
-            // Camera
-            m_cameraController.EndFishingMode();
 
             GameObject fish = fishingSpot.currentFish;
             m_PlayerManager.AddFish(fish.GetComponent<Fish>().data);
