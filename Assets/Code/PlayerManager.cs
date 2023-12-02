@@ -255,6 +255,7 @@ public class PlayerManager : MonoBehaviour
             isDocked = true;
             moneyTxt.text = Money.ToString();
             Debug.Log("Entered Hub");
+            AudioManager.instance.PlaySound("ShopSwap");
         }
     }
 
@@ -284,6 +285,7 @@ public class PlayerManager : MonoBehaviour
                 Time.timeScale = 1;
                 journal.enabled = false;
                 journalOpen = false;
+                AudioManager.instance.PlaySound("Tabflip");
 
             }
             else
@@ -294,6 +296,7 @@ public class PlayerManager : MonoBehaviour
                 journalOpen = true;
                 currentTab = 0;
                 DpadNavigate(0);
+                AudioManager.instance.PlaySound("Tabflip");
             }
         }
     }
@@ -411,14 +414,17 @@ public class PlayerManager : MonoBehaviour
             if(currentTab == 0)
             {
                 DisplaySelectedIsland();
+                AudioManager.instance.PlaySound("Tabflip");
             }
             if(currentTab == 1)
             {
                 DisplayFishPage();
+                AudioManager.instance.PlaySound("Tabflip");
             }
             if(currentTab == 2)
             {
                 DisplayDiaryPages();
+                AudioManager.instance.PlaySound("Tabflip");
             }
         }
         

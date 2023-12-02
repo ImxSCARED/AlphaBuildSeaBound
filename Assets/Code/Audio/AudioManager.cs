@@ -95,7 +95,7 @@ public class AudioManager : MonoBehaviour
 
         if (isClipFading)
         {
-            FadeTrack();
+            FadeClip();
         }
 
         //Music
@@ -103,9 +103,18 @@ public class AudioManager : MonoBehaviour
         {
             currentTrackPlaying.source.volume = currentTrackPlaying.volume;
         }
+        else if (currentTrackPlaying == null)
+        {
+            return;
+        }
+
         if (nextTrackPlaying != null)
         {
             nextTrackPlaying.source.volume = nextTrackPlaying.volume;
+        }
+        else if (nextTrackPlaying == null)
+        {
+            return;
         }
 
         //Ambience
@@ -113,9 +122,19 @@ public class AudioManager : MonoBehaviour
         {
             currentClipPlaying.source.volume = currentClipPlaying.volume;
         }
+        else if (currentClipPlaying == null)
+        {
+            return;
+        }
+
+
         if (nextClipPlaying != null)
         {
             nextClipPlaying.source.volume = nextClipPlaying.volume;
+        }
+        else if(nextClipPlaying == null)
+        {
+            return;
         }
 
         

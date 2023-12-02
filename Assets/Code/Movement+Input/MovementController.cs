@@ -298,25 +298,29 @@ public class MovementController : MonoBehaviour
 
     private void MovementSound(float percentMaxVelocity)
     {
-        if (percentMaxVelocity <= 0.2)
+        if (percentMaxVelocity == 0)
         {
-            // AudioManager.instance.PlayNextThingo(zeroToTwentyPercentMovementSound)
+            AudioManager.instance.PlayNextClip("Still");
         }
-        else if (percentMaxVelocity <= 0.4)
+        else if (percentMaxVelocity > 0.2)
         {
-            // AudioManager.instance.PlayNextThingo(twentyToFortyPercentMovementSound)
+            AudioManager.instance.PlayNextClip("Sailing1");
         }
-        else if (percentMaxVelocity <= 0.6)
-        {
-            // AudioManager.instance.PlayNextThingo(fortyToSixtyPercentMovementSound)
-        }
-        else if (percentMaxVelocity <= 0.8)
-        {
-            // AudioManager.instance.PlayNextThingo(sixtyToEightyPercentMovementSound)
-        }
-        else if (percentMaxVelocity <= 1)
-        {
-            // AudioManager.instance.PlayNextThingo(eightyToHundredPercentMovementSound)
-        }
+    //    else if (percentMaxVelocity <= 0.4)
+    //    {
+    //        AudioManager.instance.PlayNextClip("Sailing2");
+    //    }
+    //    else if (percentMaxVelocity <= 0.6)
+    //    {
+    //        AudioManager.instance.PlayNextClip("Sailing3");
+    //    }
+    //    else if (percentMaxVelocity <= 0.8)
+    //    {
+    //        AudioManager.instance.PlayNextClip("Sailing4");
+    //    }
+    //    else if (percentMaxVelocity <= 1)
+    //    {
+    //        AudioManager.instance.PlayNextClip("Sailing5");
+    //    }
     }
 }

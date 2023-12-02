@@ -8,7 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/FINAL SCENES/GoldMainMenu.unity
     guid: 2fcd4fc3ffd63364c9e6c808e72ba534
-  - enabled: 1
+  - enabled: 0
     path: Assets/FINAL SCENES/GoldMainScene.unity
     guid: dd57f18ec13aa0448846bbe731ef1fc7
+  - enabled: 1
+    path: Assets/FINAL SCENES/GoldMainSceneFeedback.unity
+    guid: 78d17824afe057348be6724e8d83b51c
   m_configObjects: {}

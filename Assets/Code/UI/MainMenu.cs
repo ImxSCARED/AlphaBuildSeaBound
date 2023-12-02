@@ -15,6 +15,9 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private GameObject MMFirstButton;
     [SerializeField] private GameObject creditsMenu;
     [SerializeField] private GameObject creditsFirstButton;
+    [SerializeField] private GameObject controlsMenu;
+    [SerializeField] private GameObject controlsFirstButton;
+
 
     private CanvasGroup currentCG;
     private bool fadeOutStart;
@@ -64,6 +67,24 @@ public class MainMenu : MonoBehaviour
         return;
     }
 
+    public void OpenControlsMenu()
+    {
+        settingsMenu.SetActive(false);
+        controlsMenu.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(controlsFirstButton);
+        AudioManager.instance.PlaySound("MainSettings");
+    }
+
+    public void CloseControlsMenu()
+    {
+        settingsMenu.SetActive(true);
+        controlsMenu.SetActive(false);
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(settingsFirstButton);
+        AudioManager.instance.PlaySound("MainSettings");
+    }
+
     public void StartLevel()
     {
         AudioManager.instance.PlaySound("MainStart");
@@ -85,13 +106,19 @@ public class MainMenu : MonoBehaviour
     public void Delay()
     {
         Debug.Log("and his music was electric...");
-        SceneManager.LoadScene("GoldMainScene");
+        SceneManager.LoadScene("GoldMainSceneFeedback");
     }
 
     public void Awake()
     {
-        AudioManager.instance.PlayTrack("Track_MainMenu");
+        AudioManager.instance.PlayTrack("Track_Silence");
+        Invoke("LatePlay", 1);
         AudioManager.instance.PlayClip("MMAmbience");
+    }
+
+    void LatePlay()
+    {
+        AudioManager.instance.PlayNext("Track_MainMenu");
     }
 }
 
