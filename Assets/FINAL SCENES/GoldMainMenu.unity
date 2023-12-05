@@ -1461,27 +1461,27 @@ MonoBehaviour:
   - name: Track_MainMenu
     track: {fileID: 8300000, guid: 4a23136c2141c5d469c3e00fc5ee3f79, type: 3}
     volume: 0
-    loop: 1
+    loop: 0
     source: {fileID: 0}
   - name: Track_Shallows
     track: {fileID: 8300000, guid: acf368b9ec4aac7419cf4842fccdcfd6, type: 3}
     volume: 0
-    loop: 1
+    loop: 0
     source: {fileID: 0}
   - name: Track_Basin
     track: {fileID: 8300000, guid: 04528b9bbeed90145a2e65f44d51a61d, type: 3}
     volume: 0
-    loop: 1
+    loop: 0
     source: {fileID: 0}
   - name: Track_Depths
     track: {fileID: 8300000, guid: 3cc871f8319f2744c9c915a25b6c91a5, type: 3}
     volume: 0
-    loop: 1
+    loop: 0
     source: {fileID: 0}
   - name: Track_Credits
     track: {fileID: 8300000, guid: be52f2f946ef15445a8bd7daa9bb0547, type: 3}
     volume: 0
-    loop: 1
+    loop: 0
     source: {fileID: 0}
   - name: Track_Silence
     track: {fileID: 8300000, guid: b449a44572de44047bff663d591a89f8, type: 3}
@@ -1500,7 +1500,7 @@ MonoBehaviour:
     volume: 0
     loop: 0
     source: {fileID: 0}
-  trackFadeTime: 0
+  trackFadeTime: 5
   currentClipPlaying:
     name: 
     track: {fileID: 0}
@@ -1528,7 +1528,7 @@ MonoBehaviour:
     track: {fileID: 8300000, guid: fe5a59f2ab4694f45b10f8c20daa58e6, type: 3}
     volume: 1
     source: {fileID: 0}
-  clipFadeTime: 0
+  clipFadeTime: 5
 --- !u!4 &200471783
 Transform:
   m_ObjectHideFlags: 0

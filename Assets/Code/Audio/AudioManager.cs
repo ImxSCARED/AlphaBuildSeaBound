@@ -91,51 +91,57 @@ public class AudioManager : MonoBehaviour
         if (isTrackFading)
         {
             FadeTrack();
+            if (currentTrackPlaying != null)
+            {
+                currentTrackPlaying.source.volume = currentTrackPlaying.volume;
+            }
+            else if (currentTrackPlaying == null)
+            {
+                return;
+            }
+
+            if (nextTrackPlaying != null)
+            {
+                nextTrackPlaying.source.volume = nextTrackPlaying.volume;
+            }
+            else if (nextTrackPlaying == null)
+            {
+                return;
+            }
+
+
+        }
+
+        if (!currentTrackPlaying.source.isPlaying)
+        {
+            currentTrackPlaying = null;
+            PlayTrack("Track_Silence");
         }
 
         if (isClipFading)
         {
             FadeClip();
-        }
+            if (currentClipPlaying != null)
+            {
+                currentClipPlaying.source.volume = currentClipPlaying.volume;
+            }
+            else if (currentClipPlaying == null)
+            {
+                return;
+            }
 
-        //Music
-        if (currentTrackPlaying != null)
-        {
-            currentTrackPlaying.source.volume = currentTrackPlaying.volume;
-        }
-        else if (currentTrackPlaying == null)
-        {
-            return;
-        }
 
-        if (nextTrackPlaying != null)
-        {
-            nextTrackPlaying.source.volume = nextTrackPlaying.volume;
-        }
-        else if (nextTrackPlaying == null)
-        {
-            return;
-        }
-
-        //Ambience
-        if (currentClipPlaying != null)
-        {
-            currentClipPlaying.source.volume = currentClipPlaying.volume;
-        }
-        else if (currentClipPlaying == null)
-        {
-            return;
+            if (nextClipPlaying != null)
+            {
+                nextClipPlaying.source.volume = nextClipPlaying.volume;
+            }
+            else if (nextClipPlaying == null)
+            {
+                return;
+            }
         }
 
 
-        if (nextClipPlaying != null)
-        {
-            nextClipPlaying.source.volume = nextClipPlaying.volume;
-        }
-        else if(nextClipPlaying == null)
-        {
-            return;
-        }
 
         
 
