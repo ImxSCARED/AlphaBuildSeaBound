@@ -7,7 +7,7 @@ public class MusicTrigger : MonoBehaviour
 {
     public string songname;
 
-    private void OnTriggerEnter(Collision other)
+    private void OnTriggerEnter(Collider other)
     {
         AudioManager.instance.PlayNext(songname);
     }
