@@ -213,7 +213,7 @@ public class AudioManager : MonoBehaviour
             currentTrackPlaying.volume = 0;
             nextTrackPlaying.volume = 1;
 
-            currentTrackPlaying.source.Stop();
+            //currentTrackPlaying.source.Stop();
 
             currentTrackPlaying = nextTrackPlaying;
             nextTrackPlaying = null;
@@ -236,7 +236,7 @@ public class AudioManager : MonoBehaviour
             currentClipPlaying.volume = 0;
             nextClipPlaying.volume = 1;
 
-            currentClipPlaying.source.Stop();
+            //currentClipPlaying.source.Stop();
 
             currentClipPlaying = nextClipPlaying;
             nextClipPlaying = null;

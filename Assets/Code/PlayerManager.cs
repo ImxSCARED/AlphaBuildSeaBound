@@ -44,6 +44,7 @@ public class PlayerManager : MonoBehaviour
     public GameObject upgradesFirstButton;
     public GameObject pauseFirstButton;
     public GameObject settingsFirstButton;
+    public GameObject controlsFirstButton;
 
     [Header("HUB")]
     [SerializeField] private Canvas hub;
@@ -96,6 +97,8 @@ public class PlayerManager : MonoBehaviour
     private bool pauseOpen = false;
     [SerializeField] private GameObject settings;
     private bool settingsOpen = false;
+    [SerializeField] private GameObject controls;
+    private bool controlsOpen = false;
 
     //Tutorial
     [SerializeField] private TutorialManager journalTutorial;
@@ -350,6 +353,25 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
+    public void ControlsToggle()
+    {
+        if (controlsOpen == true)
+        {
+            settings.SetActive(true);
+            controls.SetActive(false);
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(settingsFirstButton);
+            controlsOpen = false;
+        }
+        else if(controlsOpen == false)
+        {
+            settings.SetActive(false);
+            controls.SetActive(true);
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(controlsFirstButton);
+            controlsOpen = true;
+        }
+    }
         
     
 
