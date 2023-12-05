@@ -38428,11 +38428,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_rigidbody: {fileID: 2022947084}
-  m_rotationAxis: {fileID: 0}
   m_collider: {fileID: 919132147898679428}
   m_wheels: {fileID: 1401708758}
   m_audioManager: {fileID: 0}
   m_maxSpeed: 27.5
+  m_maxBackwardSpeed: 4
   m_accelerationSpeed: 10
   m_turnSpeed: 30
   m_tiltSpeed: 0

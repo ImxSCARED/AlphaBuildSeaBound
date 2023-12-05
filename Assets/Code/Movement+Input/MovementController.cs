@@ -12,8 +12,6 @@ public class MovementController : MonoBehaviour
     [SerializeField]
     Rigidbody m_rigidbody;
     [SerializeField]
-    Transform m_rotationAxis;
-    [SerializeField]
     CapsuleCollider m_collider;
     [SerializeField]
     GameObject m_wheels;
@@ -27,6 +25,10 @@ public class MovementController : MonoBehaviour
     [Tooltip("Maximum forward speed that the player can reach")]
     [Min(0f)]
     float m_maxSpeed;
+    [SerializeField]
+    [Tooltip("Maximum forward speed that the player can reach")]
+    [Min(0f)]
+    float m_maxBackwardSpeed;
     [SerializeField]
     [Tooltip("Speed at which the ship accelerates to max speed per second in percentages (e.g. 200% per second)")]
     [Min(0f)]
@@ -262,9 +264,9 @@ public class MovementController : MonoBehaviour
             localVelocity.z = m_maxSpeed * m_upgradeAmount;
         }
         //; Same as above, but minimum with 0
-        else if (localVelocity.z + deltaEngine < 0)
+        else if (localVelocity.z + deltaEngine < -m_maxBackwardSpeed)
         {
-            localVelocity.z = 0;
+            localVelocity.z = -m_maxBackwardSpeed;
         }
         else
         {
