@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Loners bay
   m_EditorClassIdentifier: 
   islandName: Loners bay
-  islandDesc: Loners bay
+  islandDesc: "Whoever lives\nhere must not like\nother people.. I agree \nwith him."
   discovered: 0
