@@ -12,11 +12,11 @@ public class MovementController : MonoBehaviour
     [SerializeField]
     Rigidbody m_rigidbody;
     [SerializeField]
-    Transform m_rotationAxis;
-    [SerializeField]
     CapsuleCollider m_collider;
     [SerializeField]
     GameObject m_wheels;
+    [SerializeField]
+    GameObject m_geometryParent;
     [SerializeField]
     AudioManager m_audioManager;
 
@@ -27,6 +27,10 @@ public class MovementController : MonoBehaviour
     [Tooltip("Maximum forward speed that the player can reach")]
     [Min(0f)]
     float m_maxSpeed;
+    [SerializeField]
+    [Tooltip("Maximum forward speed that the player can reach")]
+    [Min(0f)]
+    float m_maxBackwardSpeed;
     [SerializeField]
     [Tooltip("Speed at which the ship accelerates to max speed per second in percentages (e.g. 200% per second)")]
     [Min(0f)]
@@ -89,6 +93,7 @@ public class MovementController : MonoBehaviour
 
     // Rotation
     Quaternion m_amountToRotate = Quaternion.identity;
+    float m_amountToTilt;
     float m_targetTilt;
 
     //Upgrade
@@ -114,7 +119,7 @@ public class MovementController : MonoBehaviour
         m_velocity.y = 0;
 
         // Apply friction
-        ApplyFriction();
+        ApplySideFriction();
 
         // Apply velocity
         MoveWithCollision(m_velocity * Time.deltaTime);
@@ -132,6 +137,28 @@ public class MovementController : MonoBehaviour
     {
         // Spin Wheel
         m_wheels.transform.Rotate(m_velocity.magnitude * Time.deltaTime * 10, 0, 0f, Space.Self);
+
+        // Tilt
+        // It would be preferred if this could be done in an animation instead
+        if (m_amountToTilt != 0)
+        {
+            m_targetTilt += m_amountToTilt * Time.deltaTime;
+
+            // Multiply by percentage of max speed to base the tilting around movement speed
+            float speedFraction = (m_velocity.magnitude / m_maxVelocity);
+            m_targetTilt = Mathf.Clamp(m_targetTilt, -m_maxTilt * speedFraction, m_maxTilt * speedFraction);
+        }
+        else
+        {
+            // Apply friction is kinda abstract here, but the function returns it to 0 at some rate (similar to lerping, actually) so it works
+            m_targetTilt = SeaboundMaths.ApplyFriction(m_targetTilt, m_turnSpeed * Time.deltaTime);
+        }
+
+        m_geometryParent.transform.localRotation = Quaternion.Euler(0, 0, m_targetTilt);
+
+        // Cleanup
+        // Reset this back to 0 so that we can check if we're turning on a given frame
+        m_amountToTilt = 0;
     }
 
     private void OnDrawGizmos()
@@ -179,6 +206,8 @@ public class MovementController : MonoBehaviour
         float deltaTurn = magnitude * (m_turnSpeed * m_upgradeAmount);
 
         m_amountToRotate = Quaternion.Euler(0f, deltaTurn * Mathf.Deg2Rad, 0f);
+
+        m_amountToTilt = -magnitude * m_tiltSpeed;
     }
 
     public void MoveWithCollision(Vector3 movement)
@@ -262,9 +291,9 @@ public class MovementController : MonoBehaviour
             localVelocity.z = m_maxSpeed * m_upgradeAmount;
         }
         //; Same as above, but minimum with 0
-        else if (localVelocity.z + deltaEngine < 0)
+        else if (localVelocity.z + deltaEngine < -m_maxBackwardSpeed)
         {
-            localVelocity.z = 0;
+            localVelocity.z = -m_maxBackwardSpeed;
         }
         else
         {
@@ -277,7 +306,7 @@ public class MovementController : MonoBehaviour
     /// <summary>
     /// Apply sideways friction to velocity - forward friction is not needed
     /// </summary>
-    private void ApplyFriction()
+    private void ApplySideFriction()
     {
         Vector3 localVelocity = transform.InverseTransformVector(m_velocity);
 
