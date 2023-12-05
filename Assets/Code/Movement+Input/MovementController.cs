@@ -296,16 +296,16 @@ public class MovementController : MonoBehaviour
         m_velocity = Vector3.zero;
     }
 
-    private void MovementSound(float percentMaxVelocity)
-    {
-        if (percentMaxVelocity == 0)
-        {
-            AudioManager.instance.PlayNextClip("Still");
-        }
-        else if (percentMaxVelocity > 0.2)
-        {
-            AudioManager.instance.PlayNextClip("Sailing1");
-        }
+      private void MovementSound(float percentMaxVelocity)
+      {
+    //    if (percentMaxVelocity == 0)
+    //    {
+    //        AudioManager.instance.PlayNextClip("Still");
+    //    }
+    //    else if (percentMaxVelocity > 0.2)
+    //    {
+    //        AudioManager.instance.PlayNextClip("Sailing1");
+    //    }
     //    else if (percentMaxVelocity <= 0.4)
     //    {
     //        AudioManager.instance.PlayNextClip("Sailing2");
@@ -322,5 +322,5 @@ public class MovementController : MonoBehaviour
     //    {
     //        AudioManager.instance.PlayNextClip("Sailing5");
     //    }
-    }
+      }
 }

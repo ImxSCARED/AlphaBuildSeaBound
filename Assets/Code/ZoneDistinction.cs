@@ -5,7 +5,7 @@ using UnityEngine;
 public class ZoneDistinction : MonoBehaviour
 {
     public PlayerManager.ZoneLevel thisZone;
-    public string songname;
+   
 
 
     private void OnTriggerEnter(Collider other)
@@ -14,7 +14,7 @@ public class ZoneDistinction : MonoBehaviour
         {
             other.GetComponent<PlayerManager>().currentZone = thisZone;
             other.GetComponent<PlayerManager>().SpawnFish();
-            AudioManager.instance.PlayNext(songname);
+            
 
         }
         

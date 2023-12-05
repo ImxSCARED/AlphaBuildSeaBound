@@ -567,7 +567,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thisZone: 1
-  songname: Track_Basin
 --- !u!114 &108546362
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1520,15 +1519,31 @@ MonoBehaviour:
     track: {fileID: 8300000, guid: b449a44572de44047bff663d591a89f8, type: 3}
     volume: 1
     source: {fileID: 0}
-  - name: Sailing1
-    track: {fileID: 8300000, guid: fe5a59f2ab4694f45b10f8c20daa58e6, type: 3}
-    volume: 1
-    source: {fileID: 0}
   - name: Shop
     track: {fileID: 8300000, guid: fe5a59f2ab4694f45b10f8c20daa58e6, type: 3}
     volume: 1
     source: {fileID: 0}
-  clipFadeTime: 5
+  - name: Sailing1
+    track: {fileID: 8300000, guid: fe5a59f2ab4694f45b10f8c20daa58e6, type: 3}
+    volume: 1
+    source: {fileID: 0}
+  - name: Sailing2
+    track: {fileID: 8300000, guid: 28226c35c58affd4bad4e5146f80a14b, type: 3}
+    volume: 1
+    source: {fileID: 0}
+  - name: Sailing3
+    track: {fileID: 8300000, guid: 4a14fe2c24c4842498eee32264be7151, type: 3}
+    volume: 1
+    source: {fileID: 0}
+  - name: Sailing4
+    track: {fileID: 8300000, guid: bc9cd843ab38fbe45a61e1bfd95d98dc, type: 3}
+    volume: 1
+    source: {fileID: 0}
+  - name: Sailing5
+    track: {fileID: 8300000, guid: 880bad11996c43b40948f6a746ff22c6, type: 3}
+    volume: 1
+    source: {fileID: 0}
+  clipFadeTime: 3
 --- !u!4 &200471783
 Transform:
   m_ObjectHideFlags: 0
@@ -2481,7 +2496,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thisZone: 0
-  songname: Track_Shallows
 --- !u!114 &310683933
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13614,7 +13628,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thisZone: 1
-  songname: 
 --- !u!114 &1560794618
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14080,7 +14093,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thisZone: 2
-  songname: Track_Depths
 --- !u!114 &1638403318
 MonoBehaviour:
   m_ObjectHideFlags: 0
