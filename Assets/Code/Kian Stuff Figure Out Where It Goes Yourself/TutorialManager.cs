@@ -10,19 +10,16 @@ public class TutorialManager : MonoBehaviour
     public TutorialManager instance;
     private PlayerManager m_PlayerManager;
 
-    [SerializeField] private int fadeInTime = 1;
-
-
     [Header("Movement Tutorial")]
-    private bool movementTutorialCompleted = false;
-    [SerializeField] private CanvasGroup movementTutorial;
-    private Vector3 playerStartingPosition;
+    private bool movementTutorialCompleted = false; //Used to check if the tutorial has been completed and to start doing the next one
+    [SerializeField] private CanvasGroup movementTutorial; //Canvas group of image tutorial image to easily change alpha
+    private Vector3 playerStartingPosition; //Made upon scene start, used to know if their distance is more than 50 from the start
 
     [Header("Fish Tutorial")]
     private bool fishTutorialCompleted = false;
     [SerializeField] private CanvasGroup fishTutorial;
-    [SerializeField] private GameObject informativeArrowPrefab;
-    private List<GameObject> currentArrows = new List<GameObject>();
+    [SerializeField] private GameObject informativeArrowPrefab; //Big arrow prefab spawns above fish and dock
+    private List<GameObject> currentArrows = new List<GameObject>(); //used to hold all the arrow prefabs
 
 
     [Header("Fishing Tutorial")]
@@ -30,13 +27,13 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private CanvasGroup fishingMinigameTutorial;
 
     [Header("Dock Tutorial")]
-    private bool uptoDock = false;
+    private bool uptoDock = false; //Dock tutorial can be started from two different tutorial paths
     private bool gotoDockTutorialCompleted = false;
     [SerializeField] private CanvasGroup gotoDockTutorial;
     private bool dockTutorialCompleted = false;
     [SerializeField] private CanvasGroup dockTutorial;
-    float timer = 0;
-    bool ranOutOfHarpoons = false;
+    float timer = 0; //Timer for dock Tutorial, as it should only finish after 2 seconds of having the shop open
+    bool ranOutOfHarpoons = false; //A bool to check if they went down the secondary path or not
 
     [Header("Journal Tutorial")]
     
@@ -45,7 +42,7 @@ public class TutorialManager : MonoBehaviour
     private bool journalTutorialCompleted = false;
     [SerializeField] private CanvasGroup journalTutorial;
 
-    private int pathsComplete = 0; //If 2, removes the tutorial
+    private int pathsComplete = 0; //If 2, the whole tutorial is completed and the manager can be deleted
 
     private void Awake()
     {

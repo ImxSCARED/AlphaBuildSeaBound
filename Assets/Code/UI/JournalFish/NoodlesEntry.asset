@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fishSilhouette: {fileID: 21300000, guid: cd6219616f3fbff4fad0b0cc3a3dbf7e, type: 3}
   fishCutiePatootie: {fileID: 21300000, guid: be6b63b149c14e94e9999e323844edae, type: 3}
-  hasBeenCaught: 1
+  hasBeenCaught: 0
   fishName: Noodles
   fishSName: Gummycus Wormicus
-  amountCaught: 4
+  amountCaught: 0
   amountBeforeEntry1: 1
   journalEntry1: Tastes like the candy worms i have back at home.
   amountBeforeEntry2: 0

@@ -81,7 +81,8 @@ public class UpgradeManager : MonoBehaviour
                             ImplementUpgrade(UP);
 
                             UP.Price = Mathf.RoundToInt(UP.Price * UP.PriceIncrease);
-                            UP.assignedQuest.currentQuest++;
+                            if(UP.Level != UP.MaxLevel)
+                                UP.assignedQuest.currentQuest++;
 
                             ParticleManager.instance.PlayUpgradeParticle(transform.position);
                             AudioManager.instance.PlaySound("UpgradedShip");
