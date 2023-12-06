@@ -1,3 +1,4 @@
+//Author: Jamie Wright
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -29,13 +30,22 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private CanvasGroup fishingMinigameTutorial;
 
     [Header("Dock Tutorial")]
-    private bool dockTutorialCompleted = false;
+    private bool uptoDock = false;
+    public bool gotoDockTutorialCompleted = false;
+    [SerializeField] private CanvasGroup gotoDockTutorial;
+    public bool dockTutorialCompleted = false;
     [SerializeField] private CanvasGroup dockTutorial;
+    float timer = 0;
+    bool ranOutOfHarpoons = false;
 
     [Header("Journal Tutorial")]
+    
+    private bool openJournalTutorialCompleted = false;
+    [SerializeField] private CanvasGroup openJournalTutorial;
     private bool journalTutorialCompleted = false;
     [SerializeField] private CanvasGroup journalTutorial;
 
+    private int pathsComplete = 0; //If 2, removes the tutorial
 
     private void Awake()
     {
@@ -48,45 +58,132 @@ public class TutorialManager : MonoBehaviour
         RunMovementTutorial(true);
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
+        //Checks if this tutorial has been completed, if not runs a check relative to that tutorial, if completed start the next tutorial and do its check
+
+        //Completes movement tutorial after moving 50 meters from spawn point
         if (!movementTutorialCompleted)
         {
             if(Vector3.Distance(playerStartingPosition, transform.position) > 50)
             {
                 RunMovementTutorial(false);
-                StartCoroutine(RunFishTutorial(true));
+                RunFishTutorial(true);
                 movementTutorialCompleted = true;
             }
         }
+        //Completes fishing tutorial after being next to a fish
         else if(!fishTutorialCompleted)
         {
             foreach(var fish in m_PlayerManager.fishOnMap)
             {
-                if (Vector3.Distance(fish.transform.position, transform.position) < 30)
+                //Second Check so if player is close to two fish doesnt run it twice
+                if (!fishTutorialCompleted)
                 {
-                    RunFishTutorial(false);
-                    RunFishingTutorial(true);
-                    fishTutorialCompleted = true;
-                    break;
+                    if (Vector3.Distance(fish.transform.position, transform.position) < 30)
+                    {
+                        RunFishTutorial(false);
+                        RunFishingTutorial(true);
+                        fishTutorialCompleted = true;
+                        break;
+                    }
                 }
+                
             }
         }
-        else if (!fishingMinigameTutorial)
+        //Completes minigame after catching a fish, but starts dock tutorial after losing all harpoons to replenish them
+        else if (!fishingMinigameTutorialCompleted)
         {
             if(m_PlayerManager.AmountOfFish > 0)
             {
                 RunFishingTutorial(false);
-                StartCoroutine(RunJournalTutorial(true));
+                RunOpenJournalTutorial(true);
                 fishingMinigameTutorialCompleted = true;
+                uptoDock = true;
+                return;
             }
             else if(GetComponent<Fishing>().currentHarpoons == 0)
             {
-                RunFishingTutorial(false);
-                StartCoroutine(RunDockTutorial(true));
-                fishingMinigameTutorialCompleted = true;
+                if (!ranOutOfHarpoons)
+                {
+                    StartCoroutine(FadeOut(fishingMinigameTutorial));
+                    uptoDock = true;
+                    RunGotoDockTutorial(true);
+                }
+                ranOutOfHarpoons = true;
             }
         }
+
+        //if finished minigame tut, lets you perform journal tutorials
+
+        //Completes open journal tut after opening journal
+        if (fishingMinigameTutorialCompleted && !openJournalTutorialCompleted)
+        {
+            if (m_PlayerManager.journalOpen)
+            {
+                //Set alpha instad of coroutineFade because open journal pause timescale, halting all coroutines
+                openJournalTutorial.alpha = 0;
+                journalTutorial.alpha = 1;
+                openJournalTutorialCompleted = true;
+            }
+        }
+        //Completes journal tut after closing it
+        else if (fishingMinigameTutorialCompleted && !journalTutorialCompleted)
+        {
+            if (m_PlayerManager.journalOpen == false)
+            {
+                journalTutorial.alpha = 0;
+                if (!gotoDockTutorialCompleted)
+                {
+                    RunGotoDockTutorial(true);
+                }
+                    
+                journalTutorialCompleted = true;
+                pathsComplete++;
+            }
+        }
+        //if they completed one of the paths in minigame tutorial, lets them complete docking tutorials
+
+        //completes after opening quest info (It tells them to go to dock)
+        else if (uptoDock && !gotoDockTutorialCompleted)
+        {
+            if (m_PlayerManager.questTextUp)
+            {
+                currentArrows.Add(Instantiate(informativeArrowPrefab, FindObjectOfType<Dock>().transform));
+                currentArrows[0].transform.rotation = Quaternion.identity;
+                currentArrows[0].transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+                currentArrows[0].transform.position += Vector3.up;
+                RunGotoDockTutorial(false);
+                dockTutorial.alpha = 1;
+                gotoDockTutorialCompleted = true;
+            }
+        }
+        //Completes after closing the shop after having it open for longer than 2 seconds  
+        else if (uptoDock && gotoDockTutorialCompleted && !dockTutorialCompleted)
+        {
+            if (m_PlayerManager.isDocked)
+            {
+                if(currentArrows.Count > 0)
+                {
+                    Destroy(currentArrows[0]);
+                    currentArrows.Clear();
+                }
+                timer += Time.deltaTime;
+            }
+            if (!m_PlayerManager.isDocked)
+            {
+                if(timer > 2)
+                {
+                    dockTutorial.alpha = 0;
+                    dockTutorialCompleted = true;
+                    pathsComplete++;
+                }
+                timer = 0;
+            }
+        }
+
+        if (pathsComplete > 1)
+            RemoveTutorial();
     }
 
     private void RunMovementTutorial(bool fadeIn)
@@ -97,12 +194,10 @@ public class TutorialManager : MonoBehaviour
             StartCoroutine(FadeOut(movementTutorial));
     }
 
-    private IEnumerator RunFishTutorial(bool fadeIn)
+    private void RunFishTutorial(bool fadeIn)
     {
-        
         if (fadeIn)
         {
-            yield return new WaitForSeconds(0.5f);
             StartCoroutine(FadeIn(fishTutorial));
             foreach(var fish in m_PlayerManager.fishOnMap)
             {
@@ -112,56 +207,45 @@ public class TutorialManager : MonoBehaviour
         else
         {
             StartCoroutine(FadeOut(fishTutorial));
-            foreach(var arrow in currentArrows)
+            foreach (var arrow in currentArrows)
             {
                 Destroy(arrow);
-                currentArrows.Remove(arrow);
             }
+            currentArrows.Clear();
         }
-            
-        yield break;
     }
 
-    private IEnumerator RunFishingTutorial(bool fadeIn)
+    private void RunFishingTutorial(bool fadeIn)
     {
         if (fadeIn)
-        {
-            yield return new WaitForSeconds(0.5f);
             StartCoroutine(FadeIn(fishingMinigameTutorial));
-        }
         else
             StartCoroutine(FadeOut(fishingMinigameTutorial));
-
-        yield break;
     }
 
-    private IEnumerator RunJournalTutorial(bool fadeIn)
+    private void RunOpenJournalTutorial(bool fadeIn)
     {
         if (fadeIn)
-        {
-            yield return new WaitForSeconds(0.5f);
-            StartCoroutine(FadeIn(journalTutorial));
-        }
+            StartCoroutine(FadeIn(openJournalTutorial));
         else
-            StartCoroutine(FadeOut(journalTutorial));
-
-        yield break;
+            StartCoroutine(FadeOut(openJournalTutorial));
     }
 
-    private IEnumerator RunDockTutorial(bool fadeIn)
+    private void RunGotoDockTutorial(bool fadeIn)
     {
         if (fadeIn)
-        {
-            yield return new WaitForSeconds(0.5f);
-            StartCoroutine(FadeIn(dockTutorial));
-        }
+            StartCoroutine(FadeIn(gotoDockTutorial));
         else
-            StartCoroutine(FadeOut(journalTutorial));
+            StartCoroutine(FadeOut(gotoDockTutorial));
     }
+
     private IEnumerator FadeIn(CanvasGroup objectToFade)
     {
-        while(objectToFade.alpha < 1)
+        yield return new WaitForSeconds(0.5f);
+        while (objectToFade.alpha < 1)
         {
+            if (instance == null)
+                yield break;
             objectToFade.alpha += Time.deltaTime * 2f;
             yield return null;
         }
@@ -171,9 +255,29 @@ public class TutorialManager : MonoBehaviour
     {
         while (objectToFade.alpha > 0)
         {
+            if (instance == null)
+                yield break;
             objectToFade.alpha -= Time.deltaTime * 2f;
             yield return null;
         }
         yield break;
+    }
+
+    public void RemoveTutorial()
+    {
+        movementTutorial.alpha = 0;
+        fishTutorial.alpha = 0;
+        fishingMinigameTutorial.alpha = 0;
+        gotoDockTutorial.alpha = 0;
+        dockTutorial.alpha = 0;
+        openJournalTutorial.alpha = 0;
+        journalTutorial.alpha = 0;
+        foreach (var arrow in currentArrows)
+        {
+            Destroy(arrow);
+        }
+        currentArrows.Clear();
+        instance = null;
+        Destroy(this);
     }
 }

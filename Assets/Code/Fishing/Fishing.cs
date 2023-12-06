@@ -73,8 +73,8 @@ public class Fishing : MonoBehaviour
         if (fishCaught)
         {
             GameObject fish = fishingSpot.currentFish;
-            GetComponent<PlayerManager>().AddFish(fish.GetComponent<Fish>().data);
-            GetComponent<PlayerManager>().RemoveFishFromTracked(fish);
+            m_PlayerManager.AddFish(fish.GetComponent<Fish>().data);
+            m_PlayerManager.RemoveFishFromTracked(fish);
 
             fishingSpot.currentFish = null;
             fish.SetActive(false);

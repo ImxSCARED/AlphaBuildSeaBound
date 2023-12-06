@@ -15,7 +15,7 @@ public class PlayerManager : MonoBehaviour
     private UpgradeManager m_UpgradeManager;
     private QuestManager m_QuestManager;
     private MovementController m_MovementController;
-    private bool isDocked = false;
+    public bool isDocked = false;
     public bool isAtDock = false;
     private List<FishProperties.FishData> storedFish = new List<FishProperties.FishData>();
 
@@ -57,7 +57,7 @@ public class PlayerManager : MonoBehaviour
     [Header("Journal")]
     public JournalFish[] journalFishEntryies;
     [SerializeField] private Canvas journal;
-    private bool journalOpen = false;
+    public bool journalOpen = false;
     private string[] diaryPages = new string[6];
     public GameObject[] journalTabs;
     private int entryCounter = 0;
@@ -89,7 +89,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI islandNearTxt;
     [SerializeField] private Animator questTextAnimator;
     public TextMeshProUGUI harpoonCount;
-    private bool questTextUp = false;
+    public bool questTextUp = false;
     
     [Header("Pause")]
     [SerializeField] private GameObject pause;
