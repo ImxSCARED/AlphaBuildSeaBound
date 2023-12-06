@@ -9,7 +9,7 @@ public class Fishing : MonoBehaviour
     [SerializeField] private FishingHitbox fishingSpot;
     [SerializeField] private MovementController m_MovementController;
     [SerializeField] private PlayerManager m_PlayerManager;
-    [SerializeField] private CameraController m_cameraController;
+    [SerializeField] private CameraController m_CameraController;
     public CaptureCircle minigameBackground;
     public GameObject minigameMover;
 
@@ -43,26 +43,24 @@ public class Fishing : MonoBehaviour
             {
                 if (!fishingSpot.inAntiFishingOval)
                 {
+                    fishingSpot.antiFishingLineRenderer.enabled = false;
                     if (currentHarpoons > 0)
                     {
-                        //Tutorial
-                        fishingTutorial.StopFishTutorial();
-                        fishingTutorial.StartFishingMinigameTutorial();
-
-                        // Camera
-                        m_cameraController.StartFishingMode();
-
-                        // Anti fishing zone
-                        fishingSpot.antiFishingLineRenderer.enabled = false;
-
                         GetComponent<InputManager>().ChangeActionMap("Fishing");
+                        m_CameraController.StartFishingMode();
+
                         currentlyFishing = true;
                         minigameMover.SetActive(true);
                         minigameMover.transform.position = new Vector3(fishingSpot.currentFish.transform.position.x, minigameMover.transform.position.y, fishingSpot.currentFish.transform.position.z);
+                        
                         currentFish = fishingSpot.currentFish.GetComponent<Fish>();
+                        
                         currentHarpoons--;
                         m_PlayerManager.harpoonCount.text = "X " + currentHarpoons;
                         m_MovementController.StopMovement();
+
+                        ParticleManager.instance.PlayWaterSplashParticle(minigameMover.transform.position);
+                        ParticleManager.instance.PlayFishSplashParticle(currentFish.transform);
                         AudioManager.instance.PlaySound("StartFishing");
                     }
                     else
@@ -76,14 +74,19 @@ public class Fishing : MonoBehaviour
 
     public void EndMinigame(bool fishCaught)
     {
-        //Tutorial
-        fishingTutorial.StopFishingMinigameTutorial();
+        m_CameraController.EndFishingMode();
 
-        // Camera
-        m_cameraController.EndFishingMode();
-
-        // Anti fishing zone
-        fishingSpot.antiFishingLineRenderer.enabled = true;
+        foreach(Transform transform in currentFish.transform)
+        {
+            ParticleSystem PS = transform.GetComponent<ParticleSystem>();
+            if(PS != null)
+            {
+                if (PS.gameObject.CompareTag("FishSplashPS"))
+                {
+                    Destroy(PS.gameObject);
+                }
+            }
+        }
 
         GetComponent<InputManager>().ChangeActionMap("Sailing");
         currentlyFishing = false;
@@ -91,23 +94,17 @@ public class Fishing : MonoBehaviour
 
         if (fishCaught)
         {
-            //Tutorial
-            fishingTutorial.fishTutorialCompleted = true;
-
             GameObject fish = fishingSpot.currentFish;
             m_PlayerManager.AddFish(fish.GetComponent<Fish>().data);
             m_PlayerManager.RemoveFishFromTracked(fish);
 
             fishingSpot.currentFish = null;
-            if(fish.GetComponent<Fish>().data.isQuestFish)
-            {
-                GetComponent<QuestManager>().currentQuestTitle.text = "Bounty caught";
-                GetComponent<QuestManager>().currentQuestDesc.text = "Return to dock and sell bounty for reward";
-            }
             fish.SetActive(false);
 
             fishingSpot.antiFishingLineRenderer.enabled = true;
-            AudioManager.instance.PlaySound("EndFishing");
+
+            ParticleManager.instance.PlayFishCaughtParticle(transform.position);
+            AudioManager.instance.PlaySound("EndFishing"); 
         }
         else
         {

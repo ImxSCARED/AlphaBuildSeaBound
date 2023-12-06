@@ -53,9 +53,7 @@ public class UpgradeManager : MonoBehaviour
             case UpgradeData.UpgradeType.RANGE:
                 m_FishingHitbox.RedrawOval(m_FishingHitbox.fishingLineRenderer, m_FishingHitbox.fishingRadius * (m_UpgradeData.RangeIncreaseAmount + 1), m_FishingHitbox.fishingWidthRatio, m_FishingHitbox.fishingHeightRatio);
                 break;
-        }
-        AudioManager.instance.PlaySound("UpgradedShip");
-        ParticleManager.instance.PlayUpgradeParticle(transform.position - new Vector3(0,0,0));
+        }   
     }
 
     /// <summary>
@@ -82,10 +80,11 @@ public class UpgradeManager : MonoBehaviour
                             UP.Locked = true;
                             ImplementUpgrade(UP);
 
-
                             UP.Price = Mathf.RoundToInt(UP.Price * UP.PriceIncrease);
-                            if(UP.Level != UP.MaxLevel)
-                                UP.assignedQuest.currentQuest++;
+                            UP.assignedQuest.currentQuest++;
+
+                            ParticleManager.instance.PlayUpgradeParticle(transform.position);
+                            AudioManager.instance.PlaySound("UpgradedShip");
                             return UP;
                         }
                     }

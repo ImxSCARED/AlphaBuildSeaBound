@@ -53,7 +53,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 899c54efeace73346a0a16faa3afe726, type: 3}
   m_Name: Vignette
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   color:
     m_OverrideState: 1
     m_Value: {r: 0, g: 0, b: 0, a: 1}
@@ -239,7 +239,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3eb4b772797da9440885e8bd939e9560, type: 3}
   m_Name: ColorCurves
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   master:
     m_OverrideState: 0
     m_Value:
@@ -401,8 +401,8 @@ MonoBehaviour:
         serializedVersion: 2
         m_Curve:
         - serializedVersion: 3
-          time: 0.30226701
-          value: 0.13297874
+          time: 0.24352331
+          value: 0.36065573
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -446,7 +446,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81180773991d8724ab7f2d216912b564, type: 3}
   m_Name: ChromaticAberration
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   intensity:
     m_OverrideState: 1
     m_Value: 0.439
@@ -532,7 +532,7 @@ MonoBehaviour:
     m_Value: {r: 0.4716981, g: 0.44722322, b: 0.44722322, a: 1}
   balance:
     m_OverrideState: 1
-    m_Value: 21
+    m_Value: 13
 --- !u!114 &6143247154353952503
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -601,12 +601,12 @@ MonoBehaviour:
   active: 1
   shadows:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 0.93042296, z: 0.92171687, w: -0.57369816}
+    m_Value: {x: 1, y: 0.9905853, z: 0.9894544, w: -0.48254052}
   midtones:
     m_OverrideState: 1
-    m_Value: {x: 0.9586504, y: 0.9336639, z: 1, w: -0.767873}
+    m_Value: {x: 0.9747945, y: 0.99379665, z: 1, w: -0.40324223}
   highlights:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: {x: 1, y: 0.9897849, z: 0.99962366, w: -0.6646072}
   shadowsStart:
     m_OverrideState: 1

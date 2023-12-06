@@ -33,6 +33,8 @@ public class SettingsManager : MonoBehaviour
 
     private void Start()
     {
+        m_settings = SettingsSerialiser.Instance;
+
         // Set up listeners on sliders
         if (Holder.masterSlider) { Holder.masterSlider.onValueChanged.AddListener(SetMasterVolume); }
         if (Holder.musicSlider) { Holder.musicSlider.onValueChanged.AddListener(SetMusicVolume); }
@@ -112,8 +114,8 @@ public class SettingsManager : MonoBehaviour
         // Set settings
         m_invertCamera = !m_invertCamera;
 
-        // Then update the camera
-        Holder.camera.SetInvertCamera(m_invertCamera);
+        // Then update the camera, if it exists
+        if (Holder.camera) { Holder.camera.SetInvertCamera(m_invertCamera); }
     }
 
     public void ToggleTutorial()
@@ -162,8 +164,6 @@ public class SettingsManager : MonoBehaviour
     /// </summary>
     private void InitSettings()
     {
-        m_settings = SettingsSerialiser.Instance;
-
         // Master volume
         if (Holder.masterSlider)
         {
@@ -220,8 +220,6 @@ public class SettingsManager : MonoBehaviour
         {
             if (!m_settings.GetSetting<bool>("invertCamera", out m_invertCamera)) { m_invertCamera = Holder.invertCameraToggle.isOn; }
             else { Holder.invertCameraToggle.isOn = m_invertCamera; }
-
-            Holder.camera.SetInvertCamera(m_invertCamera);
         }
         // Show tutorial
         if (Holder.tutorialToggle)
