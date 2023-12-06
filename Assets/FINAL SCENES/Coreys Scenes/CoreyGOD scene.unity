@@ -4968,7 +4968,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thisZone: 0
-  songname: Track_Shallows
 --- !u!1 &219914358
 GameObject:
   m_ObjectHideFlags: 0
@@ -7566,18 +7565,6 @@ Transform:
   m_Father: {fileID: 780216118}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &363571309 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 993310951167833471, guid: 308ed486bb269604bbcba076d8669bc2,
-    type: 3}
-  m_PrefabInstance: {fileID: 802249398}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &363739932
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20727,7 +20714,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thisZone: 1
-  songname: 
 --- !u!114 &925679828
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22017,7 +22003,7 @@ PrefabInstance:
     - target: {fileID: 1436690610096967766, guid: 2435eda5213f4d54ca9960bee716a5f8,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1782289467416529644, guid: 2435eda5213f4d54ca9960bee716a5f8,
         type: 3}
@@ -25180,8 +25166,6 @@ MonoBehaviour:
   m_distanceFromPlayer: 30
   m_movementSpeed: 60
   m_transitionTime: 0
-  m_invertXControl: 0
-  m_invertYControl: 0
 --- !u!1 &1132447966 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4194870493969769406, guid: 8e1bb4807613dfe4189e955c57122c58,
@@ -25977,7 +25961,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thisZone: 1
-  songname: Track_Basin
 --- !u!1 &1169259544 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3981906261570810562, guid: 7527b0b7eb47f974abfd3abb11526516,
@@ -35767,7 +35750,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thisZone: 2
-  songname: Track_Depths
 --- !u!1 &1649553002 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -7830044153369625565, guid: 76e43035edde46f4999e5d066dbbd124,
@@ -43449,7 +43431,6 @@ MonoBehaviour:
   fishingSpot: {fileID: 1970113378}
   m_MovementController: {fileID: 2022947085}
   m_PlayerManager: {fileID: 2022947081}
-  m_cameraController: {fileID: 0}
   minigameBackground: {fileID: 1542724387}
   minigameMover: {fileID: 1618977151}
   currentlyFishing: 0
@@ -43617,6 +43598,7 @@ MonoBehaviour:
   upgradesFirstButton: {fileID: 1844869383}
   pauseFirstButton: {fileID: 0}
   settingsFirstButton: {fileID: 0}
+  controlsFirstButton: {fileID: 0}
   hub: {fileID: 2095553781}
   QuestUI:
   - {fileID: 1917423032}
@@ -43668,9 +43650,10 @@ MonoBehaviour:
   islandNearAnim: {fileID: 1915112872}
   islandNearTxt: {fileID: 22628713}
   questTextAnimator: {fileID: 1069485863}
-  harpoonCount: {fileID: 363571309}
+  harpoonCount: {fileID: 0}
   pause: {fileID: 0}
   settings: {fileID: 0}
+  controls: {fileID: 0}
   journalTutorial: {fileID: 2022947087}
 --- !u!114 &2022947082
 MonoBehaviour:
@@ -43745,11 +43728,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_rigidbody: {fileID: 2022947084}
-  m_rotationAxis: {fileID: 0}
   m_collider: {fileID: 2022947083}
   m_wheels: {fileID: 0}
+  m_geometryParent: {fileID: 0}
   m_audioManager: {fileID: 0}
   m_maxSpeed: 30
+  m_maxBackwardSpeed: 0
   m_accelerationSpeed: 20
   m_turnSpeed: 25
   m_tiltSpeed: 0
