@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
+    // --EDITOR VARIABLES--
     [Header("Object References")]
     [SerializeField]
     Transform m_lookPoint;
@@ -24,8 +25,9 @@ public class CameraController : MonoBehaviour
     float m_movementSpeed;
     [SerializeField]
     float m_transitionTime;
-    [SerializeField]
-    bool m_invertControl;
+
+    // --CODE VARIABLES--
+    SettingsSerialiser m_settings;
 
     Vector2 m_XYRotation;
 
@@ -36,14 +38,22 @@ public class CameraController : MonoBehaviour
 
     float m_lerpTimer;
 
+    bool m_invertControls;
     bool m_isFishing = false;
     bool m_isLerp = false;
 
-    private void Awake()
+    void Awake()
     {
         m_XYRotation = m_startRotation + new Vector2(m_lookPoint.rotation.eulerAngles.x, m_lookPoint.rotation.eulerAngles.y);
 
         m_xRotationClamp = new Vector2(m_minXRotation, m_maxXRotation);
+    }
+
+    void Start()
+    {
+        m_settings = SettingsSerialiser.Instance;
+
+        if (!m_settings.GetSetting<bool>("invertCamera", out m_invertControls)) { m_invertControls = false; }
     }
 
     void LateUpdate()
@@ -84,8 +94,8 @@ public class CameraController : MonoBehaviour
     {
         if (!m_isFishing && !m_isLerp)
         {
-            float deltaX = (m_invertControl ? x : -x) * m_movementSpeed * Time.deltaTime;
-            float deltaY = (m_invertControl ? -y : y) * m_movementSpeed * Time.deltaTime;
+            float deltaX = (m_invertControls ? x : -x) * m_movementSpeed * Time.deltaTime;
+            float deltaY = (m_invertControls ? -y : y) * m_movementSpeed * Time.deltaTime;
 
             m_XYRotation.x += deltaX;
             m_XYRotation.y += deltaY;
@@ -183,7 +193,7 @@ public class CameraController : MonoBehaviour
 
     public void SetInvertCamera(bool invert)
     {
-        m_invertControl = invert;
+        m_invertControls = invert;
     }
 
     /// <summary>
