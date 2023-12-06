@@ -145,8 +145,10 @@ public class MovementController : MonoBehaviour
             m_targetTilt += m_amountToTilt * Time.deltaTime;
 
             // Multiply by percentage of max speed to base the tilting around movement speed
-            float speedFraction = (m_velocity.magnitude / m_maxVelocity);
-            m_targetTilt = Mathf.Clamp(m_targetTilt, -m_maxTilt * speedFraction, m_maxTilt * speedFraction);
+            float speedFraction = m_velocity.magnitude / m_maxVelocity;
+            // Multiply by amount of stick tilt to base the tilting around the left stick
+            float stickFraction = Mathf.Abs(m_amountToTilt / m_tiltSpeed);
+            m_targetTilt = Mathf.Clamp(m_targetTilt, -m_maxTilt * speedFraction * stickFraction, m_maxTilt * speedFraction * stickFraction);
         }
         else
         {
@@ -325,31 +327,32 @@ public class MovementController : MonoBehaviour
         m_velocity = Vector3.zero;
     }
 
-      private void MovementSound(float percentMaxVelocity)
-      {
-    //    if (percentMaxVelocity == 0)
-    //    {
-    //        AudioManager.instance.PlayNextClip("Still");
-    //    }
-    //    else if (percentMaxVelocity > 0.2)
-    //    {
-    //        AudioManager.instance.PlayNextClip("Sailing1");
-    //    }
-    //    else if (percentMaxVelocity <= 0.4)
-    //    {
-    //        AudioManager.instance.PlayNextClip("Sailing2");
-    //    }
-    //    else if (percentMaxVelocity <= 0.6)
-    //    {
-    //        AudioManager.instance.PlayNextClip("Sailing3");
-    //    }
-    //    else if (percentMaxVelocity <= 0.8)
-    //    {
-    //        AudioManager.instance.PlayNextClip("Sailing4");
-    //    }
-    //    else if (percentMaxVelocity <= 1)
-    //    {
-    //        AudioManager.instance.PlayNextClip("Sailing5");
-    //    }
-      }
+    // Myles' stuff
+    private void MovementSound(float percentMaxVelocity)
+    {
+        //if (percentMaxVelocity == 0)
+        //{
+        //    AudioManager.instance.PlayNextClip("Still");
+        //}
+        //else if (percentMaxVelocity > 0.2)
+        //{
+        //    AudioManager.instance.PlayNextClip("Sailing1");
+        //}
+        //else if (percentMaxVelocity <= 0.4)
+        //{
+        //    AudioManager.instance.PlayNextClip("Sailing2");
+        //}
+        //else if (percentMaxVelocity <= 0.6)
+        //{
+        //    AudioManager.instance.PlayNextClip("Sailing3");
+        //}
+        //else if (percentMaxVelocity <= 0.8)
+        //{
+        //    AudioManager.instance.PlayNextClip("Sailing4");
+        //}
+        //else if (percentMaxVelocity <= 1)
+        //{
+        //    AudioManager.instance.PlayNextClip("Sailing5");
+        //}
+    }
 }
