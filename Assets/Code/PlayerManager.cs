@@ -15,7 +15,7 @@ public class PlayerManager : MonoBehaviour
     private UpgradeManager m_UpgradeManager;
     private QuestManager m_QuestManager;
     private MovementController m_MovementController;
-    private bool isDocked = false;
+    public bool isDocked = false;
     public bool isAtDock = false;
     private List<FishProperties.FishData> storedFish = new List<FishProperties.FishData>();
 
@@ -44,7 +44,6 @@ public class PlayerManager : MonoBehaviour
     public GameObject upgradesFirstButton;
     public GameObject pauseFirstButton;
     public GameObject settingsFirstButton;
-    public GameObject controlsFirstButton;
 
     [Header("HUB")]
     [SerializeField] private Canvas hub;
@@ -58,7 +57,7 @@ public class PlayerManager : MonoBehaviour
     [Header("Journal")]
     public JournalFish[] journalFishEntryies;
     [SerializeField] private Canvas journal;
-    private bool journalOpen = false;
+    public bool journalOpen = false;
     private string[] diaryPages = new string[6];
     public GameObject[] journalTabs;
     private int entryCounter = 0;
@@ -90,15 +89,13 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI islandNearTxt;
     [SerializeField] private Animator questTextAnimator;
     public TextMeshProUGUI harpoonCount;
-    private bool questTextUp = false;
+    public bool questTextUp = false;
     
     [Header("Pause")]
     [SerializeField] private GameObject pause;
     private bool pauseOpen = false;
     [SerializeField] private GameObject settings;
     private bool settingsOpen = false;
-    [SerializeField] private GameObject controls;
-    private bool controlsOpen = false;
 
     //Tutorial
     [SerializeField] private TutorialManager journalTutorial;
@@ -187,10 +184,6 @@ public class PlayerManager : MonoBehaviour
 
     public void SellFish()
     {
-        if(AmountOfFish > 0)
-        {
-            ParticleManager.instance.PlayCoinsParticle(transform.position);
-        }
         foreach (FishProperties.FishData fish in storedFish)
         {
             if (fish.isQuestFish)
@@ -212,7 +205,6 @@ public class PlayerManager : MonoBehaviour
         }
         storedFish.Clear();
         AmountOfFish = 0;
-        
         //Clears all of inventories children
         foreach (Transform child in inventoryParent)
         {
@@ -264,8 +256,6 @@ public class PlayerManager : MonoBehaviour
             }
             isDocked = true;
             moneyTxt.text = Money.ToString();
-            Debug.Log("Entered Hub");
-            AudioManager.instance.PlaySound("ShopSwap");
         }
     }
 
@@ -275,7 +265,6 @@ public class PlayerManager : MonoBehaviour
 
     public void ExitHub()
     {
-        Debug.Log("ExitHub");
         GetComponent<InputManager>().ChangeActionMap("Sailing");
         hub.enabled = false;
         isDocked = false;
@@ -285,17 +274,12 @@ public class PlayerManager : MonoBehaviour
     {
         if (pauseOpen == false)
         {
-            //Tutorial
-            journalTutorial.StopJournalTutorial();
-            journalTutorial.StartMovementTutorial();
-
             if (journalOpen)
             {
                 GetComponent<InputManager>().ChangeActionMap("Sailing");
                 Time.timeScale = 1;
                 journal.enabled = false;
                 journalOpen = false;
-                AudioManager.instance.PlaySound("Tabflip");
 
             }
             else
@@ -306,7 +290,6 @@ public class PlayerManager : MonoBehaviour
                 journalOpen = true;
                 currentTab = 0;
                 DpadNavigate(0);
-                AudioManager.instance.PlaySound("Tabflip");
             }
         }
     }
@@ -360,32 +343,13 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    public void ControlsToggle()
-    {
-        if (controlsOpen == true)
-        {
-            settings.SetActive(true);
-            controls.SetActive(false);
-            EventSystem.current.SetSelectedGameObject(null);
-            EventSystem.current.SetSelectedGameObject(settingsFirstButton);
-            controlsOpen = false;
-        }
-        else if(controlsOpen == false)
-        {
-            settings.SetActive(false);
-            controls.SetActive(true);
-            EventSystem.current.SetSelectedGameObject(null);
-            EventSystem.current.SetSelectedGameObject(controlsFirstButton);
-            controlsOpen = true;
-        }
-    }
         
     
 
     public void MainMenu()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene("GoldMainMenu");
+        SceneManager.LoadScene("Myles_MainMenu");
     }
 
     public void QuitGame()
@@ -443,17 +407,14 @@ public class PlayerManager : MonoBehaviour
             if(currentTab == 0)
             {
                 DisplaySelectedIsland();
-                AudioManager.instance.PlaySound("Tabflip");
             }
             if(currentTab == 1)
             {
                 DisplayFishPage();
-                AudioManager.instance.PlaySound("Tabflip");
             }
             if(currentTab == 2)
             {
                 DisplayDiaryPages();
-                AudioManager.instance.PlaySound("Tabflip");
             }
         }
         

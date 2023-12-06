@@ -62,19 +62,12 @@ public class FishingHitbox : MonoBehaviour
         if (IsPointInOval(closestFish.transform.position - transform.position, fishingRadius, fishingWidthRatio, fishingHeightRatio))
         {
             currentFish = closestFish;
-            
-            if (!fishingState.currentlyFishing)
-            {
-                fishingTutorial.StartFishTutorial();
-            }
-
             currentFish.GetComponent<Fish>().dontDestory = true;
         }
         else if (currentFish)
         {
             currentFish.GetComponent<Fish>().dontDestory = false;
             currentFish = null;
-            fishingTutorial.StopFishTutorial();
         }
         // Check that the fish is in the anti-fishing oval
         inAntiFishingOval = IsPointInOval(closestFish.transform.position - transform.position, antiFishingRadius, antiFishingWidthRatio, antiFishingHeightRatio);

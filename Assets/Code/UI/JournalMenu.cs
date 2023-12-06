@@ -120,9 +120,6 @@ public class JournalMenu : MonoBehaviour
 
     public void ToggleJournal()
     {
-        // Tutorial reference
-        journalTutorial.StopJournalTutorial();
-
         if (!pauseMenu.pauseState)
         {
             if (journalState)

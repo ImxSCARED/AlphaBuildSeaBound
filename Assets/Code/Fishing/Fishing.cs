@@ -9,6 +9,7 @@ public class Fishing : MonoBehaviour
     [SerializeField] private FishingHitbox fishingSpot;
     [SerializeField] private MovementController m_MovementController;
     [SerializeField] private PlayerManager m_PlayerManager;
+    [SerializeField] private CameraController m_CameraController;
     public CaptureCircle minigameBackground;
     public GameObject minigameMover;
 
@@ -45,20 +46,21 @@ public class Fishing : MonoBehaviour
                     fishingSpot.antiFishingLineRenderer.enabled = false;
                     if (currentHarpoons > 0)
                     {
-                        //Tutorial
-                        fishingTutorial.StopFishTutorial();
-                        fishingTutorial.StartFishingMinigameTutorial();
-
                         GetComponent<InputManager>().ChangeActionMap("Fishing");
+                        m_CameraController.StartFishingMode();
+
                         currentlyFishing = true;
                         minigameMover.SetActive(true);
                         minigameMover.transform.position = new Vector3(fishingSpot.currentFish.transform.position.x, minigameMover.transform.position.y, fishingSpot.currentFish.transform.position.z);
-                        ParticleManager.instance.PlayWaterSplashParticle(minigameMover.transform.position);
+                        
                         currentFish = fishingSpot.currentFish.GetComponent<Fish>();
-                        ParticleManager.instance.PlayFishSplashParticle(currentFish.transform);
+                        
                         currentHarpoons--;
                         m_PlayerManager.harpoonCount.text = "X " + currentHarpoons;
                         m_MovementController.StopMovement();
+
+                        ParticleManager.instance.PlayWaterSplashParticle(minigameMover.transform.position);
+                        ParticleManager.instance.PlayFishSplashParticle(currentFish.transform);
                         AudioManager.instance.PlaySound("StartFishing");
                     }
                     else
@@ -72,8 +74,7 @@ public class Fishing : MonoBehaviour
 
     public void EndMinigame(bool fishCaught)
     {
-        //Tutorial
-        fishingTutorial.StopFishingMinigameTutorial();
+        m_CameraController.EndFishingMode();
 
         foreach(Transform transform in currentFish.transform)
         {
@@ -93,20 +94,17 @@ public class Fishing : MonoBehaviour
 
         if (fishCaught)
         {
-            //Tutorial
-            fishingTutorial.fishTutorialCompleted = true;
-
-            ParticleManager.instance.PlayFishCaughtParticle(transform.position);
-
             GameObject fish = fishingSpot.currentFish;
-            GetComponent<PlayerManager>().AddFish(fish.GetComponent<Fish>().data);
-            GetComponent<PlayerManager>().RemoveFishFromTracked(fish);
+            m_PlayerManager.AddFish(fish.GetComponent<Fish>().data);
+            m_PlayerManager.RemoveFishFromTracked(fish);
 
             fishingSpot.currentFish = null;
             fish.SetActive(false);
 
             fishingSpot.antiFishingLineRenderer.enabled = true;
-            AudioManager.instance.PlaySound("EndFishing");
+
+            ParticleManager.instance.PlayFishCaughtParticle(transform.position);
+            AudioManager.instance.PlaySound("EndFishing"); 
         }
         else
         {
