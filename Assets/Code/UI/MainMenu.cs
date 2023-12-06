@@ -112,13 +112,15 @@ public class MainMenu : MonoBehaviour
     public void Awake()
     {
         AudioManager.instance.PlayTrack("Track_Silence");
+        AudioManager.instance.PlayClip("Clip_Silence");
         Invoke("LatePlay", 1);
-        AudioManager.instance.PlayClip("MMAmbience");
+        
     }
 
     void LatePlay()
     {
         AudioManager.instance.PlayNext("Track_MainMenu");
+        AudioManager.instance.PlayNextClip("MMAmbience");
     }
 }
 
