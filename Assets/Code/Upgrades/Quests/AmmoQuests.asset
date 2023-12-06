@@ -46,5 +46,5 @@ MonoBehaviour:
       isQuestFish: 1
       tier: 1
     completed: 0
-  currentQuest: 0
+  currentQuest: 1
   Name: AmmoQuests

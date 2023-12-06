@@ -167,6 +167,7 @@ public class PlayerManager : MonoBehaviour
     public void AddFish(FishProperties.FishData caughtFish)
     {
         storedFish.Add(caughtFish);
+        AmountOfFish++;
         for (int i = 0; i < journalFishEntryies.Length; i++)
         {
             if (caughtFish.name == journalFishEntryies[i].fishName)
@@ -183,6 +184,10 @@ public class PlayerManager : MonoBehaviour
 
     public void SellFish()
     {
+        if(AmountOfFish > 0)
+        {
+            ParticleManager.instance.PlayCoinsParticle(transform.position);
+        }
         foreach (FishProperties.FishData fish in storedFish)
         {
             if (fish.isQuestFish)
@@ -203,6 +208,8 @@ public class PlayerManager : MonoBehaviour
             }
         }
         storedFish.Clear();
+        AmountOfFish = 0;
+        
         //Clears all of inventories children
         foreach (Transform child in inventoryParent)
         {

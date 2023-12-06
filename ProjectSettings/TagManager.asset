@@ -6,6 +6,7 @@ TagManager:
   tags:
   - MinigameMover
   - Fish
+  - FishSplashPS
   layers:
   - Default
   - TransparentFX

@@ -53,7 +53,9 @@ public class Fishing : MonoBehaviour
                         currentlyFishing = true;
                         minigameMover.SetActive(true);
                         minigameMover.transform.position = new Vector3(fishingSpot.currentFish.transform.position.x, minigameMover.transform.position.y, fishingSpot.currentFish.transform.position.z);
+                        ParticleManager.instance.PlayWaterSplashParticle(minigameMover.transform.position);
                         currentFish = fishingSpot.currentFish.GetComponent<Fish>();
+                        ParticleManager.instance.PlayFishSplashParticle(currentFish.transform);
                         currentHarpoons--;
                         m_PlayerManager.harpoonCount.text = "X " + currentHarpoons;
                         m_MovementController.StopMovement();
@@ -73,6 +75,18 @@ public class Fishing : MonoBehaviour
         //Tutorial
         fishingTutorial.StopFishingMinigameTutorial();
 
+        foreach(Transform transform in currentFish.transform)
+        {
+            ParticleSystem PS = transform.GetComponent<ParticleSystem>();
+            if(PS != null)
+            {
+                if (PS.gameObject.CompareTag("FishSplashPS"))
+                {
+                    Destroy(PS.gameObject);
+                }
+            }
+        }
+
         GetComponent<InputManager>().ChangeActionMap("Sailing");
         currentlyFishing = false;
         minigameMover.SetActive(false);
@@ -81,6 +95,8 @@ public class Fishing : MonoBehaviour
         {
             //Tutorial
             fishingTutorial.fishTutorialCompleted = true;
+
+            ParticleManager.instance.PlayFishCaughtParticle(transform.position);
 
             GameObject fish = fishingSpot.currentFish;
             GetComponent<PlayerManager>().AddFish(fish.GetComponent<Fish>().data);

@@ -69,9 +69,9 @@ public class ParticleManager : MonoBehaviour
         ParticleSystem coinsPart = Instantiate(coinsPrefab, position, coinsPrefab.transform.rotation);
         Destroy(coinsPart.gameObject, coinsPart.main.duration);
     }
-    public void PlayFishSplashParticle(Vector3 position)
+    public void PlayFishSplashParticle(Transform fish)
     {
-        ParticleSystem fishSplashPart = Instantiate(fishSplashPrefab, position, fishSplashPrefab.transform.rotation);
-        Destroy(fishSplashPart.gameObject, fishSplashPart.main.duration);
+        ParticleSystem fishSplashPart = Instantiate(fishSplashPrefab, fish);
+
     }
 }
