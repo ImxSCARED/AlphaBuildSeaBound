@@ -10,6 +10,7 @@ public class UpgradeButton : MonoBehaviour
     [SerializeField] private TextMeshProUGUI m_NameText;
     [SerializeField] private TextMeshProUGUI m_DescText;
     [SerializeField] private TextMeshProUGUI m_PriceText;
+    [SerializeField] private GameObject m_Lock;
     public void SetInfo(Upgrade upgrade)
     {
         m_NameText.text = upgrade.Name;
@@ -22,7 +23,7 @@ public class UpgradeButton : MonoBehaviour
         {
             m_PriceText.text = "$" + upgrade.Price.ToString();
         }
-
+        m_Lock.SetActive(upgrade.Locked);
     }
 
     public void UpgradeSelected()

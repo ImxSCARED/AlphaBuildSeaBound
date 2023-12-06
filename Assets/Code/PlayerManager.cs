@@ -225,7 +225,7 @@ public class PlayerManager : MonoBehaviour
         {
             GetComponent<InputManager>().ChangeActionMap("UI");
             m_MovementController.StopMovement();
-
+            AudioManager.instance.PlayClip("Town");
             questsHolder.SetActive(true);
             upgradesHolder.SetActive(false);
             hub.enabled = true;
@@ -259,6 +259,7 @@ public class PlayerManager : MonoBehaviour
             moneyTxt.text = Money.ToString();
             Debug.Log("Entered Hub");
             AudioManager.instance.PlaySound("ShopSwap");
+            
         }
     }
 

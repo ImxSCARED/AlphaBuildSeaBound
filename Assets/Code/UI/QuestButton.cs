@@ -10,12 +10,13 @@ public class QuestButton : MonoBehaviour
     [SerializeField] private TextMeshProUGUI m_NameText;
     [SerializeField] private TextMeshProUGUI m_DescText;
     [SerializeField] private TextMeshProUGUI m_PriceText;
+    [SerializeField] private GameObject m_Blocker;
+
     public void SetInfo(Quest.QuestData quest)
     {
         m_NameText.text = quest.Name;
         m_DescText.text = "Unlocks " + quest.connectedUpgrade.Name;
         m_PriceText.text = "Reward: " + quest.Value.ToString();
-
     }
 
     public void QuestSelected()

@@ -1532,6 +1532,12 @@ MonoBehaviour:
     pitch: 1
     stopRepeat: 0
     source: {fileID: 0}
+  - name: ShopConfirm
+    clip: {fileID: 8300000, guid: 9452c33eb719e3941b19c2e2f9bc7bc3, type: 3}
+    volume: 1
+    pitch: 1
+    stopRepeat: 0
+    source: {fileID: 0}
   tracks:
   - name: Track_MainMenu
     track: {fileID: 8300000, guid: 4a23136c2141c5d469c3e00fc5ee3f79, type: 3}
