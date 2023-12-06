@@ -289,6 +289,9 @@ public class PlayerManager : MonoBehaviour
                 journal.enabled = true;
                 journalOpen = true;
                 currentTab = 0;
+                journalTabs[0].SetActive(false);
+                journalTabs[1].SetActive(false);
+                journalTabs[2].SetActive(false);
                 DpadNavigate(0);
             }
         }
@@ -395,14 +398,21 @@ public class PlayerManager : MonoBehaviour
         }
         
     }
-
+    /// <summary>
+    /// Navigates between journal tabs
+    /// </summary>
+    /// <param name="value"></param>
     public void DpadNavigate(float value)
     {
-        if (journalOpen)
+        if (journalOpen) //Only works when journal open so it cant be called by accident
         {
+
+            //Turns off the current tab, then goes to the next tab and turn it on
             journalTabs[currentTab].SetActive(false);
             currentTab = Math.Clamp(currentTab + (int)value, 0, journalTabs.Length - 1);
             journalTabs[currentTab].SetActive(true);
+
+            //makes the current page 0 then starts the current tab off at 0 (display functions)
             currentPage = 0;
             if(currentTab == 0)
             {
@@ -420,9 +430,10 @@ public class PlayerManager : MonoBehaviour
         
     }
 
-    //Map
+    //Map display function
     private void DisplaySelectedIsland()
     {
+        
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(islandButtons[currentPage]);
         if (islandInfos[currentPage].discovered)
