@@ -14,8 +14,6 @@ public class ZoneDistinction : MonoBehaviour
         {
             other.GetComponent<PlayerManager>().currentZone = thisZone;
             other.GetComponent<PlayerManager>().SpawnFish();
-            
-
         }
         
     }

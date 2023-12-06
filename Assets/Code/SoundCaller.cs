@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class SoundCaller : MonoBehaviour
 {
+    
+    //copy and use below code to call new sounds for buttons/event triggers
 
-   // copy and use below code to call new sounds for buttons/event triggers
-
-   //private void CallSound()
-   // {
-   //     AudioManager.instance.PlaySound("SoundName");
-   // }
+   public void CallSound(string name)
+    {
+        AudioManager.instance.PlaySound(name);
+    }
 
 
 

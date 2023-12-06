@@ -695,7 +695,7 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
                     ""path"": ""<Joystick>/stick/up"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Joystick"",
+                    ""groups"": ""Joystick;Nintendo Pro controller;Xbox controller;Playstation DualShock controller"",
                     ""action"": ""Navigate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -835,7 +835,7 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""012d852d-388a-4b30-b5f3-b835e2c774fb"",
-                    ""path"": ""*/{Submit}"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse;Gamepad;Touch;Joystick;XR;Playstation DualShock controller;Xbox controller;Nintendo Pro controller;Keyboard (Testing)"",

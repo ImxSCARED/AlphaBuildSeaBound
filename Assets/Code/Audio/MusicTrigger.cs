@@ -9,7 +9,8 @@ public class MusicTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        AudioManager.instance.PlayNext(songname);
+        if (other.gameObject.CompareTag("Player"))
+            AudioManager.instance.PlayNext(songname);
     }
     
 }
