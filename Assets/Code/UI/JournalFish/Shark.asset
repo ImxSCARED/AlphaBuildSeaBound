@@ -15,12 +15,17 @@ MonoBehaviour:
   fishSilhouette: {fileID: 21300000, guid: c90cb4845f0db7e429fe1c09962c313b, type: 3}
   fishCutiePatootie: {fileID: 21300000, guid: 374ef2cd2f11a2e4abbe2a4541b730c4, type: 3}
   hasBeenCaught: 0
-  fishName: Noodles
-  fishSName: 
+  fishName: Shark
+  fishSName: Selachimorpha
   amountCaught: 0
   amountBeforeEntry1: 1
-  journalEntry1: 
-  amountBeforeEntry2: 0
-  journalEntry2: 
-  amountBeforeEntry3: 0
-  journalEntry3: 
+  journalEntry1: "I thought sharks were meant to be horrifying and dangerous creatures
+    of the seas. But this shark\u2026 ITS SO CUTE. "
+  amountBeforeEntry2: 2
+  journalEntry2: 'I have decided to make it my little pet as it stares at me with
+    its tongue poking out. His name shall be guppy. I do not know what else to say.
+
+'
+  amountBeforeEntry3: 3
+  journalEntry3: I am yet to discover more about this creature other than WHY IT
+    IS SO CUDDLY!

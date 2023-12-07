@@ -16,11 +16,18 @@ MonoBehaviour:
   fishCutiePatootie: {fileID: 21300000, guid: be6b63b149c14e94e9999e323844edae, type: 3}
   hasBeenCaught: 0
   fishName: Noodles
-  fishSName: Gummycus Wormicus
+  fishSName: 'Collyra Piscis '
   amountCaught: 0
   amountBeforeEntry1: 1
-  journalEntry1: Tastes like the candy worms i have back at home.
-  amountBeforeEntry2: 0
-  journalEntry2: 
-  amountBeforeEntry3: 0
-  journalEntry3: 
+  journalEntry1: "long thought to be a dangerous three headed snake. I have discovered
+    that this \u201Csnake\u201D is harmless and is friendly towards humans.\r\n\nAfter
+    observation I have discovered that each head has a purpose.  Red protects the
+    body, blue consumes, and yellow observes. \r\n\n"
+  amountBeforeEntry2: 3
+  journalEntry2: As it turns out the locals of the area call them noodles and play
+    a common prank on new travelers to scare them, thier oriental dish is not really
+    a good descriptor for these spongy bright coloured entwined.... noodles.
+  amountBeforeEntry3: 5
+  journalEntry3: Apparently one of the locals had contained a large grouping of them
+    in a homemade fish aquarium. After its sudden dissapearance a witness said they
+    spotted a large bundle of tendrils propelling themsevles towards the shore.

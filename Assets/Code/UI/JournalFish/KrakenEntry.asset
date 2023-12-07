@@ -15,12 +15,19 @@ MonoBehaviour:
   fishSilhouette: {fileID: 21300000, guid: d35c96d05f5a29b40af72514b8006765, type: 3}
   fishCutiePatootie: {fileID: 21300000, guid: 49d1834704203e845b0f6bac9ae0ce58, type: 3}
   hasBeenCaught: 0
-  fishName: Noodles
-  fishSName: 
+  fishName: Kraken
+  fishSName: Gigans Yanagidako
   amountCaught: 0
   amountBeforeEntry1: 1
-  journalEntry1: 
-  amountBeforeEntry2: 0
-  journalEntry2: 
-  amountBeforeEntry3: 0
-  journalEntry3: 
+  journalEntry1: HOW does giant spaghetti monsters come to life? Does it fly? IS
+    IT A FLYING SPAGHETTI MONSTER?!?! Does this one mean to harm?? I do not know.
+    Must continue observation
+  amountBeforeEntry2: 2
+  journalEntry2: 'It tastes very salty, however maybe adding some sauce to it before
+    attempting to try it may yeild better results.
+
+'
+  amountBeforeEntry3: 3
+  journalEntry3: A revelation I have come to is that inside the tendrils of this
+    noodle kraken is, a large density of noodle fish, this is by all means a colony
+    of noodle fish conglomerated into one godly being.

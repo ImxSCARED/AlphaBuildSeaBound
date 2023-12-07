@@ -15,12 +15,20 @@ MonoBehaviour:
   fishSilhouette: {fileID: 21300000, guid: 0f1586c405000ef4b815cd2eca98b79e, type: 3}
   fishCutiePatootie: {fileID: 21300000, guid: 3328017fd3ba895488e959e4630ab89d, type: 3}
   hasBeenCaught: 0
-  fishName: Noodles
-  fishSName: 
+  fishName: Sword-Fish
+  fishSName: 'Xiphias Gladius '
   amountCaught: 0
   amountBeforeEntry1: 1
-  journalEntry1: 
+  journalEntry1: "When they sent me searching for a swordfish, I wasn\u2019t sure
+    wasn\u2019t sure what to think. Would it be what I expected? After what I previously
+    caught, I believed it would be weird. But then I caught it\u2026 and I am still
+    surprised"
   amountBeforeEntry2: 0
-  journalEntry2: 
+  journalEntry2: 'It takes its name quite seriously as a SWORD FISH. Strictly literal.
+    I am not sure if the sword is part of the fish or something that it holds with
+    its tongue.
+
+'
   amountBeforeEntry3: 0
-  journalEntry3: 
+  journalEntry3: I am yet to discover more about this creature, It still requires
+    more observation.

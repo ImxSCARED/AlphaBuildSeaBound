@@ -16,11 +16,16 @@ MonoBehaviour:
   fishCutiePatootie: {fileID: 21300000, guid: fb0033d23f347b24ba0bd38ca4b4610c, type: 3}
   hasBeenCaught: 0
   fishName: Bass
-  fishSName: 
+  fishSName: "T\xE1rrega Liquidum "
   amountCaught: 0
   amountBeforeEntry1: 1
-  journalEntry1: 
+  journalEntry1: "I thought this would be the common Bass found throughout the world\u2026
+    How was I meant to act when I discovered an instument as a fish?  Is it edible?
+    How does it breathe?\r\n\n"
   amountBeforeEntry2: 3
-  journalEntry2: 
+  journalEntry2: Even thought it may not look like it the locals say that this fish
+    actually was introduced to the area, used to be a sea bass and it acclimated
+    to the area in a strange way.
   amountBeforeEntry3: 5
-  journalEntry3: 
+  journalEntry3: The strange tendrils that stretch across seem to make sound, it
+    could be that they use this sound underwater to communicate or drive away predators.

@@ -15,12 +15,18 @@ MonoBehaviour:
   fishSilhouette: {fileID: 21300000, guid: df1e04bcf435559438f3b2b1a0b462dc, type: 3}
   fishCutiePatootie: {fileID: 21300000, guid: 6a00507a361f3d541b39b9b14fca9157, type: 3}
   hasBeenCaught: 0
-  fishName: Noodles
-  fishSName: 
+  fishName: Leviathan
+  fishSName: 'Gigans Serpentes '
   amountCaught: 0
   amountBeforeEntry1: 1
-  journalEntry1: 
-  amountBeforeEntry2: 0
-  journalEntry2: 
-  amountBeforeEntry3: 0
-  journalEntry3: 
+  journalEntry1: 'I have no words for this.  I know the creatures of these seas are
+    different. But I was NEVER going to be prepared for a living rope. How did this
+    creature even come to be? How are its eyes just. THERE?
+
+'
+  amountBeforeEntry2: 2
+  journalEntry2: Upon further observation, it makes clinking sounds while swimming,
+    perhaps to present its presence.
+  amountBeforeEntry3: 3
+  journalEntry3: Any more observation will not yeild anything from this creatue,
+    I cannot comprehend how they came to be

@@ -15,12 +15,18 @@ MonoBehaviour:
   fishSilhouette: {fileID: 21300000, guid: e3f34a42b0db23d40902c9352e22bfd1, type: 3}
   fishCutiePatootie: {fileID: 21300000, guid: c41fe8819d5a84c4b999b3a7cee7e714, type: 3}
   hasBeenCaught: 0
-  fishName: Noodles
-  fishSName: 
+  fishName: Mer-Duckie
+  fishSName: 'Veritas non est Anatidae '
   amountCaught: 0
-  amountBeforeEntry1: 0
-  journalEntry1: 
-  amountBeforeEntry2: 0
-  journalEntry2: 
-  amountBeforeEntry3: 0
-  journalEntry3: 
+  amountBeforeEntry1: 1
+  journalEntry1: "It\u2019s a Duck?  With a mermaid tail. I did not know what to
+    expect with this. It squeaks when I squeeze it. The duck is very friendly, and
+    I occasionally will feed him pellets of food I have lying around the boat.\r\n"
+  amountBeforeEntry2: 2
+  journalEntry2: After further observation, tales of mermaids are usually about how
+    they lure weary sailors to their doom, however I believe this.. thing is fairly
+    harmless.
+  amountBeforeEntry3: 3
+  journalEntry3: On further developments it seems to have the ability to make people
+    uncontrollably giggle and laugh, this can lead to accidents and makes the doom
+    seem a tad more credible.
