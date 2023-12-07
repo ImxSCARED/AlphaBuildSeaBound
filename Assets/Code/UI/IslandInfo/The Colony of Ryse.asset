@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f1f5e74f68c39ef49b4e93fe6bf3fd49, type: 3}
-  m_Name: Zeal
+  m_Name: The Colony of Ryse
   m_EditorClassIdentifier: 
-  islandName: ' Zeal'
+  islandName: The Colony of Ryse
   islandDesc: "A Freshly constructed \ntrading outpost with a \nbrand new lighthouse
     and \nneighboring islands.\r\n"
   discovered: 0
