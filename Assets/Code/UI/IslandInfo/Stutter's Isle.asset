@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1f5e74f68c39ef49b4e93fe6bf3fd49, type: 3}
   m_Name: Stutter's Isle
   m_EditorClassIdentifier: 
-  islandName: Stutter's Isle
-  islandDesc: "A humble little island \nin the Shallows a perfect \nplace to relax,
-    enjoy the sea \nwater air.\r\n"
+  islandName: Stutters Isle
+  islandDesc: 'A humble little island in the Shallows a perfect place to relax, enjoy
+    the sea water air.
+
+'
   discovered: 1

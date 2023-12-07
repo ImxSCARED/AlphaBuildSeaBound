@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Solitary Beacon
   m_EditorClassIdentifier: 
   islandName: Solitary Beacon
-  islandDesc: "Rumour has it \nthat an old man \nstill haunts the light-\nhouse trapped
-    there forever\nafter his boat broke during a \nviolent storm."
+  islandDesc: Rumour has it that an old man still haunts the light-house trapped
+    there forever after his boat broke during a violent storm.
   discovered: 0

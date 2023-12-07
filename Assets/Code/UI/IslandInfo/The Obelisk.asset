@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: The Obelisk
   m_EditorClassIdentifier: 
   islandName: The Obelisk
-  islandDesc: This should honour Ctyhlla. and your mum
+  islandDesc: The depths are a dangerous zone, the sheer imposing stature of this
+    cragg does seem as if it was a spear forged by a god, piercing through the seas.
   discovered: 0

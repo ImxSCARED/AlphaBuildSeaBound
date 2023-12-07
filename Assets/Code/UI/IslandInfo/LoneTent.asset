@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: LoneTent
   m_EditorClassIdentifier: 
   islandName: Lonely Tent Isle
-  islandDesc: "Someone went \ncamping here once \nand..... never left."
+  islandDesc: Someone went camping here once despite its lack of everything and apparently.....
+    never left.
   discovered: 0

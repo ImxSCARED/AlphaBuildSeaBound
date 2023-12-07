@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: Drunken Pass
   m_EditorClassIdentifier: 
   islandName: The Drunken Pass
-  islandDesc: the pass is drunk
+  islandDesc: 'A Common stop for most inhabitants of the area as it boasts the ability
+    to drink freely whenever on this island, opposed to the more strict laws at the
+    colony. '
   discovered: 1

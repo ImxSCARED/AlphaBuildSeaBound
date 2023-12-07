@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: The Colony of Ryse
   m_EditorClassIdentifier: 
   islandName: The Colony of Ryse
-  islandDesc: "A Freshly constructed \ntrading outpost with a \nbrand new lighthouse
-    and \nneighboring islands.\r\n"
+  islandDesc: "A Fully developed trading outpost with a brand new lighthouse and
+    \nneighboring islands. It seems to be a thriving economy despite there being
+    few vessels about.\r\n"
   discovered: 0

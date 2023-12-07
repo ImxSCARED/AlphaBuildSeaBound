@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Rockwell Ruins
   m_EditorClassIdentifier: 
   islandName: 'Rockwell Ruins:'
-  islandDesc: "Ouch, Whatever \nhappened here \ndestroyed this place \npretty badly."
+  islandDesc: The Damage done here seems to be old, and very destructive, i fear
+    what could do such a thing.
   discovered: 0

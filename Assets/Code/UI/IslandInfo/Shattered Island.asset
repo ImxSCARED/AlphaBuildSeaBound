@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Shattered Island
   m_EditorClassIdentifier: 
   islandName: Shattered Island
-  islandDesc: "Legend has it\nthis used to be an \nisland, before it turned\ninto\u2026
-    This? \r\n"
+  islandDesc: 'According to a Legend this used to be an wondorous island, before
+    it turned into a thousand shards peeled out into a spiral.
+
+'
   discovered: 0

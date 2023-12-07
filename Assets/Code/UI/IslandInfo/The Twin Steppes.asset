@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: The Twin Steppes
   m_EditorClassIdentifier: 
   islandName: The Twin Steppes
-  islandDesc: "This small outpost \nseems to be the original \ntrading and fishing
-    outpost \nbefore being replaced. Looks like \nrubble now.\r\n"
+  islandDesc: 'This small outpost seems to be the original trading and fishing outpost
+    before being replaced. Its in only slight disrepair.
+
+'
   discovered: 0

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Sharks Teeth Maw
   m_EditorClassIdentifier: 
   islandName: Sharks Teeth Maw
-  islandDesc: "Legend has it that \nthis is the bones of an \nancient creature...
-    petrified \npossibly."
+  islandDesc: Legend has it that this is the bones of an ancient creature... petrified
+    possibly.
   discovered: 0

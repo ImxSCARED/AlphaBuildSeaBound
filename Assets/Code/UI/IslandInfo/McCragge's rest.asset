@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: McCragge's rest
   m_EditorClassIdentifier: 
   islandName: McCragge's rest
-  islandDesc: 
+  islandDesc: The resting place of the famous Pirate Captain McCragge, the self proclaimed
+    "Heroic Smuggler of the Ryse Islands". It seems his heroics got the best of him
   discovered: 0

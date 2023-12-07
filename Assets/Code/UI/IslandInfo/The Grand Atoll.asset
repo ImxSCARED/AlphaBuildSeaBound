@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: The Grand Atoll
   m_EditorClassIdentifier: 
   islandName: The Grand Atoll
-  islandDesc: "It seems to be a \nlong arching rocky \nsteppe, would be hard\nto
-    build anything here"
+  islandDesc: This Cresent Landmass is a wonder, its sharp escarpment and natual
+    shape is truly fitting of its grandness, the locals tell me at low tide a landmass
+    becomes a temporary beach, bridging its smaller parts.
   discovered: 0
