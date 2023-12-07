@@ -118,6 +118,10 @@ public class AudioManager : MonoBehaviour
             PlayTrack("Track_Silence");
         }
 
+        
+
+
+
         if (isClipFading)
         {
             FadeClip();
@@ -140,6 +144,8 @@ public class AudioManager : MonoBehaviour
                 return;
             }
         }
+
+        
 
 
 
@@ -201,8 +207,9 @@ public class AudioManager : MonoBehaviour
 
         trackFadeTimeElapsed = 0;
         isTrackFading = true;
-
         nextTrackPlaying.source.Play();
+        
+        
     }
 
     private void FadeTrack()
@@ -218,8 +225,6 @@ public class AudioManager : MonoBehaviour
         {
             currentTrackPlaying.volume = 0;
             nextTrackPlaying.volume = 1;
-
-            //currentTrackPlaying.source.Stop();
 
             currentTrackPlaying = nextTrackPlaying;
             nextTrackPlaying = null;

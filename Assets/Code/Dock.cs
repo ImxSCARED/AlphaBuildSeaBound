@@ -11,6 +11,7 @@ public class Dock : MonoBehaviour
         {
             other.GetComponent<PlayerManager>().isAtDock = true;
             AudioManager.instance.PlaySound("AmmoUp");
+            AudioManager.instance.PlayNextClip("Shop");
         }
     }
     private void OnTriggerExit(Collider other)
@@ -18,6 +19,7 @@ public class Dock : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             other.GetComponent<PlayerManager>().isAtDock = false;
+            AudioManager.instance.PlayNextClip("Still");
         }
     }
 

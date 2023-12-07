@@ -1380,6 +1380,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_IslandInfo: {fileID: 11400000, guid: 5f067e0e0f8659947ab410759c1c4f37, type: 2}
+  assignedMapButton: {fileID: 0}
 --- !u!135 &189146478
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1545,7 +1546,7 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - name: Track_Shallows
-    track: {fileID: 8300000, guid: acf368b9ec4aac7419cf4842fccdcfd6, type: 3}
+    track: {fileID: 8300000, guid: 4594b70069d390a4bb3aa0da5dd32a6e, type: 3}
     volume: 0
     loop: 0
     source: {fileID: 0}
@@ -1598,11 +1599,11 @@ MonoBehaviour:
     volume: 1
     source: {fileID: 0}
   - name: Still
-    track: {fileID: 8300000, guid: b449a44572de44047bff663d591a89f8, type: 3}
+    track: {fileID: 8300000, guid: d2fd9a9c60c0fb242a7d3d03c10c4458, type: 3}
     volume: 1
     source: {fileID: 0}
   - name: Shop
-    track: {fileID: 8300000, guid: fe5a59f2ab4694f45b10f8c20daa58e6, type: 3}
+    track: {fileID: 8300000, guid: 66e411a0e34322a4895f09f420a9ca13, type: 3}
     volume: 1
     source: {fileID: 0}
   - name: Sailing1
@@ -16251,6 +16252,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_IslandInfo: {fileID: 11400000, guid: 5f067e0e0f8659947ab410759c1c4f37, type: 2}
+  assignedMapButton: {fileID: 0}
 --- !u!135 &1817125540
 SphereCollider:
   m_ObjectHideFlags: 0
