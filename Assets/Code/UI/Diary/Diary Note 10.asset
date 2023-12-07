@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b94471844c9df34e916795081e5b671, type: 3}
   m_Name: Diary Note 10
   m_EditorClassIdentifier: 
-  milestoneScore: 1
-  noteWords: "June 29th\r\nThe fish, they're no longer just strange and improbable,
-    they are.... Unreal, as if this all just a dream or some gods sick joke... It's
-    unnerving.\r\n\r\nJuly 1st\r\nMy Boat is in tip top shape and we are setting
-    sail to catch some more wonders of the waters, I feel much better for some reason,
+  milestoneScore: 10
+  noteWords: "\r\nJuly 1st\r\nMy Boat is in tip top shape and we are setting sail
+    to catch some more wonders of the waters, I feel much better for some reason,
     maybe I'm finally acclimating to my environment.\r\n\r"
   milestoneReached: 0

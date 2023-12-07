@@ -1,3 +1,4 @@
+using System.Linq;
 using TMPro;
 using UnityEngine;
 
@@ -40,7 +41,27 @@ public class QuestManager : MonoBehaviour
                     currentBountyFish = null;
                     currentQuestTitle.text = "No current quest";
                     currentQuestDesc.text = "Select a quest at the dock.";
+
+                    for (int i = 0; i < m_PlayerManager.QuestUI.Length; i++)
+                    {
+                        if (quest.quests[quest.currentQuest].Name == m_PlayerManager.QuestUI[i].Name)
+                        {
+                            m_PlayerManager.QuestUI[i].m_Blocker.GetComponentInChildren<TextMeshProUGUI>().text = "Finish Quest to Select";
+                        }
+                    }
                     AudioManager.instance.PlaySound("QuestDone");
+                }
+            }
+        }
+
+        for (int i = 0; i < m_PlayerManager.QuestUI.Length; i++)
+        {
+            for (int j = 0; j < m_Quests.Length; j++)
+            {
+                if (m_Quests[j].Name == m_PlayerManager.QuestUI[i].Name)
+                {
+                    m_PlayerManager.QuestUI[i].SetInfo(m_Quests[j].quests[m_Quests[j].currentQuest]);
+                    break;
                 }
             }
         }
@@ -90,7 +111,19 @@ public class QuestManager : MonoBehaviour
                 currentBountyFish.GetComponent<Fish>().data.isQuestFish = true;
                 quest.quests[quest.currentQuest].connectedFish = currentBountyFish.GetComponent<Fish>().data;
                 quest.quests[quest.currentQuest].connectedFish.tier = (FishProperties.FishTier)quest.quests[quest.currentQuest].Zone;
+
+                for (int i = 0; i < m_PlayerManager.QuestUI.Length; i++)
+                {
+                    m_PlayerManager.QuestUI[i].m_Blocker.SetActive(true);
+                    if (questName == m_PlayerManager.QuestUI[i].Name)
+                    {
+                        m_PlayerManager.QuestUI[i].m_Blocker.GetComponentInChildren<TextMeshProUGUI>().text = "Current Quest \nselected";
+
+                    }
+                }
             }
         }
     }
+
+
 }

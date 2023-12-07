@@ -12,11 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b94471844c9df34e916795081e5b671, type: 3}
   m_Name: Diary Note 15
   m_EditorClassIdentifier: 
-  milestoneScore: 1
-  noteWords: "July 22nd\r\nI have braved the ENTIRETY of the Ryse Islands and the
-    waters around it, ventured into the dark cavernous depths and caught all there
-    is to catch, I am the purveyor of these seas.. I am its GOD.\r\n\r\nAugust 3rd
-    \r\nToday I rebuilt the old lighthouse it's my new home, the creatures and the
-    fog and the sunset, I live within it all. For this Sea I am Bound to....\r\n\r\nSeptember
-    17th\r\n.  .  ."
+  milestoneScore: 15
+  noteWords: '
+
+    September 17th
+
+    .  .  .'
   milestoneReached: 0

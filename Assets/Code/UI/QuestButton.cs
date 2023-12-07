@@ -10,7 +10,7 @@ public class QuestButton : MonoBehaviour
     [SerializeField] private TextMeshProUGUI m_NameText;
     [SerializeField] private TextMeshProUGUI m_DescText;
     [SerializeField] private TextMeshProUGUI m_PriceText;
-    [SerializeField] private GameObject m_Blocker;
+    [SerializeField] public GameObject m_Blocker;
 
     public void SetInfo(Quest.QuestData quest)
     {

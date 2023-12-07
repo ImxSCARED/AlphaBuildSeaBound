@@ -12,9 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b94471844c9df34e916795081e5b671, type: 3}
   m_Name: Diary Note 6
   m_EditorClassIdentifier: 
-  milestoneScore: 1
-  noteWords: "June 14th \r\nToday I was warned that I was not ready to venture into
-    the area they call the depths... My curiousity is now... Unending \r\n\r\nJune
-    17th \r\nThe fish I catch and their ridiculous lack of reasonable features stumps
-    my every thought.\r\n\r\n"
+  milestoneScore: 6
+  noteWords: "\r\nJune 17th \r\nThe fish I catch and their ridiculous lack of reasonable
+    features stumps my every thought.\r\n\r\n"
   milestoneReached: 0

@@ -18,12 +18,14 @@ public class UpgradeButton : MonoBehaviour
         if (upgrade.Level == upgrade.MaxLevel)
         {
             m_PriceText.text = "Max";
+            m_Lock.GetComponentInChildren<TextMeshProUGUI>().text = "Max Upgrade Reached";
         }
         else
         {
             m_PriceText.text = "$" + upgrade.Price.ToString();
         }
         m_Lock.SetActive(upgrade.Locked);
+            
     }
 
     public void UpgradeSelected()

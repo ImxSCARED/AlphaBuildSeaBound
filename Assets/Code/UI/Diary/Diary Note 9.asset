@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b94471844c9df34e916795081e5b671, type: 3}
   m_Name: Diary Note 9
   m_EditorClassIdentifier: 
-  milestoneScore: 1
+  milestoneScore: 9
   noteWords: 'June 29th
 
     The fish, they''re no longer just strange and improbable,
     they are.... Unreal, as if this all just a dream or some gods sick joke... It''s
     unnerving.
 
-    
+
 
 '
   milestoneReached: 0

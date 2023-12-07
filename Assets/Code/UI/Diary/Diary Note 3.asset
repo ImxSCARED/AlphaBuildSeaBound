@@ -12,13 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b94471844c9df34e916795081e5b671, type: 3}
   m_Name: Diary Note 3
   m_EditorClassIdentifier: 
-  milestoneScore: 1
-  noteWords: "June 6th \r\nWell, I've finally made it to the Ryse Isles, hopefully
-    the seas here are as calm as the wind, I'm writing down my thoughts for further
-    reflection and so I can look back on this one day.\r\n\r\nJune 8th \r\nIt's strange
-    despite what I was told about great bounty in the Ryse Isles, it seems like the
-    fish here are something I've never seen anywhere previously.\r\n\r\nJune 9th
-    \r\nThe People at The Colony of Rise are very friendly, and despite not paying
-    them much they improved upon my grandfather's design and now I feel I can brave
-    these waters ever more."
+  milestoneScore: 3
+  noteWords: "\r\nJune 9th \r\nThe People at The Colony of Rise are very friendly,
+    and despite not paying them much they improved upon my grandfather's design and
+    now I feel I can brave these waters ever more."
   milestoneReached: 0

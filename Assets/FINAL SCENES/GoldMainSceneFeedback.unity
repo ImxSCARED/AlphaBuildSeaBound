@@ -2430,6 +2430,8 @@ GameObject:
   - component: {fileID: 109023523}
   - component: {fileID: 109023522}
   - component: {fileID: 109023521}
+  - component: {fileID: 109023525}
+  - component: {fileID: 109023524}
   m_Layer: 5
   m_Name: Atoll
   m_TagString: Untagged
@@ -2496,7 +2498,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 109023522}
   m_OnClick:
     m_PersistentCalls:
@@ -2539,6 +2541,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 109023519}
   m_CullTransparentMesh: 1
+--- !u!114 &109023524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 109023519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 109023525}
+          m_TargetAssemblyTypeName: MapButtons, Assembly-CSharp
+          m_MethodName: ChangeMapText
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &109023525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 109023519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cfc3ba6609e95248aa5f0b412a89d00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  islandTitleTxt: {fileID: 680509347}
+  islandDescriptionTxt: {fileID: 1042375484}
+  islandInfo: {fileID: 11400000, guid: b85aa89e74f644340b6a4f1f19348a5a, type: 2}
 --- !u!1 &110705787
 GameObject:
   m_ObjectHideFlags: 0
@@ -2864,6 +2910,8 @@ GameObject:
   - component: {fileID: 124458731}
   - component: {fileID: 124458730}
   - component: {fileID: 124458729}
+  - component: {fileID: 124458734}
+  - component: {fileID: 124458733}
   m_Layer: 5
   m_Name: Four Seasons
   m_TagString: Untagged
@@ -2910,7 +2958,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 124458730}
   m_OnClick:
     m_PersistentCalls:
@@ -2973,6 +3021,50 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &124458733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124458728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 124458734}
+          m_TargetAssemblyTypeName: MapButtons, Assembly-CSharp
+          m_MethodName: ChangeMapText
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &124458734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124458728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cfc3ba6609e95248aa5f0b412a89d00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  islandTitleTxt: {fileID: 680509347}
+  islandDescriptionTxt: {fileID: 1042375484}
+  islandInfo: {fileID: 0}
 --- !u!64 &126714433
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3699,7 +3791,7 @@ GameObject:
   - component: {fileID: 174618778}
   - component: {fileID: 174618777}
   m_Layer: 0
-  m_Name: ------ParticleManager------
+  m_Name: ParticleManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3737,13 +3829,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 174618776}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1042.2218, y: -565.93427, z: -4.3270264}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_Father: {fileID: 1541446291}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &180561241 stripped
 GameObject:
@@ -4908,6 +5000,8 @@ GameObject:
   - component: {fileID: 246496196}
   - component: {fileID: 246496195}
   - component: {fileID: 246496194}
+  - component: {fileID: 246496199}
+  - component: {fileID: 246496198}
   m_Layer: 5
   m_Name: Tent
   m_TagString: Untagged
@@ -4954,7 +5048,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 246496195}
   m_OnClick:
     m_PersistentCalls:
@@ -5017,6 +5111,50 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &246496198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 246496193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 246496199}
+          m_TargetAssemblyTypeName: MapButtons, Assembly-CSharp
+          m_MethodName: ChangeMapText
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &246496199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 246496193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cfc3ba6609e95248aa5f0b412a89d00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  islandTitleTxt: {fileID: 680509347}
+  islandDescriptionTxt: {fileID: 1042375484}
+  islandInfo: {fileID: 11400000, guid: cc066a5e624dd3b42bd621a18b74d22b, type: 2}
 --- !u!1 &249957508
 GameObject:
   m_ObjectHideFlags: 0
@@ -5294,6 +5432,8 @@ GameObject:
   - component: {fileID: 275862268}
   - component: {fileID: 275862267}
   - component: {fileID: 275862266}
+  - component: {fileID: 275862270}
+  - component: {fileID: 275862269}
   m_Layer: 5
   m_Name: Shattered Island
   m_TagString: Untagged
@@ -5360,7 +5500,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 275862267}
   m_OnClick:
     m_PersistentCalls:
@@ -5403,6 +5543,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 275862264}
   m_CullTransparentMesh: 1
+--- !u!114 &275862269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 275862264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 275862270}
+          m_TargetAssemblyTypeName: MapButtons, Assembly-CSharp
+          m_MethodName: ChangeMapText
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &275862270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 275862264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cfc3ba6609e95248aa5f0b412a89d00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  islandTitleTxt: {fileID: 680509347}
+  islandDescriptionTxt: {fileID: 1042375484}
+  islandInfo: {fileID: 11400000, guid: b4ee8ad6665959045ae7241fa725199e, type: 2}
 --- !u!1 &286266736
 GameObject:
   m_ObjectHideFlags: 0
@@ -5447,6 +5631,8 @@ GameObject:
   - component: {fileID: 286567184}
   - component: {fileID: 286567183}
   - component: {fileID: 286567182}
+  - component: {fileID: 286567186}
+  - component: {fileID: 286567185}
   m_Layer: 5
   m_Name: Shark's Teeth Maw
   m_TagString: Untagged
@@ -5513,7 +5699,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 286567183}
   m_OnClick:
     m_PersistentCalls:
@@ -5556,6 +5742,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 286567180}
   m_CullTransparentMesh: 1
+--- !u!114 &286567185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 286567180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 286567186}
+          m_TargetAssemblyTypeName: MapButtons, Assembly-CSharp
+          m_MethodName: ChangeMapText
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &286567186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 286567180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cfc3ba6609e95248aa5f0b412a89d00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  islandTitleTxt: {fileID: 680509347}
+  islandDescriptionTxt: {fileID: 1042375484}
+  islandInfo: {fileID: 11400000, guid: 7429468309534154e8d8491ec1a99134, type: 2}
 --- !u!1 &287004225
 GameObject:
   m_ObjectHideFlags: 0
@@ -6088,6 +6318,8 @@ GameObject:
   - component: {fileID: 303307834}
   - component: {fileID: 303307833}
   - component: {fileID: 303307832}
+  - component: {fileID: 303307836}
+  - component: {fileID: 303307835}
   m_Layer: 5
   m_Name: Harpoon Star
   m_TagString: Untagged
@@ -6154,7 +6386,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 303307833}
   m_OnClick:
     m_PersistentCalls:
@@ -6197,6 +6429,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 303307830}
   m_CullTransparentMesh: 1
+--- !u!114 &303307835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 303307830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 303307836}
+          m_TargetAssemblyTypeName: MapButtons, Assembly-CSharp
+          m_MethodName: ChangeMapText
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &303307836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 303307830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cfc3ba6609e95248aa5f0b412a89d00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  islandTitleTxt: {fileID: 680509347}
+  islandDescriptionTxt: {fileID: 1042375484}
+  islandInfo: {fileID: 0}
 --- !u!1 &308590923
 GameObject:
   m_ObjectHideFlags: 0
@@ -7098,6 +7374,8 @@ GameObject:
   - component: {fileID: 327963141}
   - component: {fileID: 327963140}
   - component: {fileID: 327963139}
+  - component: {fileID: 327963143}
+  - component: {fileID: 327963142}
   m_Layer: 5
   m_Name: Solitary Beacon
   m_TagString: Untagged
@@ -7164,7 +7442,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 327963140}
   m_OnClick:
     m_PersistentCalls:
@@ -7207,6 +7485,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 327963137}
   m_CullTransparentMesh: 1
+--- !u!114 &327963142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 327963137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 327963143}
+          m_TargetAssemblyTypeName: MapButtons, Assembly-CSharp
+          m_MethodName: ChangeMapText
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &327963143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 327963137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cfc3ba6609e95248aa5f0b412a89d00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  islandTitleTxt: {fileID: 680509347}
+  islandDescriptionTxt: {fileID: 1042375484}
+  islandInfo: {fileID: 11400000, guid: 3f6e4b8382eb6984285a003353d961cc, type: 2}
 --- !u!1 &328228455
 GameObject:
   m_ObjectHideFlags: 0
@@ -10543,7 +10865,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 466701253}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
@@ -11461,7 +11783,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 637c252a2016b98429d33cfcc998286c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 72a7b4d7af5a1314fab50f01d05dd148, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -14664,7 +14986,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Quest Taken
+  m_text: Finish Quest to Select
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d2bf9eada9bfe6e4f91b6a2918f339fa, type: 2}
   m_sharedMaterial: {fileID: 7070337448936517331, guid: d2bf9eada9bfe6e4f91b6a2918f339fa,
@@ -15341,6 +15663,7 @@ GameObject:
   - component: {fileID: 644151888}
   - component: {fileID: 644151887}
   - component: {fileID: 644151886}
+  - component: {fileID: 644151891}
   - component: {fileID: 644151890}
   m_Layer: 5
   m_Name: Stutters Isle
@@ -15468,18 +15791,33 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: 
-          m_MethodName: 
+        - m_Target: {fileID: 644151891}
+          m_TargetAssemblyTypeName: MapButtons, Assembly-CSharp
+          m_MethodName: ChangeMapText
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: 
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &644151891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 644151885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cfc3ba6609e95248aa5f0b412a89d00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  islandTitleTxt: {fileID: 680509347}
+  islandDescriptionTxt: {fileID: 1042375484}
+  islandInfo: {fileID: 11400000, guid: 5f067e0e0f8659947ab410759c1c4f37, type: 2}
 --- !u!1 &646787167
 GameObject:
   m_ObjectHideFlags: 0
@@ -25204,6 +25542,66 @@ CapsuleCollider:
   m_Height: 38.051563
   m_Direction: 1
   m_Center: {x: -1.8261511, y: 19.025782, z: 0.000000377325}
+--- !u!1 &1096777687
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1096777688}
+  - component: {fileID: 1096777689}
+  m_Layer: 0
+  m_Name: AchievementManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1096777688
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1096777687}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1541446291}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1096777689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1096777687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afbe32c1917aa834b8348fa2a0b96bf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MyleStones:
+  - {fileID: 11400000, guid: e999219480ab7614a864b2c525ad1e3e, type: 2}
+  - {fileID: 11400000, guid: 9b6706d374c414c4894697b3de57bdd9, type: 2}
+  - {fileID: 11400000, guid: 028971af197af7447a29ac73603d0f44, type: 2}
+  - {fileID: 11400000, guid: f529352917134d74aab9f977c65d89b6, type: 2}
+  - {fileID: 11400000, guid: bcd02900424d1914b9c8342012000522, type: 2}
+  - {fileID: 11400000, guid: 594e67f059cd0c34d9003fc2391c11a8, type: 2}
+  - {fileID: 11400000, guid: 3a39b282a4fdbbd4d9c8e57fa8c82aa7, type: 2}
+  - {fileID: 11400000, guid: d5ddd5a37d0d0114abb17622cc652d20, type: 2}
+  - {fileID: 11400000, guid: 5306e6121bc931345bae3db99a2abb4c, type: 2}
+  - {fileID: 11400000, guid: ee04bf025da74fa44926a605e91f433b, type: 2}
+  - {fileID: 11400000, guid: 18fec6e4893afa6409bd834c36dfa192, type: 2}
+  - {fileID: 11400000, guid: 24f1f990b23981f448052387b4b8d089, type: 2}
+  - {fileID: 11400000, guid: ca540118394ea9d4ca35eebd55365219, type: 2}
+  - {fileID: 11400000, guid: 60c0b5747067e9d4ebf11e1ad9b0266c, type: 2}
+  - {fileID: 11400000, guid: edadd341f70a49d40855bf0c710d7712, type: 2}
 --- !u!1 &1097364127
 GameObject:
   m_ObjectHideFlags: 0
@@ -29704,6 +30102,8 @@ GameObject:
   - component: {fileID: 1300080865}
   - component: {fileID: 1300080864}
   - component: {fileID: 1300080863}
+  - component: {fileID: 1300080867}
+  - component: {fileID: 1300080866}
   m_Layer: 5
   m_Name: Loners Bay
   m_TagString: Untagged
@@ -29770,7 +30170,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1300080864}
   m_OnClick:
     m_PersistentCalls:
@@ -29795,7 +30195,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 07f340e66bd1d904e812e4f9ab8f6778, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d29f0623682755040ad5e68bf061a6d6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -29813,6 +30213,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1300080861}
   m_CullTransparentMesh: 1
+--- !u!114 &1300080866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1300080861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1300080867}
+          m_TargetAssemblyTypeName: MapButtons, Assembly-CSharp
+          m_MethodName: ChangeMapText
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &1300080867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1300080861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cfc3ba6609e95248aa5f0b412a89d00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  islandTitleTxt: {fileID: 680509347}
+  islandDescriptionTxt: {fileID: 1042375484}
+  islandInfo: {fileID: 0}
 --- !u!136 &1302040720
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -33408,6 +33852,8 @@ GameObject:
   - component: {fileID: 1445723908}
   - component: {fileID: 1445723907}
   - component: {fileID: 1445723906}
+  - component: {fileID: 1445723910}
+  - component: {fileID: 1445723909}
   m_Layer: 5
   m_Name: Rockwell Ruins
   m_TagString: Untagged
@@ -33474,7 +33920,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1445723907}
   m_OnClick:
     m_PersistentCalls:
@@ -33517,6 +33963,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1445723904}
   m_CullTransparentMesh: 1
+--- !u!114 &1445723909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1445723904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1445723910}
+          m_TargetAssemblyTypeName: MapButtons, Assembly-CSharp
+          m_MethodName: ChangeMapText
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &1445723910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1445723904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cfc3ba6609e95248aa5f0b412a89d00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  islandTitleTxt: {fileID: 680509347}
+  islandDescriptionTxt: {fileID: 1042375484}
+  islandInfo: {fileID: 11400000, guid: ea9c37c22a7baa44a8e9b26e4cb57888, type: 2}
 --- !u!136 &1452886653
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -35342,6 +35832,39 @@ Transform:
   m_Father: {fileID: 2072700599}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: -96.291, z: 0}
+--- !u!1 &1541446290
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1541446291}
+  m_Layer: 0
+  m_Name: ------Managers------
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1541446291
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1541446290}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1042.2218, y: 565.93427, z: 4.3270264}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 174618778}
+  - {fileID: 1096777688}
+  m_Father: {fileID: 0}
+  m_RootOrder: 18
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1542658279
 GameObject:
   m_ObjectHideFlags: 0
@@ -39017,6 +39540,8 @@ GameObject:
   - component: {fileID: 1677285427}
   - component: {fileID: 1677285426}
   - component: {fileID: 1677285425}
+  - component: {fileID: 1677285429}
+  - component: {fileID: 1677285428}
   m_Layer: 5
   m_Name: The Obelisk
   m_TagString: Untagged
@@ -39083,7 +39608,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1677285426}
   m_OnClick:
     m_PersistentCalls:
@@ -39126,6 +39651,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1677285423}
   m_CullTransparentMesh: 1
+--- !u!114 &1677285428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1677285423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1677285429}
+          m_TargetAssemblyTypeName: MapButtons, Assembly-CSharp
+          m_MethodName: ChangeMapText
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &1677285429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1677285423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cfc3ba6609e95248aa5f0b412a89d00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  islandTitleTxt: {fileID: 680509347}
+  islandDescriptionTxt: {fileID: 1042375484}
+  islandInfo: {fileID: 0}
 --- !u!65 &1678149408
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -47066,14 +47635,7 @@ MonoBehaviour:
   - {fileID: 1144504553}
   - {fileID: 1918212196}
   - {fileID: 574158167}
-  IslandNameTxt: {fileID: 680509347}
-  IslandDescTxt: {fileID: 1042375484}
-  islandInfos:
-  - {fileID: 11400000, guid: 5f067e0e0f8659947ab410759c1c4f37, type: 2}
-  - {fileID: 11400000, guid: cd08a57a6dc035d46b778b0169bb70b7, type: 2}
-  islandButtons:
-  - {fileID: 644151885}
-  - {fileID: 2094113552}
+  firstMapButton: {fileID: 644151885}
   silhoutte: {fileID: 648186663}
   cutiePatootie: {fileID: 421641175}
   fishName: {fileID: 146551609}
@@ -47209,6 +47771,8 @@ GameObject:
   - component: {fileID: 2030383166}
   - component: {fileID: 2030383165}
   - component: {fileID: 2030383164}
+  - component: {fileID: 2030383168}
+  - component: {fileID: 2030383167}
   m_Layer: 5
   m_Name: The Arch
   m_TagString: Untagged
@@ -47275,7 +47839,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 2030383165}
   m_OnClick:
     m_PersistentCalls:
@@ -47318,6 +47882,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2030383162}
   m_CullTransparentMesh: 1
+--- !u!114 &2030383167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2030383162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2030383168}
+          m_TargetAssemblyTypeName: MapButtons, Assembly-CSharp
+          m_MethodName: ChangeMapText
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &2030383168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2030383162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cfc3ba6609e95248aa5f0b412a89d00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  islandTitleTxt: {fileID: 680509347}
+  islandDescriptionTxt: {fileID: 1042375484}
+  islandInfo: {fileID: 0}
 --- !u!1 &2030709175
 GameObject:
   m_ObjectHideFlags: 0
@@ -48441,6 +49049,8 @@ GameObject:
   - component: {fileID: 2067390587}
   - component: {fileID: 2067390586}
   - component: {fileID: 2067390585}
+  - component: {fileID: 2067390590}
+  - component: {fileID: 2067390589}
   m_Layer: 5
   m_Name: Twin Steppes
   m_TagString: Untagged
@@ -48487,7 +49097,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 2067390586}
   m_OnClick:
     m_PersistentCalls:
@@ -48550,6 +49160,50 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2067390589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2067390584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2067390590}
+          m_TargetAssemblyTypeName: MapButtons, Assembly-CSharp
+          m_MethodName: ChangeMapText
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &2067390590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2067390584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cfc3ba6609e95248aa5f0b412a89d00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  islandTitleTxt: {fileID: 680509347}
+  islandDescriptionTxt: {fileID: 1042375484}
+  islandInfo: {fileID: 11400000, guid: f7f457453db8a3e45aff389ef653fdf5, type: 2}
 --- !u!114 &2067992010
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48563,6 +49217,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_IslandInfo: {fileID: 11400000, guid: 5f067e0e0f8659947ab410759c1c4f37, type: 2}
+  assignedMapButton: {fileID: 0}
 --- !u!135 &2067992011
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -49554,6 +50209,8 @@ GameObject:
   - component: {fileID: 2094113555}
   - component: {fileID: 2094113554}
   - component: {fileID: 2094113553}
+  - component: {fileID: 2094113558}
+  - component: {fileID: 2094113557}
   m_Layer: 5
   m_Name: Ryse Colony
   m_TagString: Untagged
@@ -49663,6 +50320,50 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2094113557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2094113552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2094113558}
+          m_TargetAssemblyTypeName: MapButtons, Assembly-CSharp
+          m_MethodName: ChangeMapText
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &2094113558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2094113552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cfc3ba6609e95248aa5f0b412a89d00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  islandTitleTxt: {fileID: 680509347}
+  islandDescriptionTxt: {fileID: 1042375484}
+  islandInfo: {fileID: 11400000, guid: cd08a57a6dc035d46b778b0169bb70b7, type: 2}
 --- !u!1 &2095553777
 GameObject:
   m_ObjectHideFlags: 0
@@ -50125,6 +50826,8 @@ GameObject:
   - component: {fileID: 2112260214}
   - component: {fileID: 2112260213}
   - component: {fileID: 2112260212}
+  - component: {fileID: 2112260217}
+  - component: {fileID: 2112260216}
   m_Layer: 5
   m_Name: The Drunken Pass
   m_TagString: Untagged
@@ -50171,7 +50874,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 2112260213}
   m_OnClick:
     m_PersistentCalls:
@@ -50234,6 +50937,50 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2112260216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2112260211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2112260217}
+          m_TargetAssemblyTypeName: MapButtons, Assembly-CSharp
+          m_MethodName: ChangeMapText
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &2112260217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2112260211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cfc3ba6609e95248aa5f0b412a89d00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  islandTitleTxt: {fileID: 680509347}
+  islandDescriptionTxt: {fileID: 1042375484}
+  islandInfo: {fileID: 0}
 --- !u!1 &2118917723
 GameObject:
   m_ObjectHideFlags: 0
@@ -50693,6 +51440,8 @@ GameObject:
   - component: {fileID: 2134567148}
   - component: {fileID: 2134567147}
   - component: {fileID: 2134567146}
+  - component: {fileID: 2134567150}
+  - component: {fileID: 2134567149}
   m_Layer: 5
   m_Name: McCragge's Rest
   m_TagString: Untagged
@@ -50759,7 +51508,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 2134567147}
   m_OnClick:
     m_PersistentCalls:
@@ -50802,6 +51551,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2134567144}
   m_CullTransparentMesh: 1
+--- !u!114 &2134567149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2134567144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2134567150}
+          m_TargetAssemblyTypeName: MapButtons, Assembly-CSharp
+          m_MethodName: ChangeMapText
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &2134567150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2134567144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cfc3ba6609e95248aa5f0b412a89d00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  islandTitleTxt: {fileID: 680509347}
+  islandDescriptionTxt: {fileID: 1042375484}
+  islandInfo: {fileID: 0}
 --- !u!136 &2135121062
 CapsuleCollider:
   m_ObjectHideFlags: 0

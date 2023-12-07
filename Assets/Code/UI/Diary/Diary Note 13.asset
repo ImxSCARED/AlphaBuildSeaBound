@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b94471844c9df34e916795081e5b671, type: 3}
   m_Name: Diary Note 13
   m_EditorClassIdentifier: 
-  milestoneScore: 1
+  milestoneScore: 13
   noteWords: 'July 22nd
 
-    I have braved the ENTIRETY of the Ryse Islands and
-    the waters around it, ventured into the dark cavernous depths and caught all
-    there is to catch, I am the purveyor of these seas.. I am its GOD.
+    I have braved the ENTIRETY of the Ryse Islands and the
+    waters around it, ventured into the dark cavernous depths and caught all there
+    is to catch, I am the purveyor of these seas.. I am its GOD.
 
-    
+
 
 '
   milestoneReached: 0

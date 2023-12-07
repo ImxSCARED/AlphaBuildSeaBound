@@ -48,7 +48,7 @@ public class PlayerManager : MonoBehaviour
     [Header("HUB")]
     [SerializeField] private Canvas hub;
 
-    [SerializeField] private QuestButton[] QuestUI;
+    [SerializeField] public QuestButton[] QuestUI;
     [SerializeField] private GameObject questsHolder;
 
     [SerializeField] private UpgradeButton[] UpradgeUI;
@@ -65,10 +65,7 @@ public class PlayerManager : MonoBehaviour
     private int currentTab = 0;
 
     //Map Page
-    [SerializeField] private TextMeshProUGUI IslandNameTxt;
-    [SerializeField] private TextMeshProUGUI IslandDescTxt;
-    [SerializeField] private IslandInfo[] islandInfos;
-    [SerializeField] private GameObject[] islandButtons;
+    [SerializeField] private GameObject firstMapButton;
     //Fish Page
     [SerializeField] private Image silhoutte;
     [SerializeField] private Image cutiePatootie;
@@ -381,8 +378,7 @@ public class PlayerManager : MonoBehaviour
         {
             if (currentTab == 0)
             {
-                currentPage = Math.Clamp(currentPage, 0, islandButtons.Length - 1);
-                DisplaySelectedIsland();
+
             }
             else if (currentTab == 1)
             {
@@ -416,7 +412,8 @@ public class PlayerManager : MonoBehaviour
             currentPage = 0;
             if(currentTab == 0)
             {
-                DisplaySelectedIsland();
+                EventSystem.current.SetSelectedGameObject(null);
+                EventSystem.current.SetSelectedGameObject(firstMapButton);
             }
             if(currentTab == 1)
             {
@@ -430,25 +427,6 @@ public class PlayerManager : MonoBehaviour
         
     }
 
-    //Map display function
-    private void DisplaySelectedIsland()
-    {
-        
-        EventSystem.current.SetSelectedGameObject(null);
-        EventSystem.current.SetSelectedGameObject(islandButtons[currentPage]);
-        if (islandInfos[currentPage].discovered)
-        {
-            IslandNameTxt.text = islandInfos[currentPage].islandName;
-            IslandDescTxt.text = islandInfos[currentPage].islandDesc;
-        }
-        else
-        {
-            IslandNameTxt.text = "???";
-            IslandDescTxt.text = "???";
-        }
-        
-
-    }
 
     //Diary
     public void DisplayDiary()
@@ -521,19 +499,8 @@ public class PlayerManager : MonoBehaviour
             fishJournalTxts[2].text = "???";
     }
 
-    public void IslandNamePopup(string islandName, string IslandDesc)
+    public void IslandNamePopup(string islandName)
     {
-        for(int i = 0; i < islandInfos.Length; i++)
-        {
-            if (!islandInfos[i].discovered)
-            {
-                if (islandInfos[i].name == islandName)
-                {
-                    islandInfos[i].discovered = true;
-                }
-            }
-            
-        }
         islandNearTxt.text = islandName;
         islandNearAnim.Play();
     }
