@@ -82,8 +82,6 @@ public class AudioManager : MonoBehaviour
             s.source.pitch = s.pitch;
             s.source.outputAudioMixerGroup = mixer.FindMatchingGroups("SoundFX")[0];
         }
-
-        
     }
 
     void Update()
@@ -108,8 +106,6 @@ public class AudioManager : MonoBehaviour
             {
                 return;
             }
-
-
         }
 
         if (!currentTrackPlaying.source.isPlaying)
@@ -117,10 +113,6 @@ public class AudioManager : MonoBehaviour
             currentTrackPlaying = null;
             PlayTrack("Track_Silence");
         }
-
-        
-
-
 
         if (isClipFading)
         {
@@ -144,13 +136,6 @@ public class AudioManager : MonoBehaviour
                 return;
             }
         }
-
-        
-
-
-
-        
-
     }
 
     public void PlaySound (string name)
@@ -203,13 +188,15 @@ public class AudioManager : MonoBehaviour
     public void PlayNext(string name)
     {
         MusicMaster t = Array.Find(tracks, sound => sound.name == name);
-        nextTrackPlaying = t;
+        if (currentTrackPlaying != t)
+        {
+            nextTrackPlaying = t;
 
-        trackFadeTimeElapsed = 0;
-        isTrackFading = true;
-        nextTrackPlaying.source.Play();
-        
-        
+            trackFadeTimeElapsed = 0;
+            isTrackFading = true;
+
+            nextTrackPlaying.source.Play();
+        }
     }
 
     private void FadeTrack()
