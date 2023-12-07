@@ -60,9 +60,16 @@ public class QuestManager : MonoBehaviour
             {
                 if (m_Quests[j].Name == m_PlayerManager.QuestUI[i].Name)
                 {
-                    m_PlayerManager.QuestUI[i].SetInfo(m_Quests[j].quests[m_Quests[j].currentQuest]);
-                    break;
+                    //Checks if it has Max Quests blocker, else removes blocker
+                    if (m_Quests[j].currentQuest == m_Quests[j].quests.Length - 1)
+                        break;
+                    else
+                    {
+                        m_PlayerManager.QuestUI[i].m_Blocker.SetActive(false);
+                        break;
+                    }
                 }
+                
             }
         }
     }

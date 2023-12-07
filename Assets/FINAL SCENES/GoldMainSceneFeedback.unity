@@ -3064,7 +3064,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   islandTitleTxt: {fileID: 680509347}
   islandDescriptionTxt: {fileID: 1042375484}
-  islandInfo: {fileID: 0}
+  islandInfo: {fileID: 11400000, guid: 3744d39d37150334b905b1c20457daca, type: 2}
 --- !u!64 &126714433
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6472,7 +6472,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   islandTitleTxt: {fileID: 680509347}
   islandDescriptionTxt: {fileID: 1042375484}
-  islandInfo: {fileID: 0}
+  islandInfo: {fileID: 11400000, guid: 11b3897e6f37f8441873b77e6605e59d, type: 2}
 --- !u!1 &308590923
 GameObject:
   m_ObjectHideFlags: 0
@@ -7230,6 +7230,7 @@ GameObject:
   m_Component:
   - component: {fileID: 322114919}
   - component: {fileID: 322114920}
+  - component: {fileID: 322114921}
   m_Layer: 0
   m_Name: Arch
   m_TagString: Untagged
@@ -7266,6 +7267,20 @@ CapsuleCollider:
   m_Height: 1.3
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &322114921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 322114918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f2ba2036e0b01c43b7c6bd9dbe36af5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IslandInfo: {fileID: 11400000, guid: fa11505ad67f77745813321aeccafbcc, type: 2}
+  assignedMapButton: {fileID: 2030383164}
 --- !u!65 &324781089
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9723,6 +9738,7 @@ GameObject:
   m_Component:
   - component: {fileID: 397848020}
   - component: {fileID: 397848021}
+  - component: {fileID: 397848022}
   m_Layer: 0
   m_Name: MainIsland
   m_TagString: Untagged
@@ -9758,6 +9774,20 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &397848022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 397848019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f2ba2036e0b01c43b7c6bd9dbe36af5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IslandInfo: {fileID: 11400000, guid: cd08a57a6dc035d46b778b0169bb70b7, type: 2}
+  assignedMapButton: {fileID: 2094113553}
 --- !u!1001 &401309485
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10865,7 +10895,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 466701253}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
@@ -10889,6 +10919,7 @@ GameObject:
   m_Component:
   - component: {fileID: 466758229}
   - component: {fileID: 466758230}
+  - component: {fileID: 466758231}
   m_Layer: 0
   m_Name: FourSeasons
   m_TagString: Untagged
@@ -10909,7 +10940,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 808546647}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &466758230
 SphereCollider:
@@ -10924,6 +10955,20 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &466758231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 466758228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f2ba2036e0b01c43b7c6bd9dbe36af5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IslandInfo: {fileID: 11400000, guid: 3744d39d37150334b905b1c20457daca, type: 2}
+  assignedMapButton: {fileID: 124458729}
 --- !u!1001 &467783697
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12372,6 +12417,7 @@ GameObject:
   m_Component:
   - component: {fileID: 517704714}
   - component: {fileID: 517704715}
+  - component: {fileID: 517704716}
   m_Layer: 0
   m_Name: Colony
   m_TagString: Untagged
@@ -12408,6 +12454,20 @@ CapsuleCollider:
   m_Height: 1.3
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &517704716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 517704713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f2ba2036e0b01c43b7c6bd9dbe36af5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IslandInfo: {fileID: 11400000, guid: f7f457453db8a3e45aff389ef653fdf5, type: 2}
+  assignedMapButton: {fileID: 2067390585}
 --- !u!1 &523143599
 GameObject:
   m_ObjectHideFlags: 0
@@ -12530,7 +12590,7 @@ GameObject:
   - component: {fileID: 534327875}
   m_Layer: 7
   m_Name: FishNet
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17046,8 +17106,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -327.2, y: -103}
-  m_SizeDelta: {x: 312, y: 50}
+  m_AnchoredPosition: {x: -319.7, y: -103}
+  m_SizeDelta: {x: 385, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &680509346
 CanvasRenderer:
@@ -18811,6 +18871,7 @@ GameObject:
   m_Component:
   - component: {fileID: 754402533}
   - component: {fileID: 754402534}
+  - component: {fileID: 754402535}
   m_Layer: 0
   m_Name: ShipwreckB
   m_TagString: Untagged
@@ -18847,6 +18908,20 @@ CapsuleCollider:
   m_Height: 1.3
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &754402535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 754402532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f2ba2036e0b01c43b7c6bd9dbe36af5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IslandInfo: {fileID: 11400000, guid: e897ee4d1a1e4a14783b72d568aee49a, type: 2}
+  assignedMapButton: {fileID: 2134567146}
 --- !u!1 &758861302
 GameObject:
   m_ObjectHideFlags: 0
@@ -19282,6 +19357,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1154358018}
   - {fileID: 466758229}
   - {fileID: 967364744}
   - {fileID: 1133080258}
@@ -19759,6 +19835,7 @@ GameObject:
   m_Component:
   - component: {fileID: 839077326}
   - component: {fileID: 839077327}
+  - component: {fileID: 839077328}
   m_Layer: 0
   m_Name: ShipwreckD
   m_TagString: Untagged
@@ -19795,6 +19872,20 @@ CapsuleCollider:
   m_Height: 1.3
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &839077328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 839077325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f2ba2036e0b01c43b7c6bd9dbe36af5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IslandInfo: {fileID: 11400000, guid: 11b3897e6f37f8441873b77e6605e59d, type: 2}
+  assignedMapButton: {fileID: 303307832}
 --- !u!1 &841337730
 GameObject:
   m_ObjectHideFlags: 0
@@ -20384,6 +20475,7 @@ GameObject:
   m_Component:
   - component: {fileID: 862123741}
   - component: {fileID: 862123742}
+  - component: {fileID: 862123743}
   m_Layer: 0
   m_Name: Sharkteeth
   m_TagString: Untagged
@@ -20420,6 +20512,20 @@ CapsuleCollider:
   m_Height: 1.3
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &862123743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 862123740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f2ba2036e0b01c43b7c6bd9dbe36af5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IslandInfo: {fileID: 11400000, guid: 7429468309534154e8d8491ec1a99134, type: 2}
+  assignedMapButton: {fileID: 286567182}
 --- !u!1 &863579898
 GameObject:
   m_ObjectHideFlags: 0
@@ -22680,6 +22786,7 @@ GameObject:
   m_Component:
   - component: {fileID: 967364744}
   - component: {fileID: 967364745}
+  - component: {fileID: 967364746}
   m_Layer: 0
   m_Name: Tent
   m_TagString: Untagged
@@ -22700,7 +22807,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 808546647}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &967364745
 SphereCollider:
@@ -22715,6 +22822,20 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &967364746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 967364743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f2ba2036e0b01c43b7c6bd9dbe36af5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IslandInfo: {fileID: 11400000, guid: cc066a5e624dd3b42bd621a18b74d22b, type: 2}
+  assignedMapButton: {fileID: 246496194}
 --- !u!1 &968373416
 GameObject:
   m_ObjectHideFlags: 0
@@ -23071,6 +23192,7 @@ GameObject:
   m_Component:
   - component: {fileID: 984304023}
   - component: {fileID: 984304024}
+  - component: {fileID: 984304025}
   m_Layer: 0
   m_Name: Lonely
   m_TagString: Untagged
@@ -23106,6 +23228,20 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &984304025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 984304022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f2ba2036e0b01c43b7c6bd9dbe36af5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IslandInfo: {fileID: 11400000, guid: 180e6401f5ac2ae42a3b9ee70d43c830, type: 2}
+  assignedMapButton: {fileID: 1300080863}
 --- !u!1 &995358167
 GameObject:
   m_ObjectHideFlags: 0
@@ -24257,7 +24393,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 25, y: -229}
-  m_SizeDelta: {x: 369.77, y: 400}
+  m_SizeDelta: {x: 369.77, y: 317.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1043983141
 GameObject:
@@ -25338,6 +25474,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1087601106}
   - component: {fileID: 1087601107}
+  - component: {fileID: 1087601108}
   m_Layer: 0
   m_Name: Wrecked
   m_TagString: Untagged
@@ -25374,6 +25511,20 @@ CapsuleCollider:
   m_Height: 1.3
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1087601108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1087601105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f2ba2036e0b01c43b7c6bd9dbe36af5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IslandInfo: {fileID: 11400000, guid: ea9c37c22a7baa44a8e9b26e4cb57888, type: 2}
+  assignedMapButton: {fileID: 1445723906}
 --- !u!1 &1088210160 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5174396374572720005, guid: e3c922e9925f0f64e9187f8f1da93ba4,
@@ -25483,38 +25634,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 7.1737504, y: 17.282497, z: 1.1601952}
   m_Center: {x: 0, y: 1.3983536, z: 0.00012207031}
---- !u!1 &1093535756 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1035305430052229436, guid: 4b36e0930ea86a64f9fbffe2e3d5a7a8,
-    type: 3}
-  m_PrefabInstance: {fileID: 1437476582}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1093535757 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8439461851360296177, guid: 4b36e0930ea86a64f9fbffe2e3d5a7a8,
     type: 3}
   m_PrefabInstance: {fileID: 1437476582}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &1093535758
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+--- !u!111 &1093535761 stripped
+Animation:
+  m_CorrespondingSourceObject: {fileID: 142809101263787106, guid: 4b36e0930ea86a64f9fbffe2e3d5a7a8,
+    type: 3}
+  m_PrefabInstance: {fileID: 1437476582}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1093535756}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d2f68d0e86aa225448d330678b137c20, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!65 &1096450815
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -26322,6 +26453,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1133080258}
   - component: {fileID: 1133080259}
+  - component: {fileID: 1133080260}
   m_Layer: 0
   m_Name: Pass
   m_TagString: Untagged
@@ -26342,7 +26474,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 808546647}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &1133080259
 SphereCollider:
@@ -26357,6 +26489,20 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1133080260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1133080257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f2ba2036e0b01c43b7c6bd9dbe36af5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IslandInfo: {fileID: 11400000, guid: db7fd69e9c8a2ca41b16b6b03e3e076f, type: 2}
+  assignedMapButton: {fileID: 2112260212}
 --- !u!65 &1136200536
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -26952,6 +27098,66 @@ Transform:
   m_Father: {fileID: 2072700599}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1154358017
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1154358018}
+  - component: {fileID: 1154358020}
+  - component: {fileID: 1154358019}
+  m_Layer: 0
+  m_Name: Stutters island
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1154358018
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1154358017}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -313.2, y: 133.93445, z: -2050.6}
+  m_LocalScale: {x: 249.89, y: 249.89, z: 249.89}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 808546647}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1154358019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1154358017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f2ba2036e0b01c43b7c6bd9dbe36af5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IslandInfo: {fileID: 11400000, guid: 5f067e0e0f8659947ab410759c1c4f37, type: 2}
+  assignedMapButton: {fileID: 644151886}
+--- !u!135 &1154358020
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1154358017}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &1155685909
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -30256,7 +30462,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   islandTitleTxt: {fileID: 680509347}
   islandDescriptionTxt: {fileID: 1042375484}
-  islandInfo: {fileID: 0}
+  islandInfo: {fileID: 11400000, guid: 180e6401f5ac2ae42a3b9ee70d43c830, type: 2}
 --- !u!136 &1302040720
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -33559,8 +33765,7 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 142809101263787106, guid: 4b36e0930ea86a64f9fbffe2e3d5a7a8, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b36e0930ea86a64f9fbffe2e3d5a7a8, type: 3}
 --- !u!1 &1438103266 stripped
 GameObject:
@@ -35011,6 +35216,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1523859926}
   - component: {fileID: 1523859927}
+  - component: {fileID: 1523859928}
   m_Layer: 0
   m_Name: Lighthouse
   m_TagString: Untagged
@@ -35046,6 +35252,20 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1523859928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1523859925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f2ba2036e0b01c43b7c6bd9dbe36af5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IslandInfo: {fileID: 11400000, guid: 3f6e4b8382eb6984285a003353d961cc, type: 2}
+  assignedMapButton: {fileID: 327963139}
 --- !u!1 &1524390747
 GameObject:
   m_ObjectHideFlags: 0
@@ -37797,6 +38017,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1605619746}
   - component: {fileID: 1605619747}
+  - component: {fileID: 1605619748}
   m_Layer: 0
   m_Name: Obelisk
   m_TagString: Untagged
@@ -37832,6 +38053,20 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1605619748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1605619745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f2ba2036e0b01c43b7c6bd9dbe36af5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IslandInfo: {fileID: 11400000, guid: 9cb130dbfb5a7cb4a808813ba60692f8, type: 2}
+  assignedMapButton: {fileID: 1677285425}
 --- !u!1 &1607420963
 GameObject:
   m_ObjectHideFlags: 0
@@ -39694,7 +39929,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   islandTitleTxt: {fileID: 680509347}
   islandDescriptionTxt: {fileID: 1042375484}
-  islandInfo: {fileID: 0}
+  islandInfo: {fileID: 11400000, guid: 9cb130dbfb5a7cb4a808813ba60692f8, type: 2}
 --- !u!65 &1678149408
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -44540,6 +44775,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1913717352}
   - component: {fileID: 1913717353}
+  - component: {fileID: 1913717354}
   m_Layer: 0
   m_Name: RockSpiral
   m_TagString: Untagged
@@ -44575,6 +44811,20 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1913717354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1913717351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f2ba2036e0b01c43b7c6bd9dbe36af5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IslandInfo: {fileID: 11400000, guid: b4ee8ad6665959045ae7241fa725199e, type: 2}
+  assignedMapButton: {fileID: 275862266}
 --- !u!1 &1917423030
 GameObject:
   m_ObjectHideFlags: 0
@@ -46926,6 +47176,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1999748443}
   - component: {fileID: 1999748444}
+  - component: {fileID: 1999748445}
   m_Layer: 0
   m_Name: GrandAtoll
   m_TagString: Untagged
@@ -46962,6 +47213,20 @@ CapsuleCollider:
   m_Height: 1.3
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1999748445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1999748442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f2ba2036e0b01c43b7c6bd9dbe36af5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IslandInfo: {fileID: 11400000, guid: b85aa89e74f644340b6a4f1f19348a5a, type: 2}
+  assignedMapButton: {fileID: 109023521}
 --- !u!1 &2004088178
 GameObject:
   m_ObjectHideFlags: 0
@@ -47650,7 +47915,7 @@ MonoBehaviour:
   fishIconPrefab: {fileID: 1771359395913660209, guid: f576830f518af3a4e89e04956b12f5c0,
     type: 3}
   newEntryAnim: {fileID: 33451390}
-  islandNearAnim: {fileID: 0}
+  islandNearAnim: {fileID: 1093535761}
   islandNearTxt: {fileID: 715702844}
   questTextAnimator: {fileID: 1561193615}
   harpoonCount: {fileID: 1362020784}
@@ -47925,7 +48190,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   islandTitleTxt: {fileID: 680509347}
   islandDescriptionTxt: {fileID: 1042375484}
-  islandInfo: {fileID: 0}
+  islandInfo: {fileID: 11400000, guid: fa11505ad67f77745813321aeccafbcc, type: 2}
 --- !u!1 &2030709175
 GameObject:
   m_ObjectHideFlags: 0
@@ -50980,7 +51245,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   islandTitleTxt: {fileID: 680509347}
   islandDescriptionTxt: {fileID: 1042375484}
-  islandInfo: {fileID: 0}
+  islandInfo: {fileID: 11400000, guid: db7fd69e9c8a2ca41b16b6b03e3e076f, type: 2}
 --- !u!1 &2118917723
 GameObject:
   m_ObjectHideFlags: 0
@@ -51594,7 +51859,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   islandTitleTxt: {fileID: 680509347}
   islandDescriptionTxt: {fileID: 1042375484}
-  islandInfo: {fileID: 0}
+  islandInfo: {fileID: 11400000, guid: e897ee4d1a1e4a14783b72d568aee49a, type: 2}
 --- !u!136 &2135121062
 CapsuleCollider:
   m_ObjectHideFlags: 0

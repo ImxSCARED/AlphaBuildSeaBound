@@ -17,7 +17,7 @@ MonoBehaviour:
   hasBeenCaught: 0
   fishName: Noodles
   fishSName: 
-  amountCaught: 6
+  amountCaught: 0
   amountBeforeEntry1: 0
   journalEntry1: 
   amountBeforeEntry2: 0

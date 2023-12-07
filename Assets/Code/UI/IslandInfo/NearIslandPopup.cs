@@ -12,6 +12,7 @@ public class NearIslandPopup : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            Debug.Log(other.gameObject.name);
             other.GetComponent<PlayerManager>().IslandNamePopup(m_IslandInfo.islandName);
             if (!m_IslandInfo.discovered)
             {
