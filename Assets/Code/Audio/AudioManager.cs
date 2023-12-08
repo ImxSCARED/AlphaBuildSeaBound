@@ -177,12 +177,15 @@ public class AudioManager : MonoBehaviour
     public void PlayNextClip(string name)
     {
         AmbienceMaster c = Array.Find(clips, sound => sound.name == name);
-        nextClipPlaying = c;
+        if (currentClipPlaying != c)
+        {
+            nextClipPlaying = c;
 
-        clipFadeTimeElapsed = 0;
-        isClipFading = true;
+            clipFadeTimeElapsed = 0;
+            isClipFading = true;
 
-        nextClipPlaying.source.Play();
+            nextClipPlaying.source.Play();
+        }
     }
 
     public void PlayNext(string name)
