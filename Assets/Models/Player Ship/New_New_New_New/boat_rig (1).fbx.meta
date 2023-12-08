@@ -16,7 +16,8 @@ ModelImporter:
     optimizeGameObjects: 0
     removeConstantScaleCurves: 1
     motionNodeName: 
-    rigImportErrors: 
+    rigImportErrors: "Invalid Avatar Rig Configuration. Missing or invalid transform:\n\tRequired
+      human bone 'LeftUpperLeg' not found\n"
     rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
@@ -44,7 +45,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -57,8 +58,48 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events: []
-      transformMask: []
-      maskType: 3
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 0
+      - path: Armature/Base
+        weight: 0
+      - path: Armature/Base/Sail_2
+        weight: 0
+      - path: Armature/Base/Sail_2/FishingBoat_upgradespeed1
+        weight: 0
+      - path: Armature/Base/Sail_2/Sail_2_end
+        weight: 0
+      - path: Armature/Base/Sail_3
+        weight: 0
+      - path: Armature/Base/Sail_3/FishingBoat_upgradespeed2
+        weight: 0
+      - path: Armature/Base/Sail_3/Sail_3_end
+        weight: 0
+      - path: Armature/Base/Sail_Main
+        weight: 1
+      - path: Armature/Base/Sail_Main/Sail_Main_end
+        weight: 1
+      - path: FishingBoat_base
+        weight: 0
+      - path: FishingBoat_base.001
+        weight: 0
+      - path: FishingBoat_blunderbuss_L
+        weight: 0
+      - path: FishingBoat_Blunderbuss_L_stand
+        weight: 0
+      - path: FishingBoat_blunderbuss_R
+        weight: 0
+      - path: FishingBoat_blunderbuss_r_stand
+        weight: 0
+      - path: FishingBoat_flag
+        weight: 0
+      - path: FishingBoat_upgradespeed3
+        weight: 0
+      - path: FishingBoat_upgradespeed3.001
+        weight: 0
+      maskType: 0
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
@@ -312,7 +353,107 @@ ModelImporter:
   humanDescription:
     serializedVersion: 3
     human: []
-    skeleton: []
+    skeleton:
+    - name: boat_rig (1)(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: FishingBoat_base
+      parentName: boat_rig (1)(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0.000000081460335, y: 0, z: -0, w: 1}
+      scale: {x: 100, y: 100, z: 100}
+    - name: FishingBoat_flag
+      parentName: boat_rig (1)(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0.000000081460335, y: 0, z: -0, w: 1}
+      scale: {x: 100, y: 100, z: 100}
+    - name: FishingBoat_upgradespeed3
+      parentName: boat_rig (1)(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0.000000081460335, y: 0, z: -0, w: 1}
+      scale: {x: 100, y: 100, z: 100}
+    - name: FishingBoat_blunderbuss_R
+      parentName: boat_rig (1)(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0.000000081460335, y: 0, z: -0, w: 1}
+      scale: {x: 100, y: 100, z: 100}
+    - name: FishingBoat_blunderbuss_r_stand
+      parentName: boat_rig (1)(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0.000000081460335, y: 0, z: -0, w: 1}
+      scale: {x: 100, y: 100, z: 100}
+    - name: FishingBoat_blunderbuss_L
+      parentName: boat_rig (1)(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0.000000081460335, y: 0, z: -0, w: 1}
+      scale: {x: 100, y: 100, z: 100}
+    - name: FishingBoat_Blunderbuss_L_stand
+      parentName: boat_rig (1)(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0.000000081460335, y: 0, z: -0, w: 1}
+      scale: {x: 100, y: 100, z: 100}
+    - name: Armature
+      parentName: boat_rig (1)(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 100, y: 100, z: 100}
+    - name: Base
+      parentName: Armature
+      position: {x: -0, y: 0, z: -0.018424254}
+      rotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071067}
+      scale: {x: 1, y: 1.0000001, z: 1.0000001}
+    - name: Sail_Main
+      parentName: Base
+      position: {x: 0.0000000038465413, y: 0.096540764, z: 0.011440703}
+      rotation: {x: -0.00000011920926, y: -0, z: 1, w: 0}
+      scale: {x: 1, y: 1, z: 0.09787297}
+    - name: Sail_Main_end
+      parentName: Sail_Main
+      position: {x: -0, y: 0.05094898, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Sail_2
+      parentName: Base
+      position: {x: 0.018326554, y: 0.069484726, z: -0.012046922}
+      rotation: {x: -0.009644241, y: -0.0093696425, z: 0.7637198, w: 0.64540786}
+      scale: {x: 1.0000011, y: 0.9999998, z: 0.15508172}
+    - name: FishingBoat_upgradespeed1
+      parentName: Sail_2
+      position: {x: -0.05176425, y: 0.01937594, z: 0.01163435}
+      rotation: {x: 0.015475376, y: 0.0031074723, z: -0.7162236, w: 0.6976924}
+      scale: {x: 1, y: 1.0000001, z: 1.0000002}
+    - name: Sail_2_end
+      parentName: Sail_2
+      position: {x: -0, y: 0.036553245, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Sail_3
+      parentName: Base
+      position: {x: -0.0028613799, y: 0.045093518, z: 0.07453418}
+      rotation: {x: -0.23978452, y: -0.008506534, z: -0.010995071, w: 0.9707266}
+      scale: {x: 0.12596905, y: 1, z: 1}
+    - name: FishingBoat_upgradespeed2
+      parentName: Sail_3
+      position: {x: 0.0014817094, y: 0.03248446, z: -0.072602846}
+      rotation: {x: 0.37786716, y: 0.008111624, z: 0.017326724, w: 0.92566216}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Sail_3_end
+      parentName: Sail_3
+      position: {x: -0, y: 0.06602556, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: FishingBoat_base.001
+      parentName: boat_rig (1)(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0.00000014106499, y: 0, z: -0, w: 1}
+      scale: {x: 100, y: 100, z: 100}
+    - name: FishingBoat_upgradespeed3.001
+      parentName: boat_rig (1)(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0.000000081460335, y: 0, z: -0, w: 1}
+      scale: {x: 100, y: 100, z: 100}
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5

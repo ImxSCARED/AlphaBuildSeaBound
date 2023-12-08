@@ -60,7 +60,7 @@ public class PlayerManager : MonoBehaviour
     public bool journalOpen = false;
     private string[] diaryPages = new string[6];
     public GameObject[] journalTabs;
-    private int entryCounter = 0;
+    private int entryCounter = 1;
     private int currentPage = 0;
     private int currentTab = 0;
 
@@ -106,12 +106,6 @@ public class PlayerManager : MonoBehaviour
         m_UpgradeManager = GetComponent<UpgradeManager>();
         m_QuestManager = GetComponent<QuestManager>();
         m_MovementController = GetComponent<MovementController>();
-        diaryPages[0] = "1";
-        diaryPages[1] = "2";
-        diaryPages[2] = "3";
-        diaryPages[3] = "4";
-        diaryPages[4] = "5";
-        diaryPages[5] = "6";
         SpawnFish();
         
 
@@ -397,7 +391,7 @@ public class PlayerManager : MonoBehaviour
             else if (currentTab == 2)
             {
                 //increases page by two, cause two pages diary, and clamps it 2 before .length because the display works of the first page, so 4 would display page 4 and 5.
-                currentPage = Math.Clamp(currentPage + ((int)value * 2), 0, diaryPages.Length - 2);
+                currentPage = Math.Clamp(currentPage + ((int)value * 2), 0, 4);
                 DisplayDiaryPages();
             }
         }
@@ -459,8 +453,14 @@ public class PlayerManager : MonoBehaviour
             case > 0 and <= 4:
                 diaryPages[0] += entry;
                 break;
-            case > 4 and <= 7:
-                diaryPages[1] += "\n" + entry;
+            case > 4 and <= 8:
+                diaryPages[1] += entry;
+                break;
+            case > 8 and <= 12:
+                diaryPages[2] += entry;
+                break;
+            case > 12 and <= 15:
+                diaryPages[3] += entry;
                 break;
         }
         entryCounter++;

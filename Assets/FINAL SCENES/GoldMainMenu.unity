@@ -1539,6 +1539,72 @@ MonoBehaviour:
     pitch: 1
     stopRepeat: 0
     source: {fileID: 0}
+  - name: Fish_Noodles
+    clip: {fileID: 8300000, guid: cbd91e063b783354eb155d299d2acb10, type: 3}
+    volume: 1
+    pitch: 1
+    stopRepeat: 0
+    source: {fileID: 0}
+  - name: Fish_Bass
+    clip: {fileID: 8300000, guid: 97388d558970f5e42a9f70a40bfde82a, type: 3}
+    volume: 1
+    pitch: 1
+    stopRepeat: 0
+    source: {fileID: 0}
+  - name: Fish_Duckie
+    clip: {fileID: 8300000, guid: f889c850d1ec2f94e9b057924561466d, type: 3}
+    volume: 1
+    pitch: 1
+    stopRepeat: 0
+    source: {fileID: 0}
+  - name: Fish_DuckieMyles
+    clip: {fileID: 8300000, guid: c733465543576954699acbb391e56153, type: 3}
+    volume: 1
+    pitch: 1
+    stopRepeat: 0
+    source: {fileID: 0}
+  - name: Fish_Shark
+    clip: {fileID: 8300000, guid: 215ead1ddf67e0d468fa0328a73427d8, type: 3}
+    volume: 1
+    pitch: 1
+    stopRepeat: 0
+    source: {fileID: 0}
+  - name: Fish_Swordfish
+    clip: {fileID: 8300000, guid: 5958ef8940f615a498c9bb626bc1502f, type: 3}
+    volume: 1
+    pitch: 1
+    stopRepeat: 0
+    source: {fileID: 0}
+  - name: Fish_Siren
+    clip: {fileID: 8300000, guid: 27686c7b2e675fe46b81bc571b482d46, type: 3}
+    volume: 1
+    pitch: 1
+    stopRepeat: 0
+    source: {fileID: 0}
+  - name: Fish_Leviathan
+    clip: {fileID: 8300000, guid: 6e75a93b94bb9ab4d8067f6622c997f8, type: 3}
+    volume: 1
+    pitch: 1
+    stopRepeat: 0
+    source: {fileID: 0}
+  - name: Fish_Kraken
+    clip: {fileID: 8300000, guid: 3cf5c43e61883c644ac89855d2a5bfbe, type: 3}
+    volume: 1
+    pitch: 1
+    stopRepeat: 0
+    source: {fileID: 0}
+  - name: Fish_Hippocampus
+    clip: {fileID: 8300000, guid: f875058c6c41d564896f318c0c4ddf7a, type: 3}
+    volume: 1
+    pitch: 1
+    stopRepeat: 0
+    source: {fileID: 0}
+  - name: Fish_Cthylla
+    clip: {fileID: 8300000, guid: ac4e73f297ba27e41a972859845361bf, type: 3}
+    volume: 1
+    pitch: 1
+    stopRepeat: 0
+    source: {fileID: 0}
   tracks:
   - name: Track_MainMenu
     track: {fileID: 8300000, guid: 4a23136c2141c5d469c3e00fc5ee3f79, type: 3}

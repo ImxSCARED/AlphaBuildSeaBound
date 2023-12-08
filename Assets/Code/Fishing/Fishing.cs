@@ -12,7 +12,6 @@ public class Fishing : MonoBehaviour
     [SerializeField] private CameraController m_CameraController;
     public CaptureCircle minigameBackground;
     public GameObject minigameMover;
-    public Animator shipSailsAnimator;
 
     //Fishing
     private Fish currentFish;
@@ -60,10 +59,47 @@ public class Fishing : MonoBehaviour
                         m_PlayerManager.harpoonCount.text = "X " + currentHarpoons;
                         m_MovementController.StopMovement();
 
-                        shipSailsAnimator.SetTrigger("FishingStart");
+                        
                         ParticleManager.instance.PlayWaterSplashParticle(minigameMover.transform.position);
                         ParticleManager.instance.PlayFishSplashParticle(currentFish.transform);
                         AudioManager.instance.PlaySound("StartFishing");
+                        switch (currentFish.data.name)
+                        {
+                            case "Noodles":
+                                AudioManager.instance.PlaySound("Fish_Noodles");
+                                break;
+                            case "Bass":
+                                AudioManager.instance.PlaySound("Fish_Bass");
+                                break;
+                            case "Duckie":
+                                int randNum = Random.Range(0, 2);
+                                if(randNum == 0)
+                                    AudioManager.instance.PlaySound("Fish_Duckie");
+                                else
+                                    AudioManager.instance.PlaySound("Fish_DuckieMyles");
+                                break;
+                            case "Swordfish":
+                                AudioManager.instance.PlaySound("Fish_Swordfish");
+                                break;
+                            case "Siren":
+                                AudioManager.instance.PlaySound("Fish_Siren");
+                                break;
+                            case "Shark":
+                                AudioManager.instance.PlaySound("Fish_Shark");
+                                break;
+                            case "Leviathan":
+                                AudioManager.instance.PlaySound("Fish_Leviathan");
+                                break;
+                            case "Hippocampus":
+                                AudioManager.instance.PlaySound("Fish_Hippocampus");
+                                break;
+                            case "Kraken":
+                                AudioManager.instance.PlaySound("Fish_Kraken");
+                                break;
+                            case "Cthylla":
+                                AudioManager.instance.PlaySound("Fish_Cthylla");
+                                break;
+                        }
                     }
                     else
                     {
@@ -77,7 +113,6 @@ public class Fishing : MonoBehaviour
     public void EndMinigame(bool fishCaught)
     {
         m_CameraController.EndFishingMode();
-        shipSailsAnimator.SetTrigger("FishingEnd");
 
         foreach(Transform transform in currentFish.transform)
         {

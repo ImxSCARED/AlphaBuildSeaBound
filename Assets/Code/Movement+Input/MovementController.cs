@@ -309,6 +309,7 @@ public class MovementController : MonoBehaviour
 
         // Animator
         shipSailsAnimator.SetLayerWeight(1, Mathf.Abs(localVelocity.z / m_maxSpeed * m_upgradeAmount));
+        shipSailsAnimator.SetLayerWeight(2, Mathf.Abs(localVelocity.z / m_maxSpeed * m_upgradeAmount));
 
         m_velocity = transform.TransformVector(localVelocity);
     }
@@ -338,11 +339,7 @@ public class MovementController : MonoBehaviour
     // Myles' stuff
     private void MovementSound(float percentMaxVelocity)
     {
-        //if (percentMaxVelocity == 0)
-        //{
-        //    AudioManager.instance.PlayNextClip("Still");
-        //}
-        //else if (percentMaxVelocity > 0.2)
+        //if (percentMaxVelocity > 0.2)
         //{
         //    AudioManager.instance.PlayNextClip("Sailing1");
         //}

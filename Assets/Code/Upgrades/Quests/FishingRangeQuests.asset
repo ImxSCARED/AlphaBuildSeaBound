@@ -19,7 +19,7 @@ MonoBehaviour:
     connectedUpgrade: {fileID: 11400000, guid: d80dd749e66ce3f4188431d895569254, type: 2}
     connectedFish:
       name: 
-      fishImage: {fileID: 21300000, guid: 3328017fd3ba895488e959e4630ab89d, type: 3}
+      fishImage: {fileID: 21300000, guid: 6a00507a361f3d541b39b9b14fca9157, type: 3}
       value: 50
       isQuestFish: 1
       tier: 1

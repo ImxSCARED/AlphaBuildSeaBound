@@ -10,8 +10,8 @@ public class Achievements : MonoBehaviour
 
     public void AddScore()
     {
-        Score++;
         playerManager.AddDiaryEntry(m_MyleStones[Score].noteWords);
+        Score++;
     }
 
     public void Start()
@@ -19,14 +19,6 @@ public class Achievements : MonoBehaviour
         playerManager = FindObjectOfType<PlayerManager>();
     }
 
-    public void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            AddScore();
-            Destroy(gameObject);
-        }
-    }
 
     /*Achievements to add post Submission
      * Discover 4 Islands

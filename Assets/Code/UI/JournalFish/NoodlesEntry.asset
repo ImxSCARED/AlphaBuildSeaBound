@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fishSilhouette: {fileID: 21300000, guid: cd6219616f3fbff4fad0b0cc3a3dbf7e, type: 3}
   fishCutiePatootie: {fileID: 21300000, guid: be6b63b149c14e94e9999e323844edae, type: 3}
-  hasBeenCaught: 1
+  hasBeenCaught: 0
   fishName: Noodles
   fishSName: 'Collyra Piscis '
-  amountCaught: 1
+  amountCaught: 0
   amountBeforeEntry1: 1
   journalEntry1: "long thought to be a dangerous three headed snake. I have discovered
     that this \u201Csnake\u201D is harmless and is friendly towards humans.\r\n\nAfter
