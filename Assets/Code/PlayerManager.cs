@@ -51,7 +51,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] public QuestButton[] QuestUI;
     [SerializeField] private GameObject questsHolder;
 
-    [SerializeField] private UpgradeButton[] UpradgeUI;
+    [SerializeField] public UpgradeButton[] UpradgeUI;
     [SerializeField] private GameObject upgradesHolder;
 
     [Header("Journal")]
@@ -163,6 +163,11 @@ public class PlayerManager : MonoBehaviour
     /// <param name="caughtFish"></param>
     public void AddFish(FishProperties.FishData caughtFish)
     {
+        if (caughtFish.isQuestFish)
+        {
+            m_QuestManager.currentQuestTitle.text = "No current quest";
+            m_QuestManager.currentQuestDesc.text = "Select a quest at the dock.";
+        }
         storedFish.Add(caughtFish);
         AmountOfFish++;
         for (int i = 0; i < journalFishEntryies.Length; i++)
@@ -170,8 +175,12 @@ public class PlayerManager : MonoBehaviour
             if (caughtFish.name == journalFishEntryies[i].fishName)
             {
                 journalFishEntryies[i].amountCaught++;
-                if(!journalFishEntryies[i].hasBeenCaught)
+                if (!journalFishEntryies[i].hasBeenCaught)
+                {
                     journalFishEntryies[i].hasBeenCaught = true;
+                    newEntryAnim.Play();
+                }
+                    
             }
         }
         //Spawns image in inventory and sets its sprite to the caught fishs icon
@@ -349,7 +358,7 @@ public class PlayerManager : MonoBehaviour
     public void MainMenu()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene("Myles_MainMenu");
+        SceneManager.LoadScene("GoldMainMenu");
     }
 
     public void QuitGame()

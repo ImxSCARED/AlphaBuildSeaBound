@@ -1,3 +1,5 @@
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 //Author: JamieWright
@@ -52,6 +54,7 @@ public class UpgradeManager : MonoBehaviour
                 break;
             case UpgradeData.UpgradeType.RANGE:
                 m_FishingHitbox.RedrawOval(m_FishingHitbox.fishingLineRenderer, m_FishingHitbox.fishingRadius * (m_UpgradeData.RangeIncreaseAmount + 1), m_FishingHitbox.fishingWidthRatio, m_FishingHitbox.fishingHeightRatio);
+                m_FishingHitbox.ResetDashPoints();
                 break;
         }   
     }
@@ -76,6 +79,7 @@ public class UpgradeManager : MonoBehaviour
                         {
                             UpdateModel(UP);
                             m_PlayerManager.Money -= UP.Price;
+                            m_PlayerManager.moneyTxt.text = m_PlayerManager.Money.ToString();
                             UP.Level++;
                             UP.Locked = true;
                             ImplementUpgrade(UP);
@@ -83,6 +87,24 @@ public class UpgradeManager : MonoBehaviour
                             UP.Price = Mathf.RoundToInt(UP.Price * UP.PriceIncrease);
                             if(UP.Level != UP.MaxLevel)
                                 UP.assignedQuest.currentQuest++;
+
+                            for (int i = 0; i < m_PlayerManager.QuestUI.Length; i++)
+                            {
+                                if (UP.assignedQuest.Name == m_PlayerManager.QuestUI[i].Name)
+                                {
+                                    if(UP.Level == UP.MaxLevel)
+                                    {
+                                        m_PlayerManager.QuestUI[i].m_Blocker.GetComponentInChildren<TextMeshProUGUI>().text = "Max Quests";
+                                    }
+                                    else
+                                    {
+                                        m_PlayerManager.QuestUI[i].m_Blocker.GetComponentInChildren<TextMeshProUGUI>().text = "Finish Quest to Select";
+                                        m_PlayerManager.QuestUI[i].m_Blocker.SetActive(false);
+                                    }
+                                    
+                                    break;
+                                }
+                            }
 
                             ParticleManager.instance.PlayUpgradeParticle(transform.position);
                             AudioManager.instance.PlaySound("UpgradedShip");

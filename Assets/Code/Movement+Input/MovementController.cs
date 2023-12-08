@@ -19,6 +19,8 @@ public class MovementController : MonoBehaviour
     GameObject m_geometryParent;
     [SerializeField]
     AudioManager m_audioManager;
+    [SerializeField]
+    Animator shipSailsAnimator;
 
     [Header("Player Control")]
 
@@ -127,6 +129,8 @@ public class MovementController : MonoBehaviour
 
         // Sound
         MovementSound(m_velocity.magnitude / m_maxVelocity);
+
+        
 
         // Cleanup
         m_forwardImpulse = 0f;
@@ -282,6 +286,7 @@ public class MovementController : MonoBehaviour
     /// </summary>
     private void ApplySpeedImpulse(float deltaEngine)
     {
+        
         Vector3 localVelocity = transform.InverseTransformVector(m_velocity);
 
         deltaEngine *= Time.deltaTime;
@@ -301,6 +306,9 @@ public class MovementController : MonoBehaviour
         {
             localVelocity.z += deltaEngine;
         }
+
+        // Animator
+        shipSailsAnimator.SetLayerWeight(1, Mathf.Abs(localVelocity.z / m_maxSpeed * m_upgradeAmount));
 
         m_velocity = transform.TransformVector(localVelocity);
     }

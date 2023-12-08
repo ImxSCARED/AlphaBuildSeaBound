@@ -12,6 +12,7 @@ public class Fishing : MonoBehaviour
     [SerializeField] private CameraController m_CameraController;
     public CaptureCircle minigameBackground;
     public GameObject minigameMover;
+    public Animator shipSailsAnimator;
 
     //Fishing
     private Fish currentFish;
@@ -59,6 +60,7 @@ public class Fishing : MonoBehaviour
                         m_PlayerManager.harpoonCount.text = "X " + currentHarpoons;
                         m_MovementController.StopMovement();
 
+                        shipSailsAnimator.SetTrigger("FishingStart");
                         ParticleManager.instance.PlayWaterSplashParticle(minigameMover.transform.position);
                         ParticleManager.instance.PlayFishSplashParticle(currentFish.transform);
                         AudioManager.instance.PlaySound("StartFishing");
@@ -75,6 +77,7 @@ public class Fishing : MonoBehaviour
     public void EndMinigame(bool fishCaught)
     {
         m_CameraController.EndFishingMode();
+        shipSailsAnimator.SetTrigger("FishingEnd");
 
         foreach(Transform transform in currentFish.transform)
         {

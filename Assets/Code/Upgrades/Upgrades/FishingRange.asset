@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Fishing Range
   Description: Increases the range of the fishing events
-  Price: 250
+  Price: 600
   Level: 0
   PriceIncrease: 2
   MaxLevel: 1

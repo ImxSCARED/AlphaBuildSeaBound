@@ -30,7 +30,7 @@ public class Fish : MonoBehaviour
                 {
                     if (fishingHitboxNode == Vector3.zero)
                     {
-                        fishingHitboxNode = hitboxNodes[Random.Range(0, hitboxNodes.Length - 1)];
+                        fishingHitboxNode = hitboxNodes[Random.Range(0, hitboxNodes.Length)];
                     }
 
                     actionDuration += Time.deltaTime;
@@ -60,7 +60,7 @@ public class Fish : MonoBehaviour
                 {
                     if (fishingHitboxNode == Vector3.zero)
                     {
-                        fishingHitboxNode = hitboxNodes[Random.Range(0, hitboxNodes.Length - 1)];
+                        fishingHitboxNode = hitboxNodes[Random.Range(0, hitboxNodes.Length)];
                     }
 
                     actionDuration += Time.deltaTime;
@@ -90,7 +90,7 @@ public class Fish : MonoBehaviour
                 {
                     if (fishingHitboxNode == Vector3.zero)
                     {
-                        fishingHitboxNode = hitboxNodes[Random.Range(0, hitboxNodes.Length - 1)];
+                        fishingHitboxNode = hitboxNodes[Random.Range(0, hitboxNodes.Length)];
                     }
 
                     actionDuration += Time.deltaTime;

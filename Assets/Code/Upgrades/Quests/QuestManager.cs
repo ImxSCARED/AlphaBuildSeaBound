@@ -1,4 +1,3 @@
-using System.Linq;
 using TMPro;
 using UnityEngine;
 
@@ -36,17 +35,24 @@ public class QuestManager : MonoBehaviour
                 if (quest.quests[quest.currentQuest].connectedFish.name == questFish.name)
                 {
                     quest.quests[quest.currentQuest].connectedUpgrade.Locked = false;
+                    for (int i = 0; i < m_PlayerManager.UpradgeUI.Length; i++)
+                    {
+                        if (quest.quests[quest.currentQuest].connectedUpgrade.Type == m_PlayerManager.UpradgeUI[i].m_UpgradeType)
+                        {
+                            m_PlayerManager.UpradgeUI[i].SetInfo(quest.quests[quest.currentQuest].connectedUpgrade);
+                            break;
+                        }
+                    }
                     quest.quests[quest.currentQuest].completed = true;
                     m_PlayerManager.Money += quest.quests[quest.currentQuest].Value;
                     currentBountyFish = null;
-                    currentQuestTitle.text = "No current quest";
-                    currentQuestDesc.text = "Select a quest at the dock.";
+                    
 
-                    for (int i = 0; i < m_PlayerManager.QuestUI.Length; i++)
+                    for (int i = 0; i < m_PlayerManager.QuestUI.Length - 1; i++)
                     {
-                        if (quest.quests[quest.currentQuest].Name == m_PlayerManager.QuestUI[i].Name)
+                        if (quest.Name == m_PlayerManager.QuestUI[i].Name)
                         {
-                            m_PlayerManager.QuestUI[i].m_Blocker.GetComponentInChildren<TextMeshProUGUI>().text = "Finish Quest to Select";
+                            m_PlayerManager.QuestUI[i].m_Blocker.GetComponentInChildren<TextMeshProUGUI>().text = "Locked Behind Upgrade";
                         }
                     }
                     AudioManager.instance.PlaySound("QuestDone");
@@ -60,8 +66,10 @@ public class QuestManager : MonoBehaviour
             {
                 if (m_Quests[j].Name == m_PlayerManager.QuestUI[i].Name)
                 {
-                    //Checks if it has Max Quests blocker, else removes blocker
-                    if (m_Quests[j].currentQuest == m_Quests[j].quests.Length - 1)
+                    //Checks if it has Max Quests, or if its locked behind an upgrade, else removes blocker
+                    if (m_Quests[j].currentQuest == m_Quests[j].quests.Length)
+                        break;
+                    else if (m_PlayerManager.QuestUI[i].m_Blocker.GetComponentInChildren<TextMeshProUGUI>().text == "Locked Behind Upgrade")
                         break;
                     else
                     {
@@ -94,17 +102,17 @@ public class QuestManager : MonoBehaviour
                 switch (quest.quests[quest.currentQuest].Zone)
                 {
                     case PlayerManager.ZoneLevel.Zone1:
-                        int i = Random.Range(0, Zone1Spawns.Length - 1);
+                        int i = Random.Range(0, Zone1Spawns.Length);
                         currentBountyFish = Instantiate(questFish, Zone1Spawns[i].bountySpawn);
                         currentQuestDesc.text = Zone1Spawns[i].desctription;
                         break;
                     case PlayerManager.ZoneLevel.Zone2:
-                        int j = Random.Range(0, Zone2Spawns.Length - 1);
+                        int j = Random.Range(0, Zone2Spawns.Length);
                         currentBountyFish = Instantiate(questFish, Zone2Spawns[j].bountySpawn);
                         currentQuestDesc.text = Zone2Spawns[j].desctription;
                         break;
                     case PlayerManager.ZoneLevel.Zone3:
-                        int k = Random.Range(0, Zone3Spawns.Length - 1);
+                        int k = Random.Range(0, Zone3Spawns.Length);
                         currentBountyFish = Instantiate(questFish, Zone3Spawns[k].bountySpawn);
                         currentQuestDesc.text = Zone3Spawns[k].desctription;
                         break;
