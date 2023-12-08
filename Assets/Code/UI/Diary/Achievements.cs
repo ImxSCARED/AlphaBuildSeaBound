@@ -6,14 +6,29 @@ public class Achievements : MonoBehaviour
 {
     private int Score = 0;
     [SerializeField] private Diary_Mylestone[] m_MyleStones;
+    [SerializeField] private PlayerManager playerManager;
 
     public void AddScore()
     {
         Score++;
-        FindObjectOfType<PlayerManager>().AddDiaryEntry(m_MyleStones[Score].noteWords);
+        playerManager.AddDiaryEntry(m_MyleStones[Score].noteWords);
     }
 
-    /*Achievements
+    public void Start()
+    {
+        playerManager = FindObjectOfType<PlayerManager>();
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            AddScore();
+            Destroy(gameObject);
+        }
+    }
+
+    /*Achievements to add post Submission
      * Discover 4 Islands
      * Discover 8 Islands
      * Discover 12 Islands
