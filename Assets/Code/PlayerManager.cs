@@ -359,7 +359,7 @@ public class PlayerManager : MonoBehaviour
             EventSystem.current.SetSelectedGameObject(settingsFirstButton);
             controlsOpen = false;
         }
-        else if (settingsOpen == false)
+        else if (controlsOpen == false)
         {
             settings.SetActive(false);
             controls.SetActive(true);
